@@ -55,6 +55,9 @@ This repository represents a remote collaboration for LightBot Artificial Intell
 * Google Meet (Used for weekly meetings between Team Gradient and 5DT)
 * GitKraken / GitHub Desktop
 
+## Documenation
+* SRS Document for Demo 1: https://github.com/COS301-SE-2020/LightBot/tree/master/lightbot_doc 
+
 ## Collaborators
 <b>Mohammed Gangat :</b><br>
 * <a href="https://github.com/Typhon-Divinity"> GitHub  Account </a><br>
