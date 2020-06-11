@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on Wed Jun 10 14:50:46 2020 by Eclipse SUMO GUI Version 6bfc49c2
+-->
+
+<configuration>
+    <input>
+        <net-file value="simulation.net.xml"/>
+        <route-files value="simulation.rou.xml"/>
+        <additional-files value="simulation.add.xml"/>
+    </input>
+
+</configuration>
