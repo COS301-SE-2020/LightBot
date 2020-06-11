@@ -1,4 +1,4 @@
-<a href=""><img src="https://github.com/COS301-SE-2020/LightBot/blob/master/lightbot_misc/logo.png" title="" alt="" height="200" width="500"></a>
+<a href=""><img src="https://github.com/COS301-SE-2020/LightBot/blob/master/lightbot_misc/Black%20Logo.png" title="" alt="" height="200" width="500" position="center"></a>
 # LightBot
 # Artificial Intelligence Adaptive Traffic Control Solution
 
