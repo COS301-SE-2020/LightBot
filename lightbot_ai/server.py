@@ -11,28 +11,19 @@ except:
     print("Connection to MongoDB unsuccessful")
     exit()
 
-
-# collection = client.LightBot.TrafficMetrics
-# cursor = collection.find({})
-# for document in cursor:
-#       print(document)
-
-
-def getMongoDBData():
-    mycol = client["Management"]
-    myquery = {"something": "data"}
-    mydoc = mycol.find(myquery)
-    for x in mydoc:
-        print(x)
-
-
 s = socketio.Client()
 
+@s.event
+def getMongoDBData():
+    collection = client.LightBot.TrafficMetrics
+    results = collection.find({})
+    for x in results:
+        print(x)
 
 @s.event
 def connect():
     print('RL server connected')
-    s.emit('RL Connected')
+    s.emit('RL Connected',{'data': 'foobar'})
 
 
 @s.event
@@ -46,10 +37,10 @@ def disconnect():
 
 
 @s.on("Data-toRL")
-def optimize(data):
-    s.emit("Data-fromRL", "Some important server data")
-    return '{action 1: data}'
+def optimize(arg1):
+    s.emit("Data-fromRL",{'data': 'foobar'})
 
-
+print("--------------------------------------------------------")
 s.connect('http://localhost:8000')
+
 s.wait()
