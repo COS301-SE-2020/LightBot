@@ -3,7 +3,7 @@
 # Artificial Intelligence Adaptive Traffic Control Solution
 
 ## Description
-This repository represents a remote collaboration for LightBot Artificial Intelligence Adaptive Traffic Control Solution offered by 5DT for the COS 301 Capstone University of Pretoria.
+This repository represents a remote collaboration for LightBot Artificial Intelligence Adaptive Traffic Control Solution offered by 5DT for the COS 301 Capstone University of Pretoria. The purpose of LightBot is to minimize the delays that are caused by traffic congestions at various intersections. The LightBot system will be used to prove a concept that the addition of a machine learning algorithm will develop a good policy for which to control the traffic lights at a given intersection.
 <br>
 
 ## Team and Project Management
@@ -63,7 +63,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
 * <details>
     <summary><b>What I Did </b></summary>
     <br>
-    - Your contribution here
+    - Demo 1: Set up the socket server, set up MongoDB database, set up Git repo, worked on the machine learning server, worked on the taffic flow simulation, worked on the web application (system interface) and worked on the demo video & recorded contribution video.
     <br>
 </details>
 
@@ -74,7 +74,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
 * <details>
     <summary><b>What I Did </b></summary>
     <br>
-    - Your contribution here
+    - Demo 1: Set up MongoDB database, set up Git repo, set up the web application (system interface), worked on the SRS document and worked on the demo video & recorded contribution video.
     <br>
 </details>
 
@@ -85,7 +85,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
 * <details>
     <summary><b>What I Did </b></summary>
     <br>
-    - Your contribution here
+    - Demo 1: Set up machine learning server, worked on the SRS document and recorded contribution video.
     <br>
 </details>
 
@@ -96,7 +96,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
 * <details>
     <summary><b>What I Did </b></summary>
     <br>
-    - Your contribution here
+    - Demo 1: Set up traffic flow simulation & created algorithm for simulation, worked on the SRS document and recorded contribution video.
     <br>
 </details>
 
@@ -107,7 +107,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
 * <details>
     <summary><b>What I Did </b></summary>
     <br>
-    - Your contribution here
+    - Demo 1: Set up machine learning server, worked on the SRS document and recorded contribution video.
     <br>
 </details>
 
