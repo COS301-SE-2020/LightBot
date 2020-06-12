@@ -81,7 +81,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
 <b>Rahul Kapoor :</b><br>
 * <a href="https://github.com/rahulkap20"> GitHub  Account </a><br>
 * <a href="https://www.linkedin.com/in/rahulkapoor20/"> Linkedin  Account </a>
-* Email : 16034130@tuks.co.za
+* Email : u16034130@tuks.co.za
 * <details>
     <summary><b>What I Did </b></summary>
     <br>
@@ -92,7 +92,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
 <b>Thiveshan Pillay :</b><br>
 * <a href="https://github.com/u15007911"> GitHub  Account </a><br>
 * <a href="https://www.linkedin.com/in/thiveshan-pillay-4425231a9/"> Linkedin  Account </a>
-* Email : 15007911@tuks.co.za
+* Email : u15007911@tuks.co.za
 * <details>
     <summary><b>What I Did </b></summary>
     <br>
@@ -103,7 +103,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
 <b>Jared Gratz :</b><br>
 * <a href="https://github.com/Jad-91802"> GitHub  Account </a><br>
 * <a href=" https://www.linkedin.com/in/jared-gratz-b61147b9/"> Linkedin  Account </a>
-* Email : 16054972@tuks.co.za
+* Email : u16054972@tuks.co.za
 * <details>
     <summary><b>What I Did </b></summary>
     <br>
