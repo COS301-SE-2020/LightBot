@@ -1,4 +1,4 @@
-<a href=""><img src="" title="" alt="" height="200" width="500"></a>
+<a href=""><img src="https://github.com/COS301-SE-2020/LightBot/blob/master/lightbot_misc/Black%20Logo.png" title="" alt="" height="200" width="500" position="center"></a>
 # LightBot
 # Artificial Intelligence Adaptive Traffic Control Solution
 
@@ -54,6 +54,12 @@ This repository represents a remote collaboration for LightBot Artificial Intell
 * ClickUp (Used for task allocation and time management) - https://share.clickup.com/l/h/2dyz3-141/e75ad4ae1b0344a
 * Google Meet (Used for weekly meetings between Team Gradient and 5DT)
 * GitKraken / GitHub Desktop
+
+## Documenation
+* SRS Document for Demo 1: https://github.com/COS301-SE-2020/LightBot/tree/master/lightbot_doc 
+
+## Demo Videos
+* Demo 1 Video link: https://drive.google.com/file/d/1Ym5qgCFRDrMjqgOWoS6-tWCDYrcS3Gj5/view?usp=sharing
 
 ## Collaborators
 <b>Mohammed Gangat :</b><br>
