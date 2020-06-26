@@ -15,12 +15,12 @@ def disconnect(sid):
 @sio.on("RL Connected")
 def getDataReq(sid):	
 	print("Event getDataReq received: ",sid)
-	sio.emit("Data-toRL",{'data': 'foobar'})
+	sio.emit("Data-toRL",'data123')
 
-# @sio.on("Data-fromRL")
-# def receive(arg1, arg2):
-	# print(arg1)
-	# sio.emit('getMongoDBData')
+@sio.on("Data-fromRL")
+def receive(sid, arg1):
+	print("sid: ",sid,", arg1: ",arg1)
+	sio.emit("Disconnect-RL")
 	
 
 	

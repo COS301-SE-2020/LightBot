@@ -1,7 +1,8 @@
 import pymongo
 import socketio
 import config
-
+from mockAI import performCalculation
+import json
 # client = pymongo.MongoClient(
     # "mongodb+srv://" + config.USER + ":" + config.PASS + "@lightbot-8xen0.mongodb.net/" + config.DBNAME + "?retryWrites=true&w=majority")
 # try:
@@ -39,8 +40,19 @@ def disconnect():
 @s.on("Data-toRL")
 def sendUpdateInfoToServer(arg1):
 	print("Event: Data-toRL received: ",arg1)
-	s.disconnect()
+	x = {
+	"data1":"result1",
+	"data2":"result2",
+	"data3":"result3",
+	}
+	w = performCalculation("123")
+	x.update({"MockAIResult":w.pop()})
+	y = json.dumps(x)
+	s.emit("Data-fromRL",y)
 
+@s.on("Disconnect-RL")
+def disconnectionCommand():
+	s.disconnect()
 
 print("--------------------------------------------------------")
 s.connect('http://localhost:8000')
