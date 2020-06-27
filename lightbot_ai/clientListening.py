@@ -1,7 +1,9 @@
 import eventlet
 import socketio
+
 sio = socketio.Server()
 app = socketio.WSGIApp(sio)
+
 @sio.event
 def connect(sid, environ):
     print('connect ', sid)
@@ -15,7 +17,7 @@ def disconnect(sid):
 @sio.on("RL Connected")
 def getDataReq(sid):	
 	print("Event getDataReq received: ",sid)
-	sio.emit("Data-toRL",'data123')
+	sio.emit("Data-toRL",{"data1":"a","data2":"b"})
 
 @sio.on("Data-fromRL")
 def receive(sid, arg1):
