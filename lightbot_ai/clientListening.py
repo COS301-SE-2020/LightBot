@@ -1,5 +1,6 @@
 import eventlet
 import socketio
+import json
 
 sio = socketio.Server()
 app = socketio.WSGIApp(sio)
@@ -17,11 +18,17 @@ def disconnect(sid):
 @sio.on("RL Connected")
 def getDataReq(sid):	
 	print("Event getDataReq received: ",sid)
-	sio.emit("Data-toRL",{"data1":"a","data2":"b"})
+	x = {"data1":"a","data2":"b"}
+	y = json.dumps(x)
+	sio.emit("Data-toRL",y)
+	#sio.emit("getMongoDBData")
 
 @sio.on("Data-fromRL")
 def receive(sid, arg1):
-	print("sid: ",sid,", arg1: ",arg1)
+	x = json.loads(arg1)
+	print("Event: Data-toRL received: ")
+	for key_name, value_item in x.items():
+		print("Item: ",key_name," : ",value_item)
 	sio.emit("Disconnect-RL")
 	
 

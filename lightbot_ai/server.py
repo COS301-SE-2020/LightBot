@@ -32,17 +32,21 @@ def disconnect():
 
 
 
-# @s.event
-# def getMongoDBData():
-	# collection = client.LightBot.TrafficMetrics
-	# results = collection.find({})
-	# for x in results:
-		# print(x)
+@s.event
+def getMongoDBData():
+	collection = client.LightBot.TrafficMetrics
+	results = collection.find({})
+	for x in results:
+		print(x["numCars"])
+	s.disconnect()
 	
 
 @s.on("Data-toRL")
 def sendUpdateInfoToServer(arg1):
-	print("Event: Data-toRL received: ",arg1)
+	json_dict = json.loads(arg1)
+	print("Event: Data-toRL received: ")
+	for key_name, value_item in json_dict.items():
+		print("Item: ",key_name," : ",value_item)
 	x = {
 	"data1":"result1",
 	"data2":"result2",
