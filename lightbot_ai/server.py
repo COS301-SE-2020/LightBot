@@ -17,15 +17,25 @@ from mockAI import performCalculation
 s = socketio.Client()
 
 @s.event
+## connect() function.
+#
+#  Called when client connects with server.
+#  Also emits event: "RL Connected".
 def connect():
     print('RL server connected')
     s.emit('RL Connected')
 
 @s.event
+## connect_error() function.
+#
+#  Called when an error occurs while connecting to server.
 def connect_error(arg1):
     print('A connection error occurred: ',arg1)
 
 @s.event
+## disconnect() function.
+#
+#  Called when client disconnects from server.
 def disconnect():
 	print('RL server disconnected')
 
@@ -33,6 +43,9 @@ def disconnect():
 
 
 @s.event
+## getMongoDBData() function.
+#
+#  Used to retrieve all data from MongoDB
 def getMongoDBData():
 	collection = client.LightBot.TrafficMetrics
 	results = collection.find({})
@@ -42,6 +55,12 @@ def getMongoDBData():
 	
 
 @s.on("Data-toRL")
+## sendUpdateInfoToServer() function.
+#
+#  @param arg1 The received JSON string.
+#  Recieves and convets JSON string to a dict.
+#  Creates new dict with key-value pairs and added data from MockAI function preformCalculation().
+#  This dict is emitted with event: "Data-fromRL".
 def sendUpdateInfoToServer(arg1):
 	json_dict = json.loads(arg1)
 	print("Event: Data-toRL received: ")
@@ -58,6 +77,9 @@ def sendUpdateInfoToServer(arg1):
 	s.emit("Data-fromRL",y)
 
 @s.on("Disconnect-RL")
+## disconnectionCommand() function.
+#
+# Called when Server sends event: "Disconnect-RL".
 def disconnectionCommand():
 	s.disconnect()
 
