@@ -1,0 +1,15 @@
+.Pane {
+	background: rgba(0, 0, 0, 0.8);
+	text-align: center;
+	width: 600px;
+	/*min-height: 100vw;*/
+	float: right;
+	/* or inline-flex */
+	/* is default: columns along the main-axis (row) and no wrapping to next lines */
+
+	flex-flow: row nowrap; /* is default: columns along the main-axis (row) and no wrapping to next lines */
+	align-items: flex-end; /* bottom */
+	/*background-color: whitesmoke;*/
+
+	height: 100%;
+}
