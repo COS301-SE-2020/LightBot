@@ -43,7 +43,7 @@ def getMongoDBData():
 	results = collection.find({})
 	for x in results:
 		print(x["numCars"])
-	s.disconnect()
+
 	
 
 @s.on("Data-toRL")
