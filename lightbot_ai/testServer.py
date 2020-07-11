@@ -32,8 +32,8 @@ def getDataReq(sid):
 	print("Event getDataReq received: ",sid)
 	x = {"data1":"a","data2":"b"}
 	y = json.dumps(x)
-	sio.emit("Data-toRL",y)
-	#sio.emit("getMongoDBData")
+	#sio.emit("Data-toRL",y)
+	sio.emit("Call-MongoDB")
 
 @sio.on("Data-fromRL")
 ## receive() function.

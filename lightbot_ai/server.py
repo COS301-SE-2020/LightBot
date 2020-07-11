@@ -1,19 +1,10 @@
-import pymongo
 import socketio
-import config
 import json
+from Middleware.MongoConnection import MongoDBConnect
 from mockAI import performCalculation
 
-# client = pymongo.MongoClient(
-    # "mongodb+srv://" + config.USER + ":" + config.PASS + "@lightbot-8xen0.mongodb.net/" + config.DBNAME + "?retryWrites=true&w=majority")
-# try:
-    # client.server_info()
-    # print("Connection to MongoDB successful")
-# except:
-    # print("Connection to MongoDB unsuccessful")
-    # exit()
-
-
+db = MongoDBConnect()
+client = db.getConn()
 s = socketio.Client()
 
 @s.event
@@ -37,12 +28,13 @@ def connect_error(arg1):
 #
 #  Called when client disconnects from server.
 def disconnect():
+	del client
 	print('RL server disconnected')
 
 
 
 
-@s.event
+@s.on("Call-MongoDB")
 ## getMongoDBData() function.
 #
 #  Used to retrieve all data from MongoDB
