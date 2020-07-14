@@ -16,24 +16,30 @@ def disconnect(sid):
 
 
 @sio.on("RL Connected")
-def getDataReq(sid):	
-	print("Event getDataReq received: ",sid)
-	x = {"data1":"a","data2":"b"}
-	y = json.dumps(x)
-	#sio.emit("Data-toRL",y)
-	sio.emit("Query-All-From-MongoDB")
+def func1(sid):	
+	sio.emit("Query-All-From-DB")
 
-@sio.on("Data-fromRL")
-def receive(sid, arg1):
-	x = json.loads(arg1)
+@sio.on("Data-List-fromRL")
+def func2(sid, arg1):
+	y = json.loads(arg1)
 	print("Event: Data-fromRL received: ")
-	for key_name, value_item in x.items():
-		print("Item: ",key_name," : ",value_item)
-	
-@sio.on("Notify-AI-disconnect")
-def notify(sid):
-	print("Notification: AI component disconnected.")
+	itemNum = 1
+	for x in y:
+		for key_name, value_item in x.items():
+			print("Item",itemNum,": ",key_name," : ",value_item)
+		itemNum += 1
+		print(" ")
+	sio.emit("Add-One-To-DB",json.dumps({"numCars":13,"waypoint":"south","time":"03:00"}))
 
-	
+@sio.on("Add-One-Complete")
+def func3(sid):
+	sio.emit("Add-Many-To-DB",json.dumps([{"numCars":13,"waypoint":"south","time":"03:00"},{"numCars":13,"waypoint":"south","time":"03:00"}]))
+
+@sio.on("Add-Many-Complete")
+def func4(sid):
+	sio.emit("Query-All-From-DB")
+	sio.emit("Disconnect-RL")
+
+
 if __name__ == '__main__':
 	eventlet.wsgi.server(eventlet.listen(('', 8000)), app)

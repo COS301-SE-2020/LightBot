@@ -1,5 +1,5 @@
 import pymongo
-import config
+
 
 class MongoDBConnect:
 	
@@ -8,22 +8,27 @@ class MongoDBConnect:
 	
 	def __init__(self):
 		try:
-			conn = pymongo.MongoClient("mongodb+srv://" + config.USER + ":" + config.PASS + "@lightbot-8xen0.mongodb.net/" + config.DBNAME + "?retryWrites=true&w=majority")
-			coll = conn.LightBot.TrafficMetrics
+			self.conn = pymongo.MongoClient("mongodb+srv://LightBotAdmin:lightbot@lightbot-8xen0.mongodb.net/LightBot?retryWrites=true&w=majority")
+			self.coll = self.conn.LightBot.TrafficMetrics
+			print("DB Connection Successful")
 		except pymongo.errors.ConnectionFailure:
 			print ("Could not connect to server")
 	
-	def __del__(): 
-		if conn != None:
-			conn.close()
-			coll = None
+	def __del__(self): 
+		if self.conn is not None:
+			self.conn.close()
+			self.coll = None
 	
-	def addOneToDB(dictArg):
-		x = coll.insert_one(dictArg)
+	def addOneToDB(self, dictArg):
+		x = self.coll.insert_one(dictArg)
 
-	def addManyToDB(listArg):
-		x = coll.insert_many(listArg)
+	def addManyToDB(self, listArg):
+		x = self.coll.insert_many(listArg)
 		
-	def queryAllFromDB():
-		x = coll.find({})
-		return x #I'd rather return list instead of cursor in data
+	def queryAllFromDB(self):
+		results = self.coll.find({})
+		out = []
+		for x in results:
+			print(x["numCars"])
+			out.append(x)
+		return out

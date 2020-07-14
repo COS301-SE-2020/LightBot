@@ -1,14 +1,11 @@
 import socketio
 import json
-# from Model.MongoConnection import MongoDBConnect
-# from View.mockAI import performCalculation
-import View.mockAI
-import Model.MongoConnection
+from Model.MongoConnection import MongoDBConnect
+from View.mockAI import performCalculation
 
 
 database = MongoDBConnect()
 ai = performCalculation
-
 s = socketio.Client()
 
 @s.event
@@ -24,25 +21,36 @@ def connect_error(arg1):
 def disconnect():
 	print('RL server disconnected')
 
+#The functions should be chnaged and added to as needed.
 
-
-# @s.on("initialize")
-# def init():
-	# database = MongoDBConnect()
-	# ai = performCalculation
-
-@s.on("Query-All-From-MongoDB")
+@s.on("Query-All-From-DB")
 def getMongoDBData():
 	print('Event: Query-All-From-MongoDB <START>')
-	results = databasen.queryAllFromDB()
+	results = database.queryAllFromDB()
 	out = []
 	for x in results:
-		print(x["numCars"])
+		del x["_id"]
+		x["Optimal-value"] = ai('123').pop()
 		out.append(x)
 	print(out)
-	print(ai('123'))
 	print('Event: Query-All-From-MongoDB <END>')
-	s.disconnect()
+	s.emit("Data-List-fromRL",json.dumps(out))
+	
+@s.on("Add-One-To-DB")
+def insertIntoDB(argDict):
+	print('Event: Add-One-To-DB <START>')
+	jsonDict = json.loads(argDict)
+	database.addOneToDB(jsonDict)
+	print('Event: Add-One-To-DB <END>')
+	s.emit("Add-One-Complete")
+
+@s.on("Add-Many-To-DB")
+def insertIntoDB(argList):
+	print('Event: Add-Many-To-DB <START>')
+	jsonList = json.loads(argList)
+	database.addManyToDB(jsonList)
+	print('Event: Add-Many-To-DB <END>')
+	s.emit("Add-Many-Complete")
 
 # @s.on("Data-toRL")
 # def sendUpdateInfoToServer(arg1):
