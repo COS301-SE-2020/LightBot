@@ -1,3 +1,4 @@
+#Note testServer.py needs to be manually stopped from listening
 import eventlet
 import socketio
 import json
@@ -21,8 +22,8 @@ def func1(sid):
 
 @sio.on("Data-List-fromRL")
 def func2(sid, arg1):
+	print("Event: Data-List-fromRL")
 	y = json.loads(arg1)
-	print("Event: Data-fromRL received: ")
 	itemNum = 1
 	for x in y:
 		for key_name, value_item in x.items():
@@ -33,10 +34,12 @@ def func2(sid, arg1):
 
 @sio.on("Add-One-Complete")
 def func3(sid):
+	print("Event: Add-One-Complete")
 	sio.emit("Add-Many-To-DB",json.dumps([{"numCars":13,"waypoint":"south","time":"03:00"},{"numCars":13,"waypoint":"south","time":"03:00"}]))
 
 @sio.on("Add-Many-Complete")
 def func4(sid):
+	print("Add-Many-Complete")
 	sio.emit("Query-All-From-DB")
 	sio.emit("Disconnect-RL")
 
