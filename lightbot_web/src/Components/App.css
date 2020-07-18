@@ -6,3 +6,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@font-face
+{
+  font-family: 'Roboto-Light';
+  src: local('Roboto-Light'), url('../Assets/fonts/Roboto-Light.ttf') format('truetype');
+}

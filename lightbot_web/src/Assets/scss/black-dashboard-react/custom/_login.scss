@@ -1,0 +1,47 @@
+.LoginPane {
+	background: rgba(0, 0, 0, 0.8);
+	text-align: center;
+	width: 600px;
+	float: right;
+	flex-flow: row nowrap; 
+	align-items: flex-end; 
+	min-height: 100vh;
+	margin-bottom: 0px;
+	position: relative;
+	bottom: 1px;
+}	
+	.LoginLogo {
+		//height: 300px;
+		padding-top: 10%;
+		padding-bottom: 40px;
+		min-height: 300x;
+		max-height: 300px;
+	}
+
+	.LoginInput {
+		padding-top: 10px;
+		border-color: blue;
+		background-color: transparent;
+		height: 40px;
+	}
+
+	.LoginBtn {
+		background-color: transparent;
+		border-color: white;
+	}
+	
+	.LoginGLogo{
+		//height: 300px;
+		padding-top: 10%;
+		padding-bottom: 30px;
+		min-height: 200x;
+		max-height: 200px;
+	}
+
+.LoginLabel {
+	color: "white";
+}
+
+.LoginTextBox {
+	background-color: red;
+}
