@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import Background from '../Background/Background'
-import BImage from '../../Assets/loginbackground.jpg'
 import { Form, Button, FormGroup, Input } from 'reactstrap'
 import PerfectScrollbar from 'perfect-scrollbar'
 
@@ -8,7 +6,6 @@ export default class ForgotPane extends Component {
 	render() {
 		return (
 			<div className='wrapper' style={MyStyles.backgroundStyle}>
-				{/* <Background background={BImage}/> */}
 				<Form className='LoginPane' style={MyStyles.LoginPaneStyle}>
 					<img
 						className='LoginLogo'
