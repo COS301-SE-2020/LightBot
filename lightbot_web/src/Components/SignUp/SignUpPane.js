@@ -1,6 +1,5 @@
-import React, { Component } from '../../../node_modules/react'
-import { Form, Button, FormGroup, Input } from '../../../node_modules/reactstrap'
-import PerfectScrollbar from '../../../node_modules/perfect-scrollbar'
+import React, { Component } from 'react'
+import { Form, Button, FormGroup, Input, FormFeedback } from 'reactstrap'
 
 export default class SignUpPane extends Component {
 	constructor(props) {
@@ -56,7 +55,7 @@ export default class SignUpPane extends Component {
 
 	render() {
 		return (
-			<div className='wrapper' style={MyStyles.backgroundStyle}>
+			
 				<Form className='LoginPane' style={MyStyles.LoginPaneStyle}>
 					<img
 						className='LoginLogo'
@@ -168,7 +167,7 @@ export default class SignUpPane extends Component {
 						</Button>
 					</FormGroup>
 
-					<a href='/register' style={MyStyles.CreateAccountref}>
+					<a href='#' onClick={this.handleSubmit} style={MyStyles.CreateAccountref}>
 						Back to Login Page
 					</a>
 
@@ -179,19 +178,11 @@ export default class SignUpPane extends Component {
 						style={MyStyles.LoginGLogo}
 					/>
 				</Form>
-			</div>
+			
 		)
 	}
 }
 const MyStyles = {
-	backgroundStyle: {
-		backgroundImage: 'url(' + require('../../Assets/loginbackground.jpg') + ')',
-		backgroundRepeat: 'no-repeat',
-		backgroundPosition: 'cover',
-		backgroundPosition: 'center',
-		backgroundSize: 'cover',
-		height: '135vh',
-	},
 	LoginPaneStyle: {
 		background: 'rgba(0, 0, 0, 0.7)',
 		textAlign: 'center',

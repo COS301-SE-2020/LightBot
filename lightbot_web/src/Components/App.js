@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import './App.css'
-import Landing from './LoginPane/LoginPane'
+import Landing from './Landing/Landing'
 import '../Assets/scss/black-dashboard-react.scss'
 import {
   BrowserRouter as Router,

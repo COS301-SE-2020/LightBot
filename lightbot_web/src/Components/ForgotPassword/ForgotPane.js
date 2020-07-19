@@ -39,7 +39,7 @@ export default class ForgotPane extends Component {
 
 	render() {
 		return (
-			<div className='wrapper' style={MyStyles.backgroundStyle}>
+			
 				<Form className='LoginPane' style={MyStyles.LoginPaneStyle}>
 					<img
 						className='LoginLogo'
@@ -84,7 +84,7 @@ export default class ForgotPane extends Component {
 						</Button>
 					</FormGroup>
 
-					<a href='/register' style={MyStyles.CreateAccountref}>
+					<a href='#' onClick={this.handleSubmit} style={MyStyles.CreateAccountref}>
 						Back to Login Page
 					</a>
 
@@ -95,19 +95,11 @@ export default class ForgotPane extends Component {
 						style={MyStyles.LoginGLogo}
 					/>
 				</Form>
-			</div>
+			
 		)
 	}
 }
 const MyStyles = {
-	backgroundStyle: {
-		backgroundImage: 'url(' + require('../../Assets/loginbackground.jpg') + ')',
-		backgroundRepeat: 'no-repeat',
-		backgroundPosition: 'cover',
-		backgroundPosition: 'center',
-		backgroundSize: 'cover',
-		height: '110vh',
-	},
 	LoginPaneStyle: {
 		background: 'rgba(0, 0, 0, 0.7)',
 		textAlign: 'center',

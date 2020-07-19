@@ -53,7 +53,7 @@ export default class LoginPane extends Component {
 
   render() {
     return (
-      <div className='wrapper' style={MyStyles.backgroundStyle}>
+      
         <Form className='LoginPane' style={MyStyles.LoginPaneStyle}>
           <img
             className='LoginLogo'
@@ -96,7 +96,7 @@ export default class LoginPane extends Component {
               type='password'
               name='password'
               id='idPassword'
-              placeholder='********'
+              placeholder='Password'
               value={this.state.password}
               valid={this.state.validate.passwordState === 'has-success'}
               invalid={this.state.validate.passwordState === 'has-danger'}
@@ -124,11 +124,11 @@ export default class LoginPane extends Component {
             </Button>
           </FormGroup>
 
-          <a href='/register' style={MyStyles.CreateAccountref}>
+          <a href='#' onClick={this.handleSubmit} style={MyStyles.CreateAccountref}>
             Create Account
           </a>
 
-          <a href='/forgot-password' style={MyStyles.ForgotP}>
+          <a href='#' onClick={this.handleSubmit} style={MyStyles.ForgotP}>
             Forgot Password?
           </a>
 
@@ -139,18 +139,11 @@ export default class LoginPane extends Component {
             style={MyStyles.LoginGLogo}
           />
         </Form>
-      </div>
+      
     )
   }
 }
 const MyStyles = {
-  backgroundStyle: {
-    backgroundImage: 'url(' + require('../../Assets/loginbackground.jpg') + ')',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'cover',
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-  },
   LoginPaneStyle: {
     background: 'rgba(0, 0, 0, 0.7)',
     textAlign: 'center',
