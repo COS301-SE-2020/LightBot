@@ -18,7 +18,6 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path='/' component={Landing} />
-          <Route exact path='/dashboard' component={Landing} />
           <Route exact path='/404' component={Error} />
           <Redirect to='/404' />
         </Switch>
