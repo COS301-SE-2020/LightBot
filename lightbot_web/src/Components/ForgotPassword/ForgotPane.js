@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Form, Button, FormGroup, Input } from 'reactstrap'
-import PerfectScrollbar from 'perfect-scrollbar'
 
 export default class ForgotPane extends Component {
 	render() {

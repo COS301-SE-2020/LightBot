@@ -1,17 +1,30 @@
-import React from 'react';
-import './App.css';
-import LoginPane from './LoginPane/LoginPane';
-import SignUpPane from './SignUp/SignUpPane';
-import ForgotPane from './ForgotPassword/ForgotPane';
+import React from 'react'
+import './App.css'
+import Landing from './LoginPane/LoginPane'
+import '../Assets/scss/black-dashboard-react.scss'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link,
+  Redirect,
+} from 'react-router-dom'
 
-import "../Assets/scss/black-dashboard-react.scss";
-
-function App() {
-  return (
-    <LoginPane/>
-    //<SignUpPane/>
-    //<ForgotPane/>
-  );
+class App extends Component {
+  render() {
+    //some function to get authkey and verify session
+    //let current = (!cookies.get('User_name'))?Entrance:Home
+    return (
+      <Router>
+        <Switch>
+          <Route exact path='/' component={Landing} />
+          <Route exact path='/dashboard' component={Landing} />
+          <Route exact path='/404' component={Error} />
+          <Redirect to='/404' />
+        </Switch>
+      </Router>
+    )
+  }
 }
 
-export default App;
+export default App
