@@ -3,6 +3,57 @@ import { Form, Button, FormGroup, Input } from '../../../node_modules/reactstrap
 import PerfectScrollbar from '../../../node_modules/perfect-scrollbar'
 
 export default class SignUpPane extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+		  name: '',
+		  surname: '',	
+		  email: '',
+		  password: '',
+		  repeatPassword: '',
+		  validate: {
+			emailState: '',
+			passwordState: '',
+		  },
+		}
+		this.handleChange = this.handleChange.bind(this)
+	  }
+
+	  validateEmail = e => {
+		const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+		const { validate } = this.state
+		if (regex.test(e.target.value)) {
+		  validate.emailState = 'has-success'
+		} else {
+		  validate.emailState = 'has-danger'
+		}
+		this.setState({ validate })
+	  }
+	
+	  validatePassword = e => {
+		const regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})")
+		const { validate } = this.state
+		if (regex.test(e.target.value)) {
+		  validate.passwordState = 'has-success'
+		} else {
+		  validate.passwordState = 'has-danger'
+		}
+		this.setState({ validate })
+	  }
+
+	  handleChange = async e => {
+		const { target } = e
+		const value = target.type === 'checkbox' ? target.checked : target.value
+		const { name } = target
+		await this.setState({
+		  [name]: value,
+		})
+	  }
+	
+	  handleSubmit = e => {
+		e.preventDefault()
+	  }    
+
 	render() {
 		return (
 			<div className='wrapper' style={MyStyles.backgroundStyle}>
@@ -27,8 +78,7 @@ export default class SignUpPane extends Component {
 							name='name'
 							id='idName'
 							placeholder='Name'
-							//value={this.state.email}
-							//onChange={this.handleChange}
+							value={this.state.name}
 							style={MyStyles.LoginInput}
 							required
 						/>
@@ -40,8 +90,7 @@ export default class SignUpPane extends Component {
 							name='surname'
 							id='idSurname'
 							placeholder='Surname'
-							//value={this.state.email}
-							//onChange={this.handleChange}
+							value={this.state.surname}
 							style={MyStyles.LoginInput}
 							required
 						/>
@@ -53,11 +102,19 @@ export default class SignUpPane extends Component {
 							name='email'
 							id='idEmail'
 							placeholder='Email'
-							//value={this.state.email}
-							//onChange={this.handleChange}
+							value={this.state.email}
+              				valid={this.state.validate.emailState === 'has-success'}
+              				invalid={this.state.validate.emailState === 'has-danger'}
+              				onChange={(e) => {
+                				this.validateEmail(e)
+                				this.handleChange(e)
+              				}}
 							style={MyStyles.LoginInput}
 							required
 						/>
+						<FormFeedback>
+                		Please enter a valid email.
+            			</FormFeedback>
 					</FormGroup>
 
 					<FormGroup>
@@ -66,11 +123,19 @@ export default class SignUpPane extends Component {
 							name='password'
 							id='idPassword'
 							placeholder='Password'
-							//value={this.state.password}
-							//onChange={this.handleChange}
+              				value={this.state.password}
+              				valid={this.state.validate.passwordState === 'has-success'}
+              				invalid={this.state.validate.passwordState === 'has-danger'}
+              				onChange={(e) => {
+                				this.validatePassword(e)
+                				this.handleChange(e)
+              				}}
 							style={MyStyles.LoginInput}
 							required
 						/>
+						<FormFeedback>
+						Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.
+              			</FormFeedback>
 					</FormGroup>
 
 					<FormGroup>
@@ -79,8 +144,13 @@ export default class SignUpPane extends Component {
 							name='confirmpassword'
 							id='idPassword2'
 							placeholder='Confirm Password'
-							//value={this.state.password}
-							//onChange={this.handleChange}
+							value={this.state.repeatPassword}
+              				// valid={this.state.validate.passwordState === 'has-success'}
+              				// invalid={this.state.validate.passwordState === 'has-danger'}
+              				// onChange={(e) => {
+                			// 	this.validatePassword(e)
+                			// 	this.handleChange(e)
+              				// }}
 							style={MyStyles.LoginInput}
 							required
 						/>
@@ -91,7 +161,7 @@ export default class SignUpPane extends Component {
 							style={MyStyles.LoginBtn}
 							size='lg'
 							type='submit'
-							//onClick={this.handleSubmit}
+							onClick={this.handleSubmit}
 							block
 						>
 							Sign Up

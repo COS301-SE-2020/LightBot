@@ -2,6 +2,41 @@ import React, { Component } from 'react'
 import { Form, Button, FormGroup, Input } from 'reactstrap'
 
 export default class ForgotPane extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			email: '',
+			validate: {
+				emailState: '',
+			},
+		}
+		this.handleChange = this.handleChange.bind(this)
+	}
+
+	validateEmail = (e) => {
+		const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+		const { validate } = this.state
+		if (regex.test(e.target.value)) {
+			validate.emailState = 'has-success'
+		} else {
+			validate.emailState = 'has-danger'
+		}
+		this.setState({ validate })
+	}
+
+	handleChange = async (e) => {
+		const { target } = e
+		const value = target.type === 'checkbox' ? target.checked : target.value
+		const { name } = target
+		await this.setState({
+			[name]: value,
+		})
+	}
+
+	handleSubmit = (e) => {
+		e.preventDefault()
+	}
+
 	render() {
 		return (
 			<div className='wrapper' style={MyStyles.backgroundStyle}>
@@ -13,11 +48,11 @@ export default class ForgotPane extends Component {
 						style={MyStyles.LoginLogo}
 					/>
 
-					<h2 style={MyStyles.LoginLabel1}>
-						Password Recovery
-					</h2>
+					<h2 style={MyStyles.LoginLabel1}>Password Recovery</h2>
 
-					<h3 style={MyStyles.LoginLabel2}>Please enter your email address: </h3>
+					<h3 style={MyStyles.LoginLabel2}>
+						Please enter your email address:{' '}
+					</h3>
 
 					<FormGroup>
 						<Input
@@ -25,8 +60,13 @@ export default class ForgotPane extends Component {
 							name='email'
 							id='idEmail'
 							placeholder='Email'
-							//value={this.state.email}
-							//onChange={this.handleChange}
+							value={this.state.email}
+							valid={this.state.validate.emailState === 'has-success'}
+							invalid={this.state.validate.emailState === 'has-danger'}
+							onChange={(e) => {
+								this.validateEmail(e)
+								this.handleChange(e)
+							}}
 							style={MyStyles.LoginInput}
 							required
 						/>
@@ -37,7 +77,7 @@ export default class ForgotPane extends Component {
 							style={MyStyles.LoginBtn}
 							size='lg'
 							type='submit'
-							//onClick={this.handleSubmit}
+							onClick={this.handleSubmit}
 							block
 						>
 							Reset Password
@@ -97,7 +137,7 @@ const MyStyles = {
 		paddingBottom: '10px',
 		marginTop: '5px',
 		marginBottom: '5px',
-		marginLeft: "40px",
+		marginLeft: '40px',
 	},
 	LoginBtn: {
 		backgroundColor: 'transparent',
@@ -108,7 +148,7 @@ const MyStyles = {
 		marginTop: '30px',
 		marginBottom: '30px',
 		color: 'white',
-		marginLeft: "40px", 
+		marginLeft: '40px',
 	},
 	LoginGLogo: {
 		paddingTop: '10%',

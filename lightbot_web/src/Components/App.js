@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import './App.css'
 import Landing from './LoginPane/LoginPane'
 import '../Assets/scss/black-dashboard-react.scss'
