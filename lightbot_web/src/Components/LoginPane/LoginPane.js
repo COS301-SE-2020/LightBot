@@ -165,6 +165,7 @@ const MyStyles = {
   },
   LoginLogo: {
     height: '300px',
+    width: '350px',
     paddingBottom: '30px',
   },
   LoginInput: {

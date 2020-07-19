@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button, FormGroup, Input } from 'reactstrap'
+import { Form, Button, FormGroup, Input, FormFeedback } from 'reactstrap'
 
 export default class ForgotPane extends Component {
 	constructor(props) {
@@ -35,6 +35,14 @@ export default class ForgotPane extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault()
+		const { validate } = this.state
+		if(validate.emailState==='has-danger')
+			return;
+
+		const { email } = this.state
+		
+		//axios call here
+		//then alert person that email has been sent (An email will be sent to your address if an account associated with it exists.)
 	}
 
 	render() {
@@ -70,6 +78,9 @@ export default class ForgotPane extends Component {
 							style={MyStyles.LoginInput}
 							required
 						/>
+						<FormFeedback>
+							Please enter a valid email.
+						</FormFeedback>
 					</FormGroup>
 
 					<FormGroup>
@@ -82,11 +93,14 @@ export default class ForgotPane extends Component {
 						>
 							Reset Password
 						</Button>
+						<FormFeedback>
+							There are invalid fields.
+						</FormFeedback>
 					</FormGroup>
 
 					<a href='/register' style={MyStyles.CreateAccountref}>
 						Back to Login Page
-					</a>
+					</a><br/>
 
 					<img
 						className='LoginGLogo'
