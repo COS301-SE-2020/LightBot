@@ -31,7 +31,7 @@ def run():
 		# if step == 100:
 			# traci.vehicle.changeTarget("1", "e9")
 			# traci.vehicle.changeTarget("3", "e9")
-
+		
 		step += 1
 
 	traci.close()
@@ -46,6 +46,9 @@ if __name__ == "__main__":
 		sumoBinary = checkBinary('sumo')
 	else:
 		sumoBinary = checkBinary('sumo-gui')
+	
+	# traci starts sumo as a subprocess and then this script connects and runs    
+	# traci.start([sumoBinary, "-c", "demo.sumocfg", "--tripinfo-output", "tripinfo.xml"])
 	
 	traci.init(55555)
 	traci.setOrder(2) # number can be anything as long as each client gets its own number
