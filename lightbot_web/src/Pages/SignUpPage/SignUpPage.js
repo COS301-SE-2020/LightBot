@@ -238,7 +238,6 @@ const MyStyles = {
     backgroundImage: 'url(' + require('../../Assets/loginbackground.jpg') + ')',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'cover',
-    backgroundPosition: 'center',
     backgroundSize: 'cover',
   },
   LoginPaneStyle: {
