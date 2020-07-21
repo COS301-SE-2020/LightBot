@@ -13,18 +13,20 @@ import LoginPage from './Pages/LoginPage/LoginPage'
 import SignUpPage from './Pages/SignUpPage/SignUpPage'
 import RecoverPage from './Pages/RecoverPage/RecoverPage'
 import ErrorPage from './Pages/ErrorPage/ErrorPage'
+import ResetPage from './Pages/ResetPage/ResetPage'
 // import store from './store'
 
 class App extends Component {
   render() {
-    let current = DashboardPage
+    // let current = ResetPage
     return (
         <Router>
           <Switch>
-            <Route exact path='/' component={DashboardPage} />
+            <Route exact path='/' component={ResetPage} />
             <Route exact path='/login' component={LoginPage} />
             <Route exact path='/register' component={SignUpPage} />
             <Route exact path='/recover' component={RecoverPage} />
+            <Route exact path='/reset' component={ResetPage} />
             <Route exact path='/dashboard' component={DashboardPage} />
             <Route exact path='/404' component={ErrorPage} />
             <Redirect to='/404' />

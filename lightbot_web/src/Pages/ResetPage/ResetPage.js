@@ -9,57 +9,18 @@ import {
 
 import { Link } from 'react-router-dom'
 
-export default class SignUpPane extends Component {
+export default class ResetPane extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: '',
-      surname: '',
-      email: '',
-      password: '',
-      confirmpassword: '',
+      newpassword: '',
+      confirmnewpassword: '',
       validate: {
-        nameState: '',
-        surnameState: '',
-        emailState: '',
         passwordState: '',
         confirmPasswordState: '',
       },
     }
     this.handleChange = this.handleChange.bind(this)
-  }
-
-  validateName = (e) => {
-    const regex = new RegExp("^([a-zA-Z ]){6,64}")
-    const { validate } = this.state
-    if (regex.test(e.target.value)) {
-      validate.nameState = 'has-success'
-    } else {
-      validate.nameState = 'has-danger'
-    }
-    this.setState({ validate })
-  }
-
-  validateSurname = (e) => {
-    const regex = new RegExp("^([a-zA-Z ]){6,64}")
-    const { validate } = this.state
-    if (regex.test(e.target.value)) {
-      validate.surnameState = 'has-success'
-    } else {
-      validate.surnameState = 'has-danger'
-    }
-    this.setState({ validate })
-  }
-
-  validateEmail = (e) => {
-    const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    const { validate } = this.state
-    if (regex.test(e.target.value)) {
-      validate.emailState = 'has-success'
-    } else {
-      validate.emailState = 'has-danger'
-    }
-    this.setState({ validate })
   }
 
   validatePassword = (e) => {
@@ -76,8 +37,8 @@ export default class SignUpPane extends Component {
   }
 
   validatePasswordMatch = (e) => {
-    const { validate, password } = this.state
-    if (e.target.value === password ) {
+    const { validate, newpassword } = this.state
+    if (e.target.value === newpassword ) {
       validate.confirmPasswordState = 'has-success'
     } else {
       validate.confirmPasswordState = 'has-danger'
@@ -108,71 +69,15 @@ export default class SignUpPane extends Component {
             src={require('../../Assets/LBlogo.png')}
             style={MyStyles.LoginLogo}
           />
-          <h3 style={MyStyles.LoginLabel2}>Create An Account</h3>
-          <FormGroup>
-            <Input
-              type='text'
-              name='name'
-              id='idName'
-              placeholder='Name'
-              value={this.state.name}
-              valid={this.state.validate.nameState === 'has-success'}
-              invalid={this.state.validate.nameState === 'has-danger'}
-              onChange={(e) => {
-                this.validateName(e)
-                this.handleChange(e)
-              }}
-              style={MyStyles.LoginInput}
-              required
-            />
-            <FormFeedback>Please enter a valid name.</FormFeedback>
-          </FormGroup>
-		  
-		  <FormGroup>
-            <Input
-              type='text'
-              name='surname'
-              id='idSurname'
-              placeholder='Surname'
-              value={this.state.surname}
-              valid={this.state.validate.surnameState === 'has-success'}
-              invalid={this.state.validate.surnameState === 'has-danger'}
-              onChange={(e) => {
-                this.validateSurname(e)
-                this.handleChange(e)
-              }}
-              style={MyStyles.LoginInput}
-              required
-            />
-            <FormFeedback>Please enter a valid surname.</FormFeedback>
-          </FormGroup>
-
-          <FormGroup>
-            <Input
-              type='email'
-              name='email'
-              id='idEmail'
-              placeholder='Email'
-              value={this.state.email}
-              valid={this.state.validate.emailState === 'has-success'}
-              invalid={this.state.validate.emailState === 'has-danger'}
-              onChange={(e) => {
-                this.validateEmail(e)
-                this.handleChange(e)
-              }}
-              style={MyStyles.LoginInput}
-              required
-            />
-            <FormFeedback>Please enter a valid email.</FormFeedback>
-          </FormGroup>
+          <h3 style={MyStyles.LoginLabel2}>Reset Password</h3>
 
           <FormGroup>
             <Input
               type='password'
-              name='password'
+              name='newpassword'
               id='idPassword'
-              placeholder='Password'
-              value={this.state.password}
+              placeholder='New Password'
+              value={this.state.newpassword}
               valid={this.state.validate.passwordState === 'has-success'}
               invalid={this.state.validate.passwordState === 'has-danger'}
               onChange={(e) => {
@@ -187,13 +92,14 @@ export default class SignUpPane extends Component {
               lowercase letter, one number and one special character.
             </FormFeedback>
           </FormGroup>
-		  <FormGroup>
+
+		      <FormGroup>
             <Input
               type='password'
-              name='confirmpassword'
+              name='confirmnewpassword'
               id='idPassword2'
-              placeholder='Confirm Password'
-              value={this.state.confirmpassword}
+              placeholder='Confirm New Password'
+              value={this.state.confirmnewpassword}
               valid={this.state.validate.confirmPasswordState === 'has-success'}
               invalid={this.state.validate.confirmPasswordState === 'has-danger'}
               onChange={(e) => {
@@ -203,7 +109,7 @@ export default class SignUpPane extends Component {
               style={MyStyles.LoginInput}
               required
             />
-            <FormFeedback>Please enter a valid email.</FormFeedback>
+            <FormFeedback>Please enter a valid password.</FormFeedback>
           </FormGroup>
 
           <FormGroup>
@@ -214,12 +120,12 @@ export default class SignUpPane extends Component {
               onClick={this.handleSubmit}
               block
             >
-              Sign Up
+              Submit
             </Button>
           </FormGroup>
 
           <Link to='/login' style={MyStyles.CreateAccountref}>
-            Already have an account?
+            Return to login 
           </Link><br></br>
 
           <img
