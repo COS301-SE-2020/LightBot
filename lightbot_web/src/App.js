@@ -7,22 +7,21 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom'
-// import { Provider } from 'react-redux'
+
 import DashboardPage from './Pages/DashboardPage/DashboardPage'
 import LoginPage from './Pages/LoginPage/LoginPage'
 import SignUpPage from './Pages/SignUpPage/SignUpPage'
 import RecoverPage from './Pages/RecoverPage/RecoverPage'
 import ErrorPage from './Pages/ErrorPage/ErrorPage'
 import ResetPage from './Pages/ResetPage/ResetPage'
-// import store from './store'
 
 class App extends Component {
   render() {
-    // let current = ResetPage
+    //let current = ResetPage
     return (
         <Router>
           <Switch>
-            <Route exact path='/' component={ResetPage} />
+            <Route exact path='/' component={DashboardPage} />
             <Route exact path='/login' component={LoginPage} />
             <Route exact path='/register' component={SignUpPage} />
             <Route exact path='/recover' component={RecoverPage} />
