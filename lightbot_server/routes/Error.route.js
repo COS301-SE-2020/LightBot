@@ -6,7 +6,7 @@ const { NotFound } = require('../utils/Error.util')
 // @desc      Not Found
 // @access    N/A
 router.use('/', (req, res, next) => {
-  next(new NotFound("Resource not found"))
+  next(new NotFound('Resource not found'))
 })
 
 module.exports = router

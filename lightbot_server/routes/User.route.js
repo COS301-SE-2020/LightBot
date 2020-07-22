@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const rules = require('../middleware/UserValidation.handler')
 const resolve = require('../controllers/Validation.controller')
+const auth = require('../middleware/Guard.handler')
 
 // // @route     POST user/register
 // // @desc      User Registration Route
@@ -27,29 +28,23 @@ router.post(
 // @access    Private
 router.get(
   '/logout',
+  auth.Guard,
   require('../controllers/User.controller').logoutUser
 )
 
 // // @route     PUT user/update-details
-// // @desc      Update User Details Route
-// // @access    Private
-router.put(
-  '/update-details',
-  require('../controllers/User.controller').updateUserDetails
-)
-
-// // @route     PUT user/update-password
-// // @desc      Update User Password Route
+// // @desc      Update User Pass Route
 // // @access    Private
 router.put(
   '/update-password',
+  auth.Guard,
   require('../controllers/User.controller').updateUserPass
 )
 
-// // @route     PUT user/recover-password
+// // @route     POST user/recover-password
 // // @desc      Recover User Password Route
-// // @access    Private
-router.get(
+// // @access    Public
+router.post(
   '/recover-password',
   require('../controllers/User.controller').recoverUserPass
 )
@@ -65,12 +60,19 @@ router.put(
 // // @route     DELETE user/delete
 // // @desc      Delete Route
 // // @access    Private
-router.delete('/delete', require('../controllers/User.controller').deleteUser)
+router.delete(
+  '/delete',
+  auth.Guard,
+  require('../controllers/User.controller').deleteUser
+)
 
 // // @route     GET user/delete
 // // @desc      List User Route
 // // @access    Private
-router.delete('/list-user', require('../controllers/User.controller').returnUsers)
-
+router.get(
+  '/list-user',
+  auth.Guard,
+  require('../controllers/User.controller').returnUsers
+)
 
 module.exports = router

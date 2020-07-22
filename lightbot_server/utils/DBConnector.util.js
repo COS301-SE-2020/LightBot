@@ -7,14 +7,14 @@ module.exports = async () => {
       useNewUrlParser: true,
       useCreateIndex: true,
       useFindAndModify: false,
-      useUnifiedTopology: true,
+      useUnifiedTopology: false,
     }
   )
-  mongoose.connection.on('connected', () =>
-    console.log(
-      `Connected to Management MongoDB ${mongoose.connection.host}`.magenta
-        .underline
-    )
+  mongoose.connection.on('connected', () =>{}
+    // console.log(
+    //   `Connected to Management MongoDB ${mongoose.connection.host}`.magenta
+    //     .underline
+    // )
   )
   mongoose.connection.on(
     'error',

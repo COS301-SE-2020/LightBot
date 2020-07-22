@@ -2,11 +2,11 @@ const mongoose = require('mongoose')
 
 const NotificationSchema = new mongoose.Schema({
   id: String,
-  Title: {
+  title: {
     type: String,
     required: true,
   },
-  Message: {
+  message: {
     type: String,
     required: true,
   },
@@ -15,4 +15,4 @@ const NotificationSchema = new mongoose.Schema({
     default: Date.now,
   },
 })
-module.exports = mongoose.model('notification', UserSchema)
+module.exports = mongoose.model('notification', NotificationSchema)
