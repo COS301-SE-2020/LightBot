@@ -5,7 +5,7 @@ import { Card, CardHeader, CardBody, Row, Col } from "reactstrap";
 class ManualOverride extends Component {
 	render() {
 		return (
-				<div className="content" style={MyStyles.backgroundStyle}>
+				<div className="content" >
 					<Row>
 						<Col md="12">
 							<Card className="card-plain">
@@ -27,14 +27,6 @@ const MyStyles = {
 	manualStyle: {
 		position: "relative", 
 		overflow: "hidden",
-	},
-	backgroundStyle: {
-		backgroundImage: 'url(' + require('../../Assets/dashback.png') + ')',
-		backgroundRepeat: 'no-repeat',
-		backgroundPosition: 'cover',
-		backgroundPosition: 'center',
-		backgroundSize: 'cover',
-		height: '110vh',
 	},
 }
 

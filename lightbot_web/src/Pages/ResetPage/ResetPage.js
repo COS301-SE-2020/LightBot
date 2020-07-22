@@ -113,15 +113,11 @@ export default class ResetPane extends Component {
           </FormGroup>
 
           <FormGroup>
-            <Button
-              style={MyStyles.LoginBtn}
-              size='lg'
-              type='submit'
-              onClick={this.handleSubmit}
-              block
-            >
-              Submit
-            </Button>
+            <Link to='/login'>
+              <Button style={MyStyles.LoginBtn} size='lg' type='submit' onClick={this.onClick} block>
+              Reset Password
+              </Button>
+            </Link>
           </FormGroup>
 
           <Link to='/login' style={MyStyles.CreateAccountref}>

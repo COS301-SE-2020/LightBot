@@ -85,15 +85,11 @@ export default class ForgotPane extends Component {
 					</FormGroup>
 
 					<FormGroup>
-						<Button
-							style={MyStyles.LoginBtn}
-							size='lg'
-							type='submit'
-							onClick={this.handleSubmit}
-							block
-						>
-							Reset Password
-						</Button>
+						<Link to='/login'>
+							<Button style={MyStyles.LoginBtn} size='lg' type='submit' onClick={this.onClick} block>
+							Send Email 
+							</Button>
+						</Link>	
 						<FormFeedback>
 							There are invalid fields.
 						</FormFeedback>
@@ -119,7 +115,6 @@ const MyStyles = {
 		backgroundImage: 'url(' + require('../../Assets/dashback.png') + ')',
 		backgroundRepeat: 'no-repeat',
 		backgroundPosition: 'cover',
-		backgroundPosition: 'center',
 		backgroundSize: 'cover',
 	},
 	LoginPaneStyle: {

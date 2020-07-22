@@ -21,7 +21,6 @@ const MyStyles = {
 		backgroundImage: 'url(' + require('../../Assets/dashback.png') + ')',
 		backgroundRepeat: 'no-repeat',
 		backgroundPosition: 'cover',
-		backgroundPosition: 'center',
         backgroundSize: 'cover',
         height: '100vh',
         width: '100vw',

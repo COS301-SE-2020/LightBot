@@ -17,11 +17,11 @@ import ResetPage from './Pages/ResetPage/ResetPage'
 
 class App extends Component {
   render() {
-    //let current = ResetPage
+    let current = LoginPage
     return (
         <Router>
           <Switch>
-            <Route exact path='/' component={DashboardPage} />
+            <Route exact path='/' component={current} />
             <Route exact path='/login' component={LoginPage} />
             <Route exact path='/register' component={SignUpPage} />
             <Route exact path='/recover' component={RecoverPage} />

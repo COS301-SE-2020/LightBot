@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Form, Button, FormGroup, Input, FormFeedback } from 'reactstrap'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
+
+import Cookies from 'universal-cookie'
+const cookies = new Cookies()
 
 export default class LoginPane extends Component {
 
@@ -50,9 +53,16 @@ export default class LoginPane extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
+    
+    cookies.set('Authkey', 'RNDM')
   }
-
+  
   render() {
+    
+    if(cookies.get('Authkey')=='RNDM')
+    {
+      return <Redirect to ='/dashboard'/>
+    }
     return (
       <div className="content" style={MyStyles.backgroundStyle}>
 
@@ -109,21 +119,15 @@ export default class LoginPane extends Component {
               style={MyStyles.LoginInput}
               required
             />
-			<FormFeedback>
+			    <FormFeedback>
 			Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.
               </FormFeedback>
           </FormGroup>
 
           <FormGroup>
-            <Button
-              style={MyStyles.LoginBtn}
-              size='lg'
-              type='submit'
-              onClick={this.handleSubmit}
-              block
-            >
-              Log In
-            </Button>
+              <Button style={MyStyles.LoginBtn} size='lg' type='submit' onClick={this.handleSubmit} block>
+                Log In
+              </Button>
           </FormGroup>
 
           <Link to='/register' style={MyStyles.CreateAccountref}>

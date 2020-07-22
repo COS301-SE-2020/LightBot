@@ -207,15 +207,11 @@ export default class SignUpPane extends Component {
           </FormGroup>
 
           <FormGroup>
-            <Button
-              style={MyStyles.LoginBtn}
-              size='lg'
-              type='submit'
-              onClick={this.handleSubmit}
-              block
-            >
+          <Link to='/login'>
+              <Button style={MyStyles.LoginBtn} size='lg' type='submit' onClick={this.onClick} block>
               Sign Up
-            </Button>
+              </Button>
+            </Link>  
           </FormGroup>
 
           <Link to='/login' style={MyStyles.CreateAccountref}>

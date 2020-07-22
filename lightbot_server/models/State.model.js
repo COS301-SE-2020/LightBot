@@ -7,4 +7,4 @@ const StateSchema = new mongoose.Schema({
     default: Date.now,
   },
 })
-module.exports = mongoose.model('state', UserSchema)
+module.exports = mongoose.model('state', StateSchema)

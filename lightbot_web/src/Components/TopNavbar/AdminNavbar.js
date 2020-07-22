@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
-// import Cookies from "universal-cookie";
+import Cookies from "universal-cookie";
 
 // reactstrap components
 import {Collapse, DropdownToggle, DropdownMenu, DropdownItem, UncontrolledDropdown, Input, NavbarBrand, Navbar, NavLink, Nav, Container, Modal} from "reactstrap";
 
-// const cookies = new Cookies();
+const cookies = new Cookies();
 
 class AdminNavbar extends Component {
 	constructor(props) {
@@ -61,12 +61,12 @@ class AdminNavbar extends Component {
 		// This is the log out function
 		event.preventDefault();
 		console.log("LOGOUT");
-		// Set the JWT in cookies to null, deauthenticating the user
-		// cookies.set("JWT", "", { path: "/" });
-		// cookies.set("Email", "", { path: "/" });
-		//cookies.set("Email", "");
-		// cookies.remove("JWT", { path: "/" });
-		// cookies.remove("Email", { path: "/" });
+		//Set the JWT in cookies to null, deauthenticating the user
+		cookies.set("JWT", "", { path: "/" });
+		cookies.set("Email", "", { path: "/" });
+		cookies.set("Email", "");
+		cookies.remove("JWT", { path: "/" });
+		cookies.remove("Email", { path: "/" });
 
 		window.location = "/login";
 		return;

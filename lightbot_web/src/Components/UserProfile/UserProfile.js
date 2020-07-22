@@ -59,7 +59,7 @@ export default class UserProfile extends Component {
 	render() {
 		return (
 			<>
-				<div className="content" style={MyStyles.backgroundStyle}>
+				<div className="content" >
 					<Row>
 						<Col md="7">
 							<Card>
@@ -150,12 +150,4 @@ const MyStyles = {
 	alert: {
 		marginTop: "30px",
 	},	
-	backgroundStyle: {
-		backgroundImage: 'url(' + require('../../Assets/dashback.png') + ')',
-		backgroundRepeat: 'no-repeat',
-		backgroundPosition: 'cover',
-		backgroundPosition: 'center',
-		backgroundSize: 'cover',
-		height: '110vh',
-	},
 }
