@@ -1,10 +1,4 @@
-# LightBot_Web
+# lightbotdash-v2
 
-This will serve as the base of the web application for the
-lightbot ai adaptive traffic solution
-
-```
-# LightBot_Web
-This will serve as the base of the web application for the
-lightbot ai adaptive traffic solution
-```
+npm install
+yarn start

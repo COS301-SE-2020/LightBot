@@ -1,15 +1,18 @@
-import React, {Component} from "react";
+/*eslint-disable*/
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
 // nodejs library to set properties for components
 import { PropTypes } from "prop-types";
-import { NavLink, Link } from "react-router-dom";
+
+// javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
 
 // reactstrap components
-import { Button, Nav, NavLink as ReactstrapNavLink } from "reactstrap";
+import { Nav, NavLink as ReactstrapNavLink } from "reactstrap";
 
 var ps;
 
-class Sidebar extends Component {
+class Sidebar extends React.Component {
 	constructor(props) {
 		super(props);
 		this.activeRoute.bind(this);
@@ -34,21 +37,32 @@ class Sidebar extends Component {
 	linkOnClick = () => {
 		document.documentElement.classList.remove("nav-open");
 	};
-	eventhandler = (e) => {
-		this.props.meow(e.target.name)
-	}
-
 	render() {
 		const { bgColor, routes, rtlActive, logo } = this.props;
+		let logoImg = null;
 		let logoText = null;
 		if (logo !== undefined) {
 			if (logo.outterLink !== undefined) {
+				logoImg = (
+					<a href={logo.outterLink} className="simple-text logo-mini" target="_blank" onClick={this.props.toggleSidebar}>
+						<div className="logo-img">
+							<img src={logo.imgSrc} alt="react-logo" />
+						</div>
+					</a>
+				);
 				logoText = (
 					<a href={logo.outterLink} className="simple-text logo-normal" target="_blank" onClick={this.props.toggleSidebar}>
 						{logo.text}
 					</a>
 				);
 			} else {
+				logoImg = (
+					<Link to={logo.innerLink} className="simple-text logo-mini" onClick={this.props.toggleSidebar}>
+						<div className="logo-img">
+							<img src={logo.imgSrc} alt="react-logo" />
+						</div>
+					</Link>
+				);
 				logoText = (
 					<Link to={logo.innerLink} className="simple-text logo-normal" onClick={this.props.toggleSidebar}>
 						{logo.text}
@@ -57,42 +71,14 @@ class Sidebar extends Component {
 			}
 		}
 		return (
-			<div className="sidebar" style={MyStyles.blackPanel}>
+			<div className="sidebar" style={MyStyles.sideb}>
 				<div className="sidebar-wrapper" ref="sidebar">
-					{logoText !== null ? (
-						<div className="logo" style={MyStyles.Plogo}>
+					{logoImg !== null || logoText !== null ? (
+						<div className="logo">
+							{logoImg}
 							{logoText}
 						</div>
 					) : null}
-
-					<div className="buttons" style={MyStyles.buttonPanel}>
-					<Link to='/dashboard'>
-              			<Button name='overviewB' style={MyStyles.LoginBtn} size='lg' type='submit' onClick={this.eventhandler} block>
-                			SYSTEM OVERVIEW
-              			</Button>
-            		</Link>
-					<Link to='/manualoverride'>
-              			<Button name='configB' style={MyStyles.LoginBtn} size='lg' type='submit' onClick={this.eventhandler} block>
-                			CONFIGURATION
-              			</Button>
-            		</Link>
-					<Link to='/simulation'>
-              			<Button name='simB' style={MyStyles.LoginBtn} size='lg' type='submit' onClick={this.eventhandler} block>
-                			SIMULATION
-              			</Button>
-            		</Link>
-					<Link to='/forum'>
-              			<Button name='forumB' style={MyStyles.LoginBtn} size='lg' type='submit' onClick={this.eventhandler} block>
-                			FORUM
-              			</Button>
-            		</Link>
-					<Link to='/userprofile'>
-              			<Button name='profileB' style={MyStyles.LoginBtn} size='lg' type='submit' onClick={this.eventhandler} block>
-                			USER PROFILE
-              			</Button>
-            		</Link>
-					</div>	
-
 					<Nav>
 						{routes.map((prop, key) => {
 							if (prop.showOnDash === true) {
@@ -103,7 +89,7 @@ class Sidebar extends Component {
 											className="nav-link"
 											activeClassName="active"
 											onClick={this.props.toggleSidebar}
-											style={{ borderColor: "white", border: "solid", borderRadius: "0", borderWidth: "1px" }}
+											style={MyStyles.dash}
 										>
 											<i className={prop.icon} />
 											<p>{rtlActive ? prop.rtlName : prop.name}</p>
@@ -116,15 +102,8 @@ class Sidebar extends Component {
 						})}
 
 						<li className="active-pro">
-							<img alt="..." src={require("../../Assets/LBlogo.png")} style={MyStyles.bottomLogo1} />
+							<img alt="..." src={require("../../assets/img/LBlogo.png")} style={MyStyles.bottomLogo} />
 						</li>
-						
-						<div class="line" style={MyStyles.Vline}></div>
-
-						<li className="active-pro">
-							<img alt="..." src={require("../../Assets/gradientlogo.png")} style={MyStyles.bottomLogo2} />
-						</li>
-
 					</Nav>
 				</div>
 			</div>
@@ -159,48 +138,18 @@ Sidebar.propTypes = {
 };
 
 const MyStyles = {
-	LoginBtn: {
-		backgroundColor: 'transparent',
-		borderColor: 'white',
-		width: '210px',
-		borderWidth: '2',
-		fontSize: '12px',
-		marginTop: '10px',
-		marginBottom: '10px',
-		color: 'white',
-		marginLeft: '10px',
-	  },
-	buttonPanel: {
-		marginTop: '50px',
-	}, 
-	bottomLogo1: {
-		marginTop: '120px',
-		marginBottom: '10px',
-		marginLeft: '5px',
-		height: '60px',
-		//padding: '40px'
+	sideb: {
+		backgroundColor: "red",
 	},
-	bottomLogo2: {
-		marginTop: '-70px',
-		marginBottom: '10px',
-		marginLeft: '120px',
-		height: '60px',
-		//padding: '40px'
+	dash: {
+		borderColor: "white", 
+		border: "solid", 
+		borderRadius: "0", 
+		borderWidth: "1px" 
 	},
-	Vline: {
-		borderLeft: "1px solid white",
-		height: "100px",
-		position: "absolute",
-		left:"50%",
-		marginLeft:"-3px",
-		marginTop: "-80px",
-	},
-	blackPanel: {
-		marginTop: "40px",
-	},
-	Plogo: {
-		marginLeft: "5px", 
-		fontSize: '17px',
-	},
+	bottomLogo: { 
+		padding: 30 
+	}
 }
+
 export default Sidebar;
