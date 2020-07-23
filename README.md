@@ -115,7 +115,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
     - Demo 1: Set up traffic flow simulation & created algorithm for simulation, worked on the SRS document and recorded contribution video.
     <br>
     <br>
-    - Demo 2: Installation of SUMO and SUMO-WEB3D on amazon virtual machine. Configuring virtual machine to properly interface with browser. Configuring and loading scenarios on virtual machine. Modeling a intersection using SUMO after Jan Shoba and South Street. Creating various scenarios based on different traffic flows at intersection. Worked on the updated SRS document & recorded contribution video.
+    - Demo 2: Installation of SUMO and SUMO-WEB3D on amazon virtual machine. Configuring virtual machine to properly interface with browser. Configuring and loading scenarios on virtual machine. Modeling a intersection using SUMO after Jan Shoba and South Street. Creating various scenarios based on different traffic flows at intersection. Performed unit testing on scenarios and SUMO. Performed intergration testing on simulation server with google chrome. Worked on the updated SRS document & recorded contribution video.
     <br>
 </details>
 
