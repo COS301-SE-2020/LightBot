@@ -55,7 +55,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
 * Google Meet (Used for weekly meetings between Team Gradient and 5DT)
 * GitKraken / GitHub Desktop
 
-## Documenation
+## Documentation
 * SRS Document for Demo 1: https://github.com/COS301-SE-2020/LightBot/tree/master/lightbot_doc 
 * SRS Document for Demo 2:
 * User Manual for Demo 2:
@@ -76,7 +76,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
     - Demo 1: Set up the socket server, set up MongoDB database, set up Git repo, worked on the machine learning server, worked on the taffic flow simulation, worked on the web application (system interface) and worked on the demo video & recorded contribution video.
     <br>
     <br>
-    - Demo 2: 
+    - Demo 2: Data modeling research, implemented server structure, did web server development, setup deployment, git management, worked on the updated SRS documentation and user manual and worked on the demo video & recorded contribution video.
     <br>
 </details>
 
@@ -90,7 +90,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
     - Demo 1: Set up MongoDB database, set up Git repo, set up the web application (system interface), worked on the SRS document and worked on the demo video & recorded contribution video.
     <br>
     <br>
-    - Demo 2: Continued with the development of the web application, designed the system interface, integrated the simulation with the web application, kept the team up to date on the Project Management Tools, scheduled weekly scrum meetings, worked on the updated SRS document and worked on the demo video & recorded contribution video.
+    - Demo 2: Continued with the development of the web application, designed the system interface, integrated the simulation with the web application, kept the team up to date on the Project Management Tools, scheduled weekly scrum meetings, worked on the updated SRS documentation and user manual and worked on the demo video & recorded contribution video.
     <br>
 </details>
 
@@ -115,7 +115,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
     - Demo 1: Set up traffic flow simulation & created algorithm for simulation, worked on the SRS document and recorded contribution video.
     <br>
     <br>
-    - Demo 2: Installation of SUMO and SUMO-WEB3D on amazon virtual machine. Configuring virtual machine to properly interface with browser. Configuring and loading scenarios on virtual machine. Modeling a intersection using SUMO after Jan Shoba and South Street. Creating various scenarios based on different traffic flows at intersection. Performed unit testing on scenarios and SUMO. Performed intergration testing on simulation server with google chrome. Worked on the updated SRS document & recorded contribution video.
+    - Demo 2: Installation of SUMO and SUMO-WEB3D on amazon virtual machine. Configuring virtual machine to properly interface with browser. Configuring and loading scenarios on virtual machine. Modeling a intersection using SUMO after Jan Shoba and South Street. Creating various scenarios based on different traffic flows at intersection. Worked on the updated SRS documentation and user manual & recorded contribution video.
     <br>
 </details>
 
@@ -129,7 +129,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
     - Demo 1: Set up machine learning server, worked on the SRS document and recorded contribution video.
     <br>
     <br>
-    - Demo 2: Updated the mock functions for serverRL.py in the reinforcement algorithm, mock reinforcement algorithm for mockRL.py, unit testing for serverRL.py, worked on the updated SRS document & recorded contribution video.
+    - Demo 2: Updated the mock functions for serverRL.py in the reinforcement algorithm, mock reinforcement algorithm for mockRL.py, unit testing for serverRL.py, worked on the updated SRS documentation and user manual & recorded contribution video.
     <br>
 </details>
 
