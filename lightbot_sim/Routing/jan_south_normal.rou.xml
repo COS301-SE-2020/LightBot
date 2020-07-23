@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on Sun Jul 19 18:02:35 2020 by Eclipse SUMO netedit Version 6bfc49c2
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
+
+    <input>
+        <sumo-net-file value="/Users/thiveshanpillay/Documents/2020/COS%20301/Capstone/Simulation_JanSouth/jan_south.net.xml"/>
+    </input>
+
+    <output>
+        <output-file value="/Users/thiveshanpillay/Documents/2020/COS%20301/Capstone/Simulation_JanSouth/jan_south.net.xml"/>
+        <output.street-names value="true"/>
+    </output>
+
+    <processing>
+        <geometry.min-radius.fix.railways value="false"/>
+        <geometry.max-grade.fix value="false"/>
+        <offset.disable-normalization value="true"/>
+        <lefthand value="true"/>
+    </processing>
+
+    <junctions>
+        <no-turnarounds value="true"/>
+        <junctions.corner-detail value="5"/>
+        <junctions.limit-turn-speed value="5.5"/>
+        <rectangular-lane-cut value="false"/>
+    </junctions>
+
+    <pedestrian>
+        <walkingareas value="false"/>
+    </pedestrian>
+
+    <netedit>
+        <route-files value="/Users/thiveshanpillay/Documents/2020/COS%20301/Capstone/Simulation_JanSouth/jan_south.rou.xml"/>
+    </netedit>
+
+    <report>
+        <aggregate-warnings value="5"/>
+    </report>
+
+</configuration>
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <vType id="car" length="5.00" maxSpeed="33.33" accel="3.5" decel="2.2" sigma="1.0"/>
+
+    <route edges="road_triple_JanShobaS_toJunc road_single_SouthStrE_fromJunc" color="yellow" id="route_0"/>
+    <route edges="road_triple_JanShobaS_toJunc road_single_SouthStrW_fromJunc" color="yellow" id="route_1"/>
+    <route edges="road_triple_JanShobaS_toJunc road_double_JanShobaN_fromJunc" color="yellow" id="route_2"/>
+    <route edges="road_single_SouthStrW_toJunc road_double_SouthStrW_toJunc road_double_JanShobaS_fromJunc" color="yellow" id="route_3"/>
+    <route edges="road_single_SouthStrW_toJunc road_double_SouthStrW_toJunc road_double_JanShobaS_fromJunc" color="yellow" id="route_4"/>
+    <route edges="road_single_SouthStrW_toJunc road_double_SouthStrW_toJunc road_single_SouthStrE_fromJunc" color="yellow" id="route_5"/>
+    <route edges="road_single_SouthStrW_toJunc road_double_SouthStrW_toJunc road_double_JanShobaN_fromJunc" color="yellow" id="route_6"/>
+    <route edges="road_single_SouthStrW_toJunc road_double_SouthStrW_toJunc road_double_JanShobaN_fromJunc" color="yellow" id="route_7"/>
+
+    <flow id="flow1" type="car" begin="0" end="1000" number="10" from="road_single_SouthStrW_toJunc" to="road_double_JanShobaS_fromJunc"/>
+    <flow id="flow3" type="car" begin="0" end="1000" number="50" from="road_single_SouthStrW_toJunc" to="road_single_SouthStrE_fromJunc"/>
+    <flow id="flow5" type="car" begin="0" end="1000" number="20" from="road_single_SouthStrE_toJunc" to="road_double_JanShobaN_fromJunc"/>
+    <flow id="flow6" type="car" begin="0" end="1000" number="30" from="road_single_SouthStrE_toJunc" to="road_single_SouthStrW_fromJunc"/>
+    <flow id="flow7" type="car" begin="0" end="1000" number="30" from="road_double_JanShobaS_toJunc" to="road_single_SouthStrE_fromJunc"/>
+    <flow id="flow9" type="car" begin="0" end="1000" number="100" from="road_double_JanShobaS_toJunc" to="road_double_JanShobaN_fromJunc"/>
+    <flow id="flow11" type="car" begin="0" end="1000" number="30" from="road_double_JanShobaN_toJunc" to="road_single_SouthStrW_fromJunc"/>
+    <flow id="flow12" type="car" begin="0" end="1000" number="100" from="road_double_JanShobaN_toJunc" to="road_double_JanShobaS_fromJunc"/>
+</routes>

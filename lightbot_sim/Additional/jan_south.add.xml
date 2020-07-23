@@ -1,0 +1,22 @@
+<additionals>
+    <rerouter id="rerouter_1" edges="road_double_SouthStrW_toJunc" probability="0.6">
+        <interval begin="0">
+            <destProbReroute id="road_double_JanShobaN_fromJunc" />
+        </interval>
+    </rerouter>
+    <rerouter id="rerouter_2" edges="road_double_SouthStrE_toJunc" probability="0.6">
+        <interval begin="0">
+            <destProbReroute id="road_double_JanShobaS_fromJunc" />
+        </interval>
+    </rerouter>
+    <rerouter id="rerouter_3" edges="road_triple_JanShobaS_toJunc" probability="0.3">
+        <interval begin="0">
+            <destProbReroute id="road_single_SouthStrW_fromJunc" />
+        </interval>
+    </rerouter>
+    <rerouter id="rerouter_4" edges="road_triple_JanShobaN_toJunc" probability="0.3">
+        <interval begin="0">
+            <destProbReroute id="road_single_SouthStrE_fromJunc" />
+        </interval>
+    </rerouter>
+</additionals>
