@@ -1,0 +1,50 @@
+.LoginPane {
+	background: rgba(0, 0, 0, 0.8);
+	text-align: center;
+	width: 600px;
+	/*min-height: 100vw;*/
+	float: right;
+	/* or inline-flex */
+	/* is default: columns along the main-axis (row) and no wrapping to next lines */
+
+	flex-flow: row nowrap; /* is default: columns along the main-axis (row) and no wrapping to next lines */
+	align-items: flex-end; /* bottom */
+	/*background-color: whitesmoke;*/
+
+	/*height: 100%;*/
+	min-height: 100vh;
+
+	margin-bottom: 0px;
+
+	position: relative;
+
+	bottom: 1px;
+
+	.LoginLogo {
+		//height: 300px;
+		padding-top: 10%;
+		padding-bottom: 40px;
+		min-height: 300x;
+		max-height: 300px;
+	}
+
+	.LoginInput {
+		padding-top: 10px;
+		border-color: blue;
+		background-color: transparent;
+		height: 40px;
+	}
+
+	.LoginBtn {
+		background-color: transparent;
+		border-color: white;
+	}
+}
+
+.LoginLabel {
+	color: "white";
+}
+
+.LoginTextBox {
+	background-color: red;
+}
