@@ -16,8 +16,8 @@ class MongoDBConnect:
 	
 	def __del__(self): 
 		if self.conn is not None:
-			self.conn.close()
 			self.coll = None
+			self.conn.close()
 	
 	def addOneToDB(self, dictArg):
 		x = self.coll.insert_one(dictArg)
@@ -26,9 +26,15 @@ class MongoDBConnect:
 		x = self.coll.insert_many(listArg)
 		
 	def queryAllFromDB(self):
-		results = self.coll.find({})
+		results = self.coll.find({},{ "_id": 0 })
 		out = []
 		for x in results:
-			print(x["numCars"])
 			out.append(x)
 		return out
+		
+	def getStoredState(self):
+		result = self.coll.find_one({ "Title": "StoredState" },{ "_id": 0 })
+		return result
+		
+	def deleteStoredState(self):
+		self.coll.delete_one({ "Title": "StoredState" })
