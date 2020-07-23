@@ -2,14 +2,24 @@
 	background: rgba(0, 0, 0, 0.8);
 	text-align: center;
 	width: 600px;
+	/*min-height: 100vw;*/
 	float: right;
-	flex-flow: row nowrap; 
-	align-items: flex-end; 
+	/* or inline-flex */
+	/* is default: columns along the main-axis (row) and no wrapping to next lines */
+
+	flex-flow: row nowrap; /* is default: columns along the main-axis (row) and no wrapping to next lines */
+	align-items: flex-end; /* bottom */
+	/*background-color: whitesmoke;*/
+
+	/*height: 100%;*/
 	min-height: 100vh;
+
 	margin-bottom: 0px;
+
 	position: relative;
+
 	bottom: 1px;
-}	
+
 	.LoginLogo {
 		//height: 300px;
 		padding-top: 10%;
@@ -29,14 +39,7 @@
 		background-color: transparent;
 		border-color: white;
 	}
-	
-	.LoginGLogo{
-		//height: 300px;
-		padding-top: 10%;
-		padding-bottom: 30px;
-		min-height: 200x;
-		max-height: 200px;
-	}
+}
 
 .LoginLabel {
 	color: "white";

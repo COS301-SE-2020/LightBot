@@ -1,7 +1,10 @@
-import React, {Component} from "react";
+/*eslint-disable*/
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
 // nodejs library to set properties for components
 import { PropTypes } from "prop-types";
-import { NavLink, Link } from "react-router-dom";
+
+// javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
 
 // reactstrap components
@@ -9,7 +12,7 @@ import { Nav, NavLink as ReactstrapNavLink } from "reactstrap";
 
 var ps;
 
-class Sidebar extends Component {
+class Sidebar extends React.Component {
 	constructor(props) {
 		super(props);
 		this.activeRoute.bind(this);
@@ -68,7 +71,7 @@ class Sidebar extends Component {
 			}
 		}
 		return (
-			<div className="sidebar" style={{ backgroundColor: "red" }}>
+			<div className="sidebar" style={MyStyles.sideb}>
 				<div className="sidebar-wrapper" ref="sidebar">
 					{logoImg !== null || logoText !== null ? (
 						<div className="logo">
@@ -86,7 +89,7 @@ class Sidebar extends Component {
 											className="nav-link"
 											activeClassName="active"
 											onClick={this.props.toggleSidebar}
-											style={{ borderColor: "white", border: "solid", borderRadius: "0", borderWidth: "1px" }}
+											style={MyStyles.dash}
 										>
 											<i className={prop.icon} />
 											<p>{rtlActive ? prop.rtlName : prop.name}</p>
@@ -99,7 +102,7 @@ class Sidebar extends Component {
 						})}
 
 						<li className="active-pro">
-							<img alt="..." src={require("../../Assets/LBlogo.png")} style={{ padding: 30 }} />
+							<img alt="..." src={require("../../assets/img/LBlogo.png")} style={MyStyles.bottomLogo} />
 						</li>
 					</Nav>
 				</div>
@@ -134,5 +137,19 @@ Sidebar.propTypes = {
 	}),
 };
 
+const MyStyles = {
+	sideb: {
+		backgroundColor: "red",
+	},
+	dash: {
+		borderColor: "white", 
+		border: "solid", 
+		borderRadius: "0", 
+		borderWidth: "1px" 
+	},
+	bottomLogo: { 
+		padding: 30 
+	}
+}
 
 export default Sidebar;
