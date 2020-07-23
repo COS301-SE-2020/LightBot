@@ -63,7 +63,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
 
 ## Demo Videos
 * Demo 1 Video link: https://drive.google.com/file/d/1Ym5qgCFRDrMjqgOWoS6-tWCDYrcS3Gj5/view?usp=sharing
-* Demo 2 Video link: https://drive.google.com/drive/folders/1gGc9oO1kBiJHNYjrPdPhppQZwzCqJXQf?usp=sharing
+* Demo 2 Video link: https://drive.google.com/file/d/1m177RYTdAeIWepgMWhlFx1zDX7eUU8AF/view?usp=sharing
 
 ## Collaborators
 <b>Mohammed Gangat :</b><br>
