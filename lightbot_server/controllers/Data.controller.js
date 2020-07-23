@@ -1,11 +1,12 @@
+//BUSINESS LOGIC TO BE EXTRAPOLATED FURTHER INTO MORE SERVICES AND MODULARITY IN NEXT SPRINT
 const asyncHandler = require('express-async-handler')
 const { ErrorResponse, BadRequest, NotFound } = require('../utils/Error.util')
 const { SuccessResponse } = require('../utils/Success.util')
-// const Graph = require('../models/Graph.model')
-const Forum = require('../models/Forum.model')
-const User = require('../models/User.model')
 const UserController = require('./User.controller')
 const mongoose = require('mongoose')
+const Forum = require('../models/Forum.model')
+const User = require('../models/User.model')
+// const Graph = require('../models/Graph.model')
 // const Notification = require('../models/Notification.model')
 // const State = require('../models/State.model')
 
@@ -38,23 +39,22 @@ module.exports = {
   }),
 
   addForumData: asyncHandler(async (req, res, next) => {
-    const { title, message, creator } = req.body
+    const { title, message } = req.body
+    const { User_id, User_email } = req.User_data
     const createForumPost = new Forum({
       title,
       message,
-      creator
+      creator: User_id,
     })
     let user
-    try{
-        user = await User.findById(creator)
-    }catch(err)
-    {
+    try {
+      user = await User.findOne({User_email: User_email})
+    } catch (err) {
       return next(
         new ErrorResponse('Creating forum post failed. Please try again.')
       )
     }
-    if(!user)
-    {
+    if (!user) {
       return next(
         new ErrorResponse('Creating forum post failed. Please try again.')
       )
@@ -62,13 +62,13 @@ module.exports = {
     try {
       const session = await mongoose.startSession()
       session.startTransaction()
-      await createForumPost.save({session: session})
+      await createForumPost.save({ session: session })
       user.ForumPosts.push(createForumPost)
-      await user.save({session: session})
+      await user.save({ session: session })
       await session.commitTransaction()
     } catch (err) {
       return next(
-        new ErrorResponse('Creating forum post failed. Please try again.')
+        new ErrorResponse('Creating forum post failed. Please try again1.')
       )
     }
     res.json(
@@ -82,13 +82,11 @@ module.exports = {
   updateForumData: asyncHandler(async (req, res, next) => {
     const postId = req.params.forumpostid
     const { title, message } = req.body
-    let choice;
+    let choice
     try {
       choice = await Forum.findById(postId)
     } catch (err) {
-      return next(
-        new ErrorResponse('Something went wrong could not update.')
-      )
+      return next(new ErrorResponse('Something went wrong could not update.'))
     }
     choice.title = title
     choice.message = message
@@ -96,9 +94,7 @@ module.exports = {
     try {
       await choice.save()
     } catch (err) {
-      return next(
-        new ErrorResponse('Something went wrong could not update.')
-      )
+      return next(new ErrorResponse('Something went wrong could not update.'))
     }
 
     res.json(
@@ -115,17 +111,12 @@ module.exports = {
     try {
       choice = await Forum.findById(forumpostid)
     } catch (err) {
-      return next(
-        new ErrorResponse('Something went wrong could not delete.')
-      )
+      return next(new ErrorResponse('Something went wrong could not delete.'))
     }
-    try{
+    try {
       await choice.remove()
-    }
-    catch (err) {
-      return next(
-        new ErrorResponse('Something went wrong could not delete.')
-      )
+    } catch (err) {
+      return next(new ErrorResponse('Something went wrong could not delete.'))
     }
     res.json(
       new SuccessResponse(

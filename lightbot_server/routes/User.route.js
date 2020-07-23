@@ -36,6 +36,15 @@ router.get(
 // // @desc      Update User Pass Route
 // // @access    Private
 router.put(
+  '/update-details',
+  auth.Guard,
+  require('../controllers/User.controller').updateUserDetails
+)
+
+// // @route     PUT user/update-details
+// // @desc      Update User Pass Route
+// // @access    Private
+router.put(
   '/update-password',
   auth.Guard,
   require('../controllers/User.controller').updateUserPass

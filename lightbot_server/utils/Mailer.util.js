@@ -6,8 +6,8 @@ const Mailer = async options => {
     // port: process.env.SmtpPort,
     service: 'gmail',
     auth: {
-      user: process.env.SmtpEmail,
-      pass: process.env.SmtpPassword
+      user: process.env.email,
+      pass: process.env.password
     }
   });
 
@@ -20,7 +20,7 @@ const Mailer = async options => {
 
   const info = await transporter.sendMail(message);
 
-  console.log('Message sent: %s', info.messageId);
+  console.log(`Message sent: ${info.messageId}`);
 };
 
 module.exports = Mailer;

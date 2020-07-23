@@ -6,11 +6,11 @@ module.exports = (method) => {
         return [
           check('User_name', 'Name is a required field')
             .exists()
-            .isLength({ min: 6, max: 64 })
-            .withMessage('Name must be between 6 & 64 characters in length'),
+            .isLength({ min: 2, max: 64 })
+            .withMessage('Name must be between 2 & 64 characters in length'),
           check('User_surname', 'Surname is a required field')
             .exists()
-            .isLength({ min: 6, max: 64 })
+            .isLength({ min: 2, max: 64 })
             .withMessage('Surname must be between 6 & 64 characters in length'),
           check('User_email', 'Email is a required field')
             .exists()
@@ -47,10 +47,25 @@ module.exports = (method) => {
         return []
       }
       case 'updateUserPass': {
-        return []
+        return [
+          check('User_password', 'Password is a required field')
+            .exists()
+            .isLength({ min: 8 })
+            .withMessage(
+              'Password must be greater than 8 characters in length'
+            ),
+        ]
       }
       case 'resetUserPass': {
-        return []
+        return [
+          check('User_password', 'Password is a required field')
+            .exists()
+            .isLength({ min: 8 })
+            .withMessage(
+              'Password must be greater than 8 characters in length'
+            ),
+        ]
       }
     }
   }
+  

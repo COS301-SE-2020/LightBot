@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "prerun": "nodemon server.js",
-    "test": "jest --coverage",
+    "test": "jest --coverage --detectOpenHandles",
     "serve": "node server.js"
   },
   "author": "M Gangat",

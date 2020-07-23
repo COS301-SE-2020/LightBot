@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1595458759379" clover="3.2.0">
-  <project timestamp="1595458759380" name="All files">
+<coverage generated="1595459353868" clover="3.2.0">
+  <project timestamp="1595459353868" name="All files">
     <metrics statements="214" coveredstatements="103" conditionals="33" coveredconditionals="10" methods="31" coveredmethods="6" elements="278" coveredelements="119" complexity="0" loc="214" ncloc="214" packages="6" files="16" classes="16"/>
     <package name="lightbot_server">
       <metrics statements="14" coveredstatements="14" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>

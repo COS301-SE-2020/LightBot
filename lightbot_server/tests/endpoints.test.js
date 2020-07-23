@@ -25,7 +25,7 @@ describe('User Endpoints test', () => {
       request(app)
       .post("/login")
       .then(response => {
-        expect(response.statusCode).toBe(404);
+        expect(response.statusCode).toBe(200);
         done();
       });
     })
@@ -33,7 +33,7 @@ describe('User Endpoints test', () => {
       request(app)
       .get("/logout")
       .then(response => {
-        expect(response.statusCode).toBe(404);
+        expect(response.statusCode).toBe(200);
         done();
       });
     })
@@ -41,7 +41,7 @@ describe('User Endpoints test', () => {
       request(app)
       .put("/update-password")
       .then(response => {
-        expect(response.statusCode).toBe(404);
+        expect(response.statusCode).toBe(200);
         done();
       });
     })
@@ -49,7 +49,7 @@ describe('User Endpoints test', () => {
       request(app)
       .post("/recover-password")
       .then(response => {
-        expect(response.statusCode).toBe(404);
+        expect(response.statusCode).toBe(200);
         done();
       });
     })
@@ -57,7 +57,7 @@ describe('User Endpoints test', () => {
       request(app)
       .get("/reset-password/:passresetid")
       .then(response => {
-        expect(response.statusCode).toBe(404);
+        expect(response.statusCode).toBe(200);
         done();
       });
     })
@@ -65,7 +65,7 @@ describe('User Endpoints test', () => {
       request(app)
       .get("/delete")
       .then(response => {
-        expect(response.statusCode).toBe(404);
+        expect(response.statusCode).toBe(200);
         done();
       });
     })
@@ -73,7 +73,7 @@ describe('User Endpoints test', () => {
       request(app)
       .get("/list-user")
       .then(response => {
-        expect(response.statusCode).toBe(404);
+        expect(response.statusCode).toBe(200);
         done();
       });
     })
@@ -91,7 +91,7 @@ describe('User Endpoints test', () => {
       request(app)
       .get("/graph")
       .then(response => {
-        expect(response.statusCode).toBe(404);
+        expect(response.statusCode).toBe(20);
         done();
       });
     })
@@ -99,7 +99,7 @@ describe('User Endpoints test', () => {
       request(app)
       .get("/forum")
       .then(response => {
-        expect(response.statusCode).toBe(404);
+        expect(response.statusCode).toBe(200);
         done();
       });
     })
@@ -107,7 +107,7 @@ describe('User Endpoints test', () => {
       request(app)
       .get("/notification")
       .then(response => {
-        expect(response.statusCode).toBe(404);
+        expect(response.statusCode).toBe(200);
         done();
       });
     })
@@ -115,7 +115,7 @@ describe('User Endpoints test', () => {
       request(app)
       .get("/state")
       .then(response => {
-        expect(response.statusCode).toBe(404);
+        expect(response.statusCode).toBe(200);
         done();
       });
     })
@@ -123,7 +123,7 @@ describe('User Endpoints test', () => {
         request(app)
         .post("/post-forum")
         .then(response => {
-          expect(response.statusCode).toBe(404);
+          expect(response.statusCode).toBe(200);
           done();
         });
       })
@@ -131,7 +131,7 @@ describe('User Endpoints test', () => {
         request(app)
         .patch("/post-forum/:forumpostid")
         .then(response => {
-          expect(response.statusCode).toBe(404);
+          expect(response.statusCode).toBe(200);
           done();
         });
       })
@@ -139,12 +139,11 @@ describe('User Endpoints test', () => {
         request(app)
         .delete("/delete-forum/:forumpostid")
         .then(response => {
-          expect(response.statusCode).toBe(404);
+          expect(response.statusCode).toBe(200);
           done();
         });
       })
       afterAll(done => {
-        // Closing the DB connection allows Jest to exit successfully.
         app.close()
         done()
       })
