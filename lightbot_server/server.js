@@ -23,10 +23,17 @@ app.use(express.json({ extended: true }))
 app.use(require('cors')(require('./utils/Cors.util')))
 app.use(express.static(__dirname + '../lightbot_web/'))
 
-//Landing Page 
-// app.get('/', (req, res, next) => {
-//   res.sendFile('index.html')
-// })
+//  Landing Page 
+//  Serve static webpage in production
+//
+// if (process.env.NODE_ENV === 'production') {
+//   // Set static folder
+//   app.use(express.static('client/build'));
+
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+//   });
+// }
 
 //Route Handlers
 //User Route
