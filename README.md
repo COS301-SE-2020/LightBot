@@ -56,7 +56,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
 * GitKraken / GitHub Desktop
 
 ## Documentation
-* SRS Document for Demo 1: hhttps://github.com/COS301-SE-2020/LightBot/blob/master/lightbot_doc/Gradient%20-%20SRS%20Document.pdf
+* SRS Document for Demo 1: https://github.com/COS301-SE-2020/LightBot/blob/master/lightbot_doc/Gradient%20-%20SRS%20Document.pdf
 * SRS Document for Demo 2: https://github.com/COS301-SE-2020/LightBot/blob/master/lightbot_doc/Requirements%20Specification.pdf
 * User Manual for Demo 2: https://github.com/COS301-SE-2020/LightBot/blob/master/lightbot_doc/LIGHTBOT_USER_MANUAL.pdf
 
