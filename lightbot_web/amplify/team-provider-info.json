@@ -10,6 +10,14 @@
             "StackName": "amplify-lightbotweb-dev-112014",
             "StackId": "arn:aws:cloudformation:eu-central-1:811389638944:stack/amplify-lightbotweb-dev-112014/0eb34020-d30f-11ea-b7d5-062f915451fc",
             "AmplifyAppId": "d19xbycvspwmm8"
+        },
+        "categories": {
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d19xbycvspwmm8",
+                    "type": "cicd"
+                }
+            }
         }
     }
 }
