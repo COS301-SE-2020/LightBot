@@ -1,7 +1,7 @@
 import React from 'react'
 import PerfectScrollbar from 'perfect-scrollbar'
 import { Route, Switch, Redirect } from 'react-router-dom'
-import Footer from 'components/Footer/Footer.js'
+import Footer from '../components/Footer/Footer.js'
 import routes from '../routes/landing.routes'
 var ps
 
