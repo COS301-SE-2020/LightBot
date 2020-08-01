@@ -20,5 +20,4 @@ function App() {
     </Switch>
   </Router>
 }
-localStorage.t
 export default App
