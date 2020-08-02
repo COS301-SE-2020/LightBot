@@ -20,26 +20,24 @@ function Login() {
   const [lastFocus, setLastFocus] = React.useState(false)
   return (
     <>
-      <div className='page-header clear-filter' filter-color='orange'>
+      <div className='page-header clear-filter'>
         <div
           className='page-header-image'
           style={{
             backgroundImage:
-              'url(' +
-              require('../../assets/img/LightBot_Logo_White.png') +
-              ')',
+              'url(' + require('../../assets/img/login.png') + ')',
           }}
         ></div>
         <div className='content'>
           <Container>
-            <Col className='ml-auto mr-auto' md='4'>
+            <Col className='ml-auto mr-auto' md='4' style={MyStyles.loginPanel}>
               <Card className='card-login card-plain'>
                 <Form action='' className='form' method=''>
                   <CardHeader className='text-center'>
                     <div className='logo-container'>
                       <img
                         alt='...'
-                        src={require('../../assets/img/login.png')}
+                        src={require('../../assets/img/LightBot_Logo_White.png')}
                       ></img>
                     </div>
                   </CardHeader>
@@ -126,3 +124,13 @@ function Login() {
 }
 
 export default Login
+
+const MyStyles = {
+  loginPanel: {
+    backgroundColor: 'rgba(2,2,2,0.2)',
+  },
+  textInputStyle: {
+    color: 'white',
+    opacity: '1',
+  },
+}

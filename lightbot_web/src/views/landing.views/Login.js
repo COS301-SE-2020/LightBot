@@ -20,7 +20,7 @@ function Login() {
   const [lastFocus, setLastFocus] = React.useState(false)
   return (
     <>
-      <div className='page-header clear-filter' filter-color=''>
+      <div className='page-header clear-filter'>
         <div
           className='page-header-image'
           style={{
