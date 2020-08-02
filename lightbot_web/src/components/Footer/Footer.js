@@ -1,49 +1,70 @@
-import React from 'react'
-import { Container } from 'reactstrap'
-import PropTypes from 'prop-types'
+import React from "react";
+import { Container } from "reactstrap";
+import PropTypes from "prop-types";
 
 class Footer extends React.Component {
   render() {
     return (
       <footer
-        className={'footer' + (this.props.default ? ' footer-default' : '')}
+        className={"footer" + (this.props.default ? " footer-default" : "")}
       >
         <Container fluid={this.props.fluid ? true : false}>
           <nav>
             <ul>
               <li>
-                <a href='https://' target='_blank'>
-                  Gradient
+                <a
+                  href="https://www.creative-tim.com?ref=nudr-footer"
+                  target="_blank"
+                >
+                  Creative Tim
                 </a>
               </li>
               <li>
-                <a href='https://' target='_blank'>
-                  Facebook
+                <a
+                  href="https://presentation.creative-tim.com?ref=nudr-footer"
+                  target="_blank"
+                >
+                  About Us
                 </a>
               </li>
               <li>
-                <a href='https://' target='_blank'>
-                  Github
+                <a
+                  href="https://blog.creative-tim.com?ref=nudr-footer"
+                  target="_blank"
+                >
+                  Blog
                 </a>
               </li>
             </ul>
           </nav>
-          <div className='copyright'>
-            &copy; {1900 + new Date().getYear()}, Designed and Coded by{' '}
-            <a href='https://' target='_blank' rel='noopener noreferrer'>
-              Team Gradient
+          <div className="copyright">
+            &copy; {1900 + new Date().getYear()}, Designed by{" "}
+            <a
+              href="https://www.invisionapp.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Invision
+            </a>
+            . Coded by{" "}
+            <a
+              href="https://www.creative-tim.com?ref=nudr-footer"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Creative Tim
             </a>
             .
           </div>
         </Container>
       </footer>
-    )
+    );
   }
 }
 
 Footer.propTypes = {
   default: PropTypes.bool,
   fluid: PropTypes.bool,
-}
+};
 
-export default Footer
+export default Footer;
