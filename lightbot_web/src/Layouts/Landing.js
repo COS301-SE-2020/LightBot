@@ -66,5 +66,6 @@ const MyStyles = {
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     height: '100vh',
+    width: '100vm',
   },
 }

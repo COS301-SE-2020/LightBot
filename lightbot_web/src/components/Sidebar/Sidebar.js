@@ -33,14 +33,14 @@ class Sidebar extends React.Component {
   render() {
     return (
       <div className='sidebar' data-color={this.props.backgroundColor}>
-        <div className='logo'>
+        <div className='logo' style={MyStyles.sidebar}>
           <a
             href='https://www.creative-tim.com?ref=nudr-sidebar'
             className='simple-text logo-mini'
             target='_blank'
           >
             <div className='logo-img'>
-              <img src={logo} alt='react-logo' />
+              <img style={MyStyles.sidebarLogo} src={logo} alt='react-logo' />
             </div>
           </a>
           <a
@@ -82,3 +82,13 @@ class Sidebar extends React.Component {
 }
 
 export default Sidebar
+
+const MyStyles = {
+  sidebar: {
+    maxHeight: '100vh',
+  },
+  sidebarLogo: {
+    height: '20vh',
+    width: 'auto',
+  },
+}
