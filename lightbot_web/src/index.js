@@ -7,8 +7,9 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import './assets/scss/now-ui-dashboard.scss?v1.4.0'
 import './assets/css/now-ui-kit.css'
 
-import Home from './Layouts/Home.js'
-import Landing from './Layouts/Landing.js'
+import Home from './layouts/Home.js'
+import Landing from './layouts/Landing.js'
+import ErrorPage from './layouts/ErrorPage.js'
 
 const hist = createBrowserHistory()
 
@@ -17,6 +18,7 @@ ReactDOM.render(
     <Switch>
       <Route path='/landing' render={(props) => <Landing {...props} />} />
       <Route path='/home' render={(props) => <Home {...props} />} />
+      <Route path='/404' render={(props) => <ErrorPage {...props} />} />
       <Redirect to='/404' />
     </Switch>
   </Router>,
