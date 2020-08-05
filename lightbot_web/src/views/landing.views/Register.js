@@ -38,7 +38,7 @@ class Register extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this)
   }
-  handleChange = async e => {
+  handleChange = async (e) => {
     const { target } = e
     const value = target.type === 'checkbox' ? target.checked : target.value
     const { name } = target
@@ -62,7 +62,7 @@ class Register extends React.Component {
     //ELSE ERROR AND DO NOTHING
   }
 
-  validateFirstname = e => {
+  validateFirstname = (e) => {
     const { validate } = this.state
     if (e.target.value.size > 4) {
       validate.firstnameState = 'has-success'
@@ -109,19 +109,22 @@ class Register extends React.Component {
                           }
                         >
                           <InputGroupAddon addonType='prepend'>
-                            <InputGroupText>
+                            <InputGroupText style={MyStyles.textInputStyle}>
                               <i className='now-ui-icons users_circle-08'></i>
                             </InputGroupText>
                           </InputGroupAddon>
                           <Input
+                            style={MyStyles.textInputStyle}
                             placeholder='First Name...'
                             type='text'
                             value={this.state.firstname}
                             valid={
-                              this.state.validate.firstnameState === 'has-success'
+                              this.state.validate.firstnameState ===
+                              'has-success'
                             }
                             invalid={
-                              this.state.validate.firstnameState === 'has-danger'
+                              this.state.validate.firstnameState ===
+                              'has-danger'
                             }
                             onChange={(e) => {
                               //this.validateFirstname(e)
@@ -131,7 +134,9 @@ class Register extends React.Component {
                             onBlur={() => this.setState({ firstFocus: false })}
                           ></Input>
                         </InputGroup>
-                        <FormFeedback valid>Please enter a valid name.</FormFeedback>
+                        <FormFeedback valid>
+                          Please enter a valid name.
+                        </FormFeedback>
                       </FormGroup>
                       <InputGroup
                         className={
@@ -140,11 +145,12 @@ class Register extends React.Component {
                         }
                       >
                         <InputGroupAddon addonType='prepend'>
-                          <InputGroupText>
+                          <InputGroupText style={MyStyles.textInputStyle}>
                             <i className='now-ui-icons text_caps-small'></i>
                           </InputGroupText>
                         </InputGroupAddon>
                         <Input
+                          style={MyStyles.textInputStyle}
                           placeholder='Last Name...'
                           type='text'
                           onFocus={() => this.setState({ lastFocus: false })}
@@ -158,13 +164,14 @@ class Register extends React.Component {
                         }
                       >
                         <InputGroupAddon addonType='prepend'>
-                          <InputGroupText>
-                            <i className='now-ui-icons text_caps-small'></i>
+                          <InputGroupText style={MyStyles.textInputStyle}>
+                            <i className='now-ui-icons ui-1_email-85'></i>
                           </InputGroupText>
                         </InputGroupAddon>
                         <Input
+                          style={MyStyles.textInputStyle}
                           placeholder='Email...'
-                          type='text'
+                          type='email'
                           onFocus={() => this.setState({ lastFocus: false })}
                           onBlur={() => this.setState({ firstFocus: false })}
                         ></Input>
@@ -176,11 +183,12 @@ class Register extends React.Component {
                         }
                       >
                         <InputGroupAddon addonType='prepend'>
-                          <InputGroupText>
-                            <i className='now-ui-icons text_caps-small'></i>
+                          <InputGroupText style={MyStyles.textInputStyle}>
+                            <i className='now-ui-icons objects_key-25'></i>
                           </InputGroupText>
                         </InputGroupAddon>
                         <Input
+                          style={MyStyles.textInputStyle}
                           placeholder='Password...'
                           type='password'
                           onFocus={() => this.setState({ lastFocus: false })}
@@ -194,11 +202,12 @@ class Register extends React.Component {
                         }
                       >
                         <InputGroupAddon addonType='prepend'>
-                          <InputGroupText>
-                            <i className='now-ui-icons text_caps-small'></i>
+                          <InputGroupText style={MyStyles.textInputStyle}>
+                            <i className='now-ui-icons objects_key-25'></i>
                           </InputGroupText>
                         </InputGroupAddon>
                         <Input
+                          style={MyStyles.textInputStyle}
                           placeholder='Confirm Password...'
                           type='password'
                           onFocus={() => this.setState({ lastFocus: false })}
@@ -219,7 +228,12 @@ class Register extends React.Component {
                       </Button>
                       <div className='pull-left'>
                         <h6>
-                          <a className='link' href='#' onClick={this.navLogin}>
+                          <a
+                            className='link'
+                            href='#'
+                            onClick={this.navLogin}
+                            style={MyStyles.textInputStyle}
+                          >
                             Return to login
                           </a>
                         </h6>
@@ -227,6 +241,7 @@ class Register extends React.Component {
                       <div className='pull-right'>
                         <h6>
                           <a
+                            style={MyStyles.textInputStyle}
                             className='link'
                             href='#'
                             onClick={this.navRecovery}
