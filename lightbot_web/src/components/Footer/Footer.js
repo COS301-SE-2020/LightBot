@@ -38,23 +38,21 @@ class Footer extends React.Component {
             </ul>
           </nav>
           <div className="copyright">
-            &copy; {1900 + new Date().getYear()}, Designed by{" "}
-            <a
-              href="https://www.invisionapp.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Invision
-            </a>
-            . Coded by{" "}
+            &copy; {1900 + new Date().getYear()}, Coded by{" "}
             <a
               href="https://www.creative-tim.com?ref=nudr-footer"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Creative Tim
+              Gradient
             </a>
             .
+            <img
+            className='footerLogo'
+            alt='...'
+            src={require('../../assets/img/Gradient_Logo_White.png')}
+            style={{height:'5vh'}}
+          />
           </div>
         </Container>
       </footer>

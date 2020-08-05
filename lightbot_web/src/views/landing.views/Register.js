@@ -23,21 +23,22 @@ class Register extends React.Component {
     this.state = {
       firstFocus: false,
       lastFocus: false,
-      firstname: '',
-      lastname: '',
+      name: '',
+      surname: '',
       email: '',
       password: '',
-      confirm: '',
+      confirmpassword: '',
       validate: {
-        firstnameState: 'has-success',
-        lastnameState: '',
+        nameState: '',
+        surnameState: '',
         emailState: '',
         passwordState: '',
-        confirmState: '',
+        confirmPasswordState: '',
       },
     }
     this.handleChange = this.handleChange.bind(this)
   }
+
   handleChange = async (e) => {
     const { target } = e
     const value = target.type === 'checkbox' ? target.checked : target.value
@@ -46,28 +47,72 @@ class Register extends React.Component {
       [name]: value,
     })
   }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    //API
+    this.props.history.push('/landing/login')
+  }
+
   navLogin = () => {
     this.props.history.push('/landing/login')
   }
   navRecovery = () => {
     this.props.history.push('/landing/recovery')
   }
-  onSubmitHandler = (e) => {
-    e.preventDefault()
-    //IF FIELDS FILLED AND VERIFIED
-    //MAKE API CALL
-    //IF API CALL SUCCESS AND RETURN LOGIN
-    this.props.history.push('/landing/login')
-    //ELSE ERROR AND DO NOTHING
-    //ELSE ERROR AND DO NOTHING
+
+  validateName = (e) => {
+    const regex = new RegExp('^([a-zA-Z ]){3,64}')
+    const { validate } = this.state
+    if (regex.test(e.target.value)) {
+      validate.nameState = 'has-success'
+    } else {
+      validate.nameState = 'has-danger'
+    }
+    this.setState({ validate })
   }
 
-  validateFirstname = (e) => {
+  validateSurname = (e) => {
+    const regex = new RegExp('^([a-zA-Z ]){3,64}')
     const { validate } = this.state
-    if (e.target.value.size > 4) {
-      validate.firstnameState = 'has-success'
+    if (regex.test(e.target.value)) {
+      validate.surnameState = 'has-success'
     } else {
-      validate.firstnameState = 'has-danger'
+      validate.surnameState = 'has-danger'
+    }
+    this.setState({ validate })
+  }
+
+  validateEmail = (e) => {
+    const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    const { validate } = this.state
+    if (regex.test(e.target.value)) {
+      validate.emailState = 'has-success'
+    } else {
+      validate.emailState = 'has-danger'
+    }
+    this.setState({ validate })
+  }
+
+  validatePassword = (e) => {
+    const regex = new RegExp(
+      '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})'
+    )
+    const { validate } = this.state
+    if (regex.test(e.target.value)) {
+      validate.passwordState = 'has-success'
+    } else {
+      validate.passwordState = 'has-danger'
+    }
+    this.setState({ validate })
+  }
+
+  validatePasswordMatch = (e) => {
+    const { validate, password } = this.state
+    if (e.target.value === password) {
+      validate.confirmPasswordState = 'has-success'
+    } else {
+      validate.confirmPasswordState = 'has-danger'
     }
     this.setState({ validate })
   }
@@ -114,29 +159,31 @@ class Register extends React.Component {
                             </InputGroupText>
                           </InputGroupAddon>
                           <Input
-                            style={MyStyles.textInputStyle}
-                            placeholder='First Name...'
                             type='text'
-                            value={this.state.firstname}
+                            name='name'
+                            id='idName'
+                            placeholder='Name'
+                            value={this.state.name}
                             valid={
-                              this.state.validate.firstnameState ===
-                              'has-success'
+                              this.state.validate.nameState === 'has-success'
                             }
                             invalid={
-                              this.state.validate.firstnameState ===
-                              'has-danger'
+                              this.state.validate.nameState === 'has-danger'
                             }
                             onChange={(e) => {
-                              //this.validateFirstname(e)
-                              //this.handleChange(e)
+                              this.validateName(e)
+                              this.handleChange(e)
                             }}
                             onFocus={() => this.setState({ firstFocus: true })}
                             onBlur={() => this.setState({ firstFocus: false })}
-                          ></Input>
+                            style={MyStyles.textInputStyle}
+                            required
+                          />
+                          <FormFeedback>
+                            Name should consist of 2 or more alphabetical
+                            characters.
+                          </FormFeedback>
                         </InputGroup>
-                        <FormFeedback valid>
-                          Please enter a valid name.
-                        </FormFeedback>
                       </FormGroup>
                       <InputGroup
                         className={
@@ -150,12 +197,30 @@ class Register extends React.Component {
                           </InputGroupText>
                         </InputGroupAddon>
                         <Input
-                          style={MyStyles.textInputStyle}
-                          placeholder='Last Name...'
                           type='text'
+                          name='surname'
+                          id='idSurname'
+                          placeholder='Surname'
+                          value={this.state.surname}
+                          valid={
+                            this.state.validate.surnameState === 'has-success'
+                          }
+                          invalid={
+                            this.state.validate.surnameState === 'has-danger'
+                          }
+                          onChange={(e) => {
+                            this.validateSurname(e)
+                            this.handleChange(e)
+                          }}
                           onFocus={() => this.setState({ lastFocus: false })}
                           onBlur={() => this.setState({ firstFocus: false })}
-                        ></Input>
+                          style={MyStyles.textInputStyle}
+                          required
+                        />
+                        <FormFeedback>
+                          Name should consist of 2 or more alphabetical
+                          characters.
+                        </FormFeedback>
                       </InputGroup>
                       <InputGroup
                         className={
@@ -169,12 +234,29 @@ class Register extends React.Component {
                           </InputGroupText>
                         </InputGroupAddon>
                         <Input
-                          style={MyStyles.textInputStyle}
-                          placeholder='Email...'
                           type='email'
+                          name='email'
+                          id='idEmail'
+                          placeholder='Email'
+                          value={this.state.email}
+                          valid={
+                            this.state.validate.emailState === 'has-success'
+                          }
+                          invalid={
+                            this.state.validate.emailState === 'has-danger'
+                          }
+                          onChange={(e) => {
+                            this.validateEmail(e)
+                            this.handleChange(e)
+                          }}
                           onFocus={() => this.setState({ lastFocus: false })}
                           onBlur={() => this.setState({ firstFocus: false })}
-                        ></Input>
+                          style={MyStyles.textInputStyle}
+                          required
+                        />
+                        <FormFeedback>
+                          Please enter a valid email.
+                        </FormFeedback>
                       </InputGroup>
                       <InputGroup
                         className={
@@ -188,12 +270,30 @@ class Register extends React.Component {
                           </InputGroupText>
                         </InputGroupAddon>
                         <Input
-                          style={MyStyles.textInputStyle}
-                          placeholder='Password...'
                           type='password'
+                          name='password'
+                          id='idPassword'
+                          placeholder='Password'
+                          value={this.state.password}
+                          valid={
+                            this.state.validate.passwordState === 'has-success'
+                          }
+                          invalid={
+                            this.state.validate.passwordState === 'has-danger'
+                          }
+                          onChange={(e) => {
+                            this.validatePassword(e)
+                            this.handleChange(e)
+                          }}
                           onFocus={() => this.setState({ lastFocus: false })}
                           onBlur={() => this.setState({ firstFocus: false })}
-                        ></Input>
+                          style={MyStyles.textInputStyle}
+                          required
+                        />
+                        <FormFeedback>
+                          Password must contain an uppercase character,
+                          lowercase character a number and a symbol.
+                        </FormFeedback>
                       </InputGroup>
                       <InputGroup
                         className={
@@ -207,12 +307,31 @@ class Register extends React.Component {
                           </InputGroupText>
                         </InputGroupAddon>
                         <Input
-                          style={MyStyles.textInputStyle}
-                          placeholder='Confirm Password...'
                           type='password'
+                          name='confirmpassword'
+                          id='idPassword2'
+                          placeholder='Confirm Password'
+                          value={this.state.confirmpassword}
+                          valid={
+                            this.state.validate.confirmPasswordState ===
+                            'has-success'
+                          }
+                          invalid={
+                            this.state.validate.confirmPasswordState ===
+                            'has-danger'
+                          }
+                          onChange={(e) => {
+                            this.validatePasswordMatch(e)
+                            this.handleChange(e)
+                          }}
                           onFocus={() => this.setState({ lastFocus: false })}
                           onBlur={() => this.setState({ firstFocus: false })}
-                        ></Input>
+                          style={MyStyles.textInputStyle}
+                          required
+                        />
+                        <FormFeedback>
+                          Passwords do not match.
+                        </FormFeedback>
                       </InputGroup>
                     </CardBody>
                     <CardFooter className='text-center'>

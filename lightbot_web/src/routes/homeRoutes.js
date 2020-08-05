@@ -50,7 +50,6 @@ var homeRoutes = [
     layout: "/home",
   },
   {
-    pro: true,
     path: "/logout",
     name: "Logout",
     icon: "objects_spaceship",
