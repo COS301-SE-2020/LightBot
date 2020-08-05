@@ -1,4 +1,5 @@
 import React from 'react'
+import register from '../../actions/auth.js'
 
 import {
   Button,
@@ -50,7 +51,7 @@ class Register extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    //API
+    //API register(e.target.value)
     this.props.history.push('/landing/login')
   }
 
@@ -254,9 +255,7 @@ class Register extends React.Component {
                           style={MyStyles.textInputStyle}
                           required
                         />
-                        <FormFeedback>
-                          Please enter a valid email.
-                        </FormFeedback>
+                        <FormFeedback>Please enter a valid email.</FormFeedback>
                       </InputGroup>
                       <InputGroup
                         className={
@@ -329,9 +328,7 @@ class Register extends React.Component {
                           style={MyStyles.textInputStyle}
                           required
                         />
-                        <FormFeedback>
-                          Passwords do not match.
-                        </FormFeedback>
+                        <FormFeedback>Passwords do not match.</FormFeedback>
                       </InputGroup>
                     </CardBody>
                     <CardFooter className='text-center'>

@@ -1,4 +1,5 @@
 import React from 'react'
+import login from '../../actions/auth.js'
 
 import {
   Button,
@@ -43,6 +44,13 @@ class Login extends React.Component {
       [name]: value,
     })
   }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    //API login(email, password)
+    this.props.history.push('/landing/login')
+  }
+
   navRegister = () => {
     this.props.history.push('/landing/register')
   }
