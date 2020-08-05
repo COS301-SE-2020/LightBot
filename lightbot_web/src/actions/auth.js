@@ -1,4 +1,4 @@
-import api from '../utils/api'
+import api from '../services/api.js'
 // import { setAlert } from './alert'
 // import {
 //   REGISTER_SUCCESS,

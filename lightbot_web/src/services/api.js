@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { LOGOUT } from '../actions/types'
 
 const api = axios.create({
   baseURL: '/api',
