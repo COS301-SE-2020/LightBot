@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import Footer from '../components/Footer/Footer.js'
 import PerfectScrollbar from "perfect-scrollbar";
 
@@ -66,9 +65,9 @@ class ErrorPage extends React.Component {
             </Col>
           </Container>
         </div>
-        <Footer fluid />
       </div>
       </div>
+      <Footer fluid />
       </>
     )
   }
