@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import { createBrowserHistory } from 'history'
 import { Router, Route, Switch, Redirect } from 'react-router-dom'
@@ -11,9 +11,18 @@ import Home from './layouts/Home.js'
 import Landing from './layouts/Landing.js'
 import ErrorPage from './layouts/ErrorPage.js'
 
+//import { loadUser } from './actions/auth';
+import setCookie from './services/setCookie.js'
+import Cookies from 'universal-cookie'
+
+const cookies = new Cookies()
+
 const hist = createBrowserHistory()
 
 ReactDOM.render(
+  useEffect(() => {
+    setCookie(cookie.get('token'))
+  }),
   <Router history={hist}>
     <Switch>
       <Route path='/landing' render={(props) => <Landing {...props} />} />

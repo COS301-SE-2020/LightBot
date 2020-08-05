@@ -4,6 +4,7 @@
   "main": "index.js",
   "private": true,
   "dependencies": {
+    "axios": "^0.19.2",
     "bootstrap": "4.5.0",
     "chart.js": "2.9.3",
     "history": "4.10.1",
@@ -17,7 +18,8 @@
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.1",
-    "reactstrap": "8.4.1"
+    "reactstrap": "8.4.1",
+    "universal-cookie": "^4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
