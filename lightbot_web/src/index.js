@@ -19,10 +19,16 @@ const cookies = new Cookies()
 
 const hist = createBrowserHistory()
 
+// const App = () => {
+//   useEffect(() => {
+//     setCookie(cookies.get('token'))
+//     loadUser()
+//   })
+//   return (
+
+//   )
+// }
 ReactDOM.render(
-  // useEffect(() => {
-  //   setCookie(cookies.get('token'))
-  // }), gave error
   <Router history={hist}>
     <Switch>
       <Route path='/landing' render={(props) => <Landing {...props} />} />
