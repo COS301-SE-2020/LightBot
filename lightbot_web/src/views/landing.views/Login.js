@@ -1,5 +1,5 @@
 import React from 'react'
-import login from '../../actions/auth.js'
+// import login from '../../actions/auth.js'
 
 import {
   Button,
@@ -48,17 +48,20 @@ class Login extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     //API login(email, password)
-    this.props.history.push('/landing/login')
   }
 
   navRegister = () => {
-    this.props.history.push('/landing/register')
+    this.props.history.push('/register')
   }
   navRecovery = () => {
-    this.props.history.push('/landing/recovery')
+    this.props.history.push('/recovery')
   }
 
   render() {
+    // if(this.props.isAuthenticated)
+    // {
+    //   return <Redirect to='/home'/>
+    // }
     return (
       <>
         <div className='page-header clear-filter'>
@@ -174,11 +177,21 @@ class Login extends React.Component {
   }
 }
 
-export default Login
-
 const MyStyles = {
   textInputStyle: {
     color: 'white',
     opacity: '1',
   },
 }
+
+export default Login
+// Login.propTypes = {
+//   login: PropTypes.func.isRequired,
+//   isAuthenticated: PropTypes.bool,
+// }
+
+// const mapStateToProps = (state) => ({
+//   isAuthenticated: state.auth.isAuthenticated,
+// })
+
+// export default connect(mapStateToProps, { login })(Login)

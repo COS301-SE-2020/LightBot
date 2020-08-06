@@ -1,5 +1,8 @@
 import React from 'react'
-import register from '../../actions/auth.js'
+import { register } from '../../actions/auth'
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import {
   Button,
@@ -51,15 +54,27 @@ class Register extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    //API register(e.target.value)
-    this.props.history.push('/landing/login')
+    if(this.state.validate.nameState===this.state.validate.surnameState===this.state.validate.passwordState===this.state.validate.confirmPasswordState==='has-success')
+    {
+      const formData = {
+        User_name: this.state.name,
+        User_surname: this.state.surname,
+        User_email: this.state.email,
+        User_password: this.state.password,
+      }
+      register(formData)
+      this.props.history.push('/login')
+    }
+    else{
+      //alert here
+    }    
   }
 
   navLogin = () => {
-    this.props.history.push('/landing/login')
+    this.props.history.push('/login')
   }
   navRecovery = () => {
-    this.props.history.push('/landing/recovery')
+    this.props.history.push('/recovery')
   }
 
   validateName = (e) => {
@@ -119,6 +134,9 @@ class Register extends React.Component {
   }
 
   render() {
+    if (this.props.isAuthenticated) {
+      return <Redirect to='/home' />
+    }
     return (
       <>
         <div className='page-header clear-filter'>
@@ -368,11 +386,20 @@ class Register extends React.Component {
   }
 }
 
-export default Register
-
 const MyStyles = {
   textInputStyle: {
     color: 'white',
     opacity: '1',
   },
 }
+
+Register.propTypes = {
+  register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+}
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+})
+
+export default connect(mapStateToProps, { register })(Register)

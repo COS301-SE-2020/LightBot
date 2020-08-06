@@ -8,25 +8,25 @@ var landingRoutes = [
     path: "/login",
     name: "Login",
     component: Login,
-    layout: "/landing",
+    layout: "",
   },
   {
     path: "/register",
     name: "Register",
     component: Register,
-    layout: "/landing",
+    layout: "",
   },
   {
     path: "/reset",
     name: "Reset",
     component: Reset,
-    layout: "/landing",
+    layout: "",
   },
   {
     path: "/recovery",
     name: "Recovery",
     component: Recovery,
-    layout: "/landing",
+    layout: "",
   },
 ];
 export default landingRoutes;

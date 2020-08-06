@@ -84,4 +84,12 @@ router.get(
   require('../controllers/User.controller').returnUsers
 )
 
+// // @route     GET user/profile
+// // @desc      List User Route
+// // @access    Private
+router.get(
+  '/profile',
+  auth.Guard,
+  require('../controllers/User.controller').returnProfile
+)
 module.exports = router
