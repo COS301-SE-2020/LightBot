@@ -27,9 +27,12 @@
   overflow: hidden;
 
   & > .content {
-    margin-top: 12%;
-    text-align: center;
-    margin-bottom: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
 
   &.page-header-small {

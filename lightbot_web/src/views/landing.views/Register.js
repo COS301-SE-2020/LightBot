@@ -326,7 +326,7 @@ class Register extends React.Component {
                         block
                         className='btn-round'
                         color='primary'
-                        href='#pablo'
+                        href='#'
                         onClick={this.onSubmitHandler}
                         size='lg'
                       >
