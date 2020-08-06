@@ -14,8 +14,7 @@ api.interceptors.response.use(
   },
   (err) => {
     if (err.response.data.error.message === 'Authentication failed.') {
-      console.log("here")
-      //store.dispatch({ type: LOGOUT })
+      // store.dispatch({ type: LOGOUT })
     }
     return Promise.reject(err)
   }

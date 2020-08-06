@@ -1,5 +1,5 @@
 import React from 'react'
-import { login } from '../../actions/auth'
+import { loginUser } from '../../actions/auth'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -20,6 +20,7 @@ import {
   FormGroup,
   FormFeedback,
 } from 'reactstrap'
+import store from '../../store'
 
 class Login extends React.Component {
   constructor(props) {
@@ -56,7 +57,7 @@ class Login extends React.Component {
         User_email: this.state.email,
         User_password: this.state.password,
       }
-      login(formData)
+      store.dispatch(loginUser(formData))
     } else {
       //alert here
     }
@@ -250,7 +251,7 @@ const MyStyles = {
 }
 
 Login.propTypes = {
-  login: PropTypes.func.isRequired,
+  loginUser: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
 }
 
@@ -258,4 +259,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 })
 
-export default connect(mapStateToProps, { login })(Login)
+export default connect(mapStateToProps, { loginUser })(Login)

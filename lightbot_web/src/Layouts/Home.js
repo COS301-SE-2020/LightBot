@@ -5,6 +5,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 
 import Footer from "../components/Footer/Footer.js";
 import Sidebar from "../components/Sidebar/Sidebar.js";
+import PrivateRoute from '../routes/PrivateRoute'
 
 import routes from "../routes/homeRoutes.js";
 
@@ -46,8 +47,8 @@ class Home extends React.Component {
           <Switch>
             {routes.map((prop, key) => {
               return (
-                <Route
-                  path={prop.layout + prop.path}
+                <PrivateRoute
+                  exact path={prop.layout + prop.path}
                   component={prop.component}
                   key={key}
                 />

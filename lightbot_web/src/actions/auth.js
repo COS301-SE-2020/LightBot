@@ -50,7 +50,7 @@ export const register = (formData) => async (dispatch) => {
 }
 
 // // Login User
-export const login = (formData) => async (dispatch) => {
+export const loginUser = (formData) => async (dispatch) => {
   try {
     const res = await api.post('/user/login', formData)
 

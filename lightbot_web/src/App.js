@@ -34,7 +34,7 @@ const App = () => {
           <Route exact path='/register' component={Landing} />
           <Route exact path='/recovery' component={Landing} />
           <Route path='/reset' component={Landing} />
-          <Route exact path='/home' component={Home} />
+          <Route path='/home' component={Home} />
           <Route exact path='/404' component={ErrorPage} />
           <Redirect to='/404' />
         </Switch>
