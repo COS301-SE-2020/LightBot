@@ -1,5 +1,8 @@
 import React from 'react'
-// import login from '../../actions/auth.js'
+import { login } from '../../actions/auth'
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import {
   Button,
@@ -26,11 +29,9 @@ class Login extends React.Component {
       lastFocus: false,
       email: '',
       password: '',
-      confirm: '',
       validate: {
         emailState: '',
         passwordState: '',
-        confirmState: '',
       },
     }
     this.handleChange = this.handleChange.bind(this)
@@ -47,7 +48,18 @@ class Login extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    //API login(email, password)
+    if (
+      this.state.validate.emailState === 'has-success' &&
+      this.state.validate.passwordState === 'has-success'
+    ) {
+      const formData = {
+        User_email: this.state.email,
+        User_password: this.state.password,
+      }
+      login(formData)
+    } else {
+      //alert here
+    }
   }
 
   navRegister = () => {
@@ -57,11 +69,34 @@ class Login extends React.Component {
     this.props.history.push('/recovery')
   }
 
+  validateEmail = (e) => {
+    const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    const { validate } = this.state
+    if (regex.test(e.target.value)) {
+      validate.emailState = 'has-success'
+    } else {
+      validate.emailState = 'has-danger'
+    }
+    this.setState({ validate })
+  }
+
+  validatePassword = (e) => {
+    const regex = new RegExp(
+      '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})'
+    )
+    const { validate } = this.state
+    if (regex.test(e.target.value)) {
+      validate.passwordState = 'has-success'
+    } else {
+      validate.passwordState = 'has-danger'
+    }
+    this.setState({ validate })
+  }
+
   render() {
-    // if(this.props.isAuthenticated)
-    // {
-    //   return <Redirect to='/home'/>
-    // }
+    if (this.props.isAuthenticated) {
+      return <Redirect to='/home' />
+    }
     return (
       <>
         <div className='page-header clear-filter'>
@@ -84,24 +119,38 @@ class Login extends React.Component {
                         <InputGroup
                           className={
                             'no-border input-lg' +
-                            (this.firstFocus ? ' input-group-focus' : '')
+                            (this.lastFocus ? ' input-group-focus' : '')
                           }
                         >
                           <InputGroupAddon addonType='prepend'>
-                            <InputGroupText>
-                              <i
-                                style={MyStyles.textInputStyle}
-                                className='now-ui-icons ui-1_email-85'
-                              ></i>
+                            <InputGroupText style={MyStyles.textInputStyle}>
+                              <i className='now-ui-icons ui-1_email-85'></i>
                             </InputGroupText>
                           </InputGroupAddon>
                           <Input
-                            style={MyStyles.textInputStyle}
-                            placeholder='Email Adress...'
                             type='email'
-                            onFocus={() => this.setState({ firstFocus: true })}
+                            name='email'
+                            id='idEmail'
+                            placeholder='Email'
+                            value={this.state.email}
+                            valid={
+                              this.state.validate.emailState === 'has-success'
+                            }
+                            invalid={
+                              this.state.validate.emailState === 'has-danger'
+                            }
+                            onChange={(e) => {
+                              this.validateEmail(e)
+                              this.handleChange(e)
+                            }}
+                            onFocus={() => this.setState({ lastFocus: false })}
                             onBlur={() => this.setState({ firstFocus: false })}
-                          ></Input>
+                            style={MyStyles.textInputStyle}
+                            required
+                          />
+                          <FormFeedback>
+                            Please enter a valid email.
+                          </FormFeedback>
                         </InputGroup>
                       </FormGroup>
                       <FormGroup>
@@ -112,20 +161,36 @@ class Login extends React.Component {
                           }
                         >
                           <InputGroupAddon addonType='prepend'>
-                            <InputGroupText>
-                              <i
-                                style={MyStyles.textInputStyle}
-                                className='now-ui-icons objects_key-25'
-                              ></i>
+                            <InputGroupText style={MyStyles.textInputStyle}>
+                              <i className='now-ui-icons objects_key-25'></i>
                             </InputGroupText>
                           </InputGroupAddon>
                           <Input
-                            placeholder='Password...'
                             type='password'
-                            style={MyStyles.textInputStyle}
-                            onFocus={() => this.setState({ firstFocus: true })}
+                            name='password'
+                            id='idPassword'
+                            placeholder='Password'
+                            value={this.state.password}
+                            valid={
+                              this.state.validate.passwordState ===
+                              'has-success'
+                            }
+                            invalid={
+                              this.state.validate.passwordState === 'has-danger'
+                            }
+                            onChange={(e) => {
+                              this.validatePassword(e)
+                              this.handleChange(e)
+                            }}
+                            onFocus={() => this.setState({ lastFocus: false })}
                             onBlur={() => this.setState({ firstFocus: false })}
-                          ></Input>
+                            style={MyStyles.textInputStyle}
+                            required
+                          />
+                          <FormFeedback>
+                            Password must contain an uppercase character,
+                            lowercase character a number and a symbol.
+                          </FormFeedback>
                         </InputGroup>
                       </FormGroup>
                     </CardBody>
@@ -134,34 +199,34 @@ class Login extends React.Component {
                         block
                         className='btn-round'
                         color='primary'
-                        href='#pablo'
-                        onClick={(e) => e.preventDefault()}
+                        href='#'
+                        onClick={this.handleSubmit}
                         size='lg'
                       >
-                        Get Started
+                        Login
                       </Button>
-                      <br></br>
+                      <br />
                       <div className='pull-left'>
                         <h6>
                           <a
                             className='link'
-                            style={MyStyles.textInputStyle}
-                            href='#pablo'
+                            href='#'
                             onClick={this.navRegister}
+                            style={MyStyles.textInputStyle}
                           >
-                            Create Account
+                            Register
                           </a>
                         </h6>
                       </div>
                       <div className='pull-right'>
                         <h6>
                           <a
-                            className='link'
                             style={MyStyles.textInputStyle}
-                            href='#pablo'
+                            className='link'
+                            href='#'
                             onClick={this.navRecovery}
                           >
-                            Forgot Password?
+                            Forgot Pasword?
                           </a>
                         </h6>
                       </div>
@@ -184,14 +249,13 @@ const MyStyles = {
   },
 }
 
-export default Login
-// Login.propTypes = {
-//   login: PropTypes.func.isRequired,
-//   isAuthenticated: PropTypes.bool,
-// }
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+}
 
-// const mapStateToProps = (state) => ({
-//   isAuthenticated: state.auth.isAuthenticated,
-// })
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+})
 
-// export default connect(mapStateToProps, { login })(Login)
+export default connect(mapStateToProps, { login })(Login)

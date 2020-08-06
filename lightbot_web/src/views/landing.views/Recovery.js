@@ -1,4 +1,8 @@
 import React from 'react'
+import { recovery } from '../../actions/auth'
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import {
   Button,
@@ -13,112 +17,171 @@ import {
   InputGroup,
   Container,
   Col,
+  FormGroup,
+  FormFeedback,
 } from 'reactstrap'
-import Footer from '../../components/Footer/Footer'
 
-function Login() {
-  const [firstFocus, setFirstFocus] = React.useState(false)
-  const [lastFocus, setLastFocus] = React.useState(false)
-  return (
-    <>
-      <div className='page-header clear-filter'>
-        <div className='page-header-image'></div>
-        <div className='content'>
-          <Container>
-            <Col className='ml-auto mr-auto black-background' md='4'>
-              <Card className='card-login card-plain'>
-                <Form action='' className='form' method=''>
-                  <CardHeader className='text-center'>
-                    <div className='logo-container'>
-                      <img
-                        alt='...'
-                        src={require('../../assets/img/LightBot_Logo_White.png')}
-                      ></img>
-                    </div>
-                  </CardHeader>
-                  <CardBody>
-                    <InputGroup
-                      className={
-                        'no-border input-lg' +
-                        (firstFocus ? ' input-group-focus' : '')
-                      }
-                    >
-                      <InputGroupAddon addonType='prepend'>
-                        <InputGroupText>
-                          <i className='now-ui-icons users_circle-08'></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input
-                        placeholder='First Name...'
-                        type='text'
-                        onFocus={() => setFirstFocus(true)}
-                        onBlur={() => setFirstFocus(false)}
-                      ></Input>
-                    </InputGroup>
-                    <InputGroup
-                      className={
-                        'no-border input-lg' +
-                        (lastFocus ? ' input-group-focus' : '')
-                      }
-                    >
-                      <InputGroupAddon addonType='prepend'>
-                        <InputGroupText>
-                          <i className='now-ui-icons text_caps-small'></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input
-                        placeholder='Last Name...'
-                        type='text'
-                        onFocus={() => setLastFocus(true)}
-                        onBlur={() => setLastFocus(false)}
-                      ></Input>
-                    </InputGroup>
-                  </CardBody>
-                  <CardFooter className='text-center'>
-                    <Button
-                      block
-                      className='btn-round'
-                      color='primary'
-                      href='#pablo'
-                      onClick={(e) => e.preventDefault()}
-                      size='lg'
-                    >
-                      Get Started
-                    </Button>
-                    <div className='pull-left'>
-                      <h6>
-                        <a
-                          className='link'
-                          href='#pablo'
-                          onClick={(e) => e.preventDefault()}
+class Recovery extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      firstFocus: false,
+      lastFocus: false,
+      email: '',
+      validate: {
+        emailState: '',
+      },
+    }
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange = async (e) => {
+    const { target } = e
+    const value = target.type === 'checkbox' ? target.checked : target.value
+    const { name } = target
+    await this.setState({
+      [name]: value,
+    })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    if (this.state.validate.emailState === 'has-success') {
+      const formData = {
+        User_email: this.state.email,
+      }
+      recovery(formData)
+    } else {
+      //alert here
+    }
+  }
+
+  navLogin = () => {
+    this.props.history.push('/login')
+  }
+  navRegister = () => {
+    this.props.history.push('/register')
+  }
+
+  validateEmail = (e) => {
+    const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    const { validate } = this.state
+    if (regex.test(e.target.value)) {
+      validate.emailState = 'has-success'
+    } else {
+      validate.emailState = 'has-danger'
+    }
+    this.setState({ validate })
+  }
+
+  render() {
+    if (this.props.isAuthenticated) {
+      return <Redirect to='/home' />
+    }
+    return (
+      <>
+        <div className='page-header clear-filter'>
+          <div className='page-header-image'></div>
+          <div className='content'>
+            <Container>
+              <Col className='ml-auto mr-auto black-background' md='4'>
+                <Card className='card-login card-plain'>
+                  <Form action='' className='form' method=''>
+                    <CardHeader className='text-center'>
+                      <div className='logo-container'>
+                        <img
+                          alt='...'
+                          src={require('../../assets/img/LightBot_Logo_White.png')}
+                        ></img>
+                      </div>
+                    </CardHeader>
+                    <CardBody>
+                      <FormGroup>
+                        <InputGroup
+                          className={
+                            'no-border input-lg' +
+                            (this.lastFocus ? ' input-group-focus' : '')
+                          }
                         >
-                          Create Account
-                        </a>
-                      </h6>
-                    </div>
-                    <div className='pull-right'>
-                      <h6>
-                        <a
-                          className='link'
-                          href='#pablo'
-                          onClick={(e) => e.preventDefault()}
-                        >
-                          Need Help?
-                        </a>
-                      </h6>
-                    </div>
-                  </CardFooter>
-                </Form>
-              </Card>
-            </Col>
-          </Container>
+                          <InputGroupAddon addonType='prepend'>
+                            <InputGroupText style={MyStyles.textInputStyle}>
+                              <i className='now-ui-icons ui-1_email-85'></i>
+                            </InputGroupText>
+                          </InputGroupAddon>
+                          <Input
+                            type='email'
+                            name='email'
+                            id='idEmail'
+                            placeholder='Email'
+                            value={this.state.email}
+                            valid={
+                              this.state.validate.emailState === 'has-success'
+                            }
+                            invalid={
+                              this.state.validate.emailState === 'has-danger'
+                            }
+                            onChange={(e) => {
+                              this.validateEmail(e)
+                              this.handleChange(e)
+                            }}
+                            onFocus={() => this.setState({ lastFocus: false })}
+                            onBlur={() => this.setState({ firstFocus: false })}
+                            style={MyStyles.textInputStyle}
+                            required
+                          />
+                          <FormFeedback>
+                            Please enter a valid email.
+                          </FormFeedback>
+                        </InputGroup>
+                      </FormGroup>
+                    </CardBody>
+                    <CardFooter className='text-center'>
+                      <Button
+                        block
+                        className='btn-round'
+                        color='primary'
+                        href='#'
+                        onClick={this.handleSubmit}
+                        size='lg'
+                      >
+                        Submit
+                      </Button>
+                      <br />
+                      <div className='pull-left'>
+                        <h6>
+                          <a
+                            className='link'
+                            href='#'
+                            onClick={this.navLogin}
+                            style={MyStyles.textInputStyle}
+                          >
+                            Back to login
+                          </a>
+                        </h6>
+                      </div>
+                      <div className='pull-right'>
+                        <h6>
+                          <a
+                            style={MyStyles.textInputStyle}
+                            className='link'
+                            href='#'
+                            onClick={this.navRegister}
+                          >
+                            Register
+                          </a>
+                        </h6>
+                      </div>
+                    </CardFooter>
+                  </Form>
+                </Card>
+              </Col>
+            </Container>
+          </div>
         </div>
-      </div>
-    </>
-  )
+      </>
+    )
+  }
 }
-
-export default Login
 
 const MyStyles = {
   textInputStyle: {
@@ -126,3 +189,14 @@ const MyStyles = {
     opacity: '1',
   },
 }
+
+Recovery.propTypes = {
+  recovery: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+}
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+})
+
+export default connect(mapStateToProps, { recovery })(Recovery)

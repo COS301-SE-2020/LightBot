@@ -8,12 +8,16 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  RECOVERY_SUCCESS,
+  RECOVERY_FAIL,
+  RESET_SUCCESS,
+  RESET_FAIL,
 } from './types'
 
 // Load User
-export const loadUser = () => async (dispatch) => {
+export const getMe = () => async (dispatch) => {
   try {
-    const res = await api.get('/user/profile')
+    const res = await api.get('/user/me')
 
     dispatch({
       type: USER_LOADED,
@@ -28,6 +32,7 @@ export const loadUser = () => async (dispatch) => {
 
 // // Register User
 export const register = (formData) => async (dispatch) => {
+  console.log('Here')
   try {
     const res = await api.post('/user/register', formData)
 
@@ -35,7 +40,6 @@ export const register = (formData) => async (dispatch) => {
       type: REGISTER_SUCCESS,
       payload: res.data,
     })
-    dispatch(loadUser())
   } catch (err) {
     const errors = err.response.data.errors
 
@@ -46,30 +50,56 @@ export const register = (formData) => async (dispatch) => {
 }
 
 // // Login User
-// export const login = (email, password) => async (dispatch) => {
-//   const body = { email, password }
+export const login = (formData) => async (dispatch) => {
+  try {
+    const res = await api.post('/user/login', formData)
 
-//   try {
-//     const res = await api.post('/auth', body)
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: res.data,
+    })
+  } catch (err) {
+    const errors = err.response.data.errors
 
-//     dispatch({
-//       type: LOGIN_SUCCESS,
-//       payload: res.data,
-//     })
+    dispatch({
+      type: LOGIN_FAIL,
+    })
+  }
+}
 
-//     dispatch(loadUser())
-//   } catch (err) {
-//     const errors = err.response.data.errors
+export const reset = (formData, token) => async (dispatch) => {
+  try {
+    const res = await api.put('/user/reset-password/' + token, formData)
 
-//     // if (errors) {
-//     //   errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')))
-//     // }
+    dispatch({
+      type: RESET_SUCCESS,
+      payload: res.data,
+    })
+  } catch (err) {
+    const errors = err.response.data.errors
 
-//     dispatch({
-//       type: LOGIN_FAIL,
-//     })
-//   }
-// }
+    dispatch({
+      type: RESET_FAIL,
+    })
+  }
+}
+
+export const recovery = (formData) => async (dispatch) => {
+  try {
+    const res = await api.post('/user/recovery-password', formData)
+
+    dispatch({
+      type: RECOVERY_SUCCESS,
+      payload: res.data,
+    })
+  } catch (err) {
+    const errors = err.response.data.errors
+
+    dispatch({
+      type: RECOVERY_FAIL,
+    })
+  }
+}
 
 // // Logout
-// export const logout = async () => ({ type: LOGOUT })
+export const logout = async () => ({ type: LOGOUT })

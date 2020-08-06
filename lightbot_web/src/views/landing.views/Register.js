@@ -54,8 +54,13 @@ class Register extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    if(this.state.validate.nameState===this.state.validate.surnameState===this.state.validate.passwordState===this.state.validate.confirmPasswordState==='has-success')
-    {
+    if (
+      (this.state.validate.nameState &&
+        this.state.validate.surnameState &&
+        this.state.validate.emailState &&
+        this.state.validate.passwordState &&
+        this.state.validate.confirmPasswordState) === 'has-success'
+    ) {
       const formData = {
         User_name: this.state.name,
         User_surname: this.state.surname,
@@ -63,11 +68,10 @@ class Register extends React.Component {
         User_password: this.state.password,
       }
       register(formData)
-      this.props.history.push('/login')
-    }
-    else{
+      //this.props.history.push('/login')
+    } else {
       //alert here
-    }    
+    }
   }
 
   navLogin = () => {
@@ -194,150 +198,161 @@ class Register extends React.Component {
                           </FormFeedback>
                         </InputGroup>
                       </FormGroup>
-                      <InputGroup
-                        className={
-                          'no-border input-lg' +
-                          (this.lastFocus ? ' input-group-focus' : '')
-                        }
-                      >
-                        <InputGroupAddon addonType='prepend'>
-                          <InputGroupText style={MyStyles.textInputStyle}>
-                            <i className='now-ui-icons text_caps-small'></i>
-                          </InputGroupText>
-                        </InputGroupAddon>
-                        <Input
-                          type='text'
-                          name='surname'
-                          id='idSurname'
-                          placeholder='Surname'
-                          value={this.state.surname}
-                          valid={
-                            this.state.validate.surnameState === 'has-success'
+                      <FormGroup>
+                        <InputGroup
+                          className={
+                            'no-border input-lg' +
+                            (this.lastFocus ? ' input-group-focus' : '')
                           }
-                          invalid={
-                            this.state.validate.surnameState === 'has-danger'
+                        >
+                          <InputGroupAddon addonType='prepend'>
+                            <InputGroupText style={MyStyles.textInputStyle}>
+                              <i className='now-ui-icons text_caps-small'></i>
+                            </InputGroupText>
+                          </InputGroupAddon>
+                          <Input
+                            type='text'
+                            name='surname'
+                            id='idSurname'
+                            placeholder='Surname'
+                            value={this.state.surname}
+                            valid={
+                              this.state.validate.surnameState === 'has-success'
+                            }
+                            invalid={
+                              this.state.validate.surnameState === 'has-danger'
+                            }
+                            onChange={(e) => {
+                              this.validateSurname(e)
+                              this.handleChange(e)
+                            }}
+                            onFocus={() => this.setState({ lastFocus: false })}
+                            onBlur={() => this.setState({ firstFocus: false })}
+                            style={MyStyles.textInputStyle}
+                            required
+                          />
+                          <FormFeedback>
+                            Name should consist of 2 or more alphabetical
+                            characters.
+                          </FormFeedback>
+                        </InputGroup>
+                      </FormGroup>
+                      <FormGroup>
+                        <InputGroup
+                          className={
+                            'no-border input-lg' +
+                            (this.lastFocus ? ' input-group-focus' : '')
                           }
-                          onChange={(e) => {
-                            this.validateSurname(e)
-                            this.handleChange(e)
-                          }}
-                          onFocus={() => this.setState({ lastFocus: false })}
-                          onBlur={() => this.setState({ firstFocus: false })}
-                          style={MyStyles.textInputStyle}
-                          required
-                        />
-                        <FormFeedback>
-                          Name should consist of 2 or more alphabetical
-                          characters.
-                        </FormFeedback>
-                      </InputGroup>
-                      <InputGroup
-                        className={
-                          'no-border input-lg' +
-                          (this.lastFocus ? ' input-group-focus' : '')
-                        }
-                      >
-                        <InputGroupAddon addonType='prepend'>
-                          <InputGroupText style={MyStyles.textInputStyle}>
-                            <i className='now-ui-icons ui-1_email-85'></i>
-                          </InputGroupText>
-                        </InputGroupAddon>
-                        <Input
-                          type='email'
-                          name='email'
-                          id='idEmail'
-                          placeholder='Email'
-                          value={this.state.email}
-                          valid={
-                            this.state.validate.emailState === 'has-success'
+                        >
+                          <InputGroupAddon addonType='prepend'>
+                            <InputGroupText style={MyStyles.textInputStyle}>
+                              <i className='now-ui-icons ui-1_email-85'></i>
+                            </InputGroupText>
+                          </InputGroupAddon>
+                          <Input
+                            type='email'
+                            name='email'
+                            id='idEmail'
+                            placeholder='Email'
+                            value={this.state.email}
+                            valid={
+                              this.state.validate.emailState === 'has-success'
+                            }
+                            invalid={
+                              this.state.validate.emailState === 'has-danger'
+                            }
+                            onChange={(e) => {
+                              this.validateEmail(e)
+                              this.handleChange(e)
+                            }}
+                            onFocus={() => this.setState({ lastFocus: false })}
+                            onBlur={() => this.setState({ firstFocus: false })}
+                            style={MyStyles.textInputStyle}
+                            required
+                          />
+                          <FormFeedback>
+                            Please enter a valid email.
+                          </FormFeedback>
+                        </InputGroup>
+                      </FormGroup>
+                      <FormGroup>
+                        <InputGroup
+                          className={
+                            'no-border input-lg' +
+                            (this.lastFocus ? ' input-group-focus' : '')
                           }
-                          invalid={
-                            this.state.validate.emailState === 'has-danger'
+                        >
+                          <InputGroupAddon addonType='prepend'>
+                            <InputGroupText style={MyStyles.textInputStyle}>
+                              <i className='now-ui-icons objects_key-25'></i>
+                            </InputGroupText>
+                          </InputGroupAddon>
+                          <Input
+                            type='password'
+                            name='password'
+                            id='idPassword'
+                            placeholder='Password'
+                            value={this.state.password}
+                            valid={
+                              this.state.validate.passwordState ===
+                              'has-success'
+                            }
+                            invalid={
+                              this.state.validate.passwordState === 'has-danger'
+                            }
+                            onChange={(e) => {
+                              this.validatePassword(e)
+                              this.handleChange(e)
+                            }}
+                            onFocus={() => this.setState({ lastFocus: false })}
+                            onBlur={() => this.setState({ firstFocus: false })}
+                            style={MyStyles.textInputStyle}
+                            required
+                          />
+                          <FormFeedback>
+                            Password must contain an uppercase character,
+                            lowercase character a number and a symbol.
+                          </FormFeedback>
+                        </InputGroup>
+                      </FormGroup>
+                      <FormGroup>
+                        <InputGroup
+                          className={
+                            'no-border input-lg' +
+                            (this.lastFocus ? ' input-group-focus' : '')
                           }
-                          onChange={(e) => {
-                            this.validateEmail(e)
-                            this.handleChange(e)
-                          }}
-                          onFocus={() => this.setState({ lastFocus: false })}
-                          onBlur={() => this.setState({ firstFocus: false })}
-                          style={MyStyles.textInputStyle}
-                          required
-                        />
-                        <FormFeedback>Please enter a valid email.</FormFeedback>
-                      </InputGroup>
-                      <InputGroup
-                        className={
-                          'no-border input-lg' +
-                          (this.lastFocus ? ' input-group-focus' : '')
-                        }
-                      >
-                        <InputGroupAddon addonType='prepend'>
-                          <InputGroupText style={MyStyles.textInputStyle}>
-                            <i className='now-ui-icons objects_key-25'></i>
-                          </InputGroupText>
-                        </InputGroupAddon>
-                        <Input
-                          type='password'
-                          name='password'
-                          id='idPassword'
-                          placeholder='Password'
-                          value={this.state.password}
-                          valid={
-                            this.state.validate.passwordState === 'has-success'
-                          }
-                          invalid={
-                            this.state.validate.passwordState === 'has-danger'
-                          }
-                          onChange={(e) => {
-                            this.validatePassword(e)
-                            this.handleChange(e)
-                          }}
-                          onFocus={() => this.setState({ lastFocus: false })}
-                          onBlur={() => this.setState({ firstFocus: false })}
-                          style={MyStyles.textInputStyle}
-                          required
-                        />
-                        <FormFeedback>
-                          Password must contain an uppercase character,
-                          lowercase character a number and a symbol.
-                        </FormFeedback>
-                      </InputGroup>
-                      <InputGroup
-                        className={
-                          'no-border input-lg' +
-                          (this.lastFocus ? ' input-group-focus' : '')
-                        }
-                      >
-                        <InputGroupAddon addonType='prepend'>
-                          <InputGroupText style={MyStyles.textInputStyle}>
-                            <i className='now-ui-icons objects_key-25'></i>
-                          </InputGroupText>
-                        </InputGroupAddon>
-                        <Input
-                          type='password'
-                          name='confirmpassword'
-                          id='idPassword2'
-                          placeholder='Confirm Password'
-                          value={this.state.confirmpassword}
-                          valid={
-                            this.state.validate.confirmPasswordState ===
-                            'has-success'
-                          }
-                          invalid={
-                            this.state.validate.confirmPasswordState ===
-                            'has-danger'
-                          }
-                          onChange={(e) => {
-                            this.validatePasswordMatch(e)
-                            this.handleChange(e)
-                          }}
-                          onFocus={() => this.setState({ lastFocus: false })}
-                          onBlur={() => this.setState({ firstFocus: false })}
-                          style={MyStyles.textInputStyle}
-                          required
-                        />
-                        <FormFeedback>Passwords do not match.</FormFeedback>
-                      </InputGroup>
+                        >
+                          <InputGroupAddon addonType='prepend'>
+                            <InputGroupText style={MyStyles.textInputStyle}>
+                              <i className='now-ui-icons objects_key-25'></i>
+                            </InputGroupText>
+                          </InputGroupAddon>
+                          <Input
+                            type='password'
+                            name='confirmpassword'
+                            id='idPassword2'
+                            placeholder='Confirm Password'
+                            value={this.state.confirmpassword}
+                            valid={
+                              this.state.validate.confirmPasswordState ===
+                              'has-success'
+                            }
+                            invalid={
+                              this.state.validate.confirmPasswordState ===
+                              'has-danger'
+                            }
+                            onChange={(e) => {
+                              this.validatePasswordMatch(e)
+                              this.handleChange(e)
+                            }}
+                            onFocus={() => this.setState({ lastFocus: false })}
+                            onBlur={() => this.setState({ firstFocus: false })}
+                            style={MyStyles.textInputStyle}
+                            required
+                          />
+                          <FormFeedback>Passwords do not match.</FormFeedback>
+                        </InputGroup>
+                      </FormGroup>
                     </CardBody>
                     <CardFooter className='text-center'>
                       <Button
@@ -345,11 +360,12 @@ class Register extends React.Component {
                         className='btn-round'
                         color='primary'
                         href='#'
-                        onClick={this.onSubmitHandler}
+                        onClick={this.handleSubmit}
                         size='lg'
                       >
-                        Get Started
+                        Register
                       </Button>
+                      <br />
                       <div className='pull-left'>
                         <h6>
                           <a

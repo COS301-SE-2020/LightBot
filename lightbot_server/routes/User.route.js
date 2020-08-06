@@ -88,7 +88,7 @@ router.get(
 // // @desc      List User Route
 // // @access    Private
 router.get(
-  '/profile',
+  '/me',
   auth.Guard,
   require('../controllers/User.controller').returnProfile
 )

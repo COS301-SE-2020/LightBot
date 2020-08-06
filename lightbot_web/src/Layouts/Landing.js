@@ -10,13 +10,11 @@ import Login from '../views/landing.views/Login'
 
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
- 
-class Landing extends React.Component {
 
+class Landing extends React.Component {
   render() {
-    if(this.props.isAuthenticated)
-    {
-      return <Redirect to='/home'/>
+    if (this.props.isAuthenticated) {
+      return <Redirect to='/home' />
     }
     return (
       <>
@@ -24,14 +22,15 @@ class Landing extends React.Component {
           {routes.map((prop, key) => {
             return (
               <Route
-                exact path={prop.layout + prop.path}
+                exact
+                path={prop.layout + prop.path}
                 component={prop.component}
                 key={key}
               />
             )
           })}
-          <Route exact path='/' component={Login}/>
-          <Redirect from='/' to='/404'/>
+          <Route path='/reset' component={routes[2].component} />
+          <Route component={Login} />
         </Switch>
         <Footer fluid />
       </>
@@ -40,11 +39,11 @@ class Landing extends React.Component {
 }
 
 Landing.propTypes = {
-  isAuthenticated: PropTypes.bool
-};
+  isAuthenticated: PropTypes.bool,
+}
 
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
-});
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+})
 
-export default connect(mapStateToProps)(Landing);
+export default connect(mapStateToProps)(Landing)

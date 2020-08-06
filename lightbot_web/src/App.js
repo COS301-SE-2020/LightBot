@@ -10,7 +10,7 @@ import Home from './layouts/Home.js'
 import Landing from './layouts/Landing.js'
 import { Provider } from 'react-redux'
 import store from './store'
-import { loadUser } from './actions/auth'
+import { getMe } from './actions/auth'
 import setCookie from './services/setCookie.js'
 import Cookies from 'universal-cookie'
 import ErrorPage from './views/landing.views/ErrorPage'
@@ -22,16 +22,20 @@ const hist = createBrowserHistory()
 const App = () => {
   useEffect(() => {
     setCookie(cookies.get('token'))
-    store.dispatch(loadUser())
+    store.dispatch(getMe())
   }, [])
 
   return (
     <Provider store={store}>
       <Router history={hist}>
         <Switch>
-          <Route path='/home' component={Home} />
-          <Route path='/' component={Landing} />
-          <Route path='/404' component={ErrorPage} />
+          <Route exact path='/' component={Landing} />
+          <Route exact path='/login' component={Landing} />
+          <Route exact path='/register' component={Landing} />
+          <Route exact path='/recovery' component={Landing} />
+          <Route path='/reset' component={Landing} />
+          <Route exact path='/home' component={Home} />
+          <Route exact path='/404' component={ErrorPage} />
           <Redirect to='/404' />
         </Switch>
       </Router>
