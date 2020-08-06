@@ -21,16 +21,10 @@ function Login() {
   return (
     <>
       <div className='page-header clear-filter'>
-        <div
-          className='page-header-image'
-          style={{
-            backgroundImage:
-              'url(' + require('../../assets/img/login.png') + ')',
-          }}
-        ></div>
+        <div className='page-header-image'></div>
         <div className='content'>
           <Container>
-            <Col className='ml-auto mr-auto' md='4' style={MyStyles.loginPanel}>
+            <Col className='ml-auto mr-auto black-background' md='4'>
               <Card className='card-login card-plain'>
                 <Form action='' className='form' method=''>
                   <CardHeader className='text-center'>
@@ -126,9 +120,6 @@ function Login() {
 export default Login
 
 const MyStyles = {
-  loginPanel: {
-    backgroundColor: 'rgba(2,2,2,0.2)',
-  },
   textInputStyle: {
     color: 'white',
     opacity: '1',
