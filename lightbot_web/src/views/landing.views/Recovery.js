@@ -20,6 +20,7 @@ import {
   FormGroup,
   FormFeedback,
 } from 'reactstrap'
+import store from '../../store'
 
 class Recovery extends React.Component {
   constructor(props) {
@@ -50,7 +51,8 @@ class Recovery extends React.Component {
       const formData = {
         User_email: this.state.email,
       }
-      recovery(formData)
+      store.dispatch(recovery(formData))
+      this.props.history.push('/login')
     } else {
       //alert here
     }

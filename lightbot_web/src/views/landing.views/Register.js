@@ -20,6 +20,7 @@ import {
   FormGroup,
   FormFeedback,
 } from 'reactstrap'
+import store from '../../store'
 
 class Register extends React.Component {
   constructor(props) {
@@ -67,8 +68,7 @@ class Register extends React.Component {
         User_email: this.state.email,
         User_password: this.state.password,
       }
-      register(formData)
-      //this.props.history.push('/login')
+      store.dispatch(register(formData))
     } else {
       //alert here
     }

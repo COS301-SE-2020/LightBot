@@ -20,6 +20,7 @@ import {
   FormGroup,
   FormFeedback,
 } from 'reactstrap'
+import store from '../../store'
 //Token for reset
 class Reset extends React.Component {
   constructor(props) {
@@ -57,7 +58,7 @@ class Reset extends React.Component {
       const formData = {
         User_password: this.state.password,
       }
-      reset(formData, this.state.token)
+      store.dispatch(reset(formData, this.state.token))
       this.props.history.push('/login')
     } else {
       //alert here

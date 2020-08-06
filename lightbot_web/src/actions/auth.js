@@ -32,7 +32,7 @@ export const getMe = () => async (dispatch) => {
 
 // // Register User
 export const register = (formData) => async (dispatch) => {
-  console.log('Here')
+  console.log('register function Here')
   try {
     const res = await api.post('/user/register', formData)
 
