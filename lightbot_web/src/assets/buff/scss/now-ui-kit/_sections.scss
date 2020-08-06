@@ -19,7 +19,7 @@
 }
 
 .page-header {
-  min-height: 100vh;
+  min-height: 90vh;
   max-height: 999px;
   padding: 0;
   color: $white-color;
@@ -48,7 +48,7 @@
   }
 
   .page-header-image {
-    position: absolute;
+    position: fixed;
     background-size: cover;
     background-position: center center;
     width: 100%;
