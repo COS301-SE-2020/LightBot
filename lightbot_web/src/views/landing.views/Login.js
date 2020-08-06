@@ -147,6 +147,7 @@ class Login extends React.Component {
                       >
                         Get Started
                       </Button>
+                      <br></br>
                       <div className='pull-left'>
                         <h6>
                           <a
