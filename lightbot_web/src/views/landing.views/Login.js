@@ -3,7 +3,7 @@ import { loginUser } from '../../actions/auth'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import NotificationAlert from "react-notification-alert";
+import NotificationAlert from 'react-notification-alert'
 
 import {
   Alert,
@@ -22,6 +22,7 @@ import {
   FormGroup,
   FormFeedback,
 } from 'reactstrap'
+import store from '../../store'
 
 class Login extends React.Component {
   constructor(props) {
@@ -37,30 +38,27 @@ class Login extends React.Component {
         passwordState: '',
       },
     }
-    this.onDismiss = this.onDismiss.bind(this);
-    this.notify = this.notify.bind(this);
+    this.onDismiss = this.onDismiss.bind(this)
+    this.notify = this.notify.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
 
   onDismiss() {}
   notify(Message) {
-    var options = {};
+    var options = {}
     options = {
-      place: "tc",
+      place: 'tc',
       message: (
         <div>
-          <div>
-            {Message}
-          </div>
+          <div>{Message}</div>
         </div>
       ),
-      type: "danger",
-      icon: "now-ui-icons ui-1_bell-53",
+      type: 'danger',
+      icon: 'now-ui-icons ui-1_bell-53',
       autoDismiss: 7,
-    };
-    this.refs.notificationAlert.notificationAlert(options);
+    }
+    this.refs.notificationAlert.notificationAlert(options)
   }
-
 
   handleChange = async (e) => {
     const { target } = e
@@ -71,7 +69,7 @@ class Login extends React.Component {
     })
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault()
     if (
       this.state.validate.emailState === 'has-success' &&
@@ -81,14 +79,14 @@ class Login extends React.Component {
         User_email: this.state.email,
         User_password: this.state.password,
       }
-      this.props.loginUser(formData)
-      
-      console.log(this.props.message)
-      if(!this.props.isAuthenticated){
-        this.notify(this.props.message)
-      }
+      try {
+        await this.props.loginUser(formData)
+        if (!this.props.isAuthenticated) {
+          this.notify(this.props.message)
+        }
+      } catch (err) {}
     } else {
-      this.notify("Errors in input fields, please fill in again and retry")
+      this.notify('Errors in input fields, please fill in again and retry')
     }
   }
 
@@ -129,11 +127,11 @@ class Login extends React.Component {
     }
     return (
       <>
-      <NotificationAlert ref="notificationAlert" />
+        <NotificationAlert ref='notificationAlert' />
         <div className='page-header clear-filter'>
           <div className='page-header-image'></div>
           <div className='content'>
-          <NotificationAlert ref="notificationAlert" />
+            <NotificationAlert ref='notificationAlert' />
             <Container>
               <Col className='ml-auto mr-auto black-background' md='4'>
                 <Card className='card-login card-plain'>
@@ -284,12 +282,12 @@ const MyStyles = {
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
-  message: PropTypes.string
+  message: PropTypes.string,
 }
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  message: state.auth.message
+  message: state.auth.message,
 })
 
 export default connect(mapStateToProps, { loginUser })(Login)
