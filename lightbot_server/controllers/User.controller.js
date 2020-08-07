@@ -251,4 +251,24 @@ module.exports = {
       )
     )
   }),
+  returnProfile: asyncHandler(async (req, res, next) => {
+    const { User_id, User_email } = req.User_data
+    let existing
+    try {
+      existing = await User.findOne({ User_email: User_email })
+    } catch (err) {
+      return next(
+        new ErrorResponse('Something went wrong could not get user profile.')
+      )
+    }
+    const token = req.headers.authorization.split(' ')[1]
+    const data = {
+      User_name: existing.User_name,
+      User_surname: existing.User_surname,
+      User_state: existing.User_state,
+      User_role: existing.User_role,
+      Auth_key: token,
+    }
+    res.json(new SuccessResponse('Succesfully retrieved user profile.', data))
+  }),
 }
