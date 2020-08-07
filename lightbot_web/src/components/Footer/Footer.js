@@ -38,7 +38,8 @@ class Footer extends React.Component {
             </ul>
           </nav>
           <div className='copyright'>
-            &copy; {1900 + new Date().getYear()}, Brought to you by{' '}
+            &copy; {1900 + new Date().getYear()} All Rights Reserved. Brought to
+            you By{' '}
             <a
               href='https://www.creative-tim.com?ref=nudr-footer'
               target='_blank'
@@ -46,7 +47,14 @@ class Footer extends React.Component {
             >
               Gradient
             </a>
-            .
+            In Collaberation with
+            <a
+              href='https://www.5dt.com/'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              5th Dimension Technologies
+            </a>
             <img
               className='footerLogo'
               alt='...'
