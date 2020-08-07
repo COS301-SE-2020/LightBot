@@ -3,6 +3,7 @@ import { recovery } from '../../actions/auth'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import NotificationAlert from 'react-notification-alert'
 
 import {
   Button,
@@ -20,12 +21,12 @@ import {
   FormGroup,
   FormFeedback,
 } from 'reactstrap'
-import store from '../../store'
 
 class Recovery extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      visible: true,
       firstFocus: false,
       lastFocus: false,
       email: '',
@@ -33,7 +34,26 @@ class Recovery extends React.Component {
         emailState: '',
       },
     }
+    this.onDismiss = this.onDismiss.bind(this)
+    this.notify = this.notify.bind(this)
     this.handleChange = this.handleChange.bind(this)
+  }
+
+  onDismiss() {}
+  notify(Message,type) {
+    var options = {}
+    options = {
+      place: 'tc',
+      message: (
+        <div>
+          <div>{Message}</div>
+        </div>
+      ),
+      type: type,
+      icon: 'now-ui-icons ui-1_bell-53',
+      autoDismiss: 7,
+    }
+    this.refs.notificationAlert.notificationAlert(options)
   }
 
   handleChange = async (e) => {
@@ -45,16 +65,23 @@ class Recovery extends React.Component {
     })
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault()
     if (this.state.validate.emailState === 'has-success') {
       const formData = {
         User_email: this.state.email,
       }
-      store.dispatch(recovery(formData))
-      this.props.history.push('/login')
+      try {
+        await this.props.recovery(formData)
+        if (this.props.message.status>299) {
+          this.notify(this.props.message.msg,'danger')
+        }
+        else{
+          this.notify(this.props.message.msg,'success')
+        }
+      } catch (err) {}
     } else {
-      //alert here
+      this.notify('Errors in input fields, please fill in again and retry','danger')
     }
   }
 
@@ -82,6 +109,7 @@ class Recovery extends React.Component {
     }
     return (
       <>
+      <NotificationAlert ref='notificationAlert' />
         <div className='page-header clear-filter'>
           <div className='page-header-image'></div>
           <div className='content'>
@@ -195,10 +223,12 @@ const MyStyles = {
 Recovery.propTypes = {
   recovery: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
+  message: PropTypes.object
 }
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  message: state.auth.message
 })
 
 export default connect(mapStateToProps, { recovery })(Recovery)

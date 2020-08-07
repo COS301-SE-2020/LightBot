@@ -7,6 +7,8 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   ACCOUNT_DELETED,
+  RECOVERY_SUCCESS,
+  RECOVERY_FAIL,
 } from '../actions/types'
 
 import cookies from 'universal-cookie'
@@ -41,7 +43,7 @@ export default function (state = initialState, action) {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        message: payload.message,
+        message: {status: payload.status, msg: payload.message},
         isAuthenticated: true,
         loading: false,
         user: payload.data,
@@ -50,7 +52,7 @@ export default function (state = initialState, action) {
     case LOGIN_FAIL:
       return {
         ...state,
-        message: payload.message,
+        message: {status: payload.status, msg: payload.message},
         isAuthenticated: false,
         loading: false,
       }
@@ -65,7 +67,7 @@ export default function (state = initialState, action) {
     case AUTH_ERROR:
       return {
         ...state,
-        payload: payload,
+        message: {status: payload.status, msg: payload.message},
         isAuthenticated: false,
         loading: false,
       }
@@ -76,6 +78,20 @@ export default function (state = initialState, action) {
         isAuthenticated: false,
         loading: false,
         user: null,
+      }
+    case RECOVERY_SUCCESS:
+      return {
+        ...state,
+        message: {status: payload.status, msg: payload.message},
+        isAuthenticated: false,
+        loading: false,
+      }
+    case RECOVERY_FAIL:
+      return {
+        ...state,
+        message: {status: payload.status, msg: payload.message},
+        isAuthenticated: false,
+        loading: false,
       }
     default:
       return state

@@ -6,7 +6,6 @@ import PropTypes from 'prop-types'
 import NotificationAlert from 'react-notification-alert'
 
 import {
-  Alert,
   Button,
   Card,
   CardHeader,
@@ -22,7 +21,6 @@ import {
   FormGroup,
   FormFeedback,
 } from 'reactstrap'
-import store from '../../store'
 
 class Login extends React.Component {
   constructor(props) {
@@ -81,8 +79,8 @@ class Login extends React.Component {
       }
       try {
         await this.props.loginUser(formData)
-        if (!this.props.isAuthenticated) {
-          this.notify(this.props.message)
+        if (this.props.message.status>299) {
+          this.notify(this.props.message.msg)
         }
       } catch (err) {}
     } else {

@@ -24,9 +24,12 @@ export const getMe = () => async (dispatch) => {
       payload: res.data,
     })
   } catch (err) {
+    let x
+    if (err.response) x = err.response.data
+    else x = { status: 500, message: 'Internal Server Error' }
     dispatch({
       type: AUTH_ERROR,
-      payload: err.response.data.error,
+      payload: x,
     })
   }
 }
@@ -86,17 +89,15 @@ export const reset = (formData, token) => async (dispatch) => {
 
 export const recovery = (formData) => async (dispatch) => {
   try {
-    const res = await api.post('/user/recovery-password', formData)
-
+    const res = await api.post('/user/recover-password', formData)
     dispatch({
       type: RECOVERY_SUCCESS,
-      payload: res.data,
+      payload: res.data.success,
     })
   } catch (err) {
-    const errors = err.response.data.errors
-
     dispatch({
       type: RECOVERY_FAIL,
+      payload: err.response.data.error,
     })
   }
 }
