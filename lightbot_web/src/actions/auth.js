@@ -36,19 +36,17 @@ export const getMe = () => async (dispatch) => {
 
 // // Register User
 export const register = (formData) => async (dispatch) => {
-  console.log('register function Here')
   try {
     const res = await api.post('/user/register', formData)
 
     dispatch({
       type: REGISTER_SUCCESS,
-      payload: res.data,
+      payload: res.data.success,
     })
   } catch (err) {
-    const errors = err.response.data.errors
-
     dispatch({
       type: REGISTER_FAIL,
+      payload: err.response.data.error,
     })
   }
 }
@@ -73,16 +71,14 @@ export const loginUser = (formData) => async (dispatch) => {
 export const reset = (formData, token) => async (dispatch) => {
   try {
     const res = await api.put('/user/reset-password/' + token, formData)
-
     dispatch({
       type: RESET_SUCCESS,
-      payload: res.data,
+      payload: res.data.success,
     })
   } catch (err) {
-    const errors = err.response.data.errors
-
     dispatch({
       type: RESET_FAIL,
+      payload: err.response.data.error,
     })
   }
 }

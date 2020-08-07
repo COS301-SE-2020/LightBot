@@ -10,7 +10,6 @@ const crypto = require('crypto')
 SALT_WORK_FACTOR = 12
 
 const reset_tok_list = new Array()
-let count = -1
 
 module.exports = {
   registerUser: asyncHandler(async (req, res, next) => {
@@ -185,7 +184,7 @@ module.exports = {
     }
     const build = {
       expiry: Date.now() + 10 * 60 * 1000,
-      email: User_email,
+      User_email: User_email,
       hash: crypto
         .createHash('sha256')
         .update(crypto.randomBytes(20).toString('hex'))
@@ -220,12 +219,15 @@ module.exports = {
 
   resetUserPass: asyncHandler(async (req, res, next) => {
     const validate = req.params.passresetid
+
     const { User_password } = req.body
     let build = null
     reset_tok_list.forEach((element) => {
-      if (element.hash === hash) build = element
+      if (element.hash === validate) build = element
     })
-    if (!build) res.json(new BadRequest('Invalid reset token.'))
+    if (!build) {
+      return next(new BadRequest('Invalid reset token.'))
+    }
     const { User_email } = build
 
     let existing
@@ -236,7 +238,6 @@ module.exports = {
         new ErrorResponse('Something went wrong could not update password.')
       )
     }
-
     try {
       const salt = await Bcrypt.genSalt(SALT_WORK_FACTOR)
       existing.User_password = await Bcrypt.hash(User_password, salt)

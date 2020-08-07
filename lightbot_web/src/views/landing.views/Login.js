@@ -79,7 +79,7 @@ class Login extends React.Component {
       }
       try {
         await this.props.loginUser(formData)
-        if (this.props.message.status>299) {
+        if (this.props.message.status > 299) {
           this.notify(this.props.message.msg)
         }
       } catch (err) {}
@@ -129,7 +129,6 @@ class Login extends React.Component {
         <div className='page-header clear-filter'>
           <div className='page-header-image'></div>
           <div className='content'>
-            <NotificationAlert ref='notificationAlert' />
             <Container>
               <Col className='ml-auto mr-auto black-background' md='4'>
                 <Card className='card-login card-plain'>
@@ -280,7 +279,7 @@ const MyStyles = {
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
-  message: PropTypes.string,
+  message: PropTypes.object,
 }
 
 const mapStateToProps = (state) => ({

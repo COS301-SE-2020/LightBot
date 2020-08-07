@@ -9,6 +9,8 @@ import {
   ACCOUNT_DELETED,
   RECOVERY_SUCCESS,
   RECOVERY_FAIL,
+  RESET_SUCCESS,
+  RESET_FAIL,
 } from '../actions/types'
 
 import cookies from 'universal-cookie'
@@ -36,14 +38,21 @@ export default function (state = initialState, action) {
     case REGISTER_SUCCESS:
       return {
         ...state,
-        ...payload,
-        isAuthenticated: true,
+        message: { status: payload.status, msg: payload.message },
+        isAuthenticated: false,
+        loading: false,
+      }
+    case REGISTER_FAIL:
+      return {
+        ...state,
+        message: { status: payload.status, msg: payload.message },
+        isAuthenticated: false,
         loading: false,
       }
     case LOGIN_SUCCESS:
       return {
         ...state,
-        message: {status: payload.status, msg: payload.message},
+        message: { status: payload.status, msg: payload.message },
         isAuthenticated: true,
         loading: false,
         user: payload.data,
@@ -52,7 +61,7 @@ export default function (state = initialState, action) {
     case LOGIN_FAIL:
       return {
         ...state,
-        message: {status: payload.status, msg: payload.message},
+        message: { status: payload.status, msg: payload.message },
         isAuthenticated: false,
         loading: false,
       }
@@ -67,7 +76,7 @@ export default function (state = initialState, action) {
     case AUTH_ERROR:
       return {
         ...state,
-        message: {status: payload.status, msg: payload.message},
+        message: { status: payload.status, msg: payload.message },
         isAuthenticated: false,
         loading: false,
       }
@@ -82,14 +91,28 @@ export default function (state = initialState, action) {
     case RECOVERY_SUCCESS:
       return {
         ...state,
-        message: {status: payload.status, msg: payload.message},
+        message: { status: payload.status, msg: payload.message },
         isAuthenticated: false,
         loading: false,
       }
     case RECOVERY_FAIL:
       return {
         ...state,
-        message: {status: payload.status, msg: payload.message},
+        message: { status: payload.status, msg: payload.message },
+        isAuthenticated: false,
+        loading: false,
+      }
+    case RESET_SUCCESS:
+      return {
+        ...state,
+        message: { status: payload.status, msg: payload.message },
+        isAuthenticated: false,
+        loading: false,
+      }
+    case RESET_FAIL:
+      return {
+        ...state,
+        message: { status: payload.status, msg: payload.message },
         isAuthenticated: false,
         loading: false,
       }
