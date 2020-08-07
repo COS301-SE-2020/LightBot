@@ -4,12 +4,12 @@ import {
   USER_LOADED,
   AUTH_ERROR,
   LOGIN_SUCCESS,
-  //LOGIN_FAIL,
+  LOGIN_FAIL,
   LOGOUT,
   ACCOUNT_DELETED,
 } from '../actions/types'
-import cookies from 'universal-cookie'
 
+import cookies from 'universal-cookie'
 const cookie = new cookies()
 
 const initialState = {
@@ -17,10 +17,11 @@ const initialState = {
   isAuthenticated: null,
   loading: true,
   user: null,
+  message: null,
 }
 
 export default function (state = initialState, action) {
-  const { type, payload } = action;
+  const { type, payload } = action
 
   switch (type) {
     case USER_LOADED:
@@ -28,40 +29,55 @@ export default function (state = initialState, action) {
         ...state,
         isAuthenticated: true,
         loading: false,
-        user: payload
-      };
+        user: payload,
+      }
     case REGISTER_SUCCESS:
       return {
         ...state,
         ...payload,
         isAuthenticated: true,
-        loading: false
-      };
+        loading: false,
+      }
     case LOGIN_SUCCESS:
       return {
         ...state,
-        ...payload,
+        message: payload.message,
         isAuthenticated: true,
-        loading: false
-      };
+        loading: false,
+        user: payload.data,
+        token: payload.data.Auth_key,
+      }
+    case LOGIN_FAIL:
+      return {
+        ...state,
+        message: payload.message,
+        isAuthenticated: false,
+        loading: false,
+      }
     case ACCOUNT_DELETED:
       return {
         ...state,
         token: null,
         isAuthenticated: false,
         loading: false,
-        user: null
-      };
+        user: null,
+      }
     case AUTH_ERROR:
+      return {
+        ...state,
+        payload: payload,
+        isAuthenticated: false,
+        loading: false,
+      }
     case LOGOUT:
       return {
         ...state,
         token: null,
         isAuthenticated: false,
         loading: false,
-        user: null
-      };
+        user: null,
+      }
     default:
-      return state;
+      return state
   }
 }

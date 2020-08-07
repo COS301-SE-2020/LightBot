@@ -13,7 +13,7 @@ class FullScreenMap extends React.Component {
           <Row>
             <Col xs={12}>
               <Card>
-                <CardHeader>Google Maps</CardHeader>
+                <CardHeader>Simulation</CardHeader>
                 <CardBody>
                   <div
                     id="map"

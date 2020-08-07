@@ -50,19 +50,23 @@ class Reset extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    if (
-      (this.state.validate.passwordState ===
-        this.state.validate.confirmPasswordState) ===
-      'has-success'
-    ) {
-      const formData = {
-        User_password: this.state.password,
-      }
-      store.dispatch(reset(formData, this.state.token))
-      this.props.history.push('/login')
-    } else {
-      //alert here
-    }
+    const search = window.location.search
+    const params = new URLSearchParams(search);
+    const tok = params.get('passresetid');
+    console.log(tok)
+    // if (
+    //   (this.state.validate.passwordState ===
+    //     this.state.validate.confirmPasswordState) ===
+    //   'has-success'
+    // ) {
+    //   const formData = {
+    //     User_password: this.state.password,
+    //   }
+    //   store.dispatch(reset(formData, this.state.token))
+    //   this.props.history.push('/login')
+    // } else {
+    //   //alert here
+    // }
   }
 
   validatePassword = (e) => {
@@ -195,7 +199,7 @@ class Reset extends React.Component {
                         className='btn-round'
                         color='primary'
                         href='#'
-                        onClick={this.onSubmitHandler}
+                        onClick={this.handleSubmit}
                         size='lg'
                       >
                         Submit

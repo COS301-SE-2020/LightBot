@@ -102,8 +102,12 @@
       }
 
       &.active > a {
+        color: black;
         background-color: $white-color;
         box-shadow: $box-shadow;
+        i {
+          color: black;
+        }
       }
     }
 

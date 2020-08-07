@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { createBrowserHistory } from 'history'
 import { Router, Route, Switch, Redirect } from 'react-router-dom'
+import PrivateRoute from './routes/PrivateRoute'
+
 
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import './assets/scss/now-ui-dashboard.scss?v1.4.0'
@@ -34,8 +36,14 @@ const App = () => {
           <Route exact path='/register' component={Landing} />
           <Route exact path='/recovery' component={Landing} />
           <Route path='/reset' component={Landing} />
-          <Route path='/home' component={Home} />
-          <Route exact path='/404' component={ErrorPage} />
+          <PrivateRoute exact path='/home' component={Home} />
+          <PrivateRoute exact path='/home/overview' component={Home} />
+          <Route exact path='/home/simulation' component={Home} />
+          <PrivateRoute exact path='/home/configuration' component={Home} />
+          <PrivateRoute exact path='/home/forum' component={Home} />
+          <PrivateRoute exact path='/home/notifications' component={Home} />
+          <PrivateRoute exact path='/home/profile' component={Home} />
+          <PrivateRoute exact path='/404' component={ErrorPage} />
           <Redirect to='/404' />
         </Switch>
       </Router>

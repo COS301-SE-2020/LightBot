@@ -5,8 +5,12 @@ const User = require('../models/User.model')
 const Bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const send = require('../utils/Mailer.util')
+const crypto = require('crypto')
 
 SALT_WORK_FACTOR = 12
+
+const reset_tok_list = new Array()
+let count = -1
 
 module.exports = {
   registerUser: asyncHandler(async (req, res, next) => {
@@ -179,8 +183,16 @@ module.exports = {
     if (!existing) {
       return next(new NotFound('User does not exist.'))
     }
-    let token = 'resettoken'
-    const resetURL = `${req.protocol}://${req.get('host')}/${token}`
+    const build = {
+      expiry: Date.now() + 10 * 60 * 1000,
+      email: User_email,
+      hash: crypto
+        .createHash('sha256')
+        .update(crypto.randomBytes(20).toString('hex'))
+        .digest('hex'),
+    }
+    reset_tok_list.push(build)
+    const resetURL = `${req.protocol}://localhost:3000/reset?passresetid=${build.hash}`
     const message = `You are receiving this email because you have requested a password reset for your lightbot account.
     If this was not you please ignore this email.
     Please click the link below to reset your password: \n\n --> ${resetURL} `
@@ -207,12 +219,34 @@ module.exports = {
   }),
 
   resetUserPass: asyncHandler(async (req, res, next) => {
-    res.json(
-      new SuccessResponse(
-        'Successfully reset user password.',
-        req.params.passresetid
+    const validate = req.params.passresetid
+    const { User_password } = req.body
+    let build = null
+    reset_tok_list.forEach((element) => {
+      if (element.hash === hash) build = element
+    })
+    if (!build) res.json(new BadRequest('Invalid reset token.'))
+    const { User_email } = build
+
+    let existing
+    try {
+      existing = await User.findOne({ User_email: User_email })
+    } catch (err) {
+      return next(
+        new ErrorResponse('Something went wrong could not update password.')
       )
-    )
+    }
+
+    try {
+      const salt = await Bcrypt.genSalt(SALT_WORK_FACTOR)
+      existing.User_password = await Bcrypt.hash(User_password, salt)
+      await existing.save()
+    } catch (err) {
+      return next(
+        new ErrorResponse('Something went wrong could not update password.')
+      )
+    }
+    res.json(new SuccessResponse('Successfully reset user password.'))
   }),
 
   deleteUser: asyncHandler(async (req, res, next) => {

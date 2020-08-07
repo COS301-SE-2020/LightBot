@@ -13,26 +13,16 @@ class Footer extends React.Component {
             <ul>
               <li>
                 <a
-                  href='https://www.creative-tim.com?ref=nudr-footer'
-                  target='_blank'
+                  href='https://5dt.com/'
                 >
-                  Creative Tim
+                  5DT
                 </a>
               </li>
               <li>
                 <a
-                  href='https://presentation.creative-tim.com?ref=nudr-footer'
-                  target='_blank'
+                  href='https://up.ac.za/'
                 >
                   About Us
-                </a>
-              </li>
-              <li>
-                <a
-                  href='https://blog.creative-tim.com?ref=nudr-footer'
-                  target='_blank'
-                >
-                  Blog
                 </a>
               </li>
             </ul>
@@ -40,9 +30,7 @@ class Footer extends React.Component {
           <div className='copyright'>
             &copy; {1900 + new Date().getYear()}, Brought to you by{' '}
             <a
-              href='https://www.creative-tim.com?ref=nudr-footer'
-              target='_blank'
-              rel='noopener noreferrer'
+              href='#'
             >
               Gradient
             </a>

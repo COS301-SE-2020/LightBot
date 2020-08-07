@@ -1,5 +1,5 @@
 import api from '../services/api'
-// import { setAlert } from './alert';
+
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -26,6 +26,7 @@ export const getMe = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: AUTH_ERROR,
+      payload: err.response.data.error,
     })
   }
 }
@@ -56,13 +57,12 @@ export const loginUser = (formData) => async (dispatch) => {
 
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: res.data,
+      payload: res.data.success,
     })
   } catch (err) {
-    const errors = err.response.data.errors
-
     dispatch({
       type: LOGIN_FAIL,
+      payload: err.response.data.error,
     })
   }
 }
