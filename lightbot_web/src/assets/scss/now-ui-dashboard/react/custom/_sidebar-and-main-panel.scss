@@ -396,6 +396,7 @@
   position: relative;
   @include panel-gradient($black-color);
 
+
   .header{
     .title{
       color: $white-color;
@@ -414,7 +415,24 @@
 }
 
 .panel-header-sm{
-  height: 135px;
+  padding-top: 60px;
+  height: 200px;
+  
+  .header{
+    .title{
+      color: $white-color;
+    }
+    .category{
+      max-width: 600px;
+      color: $opacity-5;
+      margin: 0 auto;
+      font-size: 13px;
+
+      a{
+        color: $white-color;
+      }
+    }
+  }
 }
 
 .panel-header-lg{

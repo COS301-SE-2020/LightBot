@@ -14,6 +14,7 @@ import {
   RESET_FAIL,
 } from './types'
 
+const stderr = { status: 500, message: 'Internal Server Error' }
 // Load User
 export const getMe = () => async (dispatch) => {
   try {
@@ -24,12 +25,9 @@ export const getMe = () => async (dispatch) => {
       payload: res.data,
     })
   } catch (err) {
-    let x
-    if (err.response) x = err.response.data
-    else x = { status: 500, message: 'Internal Server Error' }
     dispatch({
       type: AUTH_ERROR,
-      payload: x,
+      payload: err.response ? err.response.data.error : stderr,
     })
   }
 }
@@ -46,7 +44,7 @@ export const register = (formData) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: REGISTER_FAIL,
-      payload: err.response.data.error,
+      payload: err.response ? err.response.data.error : stderr,
     })
   }
 }
@@ -63,7 +61,7 @@ export const loginUser = (formData) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: LOGIN_FAIL,
-      payload: err.response.data.error,
+      payload: err.response ? err.response.data.error : stderr,
     })
   }
 }
@@ -78,7 +76,7 @@ export const reset = (formData, token) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: RESET_FAIL,
-      payload: err.response.data.error,
+      payload: err.response ? err.response.data.error : stderr,
     })
   }
 }
@@ -93,10 +91,12 @@ export const recovery = (formData) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: RECOVERY_FAIL,
-      payload: err.response.data.error,
+      payload: err.response ? err.response.data.error : stderr,
     })
   }
 }
 
 // // Logout
-export const logout = async () => ({ type: LOGOUT })
+export const logout = () => async (dispatch) => {
+  dispatch({ type: LOGOUT })
+}

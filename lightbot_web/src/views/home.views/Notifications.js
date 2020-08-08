@@ -70,17 +70,6 @@ class Notifications extends React.Component {
           content={
             <div className="header text-center">
               <h2 className="title">Notifications</h2>
-              <p className="category">
-                Please Checkout{" "}
-                <a
-                  href="https://github.com/creativetimofficial/react-notification-alert"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  The Full Documentation
-                </a>
-                .
-              </p>
             </div>
           }
         />

@@ -1,12 +1,12 @@
 import React from "react";
 import PerfectScrollbar from "perfect-scrollbar";
-
 import { Route, Switch, Redirect } from "react-router-dom";
-
 import Footer from "../components/Footer/Footer.js";
 import Sidebar from "../components/Sidebar/Sidebar.js";
-
 import routes from "../routes/homeRoutes.js";
+import { logout } from '../actions/auth'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 var ps;
 
@@ -34,17 +34,31 @@ class Home extends React.Component {
       this.mainPanel.current.scrollTop = 0;
     }
   }
+  handleSubmit = async e =>
+  {
+    e.preventDefault()
+    try{
+       await this.props.logout()
+    }catch (err) {}
+
+  }
   render() {
+    if (!this.props.isAuthenticated) {
+      this.handleSubmit()
+    }
     return (
       <div className="wrapper">
         <Sidebar
           {...this.props}
           routes={routes}
           backgroundColor={this.state.backgroundColor}
+          logoutHandler={this.handleSubmit}
+          role={this.props.user.success.data.User_role}
         />
         <div className="main-panel" ref={this.mainPanel}>
           <Switch>
             {routes.map((prop, key) => {
+              if(prop.auth && this.props.user.success.data.User_role!==1) return null
               return (
                 <Route
                   exact path={prop.layout + prop.path}
@@ -62,4 +76,15 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+Home.propTypes = {
+  logout: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+  user: PropTypes.object
+}
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user
+})
+
+export default connect(mapStateToProps,{logout})(Home)

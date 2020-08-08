@@ -3,7 +3,6 @@ import React from 'react'
 import {
   Button,
   Card,
-  CardHeader,
   CardBody,
   FormGroup,
   Form,
@@ -18,16 +17,42 @@ class User extends React.Component {
   render() {
     return (
       <>
-        <PanelHeader size='sm' />
+        <PanelHeader
+          size='sm'
+          content={
+            <div className='header text-center'>
+              <h2 className='title'>Profile</h2>
+            </div>
+          }
+        />
         <div className='content'>
           <Row>
             <Col md='8'>
               <Card>
-                <CardHeader>
-                  <h5 className='title'>Edit Profile</h5>
-                </CardHeader>
                 <CardBody>
                   <Form>
+                  <Row>
+                      <Col className='pr-1' md='6'>
+                        <FormGroup>
+                          <label>First Name</label>
+                          <Input
+                            defaultValue='Xxx'
+                            placeholder='Company'
+                            type='text'
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col className='pl-1' md='6'>
+                        <FormGroup>
+                          <label>Last Name</label>
+                          <Input
+                            defaultValue='Xxx'
+                            placeholder='Last Name'
+                            type='text'
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
                     <Row>
                       <Col className='pr-1' md='5'>
                         <FormGroup>
@@ -56,28 +81,6 @@ class User extends React.Component {
                             Email address
                           </label>
                           <Input placeholder='Email' type='email' />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col className='pr-1' md='6'>
-                        <FormGroup>
-                          <label>First Name</label>
-                          <Input
-                            defaultValue='Xxx'
-                            placeholder='Company'
-                            type='text'
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col className='pl-1' md='6'>
-                        <FormGroup>
-                          <label>Last Name</label>
-                          <Input
-                            defaultValue='Xxx'
-                            placeholder='Last Name'
-                            type='text'
-                          />
                         </FormGroup>
                       </Col>
                     </Row>

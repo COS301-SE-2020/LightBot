@@ -1,35 +1,35 @@
-import React from "react";
+import React from 'react'
+import { MDBCardHeader, MDBIframe } from 'mdbreact'
+import { Row, Col, Card, CardHeader, CardBody } from 'reactstrap'
 
-import { Row, Col, Card, CardHeader, CardBody } from "reactstrap";
-
-import PanelHeader from "../../components/PanelHeader/PanelHeader.js";
+import PanelHeader from '../../components/PanelHeader/PanelHeader.js'
 
 class FullScreenMap extends React.Component {
   render() {
     return (
       <>
-        <PanelHeader size="sm" />
-        <div className="content">
+        <PanelHeader
+          size='sm'
+          content={
+            <div className='header text-center'>
+              <h2 className='title'>Simulation</h2>
+            </div>
+          }
+        />
+        <div className='content'>
           <Row>
             <Col xs={12}>
               <Card>
-                <CardHeader>Simulation</CardHeader>
                 <CardBody>
-                  <div
-                    id="map"
-                    className="map"
-                    style={{ position: "relative", overflow: "hidden" }}
-                  >
-                    {/* place iframe here */}
-                  </div>
+                  <MDBIframe src='https://www.youtube.com/embed/v64KOxKVLVg' />
                 </CardBody>
               </Card>
             </Col>
           </Row>
         </div>
       </>
-    );
+    )
   }
 }
 
-export default FullScreenMap;
+export default FullScreenMap

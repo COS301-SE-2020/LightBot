@@ -24,7 +24,8 @@ const hist = createBrowserHistory()
 const App = () => {
   useEffect(() => {
     setCookie(cookies.get('token'))
-    store.dispatch(getMe())
+    if(cookies.get('token'))
+      store.dispatch(getMe())
   }, [])
 
   return (

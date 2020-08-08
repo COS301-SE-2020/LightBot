@@ -1,6 +1,4 @@
 import React from "react";
-
-// reactstrap components
 import {
   Card,
   CardBody,
@@ -10,24 +8,25 @@ import {
   Row,
   Col,
 } from "reactstrap";
-
-// core components
 import PanelHeader from "../../components/PanelHeader/PanelHeader.js";
-
 import { thead, tbody } from "../../variables/general";
 
 class RegularTables extends React.Component {
   render() {
     return (
       <>
-        <PanelHeader size="sm" />
+        <PanelHeader
+          size='sm'
+          content={
+            <div className='header text-center'>
+              <h2 className='title'>Notification Forum</h2>
+            </div>
+          }
+        />
         <div className="content">
           <Row>
             <Col xs={12}>
               <Card>
-                <CardHeader>
-                  <CardTitle tag="h4">Simple Table</CardTitle>
-                </CardHeader>
                 <CardBody>
                   <Table responsive>
                     <thead className="text-primary">
