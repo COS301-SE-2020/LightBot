@@ -12,37 +12,27 @@ class Footer extends React.Component {
           <nav>
             <ul>
               <li>
-                <a
-                  href='https://5dt.com/'
-                >
+                <a style={MyStyles.textInputStyle}>
+                  Developed for 5dt in collaboration the University of Pretoria
+                </a>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <a style={MyStyles.textInputStyle2} href='https://5dt.com'>
                   5DT
                 </a>
               </li>
               <li>
-                <a
-                  href='https://up.ac.za/'
-                >
-                  About Us
+                <a style={MyStyles.textInputStyle2} href='https://www.up.ac.za'>
+                  University Of Pretoria
                 </a>
               </li>
             </ul>
           </nav>
           <div className='copyright'>
             &copy; {1900 + new Date().getYear()} All Rights Reserved. Brought to
-            you By{' '}
-            <a
-              href='#'
-            >
-              Gradient
-            </a>
-            In Collaberation with
-            <a
-              href='https://www.5dt.com/'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              5th Dimension Technologies
-            </a>
+            you by <a href='#'>Gradient</a>
             <img
               className='footerLogo'
               alt='...'
@@ -54,6 +44,17 @@ class Footer extends React.Component {
       </footer>
     )
   }
+}
+
+const MyStyles = {
+  textInputStyle: {
+    color: 'white',
+    opacity: '1',
+  },
+  textInputStyle2: {
+    color: '#f96332',
+    opacity: '1',
+  },
 }
 
 Footer.propTypes = {
