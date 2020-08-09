@@ -114,7 +114,7 @@ module.exports = {
 
   updateUserDetails: asyncHandler(async (req, res, next) => {
     //once sure of what data (files/images) update according to password update model
-    const { User_role, User_state, avatar } = req.body
+    const { User_name, User_surname } = req.body
     const { User_id, User_email } = req.User_data
     let existing
     try {
@@ -124,30 +124,35 @@ module.exports = {
         new ErrorResponse('Something went wrong could not update details.')
       )
     }
-    //existing.User_role = User_role
-    if (User_role) {
-      existing.User_role = User_role
+    if (User_name) {
+      existing.User_name = User_name
     }
-    if (User_state) {
-      existing.User_state = User_state
-    }
-    if (avatar) {
-      existing.avatar = avatar
+    if (User_surname) {
+      existing.User_surname = User_surname
     }
     try {
       await existing.save()
     } catch (err) {
       return next(
-        new ErrorResponse('Something went wrong could not update details2.')
+        new ErrorResponse('Something went wrong could not update details.')
       )
     }
+    const token = req.headers.authorization.split(' ')[1]
+    const data = {
+      User_email: existing.User_email,
+      User_name: existing.User_name,
+      User_surname: existing.User_surname,
+      User_state: existing.User_state,
+      User_role: existing.User_role,
+      Auth_key: token,
+    }
     res.json(
-      new SuccessResponse('Successfully updated user details.', 'existing')
+      new SuccessResponse('Successfully updated user details.',data)
     )
   }),
 
   updateUserPass: asyncHandler(async (req, res, next) => {
-    const { User_password } = req.body
+    const { User_password, User_oldpassword } = req.body
     const { User_id, User_email } = req.User_data
     let existing
     try {
@@ -156,6 +161,24 @@ module.exports = {
       return next(
         new ErrorResponse('Something went wrong could not update password.')
       )
+    }
+
+    let isValidPassword = false
+    try {
+      isValidPassword = await Bcrypt.compare(
+        User_oldpassword,
+        existing.User_password
+      )
+    } catch (err) {
+      return next(
+        new ErrorResponse(
+          'Something went wrong could not match passwords.',
+          err.body
+        )
+      )
+    }
+    if (!isValidPassword) {
+      return next(new ErrorResponse('Invalid old password'))
     }
 
     try {

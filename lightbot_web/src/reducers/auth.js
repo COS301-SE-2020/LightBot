@@ -123,11 +123,10 @@ export default function (state = initialState, action) {
     case UPDATE_PROFILE_SUCCESS:
       return {
         ...state,
-        message: { status: payload.status, msg: payload.message },
+        message: { status: payload.success.status, msg: payload.success.message },
         isAuthenticated: true,
-        loading: true,
-        user: payload.data,
-        token: payload.data.Auth_key,
+        loading: false,
+        user: payload,
       }
     case UPDATE_PROFILE_FAIL:
       return {

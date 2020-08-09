@@ -109,9 +109,8 @@ export const updateUser = (formData) => async (dispatch) => {
     const res = await api.put('/user/update-details', formData)
     dispatch({
       type: UPDATE_PROFILE_SUCCESS,
-      payload: res.data.success,
+      payload: res.data,
     })
-    dispatch(getMe())
   } catch (err) {
     dispatch({
       type: UPDATE_PROFILE_FAIL,

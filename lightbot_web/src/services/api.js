@@ -8,10 +8,7 @@ const api = axios.create({
 })
 
 api.interceptors.response.use(
-  (res) => {
-    console.log(res.data)
-    return res
-  },
+  (res) => res,
   (err) => {
     if (err.response.data.error.message === 'Authentication failed.') {
       // store.dispatch({ type: LOGOUT })
