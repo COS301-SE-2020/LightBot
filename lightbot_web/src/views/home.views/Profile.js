@@ -1,4 +1,9 @@
 import React from 'react'
+import { loginUser } from '../../actions/auth'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import NotificationAlert from 'react-notification-alert'
+
 
 import {
   Button,
@@ -14,6 +19,42 @@ import {
 import PanelHeader from '../../components/PanelHeader/PanelHeader.js'
 
 class User extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      switch: true,
+      visible: true,
+    }
+    this.onDismiss = this.onDismiss.bind(this)
+    this.notify = this.notify.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+  onDismiss() {}
+  notify(Message) {
+    var options = {}
+    options = {
+      place: 'tc',
+      message: (
+        <div>
+          <div>{Message}</div>
+        </div>
+      ),
+      type: 'danger',
+      icon: 'now-ui-icons ui-1_bell-53',
+      autoDismiss: 7,
+    }
+    this.refs.notificationAlert.notificationAlert(options)
+  }
+
+  handleChange = async (e) => {
+    const { target } = e
+    const value = target.type === 'checkbox' ? target.checked : target.value
+    const { name } = target
+    await this.setState({
+      [name]: value,
+    })
+  }
+
   render() {
     return (
       <>
@@ -26,116 +67,103 @@ class User extends React.Component {
           }
         />
         <div className='content'>
+        <NotificationAlert ref="notificationAlert" />
           <Row>
             <Col md='8'>
               <Card>
                 <CardBody>
                   <Form>
-                  <Row>
+                    <Row>
                       <Col className='pr-1' md='6'>
                         <FormGroup>
-                          <label>First Name</label>
+                          <label>NAME</label>
                           <Input
-                            defaultValue='Xxx'
-                            placeholder='Company'
+                            defaultValue={
+                              this.props.user.success.data.User_name
+                            }
+                            disabled={this.state.switch}
+                            placeholder='Name'
                             type='text'
                           />
                         </FormGroup>
                       </Col>
                       <Col className='pl-1' md='6'>
                         <FormGroup>
-                          <label>Last Name</label>
+                          <label>SURNAME</label>
                           <Input
-                            defaultValue='Xxx'
-                            placeholder='Last Name'
+                            defaultValue={
+                              this.props.user.success.data.User_surname
+                            }
+                            disabled={this.state.switch}
+                            placeholder='Surname'
                             type='text'
                           />
                         </FormGroup>
                       </Col>
                     </Row>
                     <Row>
-                      <Col className='pr-1' md='5'>
+                      <Col className='pr-1' md='8'>
                         <FormGroup>
-                          <label>Company (disabled)</label>
+                          <label>EMAIL</label>
                           <Input
-                            defaultValue='Default'
-                            disabled
-                            placeholder='Company'
+                            defaultValue={
+                              this.props.user.success.data.User_email
+                            }
+                            disabled={this.state.switch}
+                            placeholder='Email'
+                            type='email'
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className='pr-1' md='6'>
+                        <FormGroup>
+                          <label>ROLE</label>
+                          <Input
+                            defaultValue={
+                              this.props.user.success.data.User_role === 1
+                                ? 'Administrator'
+                                : 'Viewer'
+                            }
+                            disabled={this.state.switch}
+                            placeholder='Role'
                             type='text'
                           />
                         </FormGroup>
                       </Col>
-                      <Col className='px-1' md='3'>
+                      <Col className='pl-1' md='6'>
                         <FormGroup>
-                          <label>Username</label>
+                          <label>State</label>
                           <Input
-                            defaultValue='default'
-                            placeholder='Username'
+                            defaultValue={
+                              this.props.user.success.data.User_state
+                            }
+                            disabled={this.state.switch}
+                            placeholder='State'
                             type='text'
                           />
                         </FormGroup>
                       </Col>
-                      <Col className='pl-1' md='4'>
-                        <FormGroup>
-                          <label htmlFor='exampleInputEmail1'>
-                            Email address
+                    </Row>
+                    <Row>
+                      <Col className='pr-1'>
+                        <div className='custom-control custom-switch'>
+                          <input
+                            type='checkbox'
+                            className='custom-control-input'
+                            id='customSwitches'
+                            onClick={() => {
+                              this.setState({ switch: !this.state.switch })
+                            }}
+                          />
+                          <label
+                            className='custom-control-label'
+                            htmlFor='customSwitches'
+                          >
+                            Toggle this to change fields
                           </label>
-                          <Input placeholder='Email' type='email' />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md='12'>
-                        <FormGroup>
-                          <label>Address</label>
-                          <Input
-                            defaultValue='1223 Xxx St, Xxx, Xxx'
-                            placeholder='Home Address'
-                            type='text'
-                          />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col className='pr-1' md='4'>
-                        <FormGroup>
-                          <label>City</label>
-                          <Input
-                            defaultValue='Xxx'
-                            placeholder='City'
-                            type='text'
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col className='px-1' md='4'>
-                        <FormGroup>
-                          <label>Country</label>
-                          <Input
-                            defaultValue='Xxx'
-                            placeholder='Country'
-                            type='text'
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col className='pl-1' md='4'>
-                        <FormGroup>
-                          <label>Postal Code</label>
-                          <Input placeholder='ZIP Code' type='number' />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md='12'>
-                        <FormGroup>
-                          <label>About Me</label>
-                          <Input
-                            cols='80'
-                            defaultValue='wqnbwbdobqiovbid oqhbdgvqu idgqidvii'
-                            placeholder='Here can be your description'
-                            rows='4'
-                            type='textarea'
-                          />
-                        </FormGroup>
+                        </div>
                       </Col>
                     </Row>
                   </Form>
@@ -144,60 +172,76 @@ class User extends React.Component {
             </Col>
             <Col md='4'>
               <Card className='card-user'>
-                <div className='image'>
-                  <img
-                    alt='...'
-                    src={require('../../assets/img/default-avatar.jpg')}
-                  />
-                </div>
                 <CardBody>
                   <div className='author'>
-                    <a href='#pablo' onClick={(e) => e.preventDefault()}>
+                    <a href='#' onClick={(e) => e.preventDefault()}>
                       <img
                         alt='...'
                         className='avatar border-gray'
                         src={require('../../assets/img/default-avatar.jpg')}
                       />
-                      <h5 className='title'>Default</h5>
+                      <h5 className='title'>
+                        {this.props.user.success.data.User_name}
+                      </h5>
                     </a>
-                    <p className='description'>default</p>
+                    <p className='description'>
+                      {this.props.user.success.data.User_role === 1
+                        ? 'Administrator'
+                        : 'Viewer'}
+                    </p>
                   </div>
                   <p className='description text-center'>
-                    "Lamborghini Mercy <br />
-                    Your chick she so thirsty <br />
-                    I'm in that two seat Lambo"
+                    Some fancy about me
+                    <br />
+                    description
                   </p>
                 </CardBody>
-                <hr />
-                <div className='button-container'>
-                  <Button
-                    className='btn-neutral btn-icon btn-round'
-                    color='default'
-                    href='#pablo'
-                    onClick={(e) => e.preventDefault()}
-                    size='lg'
-                  >
-                    <i className='fab fa-facebook-f' />
-                  </Button>
-                  <Button
-                    className='btn-neutral btn-icon btn-round'
-                    color='default'
-                    href='#pablo'
-                    onClick={(e) => e.preventDefault()}
-                    size='lg'
-                  >
-                    <i className='fab fa-twitter' />
-                  </Button>
-                  <Button
-                    className='btn-neutral btn-icon btn-round'
-                    color='default'
-                    href='#pablo'
-                    onClick={(e) => e.preventDefault()}
-                    size='lg'
-                  >
-                    <i className='fab fa-google-plus-g' />
-                  </Button>
-                </div>
+              </Card>
+            </Col>
+          </Row>
+          <Row>
+            <Col md='8'>
+              <Card>
+                <CardBody>
+                  <Form>
+                    <Row>
+                      <Col className='pr-1' md='6'>
+                        <FormGroup>
+                          <label>Current Password</label>
+                          <Input placeholder='*******' type='password' />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className='pr-1' md='6'>
+                        <FormGroup>
+                          <label>New Password</label>
+                          <Input placeholder='*******' type='password' />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className='pr-1' md='6'>
+                        <FormGroup>
+                          <label>Confirm Password</label>
+                          <Input placeholder='*******' type='password' />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                    <Col md={4} xs={12}>
+                            <Button
+                            className='btn-round'
+                              color="primary"
+                              block
+                              onClick={() => {}}
+                            >
+                              Submit
+                            </Button>
+                          </Col>
+                    </Row>
+                  </Form>
+                </CardBody>
               </Card>
             </Col>
           </Row>
@@ -207,4 +251,13 @@ class User extends React.Component {
   }
 }
 
-export default User
+User.propTypes = {
+  updateUser: PropTypes.func.isRequired,
+  user: PropTypes.object,
+}
+
+const mapStateToProps = (state) => ({
+  user: state.auth.user,
+})
+
+export default connect(mapStateToProps, { updateUser })(User)

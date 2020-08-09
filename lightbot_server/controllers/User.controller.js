@@ -96,6 +96,7 @@ module.exports = {
     }
     const data = {
       User_name: existing.User_name,
+      User_email: existing.User_email,
       User_surname: existing.User_surname,
       User_state: existing.User_state,
       User_role: existing.User_role,
@@ -298,6 +299,7 @@ module.exports = {
     }
     const token = req.headers.authorization.split(' ')[1]
     const data = {
+      User_email: existing.User_email,
       User_name: existing.User_name,
       User_surname: existing.User_surname,
       User_state: existing.User_state,

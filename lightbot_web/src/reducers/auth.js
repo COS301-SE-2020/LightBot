@@ -54,7 +54,7 @@ export default function (state = initialState, action) {
         ...state,
         message: { status: payload.status, msg: payload.message },
         isAuthenticated: true,
-        loading: false,
+        loading: true,
         user: payload.data,
         token: payload.data.Auth_key,
       }

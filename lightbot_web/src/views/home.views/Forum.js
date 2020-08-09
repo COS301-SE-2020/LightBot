@@ -1,15 +1,19 @@
-import React from "react";
+import React from 'react'
 import {
   Card,
-  CardBody,
-  CardHeader,
+  Label,
   CardTitle,
+  CardBody,
+  FormGroup,
+  Button,
+  Form,
+  Input,
   Table,
   Row,
   Col,
-} from "reactstrap";
-import PanelHeader from "../../components/PanelHeader/PanelHeader.js";
-import { thead, tbody } from "../../variables/general";
+} from 'reactstrap'
+import PanelHeader from '../../components/PanelHeader/PanelHeader.js'
+import { thead, tbody } from '../../variables/general'
 
 class RegularTables extends React.Component {
   render() {
@@ -23,22 +27,22 @@ class RegularTables extends React.Component {
             </div>
           }
         />
-        <div className="content">
+        <div className='content'>
           <Row>
             <Col xs={12}>
               <Card>
                 <CardBody>
                   <Table responsive>
-                    <thead className="text-primary">
+                    <thead className='text-primary'>
                       <tr>
                         {thead.map((prop, key) => {
                           if (key === thead.length - 1)
                             return (
-                              <th key={key} className="text-right">
+                              <th key={key} className='text-right'>
                                 {prop}
                               </th>
-                            );
-                          return <th key={key}>{prop}</th>;
+                            )
+                          return <th key={key}>{prop}</th>
                         })}
                       </tr>
                     </thead>
@@ -49,56 +53,14 @@ class RegularTables extends React.Component {
                             {prop.data.map((prop, key) => {
                               if (key === thead.length - 1)
                                 return (
-                                  <td key={key} className="text-right">
+                                  <td key={key} className='text-right'>
                                     {prop}
                                   </td>
-                                );
-                              return <td key={key}>{prop}</td>;
+                                )
+                              return <td key={key}>{prop}</td>
                             })}
                           </tr>
-                        );
-                      })}
-                    </tbody>
-                  </Table>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col xs={12}>
-              <Card className="card-plain">
-                <CardHeader>
-                  <CardTitle tag="h4">Table on Plain Background</CardTitle>
-                  <p className="category"> Here is a subtitle for this table</p>
-                </CardHeader>
-                <CardBody>
-                  <Table responsive>
-                    <thead className="text-primary">
-                      <tr>
-                        {thead.map((prop, key) => {
-                          if (key === thead.length - 1)
-                            return (
-                              <th key={key} className="text-right">
-                                {prop}
-                              </th>
-                            );
-                          return <th key={key}>{prop}</th>;
-                        })}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {tbody.map((prop, key) => {
-                        return (
-                          <tr key={key}>
-                            {prop.data.map((prop, key) => {
-                              if (key === thead.length - 1)
-                                return (
-                                  <td key={key} className="text-right">
-                                    {prop}
-                                  </td>
-                                );
-                              return <td key={key}>{prop}</td>;
-                            })}
-                          </tr>
-                        );
+                        )
                       })}
                     </tbody>
                   </Table>
@@ -106,10 +68,114 @@ class RegularTables extends React.Component {
               </Card>
             </Col>
           </Row>
+          <Row>
+            <Col md={12} xs={12}>
+              <Card>
+                <CardBody>
+                  <Row>
+                    <Col md={6} className='ml-auto mr-auto text-center'>
+                      <CardTitle tag='h4'>Submit New Forum Post</CardTitle>
+                    </Col>
+                  </Row>
+                  <Form>
+                    <Row>
+                      <Col className='ml-auto mr-auto text-center' md='3'>
+                        <FormGroup>
+                          <label>Title</label>
+                          <Input maxLength='30' placeholder='Title' type='text' />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className='ml-auto mr-auto text-center' md='4'>
+                        <FormGroup>
+                          <label>Subject</label>
+                          <Input maxLength='50' placeholder='Subject' type='text' />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className='ml-auto mr-auto text-center'>
+                        <label>Urgency</label>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className='ml-auto mr-auto text-center' md='1'>
+                        <Row>
+                          <FormGroup check>
+                            <Label check>
+                              <Input
+                                type='radio'
+                                name='radio1'
+                                value='emergency'
+                              />{' '}
+                              emergency
+                            </Label>
+                          </FormGroup>
+                          <FormGroup check>
+                            <Label check>
+                              <Input
+                                type='radio'
+                                name='radio1'
+                                value='warning'
+                              />{' '}
+                              warning
+                            </Label>
+                          </FormGroup>
+                          <FormGroup check>
+                            <Label check>
+                              <Input type='radio' name='radio1' value='info' />{' '}
+                              info
+                            </Label>
+                          </FormGroup>
+                          <FormGroup check>
+                            <Label check>
+                              <Input
+                                type='radio'
+                                name='radio1'
+                                value='success'
+                              />{' '}
+                              success
+                            </Label>
+                          </FormGroup>
+                        </Row>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className='ml-auto mr-auto text-center' md='6'>
+                        <FormGroup>
+                          <label>Description</label>
+                          <Input
+                            maxLength='250'
+                            cols='80'
+                            placeholder='Your text Here...'
+                            rows='4'
+                            type='textarea'
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className='ml-auto mr-auto text-center' md={4}>
+                        <Button
+                          className='btn-round'
+                          color='primary'
+                          block
+                          onClick={() => {}}
+                        >
+                          Submit
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Form>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
         </div>
       </>
-    );
+    )
   }
 }
 
-export default RegularTables;
+export default RegularTables

@@ -13,7 +13,7 @@ class Footer extends React.Component {
             <ul>
               <li>
                 <a style={MyStyles.textInputStyle}>
-                  Developed for 5dt in collaboration the University of Pretoria
+                  Developed for 5dt in collaboration with the University of Pretoria
                 </a>
               </li>
             </ul>
