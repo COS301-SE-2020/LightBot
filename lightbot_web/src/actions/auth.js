@@ -12,6 +12,10 @@ import {
   RECOVERY_FAIL,
   RESET_SUCCESS,
   RESET_FAIL,
+  UPDATE_PROFILE_SUCCESS,
+  UPDATE_PROFILE_FAIL,
+  UPDATE_PASSWORD_SUCCESS,
+  UPDATE_PASSWORD_FAIL,
 } from './types'
 
 const stderr = { status: 500, message: 'Internal Server Error' }
@@ -67,6 +71,7 @@ export const loginUser = (formData) => async (dispatch) => {
   }
 }
 
+// //Reset User Password
 export const reset = (formData, token) => async (dispatch) => {
   try {
     const res = await api.put('/user/reset-password/' + token, formData)
@@ -82,6 +87,7 @@ export const reset = (formData, token) => async (dispatch) => {
   }
 }
 
+// //Request User Password Reset
 export const recovery = (formData) => async (dispatch) => {
   try {
     const res = await api.post('/user/recover-password', formData)
@@ -92,6 +98,39 @@ export const recovery = (formData) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: RECOVERY_FAIL,
+      payload: err.response ? err.response.data.error : stderr,
+    })
+  }
+}
+
+// //Update User Profile
+export const updateUser = (formData) => async (dispatch) => {
+  try {
+    const res = await api.put('/user/update-details', formData)
+    dispatch({
+      type: UPDATE_PROFILE_SUCCESS,
+      payload: res.data.success,
+    })
+    dispatch(getMe())
+  } catch (err) {
+    dispatch({
+      type: UPDATE_PROFILE_FAIL,
+      payload: err.response ? err.response.data.error : stderr,
+    })
+  }
+}
+
+// //Update User Password
+export const updatePassword = (formData) => async (dispatch) => {
+  try {
+    const res = await api.put('/user/update-password', formData)
+    dispatch({
+      type: UPDATE_PASSWORD_SUCCESS,
+      payload: res.data.success,
+    })
+  } catch (err) {
+    dispatch({
+      type: UPDATE_PASSWORD_FAIL,
       payload: err.response ? err.response.data.error : stderr,
     })
   }
