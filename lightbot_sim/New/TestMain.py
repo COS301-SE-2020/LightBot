@@ -20,7 +20,11 @@ if __name__ == "__main__":
         
     Simulation = Simulation(
         sumo_cmd, 
-        config['max_steps']
+        config['max_steps'],
+        config['green_duration'],
+        config['yellow_duration'],
+        config['num_states'],
+        config['num_actions']
     )
     print('Simulation start...')
     simulation_time = Simulation.run()

@@ -9,6 +9,10 @@ def import_test_configuration(config_file):
     config = {}
     config['gui'] = content['simulation'].getboolean('gui')
     config['max_steps'] = content['simulation'].getint('max_steps')
+    config['green_duration'] = content['simulation'].getint('green_duration')
+    config['yellow_duration'] = content['simulation'].getint('yellow_duration')
+    config['num_states'] = content['agent'].getint('num_states')
+    config['num_actions'] = content['agent'].getint('num_actions')
     config['sumocfg_file_name'] = content['dir']['sumocfg_file_name']
     return config
 

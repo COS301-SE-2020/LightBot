@@ -188,14 +188,14 @@
     </edge>
 
     <tlLogic id="cluster_25290891_611769793" type="static" programID="0" offset="0">
-        <phase duration="27" state="GGGrrrrrrGGGrrrrr"/>
-        <phase duration="6"  state="yyyrrrrrryyyrrrrr"/>
-        <phase duration="6"  state="rrrGrrrrrrrrGrrrr"/>
-        <phase duration="6"  state="rrryrrrrrrrryrrrr"/>
-        <phase duration="27" state="rrrrGGGggrrrrGGGg"/>
-        <phase duration="6"  state="rrrryyyggrrrryyyg"/>
-        <phase duration="6"  state="rrrrrrrGGrrrrrrrG"/>
-        <phase duration="6"  state="rrrrrrryyrrrrrrry"/>
+        <phase duration="100" state="GGGrrrrrrGGGrrrrr"/>
+        <phase duration="100"  state="yyyrrrrrryyyrrrrr"/>
+        <phase duration="100"  state="rrrGrrrrrrrrGrrrr"/>
+        <phase duration="100"  state="rrryrrrrrrrryrrrr"/>
+        <phase duration="100" state="rrrrGGGggrrrrGGGg"/>
+        <phase duration="100"  state="rrrryyyggrrrryyyg"/>
+        <phase duration="100"  state="rrrrrrrGGrrrrrrrG"/>
+        <phase duration="100"  state="rrrrrrryyrrrrrrry"/>
     </tlLogic>
 
     <junction id="junc_JanShobaAndSouthStr" type="traffic_light" x="459.38" y="210.91" incLanes="road_triple_JanShobaS_toJunc_0 road_triple_JanShobaS_toJunc_1 road_triple_JanShobaS_toJunc_2 road_double_SouthStrE_toJunc_0 road_double_SouthStrE_toJunc_1 road_triple_JanShobaN_toJunc_0 road_triple_JanShobaN_toJunc_1 road_triple_JanShobaN_toJunc_2 road_double_SouthStrW_toJunc_0 road_double_SouthStrW_toJunc_1" intLanes=":junc_JanShobaAndSouthStr_0_0 :junc_JanShobaAndSouthStr_1_0 :junc_JanShobaAndSouthStr_1_1 :junc_JanShobaAndSouthStr_3_0 :junc_JanShobaAndSouthStr_4_0 :junc_JanShobaAndSouthStr_5_0 :junc_JanShobaAndSouthStr_6_0 :junc_JanShobaAndSouthStr_17_0 :junc_JanShobaAndSouthStr_18_0 :junc_JanShobaAndSouthStr_9_0 :junc_JanShobaAndSouthStr_10_0 :junc_JanShobaAndSouthStr_10_1 :junc_JanShobaAndSouthStr_12_0 :junc_JanShobaAndSouthStr_13_0 :junc_JanShobaAndSouthStr_14_0 :junc_JanShobaAndSouthStr_15_0 :junc_JanShobaAndSouthStr_19_0" shape="449.61,201.18 467.34,200.82 468.05,203.06 468.90,203.86 470.08,204.44 471.59,204.80 473.44,204.95 473.15,214.52 470.94,215.15 470.16,216.00 469.61,217.21 469.29,218.77 469.19,220.69 451.47,221.14 450.75,218.90 449.90,218.11 448.72,217.53 447.21,217.16 445.37,217.01 445.61,207.36 447.83,206.72 448.61,205.87 449.17,204.66 449.50,203.09" name="Jan Shoba and South Street">

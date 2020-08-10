@@ -4,10 +4,24 @@ import random
 import timeit
 import os
 
+# The traffic light states in jan_south_peak.net.xml
+PHASE_NS_GREEN = 0  # action 0 code 00
+PHASE_NS_YELLOW = 1
+PHASE_NSR_GREEN = 2  # action 1 code 01
+PHASE_NSR_YELLOW = 3
+PHASE_EW_GREEN = 4  # action 2 code 10
+PHASE_EW_YELLOW = 5
+PHASE_EWR_GREEN = 6  # action 3 code 11
+PHASE_EWR_YELLOW = 7
+
 class Simulation:
-    def __init__(self, sumo_cmd, max_steps):
+    def __init__(self, sumo_cmd, max_steps, green_duration, yellow_duration, num_states, num_actions):
         self._sumo_cmd = sumo_cmd
         self._max_steps = max_steps
+        self._green_duration = green_duration
+        self._yellow_duration = yellow_duration
+        self._num_states = num_states
+        self._num_actions = num_actions
         self._queue_length_episode = []
 
 
@@ -19,11 +33,19 @@ class Simulation:
 
         self._step = 0
         self._waiting_times = {}
+        old_action = -1
         while self._step < self._max_steps:
-            self._simulate(1)
-
-            # waiting time = seconds waited by a car since the spawn in the environment, cumulated for every car in incoming lanes
+            # self._simulate(1)
             current_total_wait = self._collect_waiting_times()
+            action = random.randint(0,3)
+            if self._step != 0 and old_action != action:
+                self._set_yellow_phase(old_action)
+                self._simulate(self._yellow_duration)
+            self._set_green_phase(action)
+            self._simulate(self._green_duration)
+            old_action = action
+            # waiting time = seconds waited by a car since the spawn in the environment, cumulated for every car in incoming lanes
+            
 
         traci.close()
         print("Ending TraCI...")
@@ -41,8 +63,39 @@ class Simulation:
             queue_length = self._get_queue_length() 
             self._queue_length_episode.append(queue_length)
 
-    def _collect_waiting_times(self):
+    def _set_yellow_phase(self, old_action):
+        """
+        Activate the correct yellow light combination in sumo
+        """
+        yellow_phase_code = old_action * 2 + 1 # obtain the yellow phase code, based on the old action (ref on environment.net.xml)
+        traci.trafficlight.setPhase("cluster_25290891_611769793", yellow_phase_code)
 
+
+    def _set_green_phase(self, action_number):
+        """
+        Activate the correct green light combination in sumo
+        """
+        if action_number == 0:
+            traci.trafficlight.setPhase("cluster_25290891_611769793", PHASE_NS_GREEN)
+        elif action_number == 1:
+            traci.trafficlight.setPhase("cluster_25290891_611769793", PHASE_NSR_GREEN)
+        elif action_number == 2:
+            traci.trafficlight.setPhase("cluster_25290891_611769793", PHASE_EW_GREEN)
+        elif action_number == 3:
+            traci.trafficlight.setPhase("cluster_25290891_611769793", PHASE_EWR_GREEN)
+
+
+
+
+
+
+
+
+
+
+
+
+    def _collect_waiting_times(self):
         incoming_roads = ["road_triple_JanShobaS_toJunc", "road_double_SouthStrW_toJunc", "road_triple_JanShobaN_toJunc", "road_double_SouthStrE_toJunc"]
         car_list = traci.vehicle.getIDList()
         for car_id in car_list:
