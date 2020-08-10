@@ -23,6 +23,23 @@ class Simulation:
         self._num_states = num_states
         self._num_actions = num_actions
         self._queue_length_episode = []
+        self._actions_taken = []
+        self.XML_TRAFFIC_LIGHT_GREEN_STATES = [        
+            '<phase duration="10" state="GGGrrrrrrGGGrrrrr"/>',
+            '<phase duration="10"  state="rrrGrrrrrrrrGrrrr"/>',
+            '<phase duration="10" state="rrrrGGGggrrrrGGGg"/>',  
+            '<phase duration="10"  state="rrrrrrrGGrrrrrrrG"/>'
+        ]
+        self.XML_TRAFFIC_LIGHT_YELLOW_STATES = [
+            '<phase duration="10" state="GGGrrrrrrGGGrrrrr"/>',
+            '<phase duration="4"  state="yyyrrrrrryyyrrrrr"/>',
+            '<phase duration="10"  state="rrrGrrrrrrrrGrrrr"/>',
+            '<phase duration="4"  state="rrryrrrrrrrryrrrr"/>',
+            '<phase duration="10" state="rrrrGGGggrrrrGGGg"/>',
+            '<phase duration="4"  state="rrrryyyggrrrryyyg"/>',
+            '<phase duration="10"  state="rrrrrrrGGrrrrrrrG"/>',
+            '<phase duration="4"  state="rrrrrrryyrrrrrrry"/>'
+        ]
 
 
     def run(self):
@@ -50,6 +67,9 @@ class Simulation:
         traci.close()
         print("Ending TraCI...")
         simulation_time = round(timeit.default_timer() - start_time, 1)
+        with open('xml_actions_data.txt', "w") as file:
+            for value in self._actions_taken:
+                    file.write("%s\n" % value)
         return simulation_time
 
 
@@ -68,6 +88,7 @@ class Simulation:
         Activate the correct yellow light combination in sumo
         """
         yellow_phase_code = old_action * 2 + 1 # obtain the yellow phase code, based on the old action (ref on environment.net.xml)
+        self._actions_taken.append(self.XML_TRAFFIC_LIGHT_YELLOW_STATES[yellow_phase_code])
         traci.trafficlight.setPhase("cluster_25290891_611769793", yellow_phase_code)
 
 
@@ -75,6 +96,7 @@ class Simulation:
         """
         Activate the correct green light combination in sumo
         """
+        self._actions_taken.append(self.XML_TRAFFIC_LIGHT_GREEN_STATES[action_number])
         if action_number == 0:
             traci.trafficlight.setPhase("cluster_25290891_611769793", PHASE_NS_GREEN)
         elif action_number == 1:
