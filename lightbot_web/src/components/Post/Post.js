@@ -6,7 +6,6 @@ import {
     Table,
     Row,
     Col,
-    Alert,
   } from 'reactstrap'
 const thead = ["Date/Time","Title", "Subject", "Creator"];
 

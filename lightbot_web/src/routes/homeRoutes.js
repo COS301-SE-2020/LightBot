@@ -1,5 +1,4 @@
 import Overview from "../views/home.views/Overview.js";
-import Notifications from "../views/home.views/Notifications.js";
 import Configuration from "../views/home.views/Configuration.js";
 import Forum from "../views/home.views/Forum.js";
 import Simulation from "../views/home.views/Simulation.js";
