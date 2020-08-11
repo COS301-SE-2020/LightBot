@@ -41,6 +41,15 @@ router.put(
   require('../controllers/User.controller').updateUserDetails
 )
 
+// // @route     PUT user/update-image
+// // @desc      Update User Image Route
+// // @access    Private
+router.put(
+  '/update-image',
+  auth.Guard,
+  require('../controllers/User.controller').updateUserImage
+)
+
 // // @route     PUT user/update-details
 // // @desc      Update User Pass Route
 // // @access    Private

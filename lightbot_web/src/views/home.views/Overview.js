@@ -1,5 +1,5 @@
-import React from "react";
-import { Line, Bar } from "react-chartjs-2";
+import React from 'react'
+import { Line } from 'react-chartjs-2'
 
 import {
   Card,
@@ -14,100 +14,122 @@ import {
   DropdownMenu,
   DropdownItem,
   Table,
-  Button,
-  Label,
-  FormGroup,
-  Input,
-  UncontrolledTooltip,
-} from "reactstrap";
+} from 'reactstrap'
 
 // core components
-import PanelHeader from "../../components/PanelHeader/PanelHeader.js";
+import PanelHeader from '../../components/PanelHeader/PanelHeader.js'
 
 import {
   dashboardPanelChart,
-  dashboardShippedProductsChart,
   dashboardAllProductsChart,
-  dashboard24HoursPerformanceChart,
-} from "../../variables/charts.js";
+} from '../../variables/charts.js'
+
+import Post from '../../components/Post/Post'
+
+
 
 class Overview extends React.Component {
+
+  constructor(props)
+  {
+    super(props)
+    this.state = {
+      labelsx: [
+        'JAN',
+        'FEB',
+        'MAR',
+        'APR',
+        'MAY',
+        'JUN',
+        'JUL',
+        'AUG',
+        'SEP',
+        'OCT',
+        'NOV',
+        'DEC',
+      ],
+      datax: [50, 150, 100, 190, 130, 90, 150, 160, 120, 140, 190, 95],
+      data: (canvas) => {
+        const ctx = canvas.getContext('2d')
+        var chartColor = '#FFFFFF'
+        var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0)
+        gradientStroke.addColorStop(0, '#80b6f4')
+        gradientStroke.addColorStop(1, chartColor)
+        var gradientFill = ctx.createLinearGradient(0, 200, 0, 50)
+        gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)')
+        gradientFill.addColorStop(1, 'rgba(255, 255, 255, 0.14)')
+    
+        return {
+          labels: this.state.labelsx,
+          datasets: [
+            {
+              label: 'Data',
+              borderColor: chartColor,
+              pointBorderColor: chartColor,
+              pointBackgroundColor: '#2c2c2c',
+              pointHoverBackgroundColor: '#2c2c2c',
+              pointHoverBorderColor: chartColor,
+              pointBorderWidth: 1,
+              pointHoverRadius: 7,
+              pointHoverBorderWidth: 2,
+              pointRadius: 5,
+              fill: true,
+              backgroundColor: gradientFill,
+              borderWidth: 2,
+              data: this.state.datax,
+            },
+          ],
+        }
+      }
+
+    }
+  }
+
   render() {
     return (
       <>
+      <PanelHeader
+          content={
+            <div className='header text-center'>
+              <h2 className='title'>Overview</h2>
+            </div>
+          }
+        />
         <PanelHeader
-          size="lg"
+          size='lg'
           content={
             <Line
-              data={dashboardPanelChart.data}
+              data={this.state.data}
               options={dashboardPanelChart.options}
             />
           }
         />
-        <div className="content">
+        <div className='content'>
           <Row>
-            <Col xs={12} md={4}>
-              <Card className="card-chart">
+            <Col xs={12} md={6}>
+              <Card className='card-chart'>
                 <CardHeader>
-                  <h5 className="card-category">Global Sales</h5>
-                  <CardTitle tag="h4">Shipped Products</CardTitle>
+                  <h5 className='card-category'>2020 Sales</h5>
+                  <CardTitle tag='h4'>All products</CardTitle>
                   <UncontrolledDropdown>
                     <DropdownToggle
-                      className="btn-round btn-outline-default btn-icon"
-                      color="default"
+                      className='btn-round btn-outline-default btn-icon'
+                      color='default'
                     >
-                      <i className="now-ui-icons loader_gear" />
+                      <i className='now-ui-icons loader_gear' />
                     </DropdownToggle>
                     <DropdownMenu right>
                       <DropdownItem>Action</DropdownItem>
                       <DropdownItem>Another Action</DropdownItem>
                       <DropdownItem>Something else here</DropdownItem>
-                      <DropdownItem className="text-danger">
+                      <DropdownItem className='text-danger'>
                         Remove data
                       </DropdownItem>
                     </DropdownMenu>
                   </UncontrolledDropdown>
                 </CardHeader>
                 <CardBody>
-                  <div className="chart-area">
-                    <Line
-                      data={dashboardShippedProductsChart.data}
-                      options={dashboardShippedProductsChart.options}
-                    />
-                  </div>
-                </CardBody>
-                <CardFooter>
-                  <div className="stats">
-                    <i className="now-ui-icons arrows-1_refresh-69" /> Just
-                    Updated
-                  </div>
-                </CardFooter>
-              </Card>
-            </Col>
-            <Col xs={12} md={4}>
-              <Card className="card-chart">
-                <CardHeader>
-                  <h5 className="card-category">2020 Sales</h5>
-                  <CardTitle tag="h4">All products</CardTitle>
-                  <UncontrolledDropdown>
-                    <DropdownToggle
-                      className="btn-round btn-outline-default btn-icon"
-                      color="default"
-                    >
-                      <i className="now-ui-icons loader_gear" />
-                    </DropdownToggle>
-                    <DropdownMenu right>
-                      <DropdownItem>Action</DropdownItem>
-                      <DropdownItem>Another Action</DropdownItem>
-                      <DropdownItem>Something else here</DropdownItem>
-                      <DropdownItem className="text-danger">
-                        Remove data
-                      </DropdownItem>
-                    </DropdownMenu>
-                  </UncontrolledDropdown>
-                </CardHeader>
-                <CardBody>
-                  <div className="chart-area">
+                  <div className='chart-area'>
                     <Line
                       data={dashboardAllProductsChart.data}
                       options={dashboardAllProductsChart.options}
@@ -115,188 +137,9 @@ class Overview extends React.Component {
                   </div>
                 </CardBody>
                 <CardFooter>
-                  <div className="stats">
-                    <i className="now-ui-icons arrows-1_refresh-69" /> Just
+                  <div className='stats'>
+                    <i className='now-ui-icons arrows-1_refresh-69' /> Just
                     Updated
-                  </div>
-                </CardFooter>
-              </Card>
-            </Col>
-            <Col xs={12} md={4}>
-              <Card className="card-chart">
-                <CardHeader>
-                  <h5 className="card-category">Email Statistics</h5>
-                  <CardTitle tag="h4">24 Hours Performance</CardTitle>
-                </CardHeader>
-                <CardBody>
-                  <div className="chart-area">
-                    <Bar
-                      data={dashboard24HoursPerformanceChart.data}
-                      options={dashboard24HoursPerformanceChart.options}
-                    />
-                  </div>
-                </CardBody>
-                <CardFooter>
-                  <div className="stats">
-                    <i className="now-ui-icons ui-2_time-alarm" /> Last 7 days
-                  </div>
-                </CardFooter>
-              </Card>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={12} md={6}>
-              <Card className="card-tasks">
-                <CardHeader>
-                  <h5 className="card-category">Backend Development</h5>
-                  <CardTitle tag="h4">Tasks</CardTitle>
-                </CardHeader>
-                <CardBody>
-                  <div className="table-full-width table-responsive">
-                    <Table>
-                      <tbody>
-                        <tr>
-                          <td>
-                            <FormGroup check>
-                              <Label check>
-                                <Input defaultChecked type="checkbox" />
-                                <span className="form-check-sign" />
-                              </Label>
-                            </FormGroup>
-                          </td>
-                          <td className="text-left">
-                            Sign contract for "What are conference organizers
-                            afraid of?"
-                          </td>
-                          <td className="td-actions text-right">
-                            <Button
-                              className="btn-round btn-icon btn-icon-mini btn-neutral"
-                              color="info"
-                              id="tooltip731609871"
-                              type="button"
-                            >
-                              <i className="now-ui-icons ui-2_settings-90" />
-                            </Button>
-                            <UncontrolledTooltip
-                              delay={0}
-                              target="tooltip731609871"
-                            >
-                              Edit Task
-                            </UncontrolledTooltip>
-                            <Button
-                              className="btn-round btn-icon btn-icon-mini btn-neutral"
-                              color="danger"
-                              id="tooltip923217206"
-                              type="button"
-                            >
-                              <i className="now-ui-icons ui-1_simple-remove" />
-                            </Button>
-                            <UncontrolledTooltip
-                              delay={0}
-                              target="tooltip923217206"
-                            >
-                              Remove
-                            </UncontrolledTooltip>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <FormGroup check>
-                              <Label check>
-                                <Input type="checkbox" />
-                                <span className="form-check-sign" />
-                              </Label>
-                            </FormGroup>
-                          </td>
-                          <td className="text-left">
-                            Lines From Great Russian Literature? Or E-mails From
-                            My Boss?
-                          </td>
-                          <td className="td-actions text-right">
-                            <Button
-                              className="btn-round btn-icon btn-icon-mini btn-neutral"
-                              color="info"
-                              id="tooltip907509347"
-                              type="button"
-                            >
-                              <i className="now-ui-icons ui-2_settings-90" />
-                            </Button>
-                            <UncontrolledTooltip
-                              delay={0}
-                              target="tooltip907509347"
-                            >
-                              Edit Task
-                            </UncontrolledTooltip>
-                            <Button
-                              className="btn-round btn-icon btn-icon-mini btn-neutral"
-                              color="danger"
-                              id="tooltip496353037"
-                              type="button"
-                            >
-                              <i className="now-ui-icons ui-1_simple-remove" />
-                            </Button>
-                            <UncontrolledTooltip
-                              delay={0}
-                              target="tooltip496353037"
-                            >
-                              Remove
-                            </UncontrolledTooltip>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <FormGroup check>
-                              <Label check>
-                                <Input defaultChecked type="checkbox" />
-                                <span className="form-check-sign" />
-                              </Label>
-                            </FormGroup>
-                          </td>
-                          <td className="text-left">
-                            Flooded: One year later, assessing what was lost and
-                            what was found when a ravaging rain swept through
-                            metro Detroit
-                          </td>
-                          <td className="td-actions text-right">
-                            <Button
-                              className="btn-round btn-icon btn-icon-mini btn-neutral"
-                              color="info"
-                              id="tooltip326247652"
-                              type="button"
-                            >
-                              <i className="now-ui-icons ui-2_settings-90" />
-                            </Button>
-                            <UncontrolledTooltip
-                              delay={0}
-                              target="tooltip326247652"
-                            >
-                              Edit Task
-                            </UncontrolledTooltip>
-                            <Button
-                              className="btn-round btn-icon btn-icon-mini btn-neutral"
-                              color="danger"
-                              id="tooltip389516969"
-                              type="button"
-                            >
-                              <i className="now-ui-icons ui-1_simple-remove" />
-                            </Button>
-                            <UncontrolledTooltip
-                              delay={0}
-                              target="tooltip389516969"
-                            >
-                              Remove
-                            </UncontrolledTooltip>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </Table>
-                  </div>
-                </CardBody>
-                <CardFooter>
-                  <hr />
-                  <div className="stats">
-                    <i className="now-ui-icons loader_refresh spin" /> Updated 3
-                    minutes ago
                   </div>
                 </CardFooter>
               </Card>
@@ -304,17 +147,17 @@ class Overview extends React.Component {
             <Col xs={12} md={6}>
               <Card>
                 <CardHeader>
-                  <h5 className="card-category">All Persons List</h5>
-                  <CardTitle tag="h4">Employees Stats</CardTitle>
+                  <h5 className='card-category'>All Persons List</h5>
+                  <CardTitle tag='h4'>Employees Stats</CardTitle>
                 </CardHeader>
                 <CardBody>
                   <Table responsive>
-                    <thead className="text-primary">
+                    <thead className='text-primary'>
                       <tr>
                         <th>Name</th>
                         <th>Country</th>
                         <th>City</th>
-                        <th className="text-right">Salary</th>
+                        <th className='text-right'>Salary</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -322,31 +165,19 @@ class Overview extends React.Component {
                         <td>Dakota Rice</td>
                         <td>Niger</td>
                         <td>Oud-Turnhout</td>
-                        <td className="text-right">$36,738</td>
+                        <td className='text-right'>$36,738</td>
                       </tr>
                       <tr>
                         <td>Minerva Hooper</td>
                         <td>Curaçao</td>
                         <td>Sinaai-Waas</td>
-                        <td className="text-right">$23,789</td>
+                        <td className='text-right'>$23,789</td>
                       </tr>
                       <tr>
                         <td>Sage Rodriguez</td>
                         <td>Netherlands</td>
                         <td>Baileux</td>
-                        <td className="text-right">$56,142</td>
-                      </tr>
-                      <tr>
-                        <td>Doris Greene</td>
-                        <td>Malawi</td>
-                        <td>Feldkirchen in Kärnten</td>
-                        <td className="text-right">$63,542</td>
-                      </tr>
-                      <tr>
-                        <td>Mason Porter</td>
-                        <td>Chile</td>
-                        <td>Gloucester</td>
-                        <td className="text-right">$78,615</td>
+                        <td className='text-right'>$56,142</td>
                       </tr>
                     </tbody>
                   </Table>
@@ -354,10 +185,11 @@ class Overview extends React.Component {
               </Card>
             </Col>
           </Row>
+          <Post />
         </div>
       </>
-    );
+    )
   }
 }
 
-export default Overview;
+export default Overview

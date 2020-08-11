@@ -1,5 +1,5 @@
 import React from 'react'
-import { updateUser, updatePassword } from '../../actions/auth'
+import { updateUser, updatePassword, updateImage } from '../../actions/auth'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import NotificationAlert from 'react-notification-alert'
@@ -15,8 +15,6 @@ import {
   Row,
   Col,
   InputGroup,
-  InputGroupAddon,
-  InputGroupText,
 } from 'reactstrap'
 
 import PanelHeader from '../../components/PanelHeader/PanelHeader.js'
@@ -25,6 +23,7 @@ class User extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      image: this.props.user.success.data.avatar,
       switch: true,
       visible: true,
       oldpassword: '',
@@ -42,6 +41,7 @@ class User extends React.Component {
         User_surnameS: '',
       },
     }
+    this.onImageChange = this.onImageChange.bind(this)
     this.onDismiss = this.onDismiss.bind(this)
     this.notify = this.notify.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -64,13 +64,23 @@ class User extends React.Component {
   }
 
   handleChange = async (e) => {
-    console.log('here')
     const { target } = e
     const value = target.type === 'checkbox' ? target.checked : target.value
     const { name } = target
     await this.setState({
       [name]: value,
     })
+  }
+  handleUpload = async (e) =>{
+    e.preventDefault()
+    try {
+      await this.props.updateImage({avatar: this.state.image})
+      if (this.props.message.status > 299) {
+        this.notify(this.props.message.msg, 'danger')
+      } else {
+        this.notify(this.props.message.msg, 'success')
+      }
+    } catch (err) {}
   }
 
   handleSwitch = async (e) => {
@@ -183,6 +193,25 @@ class User extends React.Component {
       validate.cnewpasswordS = 'has-danger'
     }
     this.setState({ validate })
+  }
+
+  onImageChange = async (event) => {
+    if (event.target.files && event.target.files[0]) {
+      await this.getBase64(event.target.files[0],result=>{this.setState({
+        image: result,
+      })})
+    }
+  }
+
+  getBase64(file, cb) {
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+        cb(reader.result)
+    };
+    reader.onerror = function (error) {
+        console.log('Error: ', error);
+    };
   }
 
   render() {
@@ -326,7 +355,7 @@ class User extends React.Component {
                       <img
                         alt='...'
                         className='avatar border-gray'
-                        src={require('../../assets/img/default-avatar.jpg')}
+                        src={this.state.image}
                       />
                       <h5 className='title'>
                         {this.props.user.success.data.User_name}
@@ -457,14 +486,26 @@ class User extends React.Component {
               <Card>
                 <CardBody>
                   <Form>
-                  <Row>
+                    <Row>
                       <Col className='pr-1' md='6'>
                         <FormGroup>
-                          <label>Profile Image upload</label>
-                          <Input
-                            name='file'
-                            type='file'
-                          />
+                          <InputGroup>
+                            <div class='custom-file'>
+                              <div class='file-field medium'>
+                                <div
+                                  class='btn btn-outline-secondary btn-rounded waves-effect'
+                                  style={{ backgroundColor: 'grey' }}
+                                >
+                                  <Input
+                                    name='file'
+                                    type='file'
+                                    onChange={this.onImageChange}
+                                  />
+                                  <span>Click here to select image</span>
+                                </div>
+                              </div>
+                            </div>
+                          </InputGroup>
                         </FormGroup>
                       </Col>
                     </Row>
@@ -474,7 +515,7 @@ class User extends React.Component {
                           className='btn-round'
                           color='primary'
                           block
-                          onClick={this.handleSubmit}
+                          onClick={this.handleUpload}
                         >
                           Submit
                         </Button>
@@ -493,6 +534,7 @@ class User extends React.Component {
 
 User.propTypes = {
   updateUser: PropTypes.func.isRequired,
+  updateImage: PropTypes.func.isRequired,
   updatePassword: PropTypes.func.isRequired,
   user: PropTypes.object,
   message: PropTypes.object,
@@ -503,4 +545,4 @@ const mapStateToProps = (state) => ({
   message: state.auth.message,
 })
 
-export default connect(mapStateToProps, { updateUser, updatePassword })(User)
+export default connect(mapStateToProps, { updateImage, updateUser, updatePassword })(User)

@@ -15,6 +15,8 @@ import {
   UPDATE_PROFILE_SUCCESS,
   UPDATE_PROFILE_FAIL,
   UPDATE_PASSWORD_SUCCESS,
+  UPDATE_IMAGE_SUCCESS,
+  UPDATE_IMAGE_FAIL,
   UPDATE_PASSWORD_FAIL,
 } from './types'
 
@@ -107,6 +109,22 @@ export const recovery = (formData) => async (dispatch) => {
 export const updateUser = (formData) => async (dispatch) => {
   try {
     const res = await api.put('/user/update-details', formData)
+    dispatch({
+      type: UPDATE_PROFILE_SUCCESS,
+      payload: res.data,
+    })
+  } catch (err) {
+    dispatch({
+      type: UPDATE_PROFILE_FAIL,
+      payload: err.response ? err.response.data.error : stderr,
+    })
+  }
+}
+
+// //Update User Profile
+export const updateImage = (formData) => async (dispatch) => {
+  try {
+    const res = await api.put('/user/update-image', formData)
     dispatch({
       type: UPDATE_PROFILE_SUCCESS,
       payload: res.data,

@@ -31,6 +31,7 @@ module.exports = {
       User_surname,
       User_email,
       User_password,
+      avatar,
       ForumPosts: [],
     })
     try {
@@ -100,6 +101,7 @@ module.exports = {
       User_surname: existing.User_surname,
       User_state: existing.User_state,
       User_role: existing.User_role,
+      avatar: existing.avatar,
       Auth_key: token,
     }
     res.json(new SuccessResponse('User login successful.', data))
@@ -110,6 +112,40 @@ module.exports = {
     res.json(
       new SuccessResponse('Successfully signed out user.', 'Redirect sign in.')
     )
+  }),
+
+  updateUserImage: asyncHandler(async (req, res, next) => {
+    const { avatar } = req.body
+    const { User_id, User_email } = req.User_data
+    let existing
+    try {
+      existing = await User.findOne({ User_email: User_email })
+    } catch (err) {
+      return next(
+        new ErrorResponse('Something went wrong could not update user image.')
+      )
+    }
+
+    existing.avatar = avatar
+
+    try {
+      await existing.save()
+    } catch (err) {
+      return next(
+        new ErrorResponse('Something went wrong could not update user image.')
+      )
+    }
+    const token = req.headers.authorization.split(' ')[1]
+    const data = {
+      User_email: existing.User_email,
+      User_name: existing.User_name,
+      User_surname: existing.User_surname,
+      User_state: existing.User_state,
+      User_role: existing.User_role,
+      avatar: existing.avatar,
+      Auth_key: token,
+    }
+    res.json(new SuccessResponse('Successfully updated user image.', data))
   }),
 
   updateUserDetails: asyncHandler(async (req, res, next) => {
@@ -144,11 +180,10 @@ module.exports = {
       User_surname: existing.User_surname,
       User_state: existing.User_state,
       User_role: existing.User_role,
+      avatar: existing.avatar,
       Auth_key: token,
     }
-    res.json(
-      new SuccessResponse('Successfully updated user details.',data)
-    )
+    res.json(new SuccessResponse('Successfully updated user details.', data))
   }),
 
   updateUserPass: asyncHandler(async (req, res, next) => {
@@ -327,6 +362,7 @@ module.exports = {
       User_surname: existing.User_surname,
       User_state: existing.User_state,
       User_role: existing.User_role,
+      avatar: existing.avatar,
       Auth_key: token,
     }
     res.json(new SuccessResponse('Succesfully retrieved user profile.', data))

@@ -1,6 +1,5 @@
 //Packages Node core modules, Third-Party libs
 require('colors')
-const fileUpload = require('express-fileupload')
 const rateLimit = require('express-rate-limit')
 require('dotenv').config({ path: './config/config.vars.env' })
 const express = require('express')

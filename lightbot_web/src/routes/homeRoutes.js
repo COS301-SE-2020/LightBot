@@ -24,7 +24,7 @@ var homeRoutes = [
   },
   {
     path: "/forum",
-    name: "Forum",
+    name: "Notification Forum",
     icon: "now-ui-icons objects_globe",
     component: Forum,
     layout: "/home",
@@ -45,13 +45,6 @@ var homeRoutes = [
     component: Configuration,
     layout: "/home",
     auth: true,
-  },
-  {
-    path: "/notifications",
-    name: "Notifications",
-    icon: "ui-1_bell-53",
-    component: Notifications,
-    layout: "/home",
   },
 ];
 export default homeRoutes;

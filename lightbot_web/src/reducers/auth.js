@@ -14,7 +14,9 @@ import {
   UPDATE_PROFILE_SUCCESS,
   UPDATE_PROFILE_FAIL,
   UPDATE_PASSWORD_SUCCESS,
+  UPDATE_IMAGE_SUCCESS,
   UPDATE_PASSWORD_FAIL,
+  UPDATE_IMAGE_FAIL,
 } from '../actions/types'
 
 import cookies from 'universal-cookie'
@@ -123,7 +125,10 @@ export default function (state = initialState, action) {
     case UPDATE_PROFILE_SUCCESS:
       return {
         ...state,
-        message: { status: payload.success.status, msg: payload.success.message },
+        message: {
+          status: payload.success.status,
+          msg: payload.success.message,
+        },
         isAuthenticated: true,
         loading: false,
         user: payload,
@@ -135,6 +140,7 @@ export default function (state = initialState, action) {
         isAuthenticated: true,
         loading: false,
       }
+
     case UPDATE_PASSWORD_SUCCESS:
       return {
         ...state,
@@ -143,6 +149,24 @@ export default function (state = initialState, action) {
         loading: false,
       }
     case UPDATE_PASSWORD_FAIL:
+      return {
+        ...state,
+        message: { status: payload.status, msg: payload.message },
+        isAuthenticated: true,
+        loading: false,
+      }
+      case UPDATE_IMAGE_SUCCESS:
+        return {
+          ...state,
+          message: {
+            status: payload.success.status,
+            msg: payload.success.message,
+          },
+          isAuthenticated: true,
+          loading: false,
+          user: payload,
+        }
+    case UPDATE_IMAGE_FAIL:
       return {
         ...state,
         message: { status: payload.status, msg: payload.message },
