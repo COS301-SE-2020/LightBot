@@ -17,6 +17,8 @@ import {
   UPDATE_IMAGE_SUCCESS,
   UPDATE_PASSWORD_FAIL,
   UPDATE_IMAGE_FAIL,
+  GET_FORUM_SUCCESS,
+  GET_FORUM_FAIL,
 } from '../actions/types'
 
 import cookies from 'universal-cookie'
@@ -155,22 +157,41 @@ export default function (state = initialState, action) {
         isAuthenticated: true,
         loading: false,
       }
-      case UPDATE_IMAGE_SUCCESS:
-        return {
-          ...state,
-          message: {
-            status: payload.success.status,
-            msg: payload.success.message,
-          },
-          isAuthenticated: true,
-          loading: false,
-          user: payload,
-        }
+    case UPDATE_IMAGE_SUCCESS:
+      return {
+        ...state,
+        message: {
+          status: payload.success.status,
+          msg: payload.success.message,
+        },
+        isAuthenticated: true,
+        loading: false,
+        user: payload,
+      }
     case UPDATE_IMAGE_FAIL:
       return {
         ...state,
         message: { status: payload.status, msg: payload.message },
         isAuthenticated: true,
+        loading: false,
+      }
+    case GET_FORUM_SUCCESS:
+      return {
+        ...state,
+        message: {
+          status: payload.success.status,
+          msg: payload.success.message,
+        },
+        loading: true,
+        data: payload,
+      }
+    case GET_FORUM_FAIL:
+      return {
+        ...state,
+        message: {
+          status: payload.success.status,
+          msg: payload.success.message,
+        },
         loading: false,
       }
     default:

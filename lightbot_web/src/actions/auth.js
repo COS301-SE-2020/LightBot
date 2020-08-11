@@ -18,6 +18,8 @@ import {
   UPDATE_IMAGE_SUCCESS,
   UPDATE_IMAGE_FAIL,
   UPDATE_PASSWORD_FAIL,
+  GET_FORUM_SUCCESS,
+  GET_FORUM_FAIL,
 } from './types'
 
 const stderr = { status: 500, message: 'Internal Server Error' }
@@ -156,4 +158,21 @@ export const updatePassword = (formData) => async (dispatch) => {
 // // Logout
 export const logout = () => async (dispatch) => {
   dispatch({ type: LOGOUT })
+}
+
+// //Get All Forum Posts
+
+export const loadForum = (formData) => async (dispatch) => {
+  try {
+    const res = await api.get('/forum')
+    dispatch({
+      type: GET_FORUM_SUCCESS,
+      payload: res.data.success,
+    })
+  } catch (err) {
+    dispatch({
+      type: GET_FORUM_FAIL,
+      payload: err.response ? err.response.data.error : stderr,
+    })
+  }
 }
