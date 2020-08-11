@@ -11,11 +11,68 @@ import {
   Row,
   Col,
 } from 'reactstrap'
+import NotificationAlert from 'react-notification-alert'
 import PanelHeader from '../../components/PanelHeader/PanelHeader.js'
-
 import Post from '../../components/Post/Post'
 
-class RegularTables extends React.Component {
+class Forum extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      title: '',
+      subject: '',
+      description: '',
+    }
+
+    this.onDismiss = this.onDismiss.bind(this)
+    this.notify = this.notify.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange = async (e) => {
+    const { target } = e
+    const value = target.type === 'checkbox' ? target.checked : target.value
+    const { name } = target
+    await this.setState({
+      [name]: value,
+    })
+  }
+
+  handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const formData = {
+      title: this.state.title,
+      subject: this.state.subject,
+      description: this.state.description,
+    }
+    try {
+      await this.props.addForumData(formData)
+      if (this.props.message.status > 299) {
+        this.notify(this.props.message.msg, 'danger')
+      } else {
+        this.notify(this.props.message.msg, 'success')
+      }
+    } catch (err) {}
+  }
+
+  onDismiss() {}
+  notify(Message, type) {
+    var options = {}
+    options = {
+      place: 'tc',
+      message: (
+        <div>
+          <div>{Message}</div>
+        </div>
+      ),
+      type: type,
+      icon: 'now-ui-icons ui-1_bell-53',
+      autoDismiss: 7,
+    }
+    this.refs.notificationAlert.notificationAlert(options)
+  }
+
   render() {
     return (
       <>
@@ -28,7 +85,8 @@ class RegularTables extends React.Component {
           }
         />
         <div className='content'>
-          <Post/>
+          <NotificationAlert ref='notificationAlert' />
+          <Post />
           <Row>
             <Col md={12} xs={12}>
               <Card>
@@ -43,7 +101,16 @@ class RegularTables extends React.Component {
                       <Col className='ml-auto mr-auto text-center' md='3'>
                         <FormGroup>
                           <label>Title</label>
-                          <Input maxLength='30' placeholder='Title' type='text' />
+                          <Input
+                            maxLength='30'
+                            name='title'
+                            value={this.state.title}
+                            placeholder='Title'
+                            type='text'
+                            onChange={(e) => {
+                              this.handleChange(e)
+                            }}
+                          />
                         </FormGroup>
                       </Col>
                     </Row>
@@ -51,7 +118,16 @@ class RegularTables extends React.Component {
                       <Col className='ml-auto mr-auto text-center' md='4'>
                         <FormGroup>
                           <label>Subject</label>
-                          <Input maxLength='50' placeholder='Subject' type='text' />
+                          <Input
+                            maxLength='50'
+                            placeholder='Subject'
+                            name='subject'
+                            value={this.state.subject}
+                            type='text'
+                            onChange={(e) => {
+                              this.handleChange(e)
+                            }}
+                          />
                         </FormGroup>
                       </Col>
                     </Row>
@@ -109,9 +185,14 @@ class RegularTables extends React.Component {
                           <Input
                             maxLength='250'
                             cols='80'
+                            name='description'
+                            value={this.state.description}
                             placeholder='Your text Here...'
                             rows='4'
                             type='textarea'
+                            onChange={(e) => {
+                              this.handleChange(e)
+                            }}
                           />
                         </FormGroup>
                       </Col>
@@ -122,7 +203,7 @@ class RegularTables extends React.Component {
                           className='btn-round'
                           color='primary'
                           block
-                          onClick={() => {}}
+                          onClick={this.handleSubmit}
                         >
                           Submit
                         </Button>
@@ -139,4 +220,4 @@ class RegularTables extends React.Component {
   }
 }
 
-export default RegularTables
+export default Forum

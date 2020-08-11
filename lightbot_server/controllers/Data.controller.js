@@ -18,9 +18,19 @@ module.exports = {
   }),
 
   getForumData: asyncHandler(async (req, res, next) => {
+    let posts
+    try {
+      posts = await Forum.find({})
+    } catch (err) {
+      return next(new ErrorResponse('Fetching posts failed.'))
+    }
     res.json(
-      new SuccessResponse('Successfully acquired forum data.', 'Forum data set')
+      new SuccessResponse(
+        'Successfully removed user.',
+        posts.map((post) => post.toObject({ getters: true }))
+      )
     )
+
   }),
 
   getNotificationData: asyncHandler(async (req, res, next) => {
@@ -39,11 +49,12 @@ module.exports = {
   }),
 
   addForumData: asyncHandler(async (req, res, next) => {
-    const { title, message } = req.body
+    const { title,subject, description } = req.body
     const { User_id, User_email } = req.User_data
     const createForumPost = new Forum({
       title,
-      message,
+      subject,
+      description,
       creator: User_id,
     })
     let user
