@@ -164,7 +164,7 @@ export const logout = () => async (dispatch) => {
 
 export const loadForum = (formData) => async (dispatch) => {
   try {
-    const res = await api.get('/forum')
+    const res = await api.get('/data/forum')
     dispatch({
       type: GET_FORUM_SUCCESS,
       payload: res.data.success,

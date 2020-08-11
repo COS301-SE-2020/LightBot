@@ -13,27 +13,42 @@ class Post extends React.Component {
     this.state = {
       Data: this.props.data,
     }
-    // this.onDismiss = this.onDismiss.bind(this)
-    // this.notify = this.notify.bind(this)
-    // this.handleChange = this.handleChange.bind(this)
+    this.onDismiss = this.onDismiss.bind(this)
+    this.notify = this.notify.bind(this)
   }
 
-  // onDismiss() {}
-  // notify(Message, type) {
-  //   var options = {}
-  //   options = {
-  //     place: 'tc',
-  //     message: (
-  //       <div>
-  //         <div>{Message}</div>
-  //       </div>
-  //     ),
-  //     type: type,
-  //     icon: 'now-ui-icons ui-1_bell-53',
-  //     autoDismiss: 7,
-  //   }
-  //   this.refs.notificationAlert.notificationAlert(options)
-  // }
+  onDismiss() {}
+  notify(Message, type) {
+    var options = {}
+    options = {
+      place: 'tc',
+      message: (
+        <div>
+          <div>{Message}</div>
+        </div>
+      ),
+      type: type,
+      icon: 'now-ui-icons ui-1_bell-53',
+      autoDismiss: 7,
+    }
+    this.refs.notificationAlert.notificationAlert(options)
+  }
+
+  componentDidMount() {
+    this.handleLoad()
+  }
+
+  handleLoad = async (e) => {
+    try {
+      await this.props.loadForum()
+      console.log(this.state.data)
+      if (this.props.message.status > 299) {
+        this.notify(this.props.message.msg, 'danger')
+      } else {
+        this.notify(this.props.message.msg, 'success')
+      }
+    } catch (err) {}
+  }
 
   render() {
     return (

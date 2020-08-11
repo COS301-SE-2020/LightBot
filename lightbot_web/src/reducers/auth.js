@@ -183,14 +183,14 @@ export default function (state = initialState, action) {
           msg: payload.success.message,
         },
         loading: true,
-        data: payload,
+        data: payload.data.data,
       }
     case GET_FORUM_FAIL:
       return {
         ...state,
         message: {
-          status: payload.success.status,
-          msg: payload.success.message,
+          status: payload.status,
+          msg: payload.message,
         },
         loading: false,
       }
