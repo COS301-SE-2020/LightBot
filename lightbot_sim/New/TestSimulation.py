@@ -23,6 +23,10 @@ class Simulation:
         self._num_states = num_states
         self._num_actions = num_actions
         self._queue_length_episode = []
+        self._queue_length_north = []
+        self._queue_length_south = []
+        self._queue_length_east = []
+        self._queue_length_west = []
         self._actions_taken = []
         self.XML_TRAFFIC_LIGHT_GREEN_STATES = [        
             '<phase duration="10" state="GGGrrrrrrGGGrrrrr"/>',
@@ -53,7 +57,7 @@ class Simulation:
         old_action = -1
         while self._step < self._max_steps:
             # self._simulate(1)
-            current_total_wait = self._collect_waiting_times()
+            # current_total_wait = self._collect_waiting_times()
             action = random.randint(0,3)
             if self._step != 0 and old_action != action:
                 self._set_yellow_phase(old_action)
@@ -117,19 +121,19 @@ class Simulation:
 
 
 
-    def _collect_waiting_times(self):
-        incoming_roads = ["road_triple_JanShobaS_toJunc", "road_double_SouthStrW_toJunc", "road_triple_JanShobaN_toJunc", "road_double_SouthStrE_toJunc"]
-        car_list = traci.vehicle.getIDList()
-        for car_id in car_list:
-            wait_time = traci.vehicle.getAccumulatedWaitingTime(car_id)
-            road_id = traci.vehicle.getRoadID(car_id)  # get the road id where the car is located
-            if road_id in incoming_roads:  # consider only the waiting times of cars in incoming roads
-                self._waiting_times[car_id] = wait_time
-            else:
-                if car_id in self._waiting_times: # a car that was tracked has cleared the intersection
-                    del self._waiting_times[car_id] 
-        total_waiting_time = sum(self._waiting_times.values())
-        return total_waiting_time
+    # def _collect_waiting_times(self):
+    #     incoming_roads = ["road_triple_JanShobaS_toJunc", "road_double_SouthStrW_toJunc", "road_triple_JanShobaN_toJunc", "road_double_SouthStrE_toJunc"]
+    #     car_list = traci.vehicle.getIDList()
+    #     for car_id in car_list:
+    #         wait_time = traci.vehicle.getAccumulatedWaitingTime(car_id)
+    #         road_id = traci.vehicle.getRoadID(car_id)  # get the road id where the car is located
+    #         if road_id in incoming_roads:  # consider only the waiting times of cars in incoming roads
+    #             self._waiting_times[car_id] = wait_time
+    #         else:
+    #             if car_id in self._waiting_times: # a car that was tracked has cleared the intersection
+    #                 del self._waiting_times[car_id] 
+    #     total_waiting_time = sum(self._waiting_times.values())
+    #     return total_waiting_time
 
     def _get_queue_length(self):
         """
@@ -139,6 +143,10 @@ class Simulation:
         halt_S = traci.edge.getLastStepHaltingNumber("road_triple_JanShobaS_toJunc")
         halt_E = traci.edge.getLastStepHaltingNumber("road_double_SouthStrW_toJunc")
         halt_W = traci.edge.getLastStepHaltingNumber("road_double_SouthStrE_toJunc")
+        self._queue_length_north.append(halt_N)
+        self._queue_length_south.append(halt_S)
+        self._queue_length_east.append(halt_E)
+        self._queue_length_west.append(halt_W)
         queue_length = halt_N + halt_S + halt_E + halt_W
         return queue_length
 
@@ -148,5 +156,17 @@ class Simulation:
 
 
     @property
-    def reward_episode(self):
-        return self._reward_episode
+    def queue_length_north(self):
+        return self._queue_length_north
+
+    @property
+    def queue_length_south(self):
+        return self._queue_length_south
+
+    @property
+    def queue_length_east(self):
+        return self._queue_length_east
+
+    @property
+    def queue_length_west(self):
+        return self._queue_length_west
