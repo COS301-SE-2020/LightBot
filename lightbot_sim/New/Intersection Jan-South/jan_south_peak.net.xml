@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on Wed Jul 22 15:11:19 2020 by Eclipse SUMO netedit Version 1.6.0
+<!-- generated on Tue Aug 11 11:51:20 2020 by Eclipse SUMO netedit Version 1.6.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
 
     <input>
-        <sumo-net-file value="/Users/thiveshanpillay/Documents/2020/COS%20301/Capstone/Simulation_JanSouth/Network/jan_south.net.xml"/>
+        <sumo-net-file value="/Users/thiveshanpillay/Documents/2020/COS%20301/Capstone/GitHub_Lightbot/LightBot/lightbot_sim/New/Intersection%20Jan-South/jan_south_peak.net.xml"/>
     </input>
 
     <output>
-        <output-file value="/Users/thiveshanpillay/Documents/2020/COS%20301/Capstone/Simulation_JanSouth/Network/jan_south.net.xml"/>
+        <output-file value="/Users/thiveshanpillay/Documents/2020/COS%20301/Capstone/GitHub_Lightbot/LightBot/lightbot_sim/New/Intersection%20Jan-South/jan_south_peak.net.xml"/>
         <output.street-names value="true"/>
     </output>
 
@@ -39,166 +39,166 @@
 
 <net version="1.6" junctionCornerDetail="5" lefthand="true" limitTurnSpeed="5.50" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/net_file.xsd">
 
-    <location netOffset="-623934.04,2849148.65" convBoundary="338.32,113.27,570.04,315.49" origBoundary="28.235751,-25.755108,28.242738,-25.751747" projParameter="+proj=utm +zone=35 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"/>
+    <location netOffset="-623934.04,2849148.65" convBoundary="155.75,-33.19,765.47,493.40" origBoundary="28.235751,-25.755108,28.242738,-25.751747" projParameter="+proj=utm +zone=35 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"/>
 
     <edge id=":junc_JanShobaAndSouthStr_0" function="internal">
-        <lane id=":junc_JanShobaAndSouthStr_0_0" index="0" speed="7.04" length="10.96" shape="451.21,201.14 450.86,204.62 449.80,207.08 448.04,208.53 445.57,208.96"/>
+        <lane id=":junc_JanShobaAndSouthStr_0_0" index="0" speed="7.20" length="11.35" shape="451.21,200.86 450.86,204.53 449.81,207.14 448.05,208.70 445.60,209.20"/>
     </edge>
     <edge id=":junc_JanShobaAndSouthStr_1" function="internal">
-        <lane id=":junc_JanShobaAndSouthStr_1_0" index="0" speed="27.78" length="20.05" shape="451.21,201.14 451.47,207.08 452.05,211.13 452.68,215.17 453.07,221.10"/>
-        <lane id=":junc_JanShobaAndSouthStr_1_1" index="1" speed="27.78" length="20.05" shape="454.41,201.08 454.67,207.01 455.25,211.05 455.87,215.09 456.27,221.02"/>
+        <lane id=":junc_JanShobaAndSouthStr_1_0" index="0" speed="27.78" length="20.31" shape="451.21,200.86 452.96,221.11"/>
+        <lane id=":junc_JanShobaAndSouthStr_1_1" index="1" speed="27.78" length="20.31" shape="454.41,200.85 456.16,221.07"/>
     </edge>
     <edge id=":junc_JanShobaAndSouthStr_3" function="internal">
-        <lane id=":junc_JanShobaAndSouthStr_3_0" index="0" speed="9.96" length="22.08" shape="457.61,201.02 458.59,206.05 461.51,209.71 466.38,212.00 473.20,212.92"/>
+        <lane id=":junc_JanShobaAndSouthStr_3_0" index="0" speed="9.96" length="22.17" shape="457.61,200.85 458.59,205.95 461.51,209.66 466.38,211.95 473.19,212.84"/>
     </edge>
     <edge id=":junc_JanShobaAndSouthStr_4" function="internal">
-        <lane id=":junc_JanShobaAndSouthStr_4_0" index="0" speed="7.13" length="10.71" shape="473.39,206.55 470.08,206.13 467.70,205.05 466.26,203.29 465.74,200.86"/>
+        <lane id=":junc_JanShobaAndSouthStr_4_0" index="0" speed="7.04" length="10.57" shape="473.34,206.55 470.10,206.13 467.78,205.04 466.39,203.27 465.92,200.83"/>
     </edge>
     <edge id=":junc_JanShobaAndSouthStr_5" function="internal">
-        <lane id=":junc_JanShobaAndSouthStr_5_0" index="0" speed="7.92" length="13.44" shape="473.39,206.55 468.68,206.11 465.30,205.03 463.26,203.30 462.54,200.92"/>
+        <lane id=":junc_JanShobaAndSouthStr_5_0" index="0" speed="7.84" length="13.32" shape="473.34,206.55 468.70,206.11 465.38,205.01 463.39,203.25 462.72,200.84"/>
     </edge>
     <edge id=":junc_JanShobaAndSouthStr_6" function="internal">
-        <lane id=":junc_JanShobaAndSouthStr_6_0" index="0" speed="16.67" length="27.94" shape="473.39,206.55 465.53,206.86 457.61,207.72 450.62,208.61 445.57,208.96"/>
+        <lane id=":junc_JanShobaAndSouthStr_6_0" index="0" speed="16.67" length="27.89" shape="473.34,206.55 465.49,206.88 457.60,207.81 450.64,208.77 445.60,209.20"/>
     </edge>
     <edge id=":junc_JanShobaAndSouthStr_7" function="internal">
-        <lane id=":junc_JanShobaAndSouthStr_7_0" index="0" speed="10.51" length="16.60" shape="473.29,209.75 464.34,210.30 457.98,212.37 457.30,213.02"/>
+        <lane id=":junc_JanShobaAndSouthStr_7_0" index="0" speed="10.56" length="16.60" shape="473.27,209.75 464.32,210.30 457.95,212.37 457.28,213.02"/>
     </edge>
     <edge id=":junc_JanShobaAndSouthStr_8" function="internal">
-        <lane id=":junc_JanShobaAndSouthStr_8_0" index="0" speed="9.94" length="13.75" shape="473.29,209.75 465.74,210.32 460.38,212.38 460.10,212.70"/>
+        <lane id=":junc_JanShobaAndSouthStr_8_0" index="0" speed="9.99" length="13.71" shape="473.27,209.75 465.72,210.32 460.35,212.40 460.09,212.69"/>
     </edge>
     <edge id=":junc_JanShobaAndSouthStr_17" function="internal">
-        <lane id=":junc_JanShobaAndSouthStr_17_0" index="0" speed="10.51" length="9.52" shape="457.30,213.02 454.23,215.97 453.07,221.10"/>
+        <lane id=":junc_JanShobaAndSouthStr_17_0" index="0" speed="10.56" length="9.57" shape="457.28,213.02 454.16,215.98 452.96,221.11"/>
     </edge>
     <edge id=":junc_JanShobaAndSouthStr_18" function="internal">
-        <lane id=":junc_JanShobaAndSouthStr_18_0" index="0" speed="9.94" length="9.49" shape="460.10,212.70 457.23,215.95 456.27,221.02"/>
+        <lane id=":junc_JanShobaAndSouthStr_18_0" index="0" speed="9.99" length="9.59" shape="460.09,212.69 457.16,215.98 456.16,221.07"/>
     </edge>
     <edge id=":junc_JanShobaAndSouthStr_9" function="internal">
-        <lane id=":junc_JanShobaAndSouthStr_9_0" index="0" speed="7.02" length="10.96" shape="467.59,220.73 467.92,217.25 468.97,214.79 470.73,213.34 473.20,212.92"/>
+        <lane id=":junc_JanShobaAndSouthStr_9_0" index="0" speed="7.09" length="11.16" shape="467.59,220.91 467.92,217.33 468.97,214.79 470.73,213.29 473.19,212.84"/>
     </edge>
     <edge id=":junc_JanShobaAndSouthStr_10" function="internal">
-        <lane id=":junc_JanShobaAndSouthStr_10_0" index="0" speed="27.78" length="19.99" shape="467.59,220.73 467.30,214.82 466.72,210.79 466.10,206.77 465.74,200.86"/>
-        <lane id=":junc_JanShobaAndSouthStr_10_1" index="1" speed="27.78" length="19.99" shape="464.39,220.81 464.11,214.89 463.52,210.86 462.90,206.84 462.54,200.92"/>
+        <lane id=":junc_JanShobaAndSouthStr_10_0" index="0" speed="27.78" length="20.17" shape="467.59,220.91 465.92,200.83"/>
+        <lane id=":junc_JanShobaAndSouthStr_10_1" index="1" speed="27.78" length="20.17" shape="464.39,220.95 462.72,200.84"/>
     </edge>
     <edge id=":junc_JanShobaAndSouthStr_12" function="internal">
-        <lane id=":junc_JanShobaAndSouthStr_12_0" index="0" speed="9.98" length="22.13" shape="461.19,220.89 460.19,215.82 457.26,212.14 452.38,209.85 445.57,208.96"/>
+        <lane id=":junc_JanShobaAndSouthStr_12_0" index="0" speed="9.91" length="22.10" shape="461.19,221.00 460.19,215.88 457.26,212.21 452.40,209.98 445.60,209.20"/>
     </edge>
     <edge id=":junc_JanShobaAndSouthStr_13" function="internal">
-        <lane id=":junc_JanShobaAndSouthStr_13_0" index="0" speed="7.14" length="10.71" shape="445.41,215.41 448.71,215.83 451.09,216.91 452.54,218.67 453.07,221.10"/>
+        <lane id=":junc_JanShobaAndSouthStr_13_0" index="0" speed="7.06" length="10.52" shape="445.55,215.41 448.76,215.83 451.07,216.92 452.47,218.68 452.96,221.11"/>
     </edge>
     <edge id=":junc_JanShobaAndSouthStr_14" function="internal">
-        <lane id=":junc_JanShobaAndSouthStr_14_0" index="0" speed="7.93" length="13.42" shape="445.41,215.41 450.11,215.85 453.49,216.93 455.54,218.65 456.27,221.02"/>
+        <lane id=":junc_JanShobaAndSouthStr_14_0" index="0" speed="7.85" length="13.25" shape="445.55,215.41 450.16,215.85 453.47,216.94 455.47,218.68 456.16,221.07"/>
     </edge>
     <edge id=":junc_JanShobaAndSouthStr_15" function="internal">
-        <lane id=":junc_JanShobaAndSouthStr_15_0" index="0" speed="16.67" length="27.92" shape="445.41,215.41 453.27,215.09 461.18,214.19 468.16,213.28 473.20,212.92"/>
+        <lane id=":junc_JanShobaAndSouthStr_15_0" index="0" speed="16.67" length="27.78" shape="445.55,215.41 453.38,215.08 461.25,214.16 468.17,213.22 473.19,212.84"/>
     </edge>
     <edge id=":junc_JanShobaAndSouthStr_16" function="internal">
-        <lane id=":junc_JanShobaAndSouthStr_16_0" index="0" speed="9.96" length="13.79" shape="445.49,212.21 453.04,211.64 458.39,209.57 458.71,209.21"/>
+        <lane id=":junc_JanShobaAndSouthStr_16_0" index="0" speed="10.03" length="13.63" shape="445.58,212.21 453.08,211.64 458.44,209.55 458.68,209.29"/>
     </edge>
     <edge id=":junc_JanShobaAndSouthStr_19" function="internal">
-        <lane id=":junc_JanShobaAndSouthStr_19_0" index="0" speed="9.96" length="9.47" shape="458.71,209.21 461.56,206.00 462.54,200.92"/>
+        <lane id=":junc_JanShobaAndSouthStr_19_0" index="0" speed="10.03" length="9.70" shape="458.68,209.29 461.66,205.95 462.72,200.84"/>
     </edge>
     <edge id=":junc_roadSplit_JanShobaN_0" function="internal">
-        <lane id=":junc_roadSplit_JanShobaN_0_0" index="0" speed="27.78" length="8.44" shape="469.07,258.73 468.98,256.36 468.51,254.76 467.99,253.16 467.73,250.79"/>
-        <lane id=":junc_roadSplit_JanShobaN_0_1" index="1" speed="27.78" length="8.44" shape="465.87,258.50 465.78,256.20 465.31,254.66 464.79,253.11 464.53,250.80"/>
-        <lane id=":junc_roadSplit_JanShobaN_0_2" index="2" speed="27.78" length="8.44" shape="465.87,258.50 465.30,256.05 463.73,254.66 462.10,253.27 461.33,250.82"/>
+        <lane id=":junc_roadSplit_JanShobaN_0_0" index="0" speed="27.78" length="8.70" shape="469.30,258.59 469.08,256.19 468.54,254.58 467.99,252.97 467.73,250.56"/>
+        <lane id=":junc_roadSplit_JanShobaN_0_1" index="1" speed="27.78" length="8.70" shape="466.10,258.55 465.88,256.16 465.34,254.56 464.79,252.96 464.53,250.57"/>
+        <lane id=":junc_roadSplit_JanShobaN_0_2" index="2" speed="27.78" length="8.70" shape="466.10,258.55 465.38,256.00 463.75,254.57 462.09,253.14 461.33,250.59"/>
     </edge>
     <edge id=":junc_roadSplit_JanShobaS_0" function="internal">
-        <lane id=":junc_roadSplit_JanShobaS_0_0" index="0" speed="27.78" length="8.58" shape="449.84,160.05 449.97,162.45 450.46,164.06 450.98,165.68 451.23,168.08"/>
-        <lane id=":junc_roadSplit_JanShobaS_0_1" index="1" speed="27.78" length="8.58" shape="453.04,160.22 453.17,162.57 453.66,164.15 454.18,165.73 454.43,168.08"/>
-        <lane id=":junc_roadSplit_JanShobaS_0_2" index="2" speed="27.78" length="8.58" shape="453.04,160.22 453.65,162.73 455.24,164.15 456.88,165.57 457.63,168.08"/>
+        <lane id=":junc_roadSplit_JanShobaS_0_0" index="0" speed="27.78" length="8.69" shape="449.71,160.14 449.91,162.55 450.44,164.16 450.98,165.78 451.23,168.19"/>
+        <lane id=":junc_roadSplit_JanShobaS_0_1" index="1" speed="27.78" length="8.69" shape="452.91,160.21 453.11,162.60 453.64,164.20 454.18,165.80 454.43,168.19"/>
+        <lane id=":junc_roadSplit_JanShobaS_0_2" index="2" speed="27.78" length="8.69" shape="452.91,160.21 453.61,162.76 455.24,164.20 456.88,165.64 457.63,168.19"/>
     </edge>
     <edge id=":junc_roadSplit_SouthStrE_0" function="internal">
-        <lane id=":junc_roadSplit_SouthStrE_0_0" index="0" speed="16.67" length="8.40" shape="505.45,210.47 503.00,209.89 501.49,208.75 499.98,207.61 497.53,207.06"/>
-        <lane id=":junc_roadSplit_SouthStrE_0_1" index="1" speed="16.67" length="8.40" shape="505.45,210.47 497.47,210.26"/>
+        <lane id=":junc_roadSplit_SouthStrE_0_0" index="0" speed="16.67" length="8.40" shape="505.45,210.44 503.00,209.88 501.49,208.74 499.97,207.61 497.52,207.06"/>
+        <lane id=":junc_roadSplit_SouthStrE_0_1" index="1" speed="16.67" length="8.40" shape="505.45,210.44 497.46,210.26"/>
     </edge>
     <edge id=":junc_roadSplit_SouthStrW_0" function="internal">
-        <lane id=":junc_roadSplit_SouthStrW_0_0" index="0" speed="16.67" length="8.40" shape="408.58,211.39 411.03,211.96 412.54,213.10 414.05,214.23 416.50,214.79"/>
-        <lane id=":junc_roadSplit_SouthStrW_0_1" index="1" speed="16.67" length="8.40" shape="408.58,211.39 416.57,211.59"/>
+        <lane id=":junc_roadSplit_SouthStrW_0_0" index="0" speed="16.67" length="8.39" shape="408.58,211.48 411.03,211.99 412.55,213.11 414.07,214.23 416.51,214.79"/>
+        <lane id=":junc_roadSplit_SouthStrW_0_1" index="1" speed="16.67" length="8.39" shape="408.58,211.48 416.58,211.59"/>
     </edge>
 
-    <edge id="road_double_JanShobaN_fromJunc" from="junc_JanShobaAndSouthStr" to="junc_JanShobaN" name="Jan Shoba Street" priority="-1" spreadType="center" shape="454.41,210.65 457.05,315.45">
-        <lane id="road_double_JanShobaN_fromJunc_0" index="0" speed="27.78" length="94.54" shape="453.07,221.10 455.45,315.61">
+    <edge id="road_double_JanShobaN_fromJunc" from="junc_JanShobaAndSouthStr" to="junc_JanShobaN" name="Jan Shoba Street" priority="-1" spreadType="center" shape="454.41,210.65 458.40,493.36">
+        <lane id="road_double_JanShobaN_fromJunc_0" index="0" speed="27.78" length="272.38" shape="452.96,221.11 456.80,493.47">
             <param key="origId" value="617551198"/>
         </lane>
-        <lane id="road_double_JanShobaN_fromJunc_1" index="1" speed="27.78" length="94.54" shape="456.27,221.02 458.65,315.53">
+        <lane id="road_double_JanShobaN_fromJunc_1" index="1" speed="27.78" length="272.38" shape="456.16,221.07 460.00,493.42">
             <param key="origId" value="617551198"/>
         </lane>
     </edge>
     <edge id="road_double_JanShobaN_toJunc" from="junc_JanShobaN" to="junc_roadSplit_JanShobaN" name="Jan Shoba Street" priority="-1">
-        <lane id="road_double_JanShobaN_toJunc_0" index="0" speed="27.78" length="57.24" shape="465.04,315.83 469.07,258.73"/>
-        <lane id="road_double_JanShobaN_toJunc_1" index="1" speed="27.78" length="57.24" shape="461.85,315.60 465.87,258.50"/>
+        <lane id="road_double_JanShobaN_toJunc_0" index="0" speed="27.78" length="234.89" shape="466.40,493.46 469.30,258.59"/>
+        <lane id="road_double_JanShobaN_toJunc_1" index="1" speed="27.78" length="234.89" shape="463.20,493.42 466.10,258.55"/>
     </edge>
-    <edge id="road_double_JanShobaS_fromJunc" from="junc_JanShobaAndSouthStr" to="junc_JanShobaS" name="Jan Shoba Street" priority="-1" spreadType="center" shape="464.34,211.16 462.45,115.19">
-        <lane id="road_double_JanShobaS_fromJunc_0" index="0" speed="27.78" length="87.74" shape="465.74,200.86 464.01,113.13">
+    <edge id="road_double_JanShobaS_fromJunc" from="junc_JanShobaAndSouthStr" to="junc_JanShobaS" name="Jan Shoba Street" priority="-1" spreadType="center" shape="464.34,211.16 463.80,-31.27">
+        <lane id="road_double_JanShobaS_fromJunc_0" index="0" speed="27.78" length="234.04" shape="465.92,200.83 465.40,-33.21">
             <param key="origId" value="244373220"/>
         </lane>
-        <lane id="road_double_JanShobaS_fromJunc_1" index="1" speed="27.78" length="87.74" shape="462.54,200.92 460.81,113.20">
+        <lane id="road_double_JanShobaS_fromJunc_1" index="1" speed="27.78" length="234.04" shape="462.72,200.84 462.20,-33.20">
             <param key="origId" value="244373220"/>
         </lane>
     </edge>
     <edge id="road_double_JanShobaS_toJunc" from="junc_JanShobaS" to="junc_roadSplit_JanShobaS" name="Jan Shoba Street" priority="-1">
-        <lane id="road_double_JanShobaS_toJunc_0" index="0" speed="27.78" length="47.10" shape="452.30,113.02 449.84,160.05"/>
-        <lane id="road_double_JanShobaS_toJunc_1" index="1" speed="27.78" length="47.10" shape="455.49,113.19 453.04,160.22"/>
+        <lane id="road_double_JanShobaS_toJunc_0" index="0" speed="27.78" length="193.47" shape="453.64,-33.29 449.71,160.14"/>
+        <lane id="road_double_JanShobaS_toJunc_1" index="1" speed="27.78" length="193.47" shape="456.84,-33.22 452.91,160.21"/>
     </edge>
     <edge id="road_double_SouthStrE_toJunc" from="junc_roadSplit_SouthStrE" to="junc_JanShobaAndSouthStr" name="South Street" priority="-1" shape="501.42,211.94 464.34,211.16">
-        <lane id="road_double_SouthStrE_toJunc_0" index="0" speed="16.67" length="24.16" shape="497.53,207.06 473.39,206.55">
+        <lane id="road_double_SouthStrE_toJunc_0" index="0" speed="16.67" length="24.19" shape="497.52,207.06 473.34,206.55">
             <param key="origId" value="579723769"/>
         </lane>
-        <lane id="road_double_SouthStrE_toJunc_1" index="1" speed="16.67" length="24.16" shape="497.47,210.26 473.29,209.75">
+        <lane id="road_double_SouthStrE_toJunc_1" index="1" speed="16.67" length="24.19" shape="497.46,210.26 473.27,209.75">
             <param key="origId" value="579723769"/>
         </lane>
     </edge>
     <edge id="road_double_SouthStrW_toJunc" from="junc_roadSplit_SouthStrW" to="junc_JanShobaAndSouthStr" name="South Street" priority="-1">
-        <lane id="road_double_SouthStrW_toJunc_0" index="0" speed="16.67" length="28.92" shape="416.50,214.79 445.41,215.41"/>
-        <lane id="road_double_SouthStrW_toJunc_1" index="1" speed="16.67" length="28.92" shape="416.57,211.59 445.49,212.21"/>
+        <lane id="road_double_SouthStrW_toJunc_0" index="0" speed="16.67" length="29.02" shape="416.51,214.79 445.55,215.41"/>
+        <lane id="road_double_SouthStrW_toJunc_1" index="1" speed="16.67" length="29.02" shape="416.58,211.59 445.58,212.21"/>
     </edge>
     <edge id="road_single_SouthStrE_fromJunc" from="junc_JanShobaAndSouthStr" to="junc_SouthStrE" name="South Street" priority="-1">
-        <lane id="road_single_SouthStrE_fromJunc_0" index="0" speed="16.67" length="96.83" shape="473.20,212.92 569.99,215.77"/>
+        <lane id="road_single_SouthStrE_fromJunc_0" index="0" speed="16.67" length="292.32" shape="473.19,212.84 765.43,219.81"/>
     </edge>
     <edge id="road_single_SouthStrE_toJunc" from="junc_SouthStrE" to="junc_roadSplit_SouthStrE" name="South Street" priority="-1">
-        <lane id="road_single_SouthStrE_toJunc_0" index="0" speed="16.67" length="64.68" shape="570.09,212.57 505.45,210.47"/>
+        <lane id="road_single_SouthStrE_toJunc_0" index="0" speed="16.67" length="260.13" shape="765.51,216.61 505.45,210.44"/>
     </edge>
     <edge id="road_single_SouthStrW_fromJunc" from="junc_JanShobaAndSouthStr" to="junc_SouthStrW" name="South Street" priority="-1">
-        <lane id="road_single_SouthStrW_fromJunc_0" index="0" speed="16.67" length="107.25" shape="445.57,208.96 338.36,206.27"/>
+        <lane id="road_single_SouthStrW_fromJunc_0" index="0" speed="16.67" length="289.85" shape="445.60,209.20 155.76,206.91"/>
     </edge>
     <edge id="road_single_SouthStrW_toJunc" from="junc_SouthStrW" to="junc_roadSplit_SouthStrW" name="South Street" priority="-1">
-        <lane id="road_single_SouthStrW_toJunc_0" index="0" speed="16.67" length="70.33" shape="338.28,209.47 408.58,211.39"/>
+        <lane id="road_single_SouthStrW_toJunc_0" index="0" speed="16.67" length="252.84" shape="155.74,210.11 408.58,211.48"/>
     </edge>
     <edge id="road_triple_JanShobaN_toJunc" from="junc_roadSplit_JanShobaN" to="junc_JanShobaAndSouthStr" name="Jan Shoba Street" priority="-1" spreadType="center" shape="464.55,254.54 464.34,211.16">
-        <lane id="road_triple_JanShobaN_toJunc_0" index="0" speed="27.78" length="29.99" shape="467.73,250.79 467.59,220.73">
+        <lane id="road_triple_JanShobaN_toJunc_0" index="0" speed="27.78" length="29.62" shape="467.73,250.56 467.59,220.91">
             <param key="origId" value="617551197"/>
         </lane>
-        <lane id="road_triple_JanShobaN_toJunc_1" index="1" speed="27.78" length="29.99" shape="464.53,250.80 464.39,220.81">
+        <lane id="road_triple_JanShobaN_toJunc_1" index="1" speed="27.78" length="29.62" shape="464.53,250.57 464.39,220.95">
             <param key="origId" value="617551197"/>
         </lane>
-        <lane id="road_triple_JanShobaN_toJunc_2" index="2" speed="27.78" length="29.99" shape="461.33,250.82 461.19,220.89">
+        <lane id="road_triple_JanShobaN_toJunc_2" index="2" speed="27.78" length="29.62" shape="461.33,250.59 461.19,221.00">
             <param key="origId" value="617551197"/>
         </lane>
     </edge>
     <edge id="road_triple_JanShobaS_toJunc" from="junc_roadSplit_JanShobaS" to="junc_JanShobaAndSouthStr" name="Jan Shoba Street" priority="-1" spreadType="center" shape="454.43,164.23 454.41,210.65">
-        <lane id="road_triple_JanShobaS_toJunc_0" index="0" speed="27.78" length="33.00" shape="451.23,168.08 451.21,201.14">
+        <lane id="road_triple_JanShobaS_toJunc_0" index="0" speed="27.78" length="32.67" shape="451.23,168.19 451.21,200.86">
             <param key="origId" value="617551196"/>
         </lane>
-        <lane id="road_triple_JanShobaS_toJunc_1" index="1" speed="27.78" length="33.00" shape="454.43,168.08 454.41,201.08">
+        <lane id="road_triple_JanShobaS_toJunc_1" index="1" speed="27.78" length="32.67" shape="454.43,168.19 454.41,200.85">
             <param key="origId" value="617551196"/>
         </lane>
-        <lane id="road_triple_JanShobaS_toJunc_2" index="2" speed="27.78" length="33.00" shape="457.63,168.08 457.61,201.02">
+        <lane id="road_triple_JanShobaS_toJunc_2" index="2" speed="27.78" length="32.67" shape="457.63,168.19 457.61,200.85">
             <param key="origId" value="617551196"/>
         </lane>
     </edge>
 
     <tlLogic id="cluster_25290891_611769793" type="static" programID="0" offset="0">
         <phase duration="100" state="GGGrrrrrrGGGrrrrr"/>
-        <phase duration="100"  state="yyyrrrrrryyyrrrrr"/>
-        <phase duration="100"  state="rrrGrrrrrrrrGrrrr"/>
-        <phase duration="100"  state="rrryrrrrrrrryrrrr"/>
+        <phase duration="100" state="yyyrrrrrryyyrrrrr"/>
+        <phase duration="100" state="rrrGrrrrrrrrGrrrr"/>
+        <phase duration="100" state="rrryrrrrrrrryrrrr"/>
         <phase duration="100" state="rrrrGGGggrrrrGGGg"/>
-        <phase duration="100"  state="rrrryyyggrrrryyyg"/>
-        <phase duration="100"  state="rrrrrrrGGrrrrrrrG"/>
-        <phase duration="100"  state="rrrrrrryyrrrrrrry"/>
+        <phase duration="100" state="rrrryyyggrrrryyyg"/>
+        <phase duration="100" state="rrrrrrrGGrrrrrrrG"/>
+        <phase duration="100" state="rrrrrrryyrrrrrrry"/>
     </tlLogic>
 
-    <junction id="junc_JanShobaAndSouthStr" type="traffic_light" x="459.38" y="210.91" incLanes="road_triple_JanShobaS_toJunc_0 road_triple_JanShobaS_toJunc_1 road_triple_JanShobaS_toJunc_2 road_double_SouthStrE_toJunc_0 road_double_SouthStrE_toJunc_1 road_triple_JanShobaN_toJunc_0 road_triple_JanShobaN_toJunc_1 road_triple_JanShobaN_toJunc_2 road_double_SouthStrW_toJunc_0 road_double_SouthStrW_toJunc_1" intLanes=":junc_JanShobaAndSouthStr_0_0 :junc_JanShobaAndSouthStr_1_0 :junc_JanShobaAndSouthStr_1_1 :junc_JanShobaAndSouthStr_3_0 :junc_JanShobaAndSouthStr_4_0 :junc_JanShobaAndSouthStr_5_0 :junc_JanShobaAndSouthStr_6_0 :junc_JanShobaAndSouthStr_17_0 :junc_JanShobaAndSouthStr_18_0 :junc_JanShobaAndSouthStr_9_0 :junc_JanShobaAndSouthStr_10_0 :junc_JanShobaAndSouthStr_10_1 :junc_JanShobaAndSouthStr_12_0 :junc_JanShobaAndSouthStr_13_0 :junc_JanShobaAndSouthStr_14_0 :junc_JanShobaAndSouthStr_15_0 :junc_JanShobaAndSouthStr_19_0" shape="449.61,201.18 467.34,200.82 468.05,203.06 468.90,203.86 470.08,204.44 471.59,204.80 473.44,204.95 473.15,214.52 470.94,215.15 470.16,216.00 469.61,217.21 469.29,218.77 469.19,220.69 451.47,221.14 450.75,218.90 449.90,218.11 448.72,217.53 447.21,217.16 445.37,217.01 445.61,207.36 447.83,206.72 448.61,205.87 449.17,204.66 449.50,203.09" name="Jan Shoba and South Street">
+    <junction id="junc_JanShobaAndSouthStr" type="traffic_light" x="459.38" y="210.91" incLanes="road_triple_JanShobaS_toJunc_0 road_triple_JanShobaS_toJunc_1 road_triple_JanShobaS_toJunc_2 road_double_SouthStrE_toJunc_0 road_double_SouthStrE_toJunc_1 road_triple_JanShobaN_toJunc_0 road_triple_JanShobaN_toJunc_1 road_triple_JanShobaN_toJunc_2 road_double_SouthStrW_toJunc_0 road_double_SouthStrW_toJunc_1" intLanes=":junc_JanShobaAndSouthStr_0_0 :junc_JanShobaAndSouthStr_1_0 :junc_JanShobaAndSouthStr_1_1 :junc_JanShobaAndSouthStr_3_0 :junc_JanShobaAndSouthStr_4_0 :junc_JanShobaAndSouthStr_5_0 :junc_JanShobaAndSouthStr_6_0 :junc_JanShobaAndSouthStr_17_0 :junc_JanShobaAndSouthStr_18_0 :junc_JanShobaAndSouthStr_9_0 :junc_JanShobaAndSouthStr_10_0 :junc_JanShobaAndSouthStr_10_1 :junc_JanShobaAndSouthStr_12_0 :junc_JanShobaAndSouthStr_13_0 :junc_JanShobaAndSouthStr_14_0 :junc_JanShobaAndSouthStr_15_0 :junc_JanShobaAndSouthStr_19_0" shape="449.61,200.87 467.52,200.83 468.17,203.06 468.99,203.86 470.13,204.44 471.59,204.80 473.38,204.95 473.15,214.44 470.94,215.11 470.16,216.00 469.61,217.26 469.29,218.89 469.19,220.88 451.36,221.14 450.69,218.90 449.87,218.11 448.75,217.53 447.30,217.16 445.54,217.01 445.61,207.60 447.83,206.87 448.61,205.93 449.17,204.62 449.50,202.93" name="Jan Shoba and South Street">
         <request index="0"  response="00000000000000000" foes="00001000001000000" cont="0"/>
         <request index="1"  response="10000000110000000" foes="11111000111000000" cont="0"/>
         <request index="2"  response="10000000110000000" foes="11111000111000000" cont="0"/>
@@ -217,32 +217,32 @@
         <request index="15" response="00001111000001110" foes="00001111110001110" cont="0"/>
         <request index="16" response="00001110001111110" foes="00001110001111110" cont="1"/>
     </junction>
-    <junction id="junc_JanShobaN" type="dead_end" x="460.25" y="315.49" incLanes="road_double_JanShobaN_fromJunc_0 road_double_JanShobaN_fromJunc_1" intLanes="" shape="460.25,315.49 466.63,315.94 453.85,315.65"/>
-    <junction id="junc_JanShobaS" type="dead_end" x="457.09" y="113.27" incLanes="road_double_JanShobaS_fromJunc_0 road_double_JanShobaS_fromJunc_1" intLanes="" shape="457.09,113.27 450.70,112.94 465.61,113.10"/>
-    <junction id="junc_SouthStrE" type="dead_end" x="570.04" y="214.17" incLanes="road_single_SouthStrE_fromJunc_0" intLanes="" shape="570.04,214.17 570.14,210.97 569.95,217.37"/>
-    <junction id="junc_SouthStrW" type="dead_end" x="338.32" y="207.87" incLanes="road_single_SouthStrW_fromJunc_0" intLanes="" shape="338.32,207.87 338.23,211.07 338.40,204.67"/>
-    <junction id="junc_roadSplit_JanShobaN" type="priority" x="464.55" y="254.54" incLanes="road_double_JanShobaN_toJunc_0 road_double_JanShobaN_toJunc_1" intLanes=":junc_roadSplit_JanShobaN_0_0 :junc_roadSplit_JanShobaN_0_1 :junc_roadSplit_JanShobaN_0_2" shape="470.66,258.84 464.28,258.39 463.24,255.45 462.13,254.61 460.99,253.77 460.10,252.61 459.73,250.83 469.33,250.78 469.75,253.78 470.11,254.81 470.45,255.85 470.67,257.11">
+    <junction id="junc_JanShobaN" type="dead_end" x="461.60" y="493.40" incLanes="road_double_JanShobaN_fromJunc_0 road_double_JanShobaN_fromJunc_1" intLanes="" shape="461.60,493.40 468.00,493.48 455.20,493.49"/>
+    <junction id="junc_JanShobaS" type="dead_end" x="458.44" y="-33.19" incLanes="road_double_JanShobaS_fromJunc_0 road_double_JanShobaS_fromJunc_1" intLanes="" shape="458.44,-33.19 452.04,-33.32 467.00,-33.21"/>
+    <junction id="junc_SouthStrE" type="dead_end" x="765.47" y="218.21" incLanes="road_single_SouthStrE_fromJunc_0" intLanes="" shape="765.47,218.21 765.39,221.41 765.47,218.21"/>
+    <junction id="junc_SouthStrW" type="dead_end" x="155.75" y="208.51" incLanes="road_single_SouthStrW_fromJunc_0" intLanes="" shape="155.75,208.51 155.73,211.71 155.78,205.31"/>
+    <junction id="junc_roadSplit_JanShobaN" type="priority" x="464.55" y="254.54" incLanes="road_double_JanShobaN_toJunc_0 road_double_JanShobaN_toJunc_1" intLanes=":junc_roadSplit_JanShobaN_0_0 :junc_roadSplit_JanShobaN_0_1 :junc_roadSplit_JanShobaN_0_2" shape="470.90,258.61 464.50,258.53 463.29,255.45 462.15,254.57 460.99,253.68 460.10,252.47 459.73,250.60 469.33,250.55 469.76,253.55 470.14,254.58 470.52,255.61 470.80,256.87">
         <request index="0" response="000" foes="000" cont="0"/>
         <request index="1" response="000" foes="000" cont="0"/>
         <request index="2" response="000" foes="000" cont="0"/>
     </junction>
-    <junction id="junc_roadSplit_JanShobaS" type="priority" x="454.43" y="164.23" incLanes="road_double_JanShobaS_toJunc_0 road_double_JanShobaS_toJunc_1" intLanes=":junc_roadSplit_JanShobaS_0_0 :junc_roadSplit_JanShobaS_0_1 :junc_roadSplit_JanShobaS_0_2" shape="448.24,159.97 454.64,160.30 455.72,163.32 456.84,164.19 457.99,165.06 458.87,166.25 459.23,168.08 449.63,168.08 449.22,165.06 448.86,164.02 448.51,162.98 448.27,161.71">
+    <junction id="junc_roadSplit_JanShobaS" type="priority" x="454.43" y="164.23" incLanes="road_double_JanShobaS_toJunc_0 road_double_JanShobaS_toJunc_1" intLanes=":junc_roadSplit_JanShobaS_0_0 :junc_roadSplit_JanShobaS_0_1 :junc_roadSplit_JanShobaS_0_2" shape="448.11,160.11 454.51,160.24 455.69,163.33 456.84,164.22 457.99,165.10 458.87,166.32 459.23,168.19 449.63,168.19 449.22,165.18 448.84,164.15 448.47,163.12 448.20,161.85">
         <request index="0" response="000" foes="000" cont="0"/>
         <request index="1" response="000" foes="000" cont="0"/>
         <request index="2" response="000" foes="000" cont="0"/>
     </junction>
-    <junction id="junc_roadSplit_SouthStrE" type="priority" x="501.42" y="211.94" incLanes="road_single_SouthStrE_toJunc_0" intLanes=":junc_roadSplit_SouthStrE_0_0 :junc_roadSplit_SouthStrE_0_1" shape="505.50,208.87 505.40,212.07 497.43,211.86 497.57,205.46 500.58,206.35 501.53,207.15 502.49,207.94 503.71,208.58">
+    <junction id="junc_roadSplit_SouthStrE" type="priority" x="501.42" y="211.94" incLanes="road_single_SouthStrE_toJunc_0" intLanes=":junc_roadSplit_SouthStrE_0_0 :junc_roadSplit_SouthStrE_0_1" shape="505.49,208.84 505.41,212.03 497.42,211.86 497.56,205.46 500.57,206.35 502.48,207.93 503.71,208.56">
         <request index="0" response="00" foes="00" cont="0"/>
         <request index="1" response="00" foes="00" cont="0"/>
     </junction>
-    <junction id="junc_roadSplit_SouthStrW" type="priority" x="412.61" y="209.90" incLanes="road_single_SouthStrW_toJunc_0" intLanes=":junc_roadSplit_SouthStrW_0_0 :junc_roadSplit_SouthStrW_0_1" shape="416.60,209.99 416.47,216.38 413.45,215.49 411.55,213.90 410.32,213.28 408.53,212.99 408.62,209.79" fringe="outer">
+    <junction id="junc_roadSplit_SouthStrW" type="priority" x="412.61" y="209.90" incLanes="road_single_SouthStrW_toJunc_0" intLanes=":junc_roadSplit_SouthStrW_0_0 :junc_roadSplit_SouthStrW_0_1" shape="416.62,209.99 416.48,216.39 413.48,215.49 412.53,214.71 411.57,213.93 410.35,213.32 408.57,213.08 408.59,209.88" fringe="outer">
         <request index="0" response="00" foes="00" cont="0"/>
         <request index="1" response="00" foes="00" cont="0"/>
     </junction>
 
-    <junction id=":junc_JanShobaAndSouthStr_17_0" type="internal" x="457.30" y="213.02" incLanes=":junc_JanShobaAndSouthStr_7_0 road_double_SouthStrW_toJunc_0" intLanes=":junc_JanShobaAndSouthStr_1_0 :junc_JanShobaAndSouthStr_1_1 :junc_JanShobaAndSouthStr_3_0 :junc_JanShobaAndSouthStr_10_0 :junc_JanShobaAndSouthStr_10_1 :junc_JanShobaAndSouthStr_12_0 :junc_JanShobaAndSouthStr_13_0 :junc_JanShobaAndSouthStr_14_0 :junc_JanShobaAndSouthStr_15_0"/>
-    <junction id=":junc_JanShobaAndSouthStr_18_0" type="internal" x="460.10" y="212.70" incLanes=":junc_JanShobaAndSouthStr_8_0 road_double_SouthStrW_toJunc_0" intLanes=":junc_JanShobaAndSouthStr_1_0 :junc_JanShobaAndSouthStr_1_1 :junc_JanShobaAndSouthStr_3_0 :junc_JanShobaAndSouthStr_10_0 :junc_JanShobaAndSouthStr_10_1 :junc_JanShobaAndSouthStr_12_0 :junc_JanShobaAndSouthStr_13_0 :junc_JanShobaAndSouthStr_14_0 :junc_JanShobaAndSouthStr_15_0"/>
-    <junction id=":junc_JanShobaAndSouthStr_19_0" type="internal" x="458.71" y="209.21" incLanes=":junc_JanShobaAndSouthStr_16_0 road_double_SouthStrE_toJunc_0" intLanes=":junc_JanShobaAndSouthStr_1_0 :junc_JanShobaAndSouthStr_1_1 :junc_JanShobaAndSouthStr_3_0 :junc_JanShobaAndSouthStr_4_0 :junc_JanShobaAndSouthStr_5_0 :junc_JanShobaAndSouthStr_6_0 :junc_JanShobaAndSouthStr_10_0 :junc_JanShobaAndSouthStr_10_1 :junc_JanShobaAndSouthStr_12_0"/>
+    <junction id=":junc_JanShobaAndSouthStr_17_0" type="internal" x="457.28" y="213.02" incLanes=":junc_JanShobaAndSouthStr_7_0 road_double_SouthStrW_toJunc_0" intLanes=":junc_JanShobaAndSouthStr_1_0 :junc_JanShobaAndSouthStr_1_1 :junc_JanShobaAndSouthStr_3_0 :junc_JanShobaAndSouthStr_10_0 :junc_JanShobaAndSouthStr_10_1 :junc_JanShobaAndSouthStr_12_0 :junc_JanShobaAndSouthStr_13_0 :junc_JanShobaAndSouthStr_14_0 :junc_JanShobaAndSouthStr_15_0"/>
+    <junction id=":junc_JanShobaAndSouthStr_18_0" type="internal" x="460.09" y="212.69" incLanes=":junc_JanShobaAndSouthStr_8_0 road_double_SouthStrW_toJunc_0" intLanes=":junc_JanShobaAndSouthStr_1_0 :junc_JanShobaAndSouthStr_1_1 :junc_JanShobaAndSouthStr_3_0 :junc_JanShobaAndSouthStr_10_0 :junc_JanShobaAndSouthStr_10_1 :junc_JanShobaAndSouthStr_12_0 :junc_JanShobaAndSouthStr_13_0 :junc_JanShobaAndSouthStr_14_0 :junc_JanShobaAndSouthStr_15_0"/>
+    <junction id=":junc_JanShobaAndSouthStr_19_0" type="internal" x="458.68" y="209.29" incLanes=":junc_JanShobaAndSouthStr_16_0 road_double_SouthStrE_toJunc_0" intLanes=":junc_JanShobaAndSouthStr_1_0 :junc_JanShobaAndSouthStr_1_1 :junc_JanShobaAndSouthStr_3_0 :junc_JanShobaAndSouthStr_4_0 :junc_JanShobaAndSouthStr_5_0 :junc_JanShobaAndSouthStr_6_0 :junc_JanShobaAndSouthStr_10_0 :junc_JanShobaAndSouthStr_10_1 :junc_JanShobaAndSouthStr_12_0"/>
 
     <connection from="road_double_JanShobaN_toJunc" to="road_triple_JanShobaN_toJunc" fromLane="0" toLane="0" via=":junc_roadSplit_JanShobaN_0_0" dir="s" state="M"/>
     <connection from="road_double_JanShobaN_toJunc" to="road_triple_JanShobaN_toJunc" fromLane="1" toLane="1" via=":junc_roadSplit_JanShobaN_0_1" dir="s" state="M"/>
