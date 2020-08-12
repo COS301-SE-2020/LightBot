@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import { getForum } from '../../actions/auth'
 import { Card, CardBody, Table, Row, Col } from 'reactstrap'
 import { connect } from 'react-redux'
@@ -9,7 +10,7 @@ class Post extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      forum_data: [{title: 'hello', subject: 'meow', description: 'some description'}],
+      colums: ['title', 'subject', 'description'],
     }
     this.onDismiss = this.onDismiss.bind(this)
     this.notify = this.notify.bind(this)
@@ -33,6 +34,22 @@ class Post extends React.Component {
     this.refs.notificationAlert.notificationAlert(options)
   }
 
+  renderTable() {
+    const sortedPosts = this.props.forum_data.sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    )
+    return sortedPosts.map((item, i) => {
+      return (
+        <tr key={item._id}>
+          <td>{item.title}</td>
+          <td>{item.subject}</td>
+          <td>{item.message}</td>
+          <td>{item.date}</td>
+        </tr>
+      )
+    })
+  }
+
   handleLoad = async (e) => {
     try {
       await this.props.getForum()
@@ -40,8 +57,9 @@ class Post extends React.Component {
         this.notify(this.props.message.msg, 'danger')
       } else {
         this.notify(this.props.message.msg, 'success')
+        console.log(this.props.forum_data)
+        ReactDOM.render(this.renderTable(), document.getElementById('table'))
       }
-      console.log(this.props.forum_data)
     } catch (err) {}
   }
   componentWillMount() {
@@ -56,8 +74,16 @@ class Post extends React.Component {
           <Col xs={12}>
             <Card>
               <CardBody>
-                <Table responsive>
-
+                <Table reactive='true'>
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Subject</th>
+                      <th>Message</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody id='table'></tbody>
                 </Table>
               </CardBody>
             </Card>
