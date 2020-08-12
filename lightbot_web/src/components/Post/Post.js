@@ -1,20 +1,19 @@
 import React from 'react'
-//import { tbody } from '../../variables/general'
-import { loadForum } from '../../actions/auth'
+import { getForum } from '../../actions/auth'
 import { Card, CardBody, Table, Row, Col } from 'reactstrap'
 import { connect } from 'react-redux'
 import NotificationAlert from 'react-notification-alert'
 import PropTypes from 'prop-types'
-const thead = ['Date/Time', 'Title', 'Subject', 'Creator']
 
 class Post extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      Data: this.props.data,
+      forum_data: [{title: 'hello', subject: 'meow', description: 'some description'}],
     }
     this.onDismiss = this.onDismiss.bind(this)
     this.notify = this.notify.bind(this)
+    this.myRef = React.createRef()
   }
 
   onDismiss() {}
@@ -34,20 +33,19 @@ class Post extends React.Component {
     this.refs.notificationAlert.notificationAlert(options)
   }
 
-  componentDidMount() {
-    this.handleLoad()
-  }
-
   handleLoad = async (e) => {
     try {
-      await this.props.loadForum()
-      console.log(this.state.data)
+      await this.props.getForum()
       if (this.props.message.status > 299) {
         this.notify(this.props.message.msg, 'danger')
       } else {
         this.notify(this.props.message.msg, 'success')
       }
+      console.log(this.props.forum_data)
     } catch (err) {}
+  }
+  componentWillMount() {
+    this.handleLoad()
   }
 
   render() {
@@ -58,7 +56,9 @@ class Post extends React.Component {
           <Col xs={12}>
             <Card>
               <CardBody>
-                <Table responsive data={this.state.data}></Table>
+                <Table responsive>
+
+                </Table>
               </CardBody>
             </Card>
           </Col>
@@ -69,13 +69,14 @@ class Post extends React.Component {
 }
 
 Post.propTypes = {
-  data: PropTypes.object,
+  getForum: PropTypes.func.isRequired,
+  forum_data: PropTypes.object,
   message: PropTypes.object,
 }
 
 const mapStateToProps = (state) => ({
-  data: state.auth.data,
+  forum_data: state.auth.forum_data,
   message: state.auth.message,
 })
 
-export default connect(mapStateToProps, { loadForum })(Post)
+export default connect(mapStateToProps, { getForum })(Post)

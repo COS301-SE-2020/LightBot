@@ -1,5 +1,5 @@
 const asyncHandler = require('express-async-handler')
-const { BadRequest, ErrorResponse, Unauthorized } = require('../utils/Error.util')
+const { Unauthorized } = require('../utils/Error.util')
 const jwt = require('jsonwebtoken')
 
 module.exports = {

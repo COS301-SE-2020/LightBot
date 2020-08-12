@@ -1,5 +1,5 @@
 import React from 'react'
-import { loginUser } from '../../actions/auth'
+import { login } from '../../actions/auth'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -78,7 +78,7 @@ class Login extends React.Component {
         User_password: this.state.password,
       }
       try {
-        await this.props.loginUser(formData)
+        await this.props.login(formData)
         if (this.props.message.status > 299) {
           this.notify(this.props.message.msg)
         }
@@ -277,7 +277,7 @@ const MyStyles = {
 }
 
 Login.propTypes = {
-  loginUser: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
   message: PropTypes.object,
 }
@@ -287,4 +287,4 @@ const mapStateToProps = (state) => ({
   message: state.auth.message,
 })
 
-export default connect(mapStateToProps, { loginUser })(Login)
+export default connect(mapStateToProps, { login })(Login)

@@ -12,7 +12,7 @@ import Home from './layouts/Home.js'
 import Landing from './layouts/Landing.js'
 import { Provider } from 'react-redux'
 import store from './store'
-import { getMe } from './actions/auth'
+import { getMe, logout } from './actions/auth'
 import setCookie from './services/setCookie.js'
 import Cookies from 'universal-cookie'
 import ErrorPage from './views/landing.views/ErrorPage'
@@ -26,6 +26,8 @@ const App = () => {
     setCookie(cookies.get('token'))
     if(cookies.get('token'))
       store.dispatch(getMe())
+    else
+      store.dispatch(logout())
   }, [])
 
   return (

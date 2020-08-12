@@ -14,27 +14,22 @@ const reset_tok_list = new Array()
 module.exports = {
   registerUser: asyncHandler(async (req, res, next) => {
     const { User_name, User_surname, User_email, User_password } = req.body
-    let existing
     try {
-      existing = await User.findOne({ User_email: User_email })
-    } catch (err) {
-      return next(
-        new ErrorResponse('Something went wrong could not register user.')
-      )
-    }
-    if (existing) {
-      return next(new ErrorResponse('User already exists please sign in.'))
-    }
+      let existing = await User.findOne({ User_email: User_email })
 
-    const createdUser = new User({
-      User_name,
-      User_surname,
-      User_email,
-      User_password,
-      avatar,
-      ForumPosts: [],
-    })
-    try {
+      if (existing) {
+        return next(new ErrorResponse('User already exists please sign in.'))
+      }
+
+      const createdUser = new User({
+        User_name,
+        User_surname,
+        User_email,
+        User_password,
+        avatar,
+        ForumPosts: [],
+      })
+
       const salt = await Bcrypt.genSalt(SALT_WORK_FACTOR)
       createdUser.User_password = await Bcrypt.hash(
         createdUser.User_password,
@@ -92,25 +87,19 @@ module.exports = {
       })
     } catch (err) {
       return next(
-        new ErrorResponse('Something went wrong could not register user')
+        new ErrorResponse('Something went wrong could not login user')
       )
     }
-    const data = {
-      User_name: existing.User_name,
-      User_email: existing.User_email,
-      User_surname: existing.User_surname,
-      User_state: existing.User_state,
-      User_role: existing.User_role,
-      avatar: existing.avatar,
-      Auth_key: token,
-    }
-    res.json(new SuccessResponse('User login successful.', data))
+    res.json(new SuccessResponse('User login successful.', { Auth_key: token }))
   }),
 
   logoutUser: asyncHandler(async (req, res, next) => {
     //remove refresh token from registry in next sprint
     res.json(
-      new SuccessResponse('Successfully signed out user.', 'Redirect sign in.')
+      new SuccessResponse(
+        'Successfully signed out user.',
+        'Redirect to sign in.'
+      )
     )
   }),
 
@@ -135,17 +124,7 @@ module.exports = {
         new ErrorResponse('Something went wrong could not update user image.')
       )
     }
-    const token = req.headers.authorization.split(' ')[1]
-    const data = {
-      User_email: existing.User_email,
-      User_name: existing.User_name,
-      User_surname: existing.User_surname,
-      User_state: existing.User_state,
-      User_role: existing.User_role,
-      avatar: existing.avatar,
-      Auth_key: token,
-    }
-    res.json(new SuccessResponse('Successfully updated user image.', data))
+    res.json(new SuccessResponse('Successfully updated user image.'))
   }),
 
   updateUserDetails: asyncHandler(async (req, res, next) => {
@@ -173,17 +152,7 @@ module.exports = {
         new ErrorResponse('Something went wrong could not update details.')
       )
     }
-    const token = req.headers.authorization.split(' ')[1]
-    const data = {
-      User_email: existing.User_email,
-      User_name: existing.User_name,
-      User_surname: existing.User_surname,
-      User_state: existing.User_state,
-      User_role: existing.User_role,
-      avatar: existing.avatar,
-      Auth_key: token,
-    }
-    res.json(new SuccessResponse('Successfully updated user details.', data))
+    res.json(new SuccessResponse('Successfully updated user details.'))
   }),
 
   updateUserPass: asyncHandler(async (req, res, next) => {
@@ -355,15 +324,14 @@ module.exports = {
         new ErrorResponse('Something went wrong could not get user profile.')
       )
     }
-    const token = req.headers.authorization.split(' ')[1]
     const data = {
       User_email: existing.User_email,
       User_name: existing.User_name,
       User_surname: existing.User_surname,
       User_state: existing.User_state,
       User_role: existing.User_role,
+      ForumPosts: existing.ForumPosts,
       avatar: existing.avatar,
-      Auth_key: token,
     }
     res.json(new SuccessResponse('Succesfully retrieved user profile.', data))
   }),

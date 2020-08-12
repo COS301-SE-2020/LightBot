@@ -1,5 +1,5 @@
 import React from 'react'
-import { updateUser, updatePassword, updateImage } from '../../actions/auth'
+import { update_details, update_pass, update_image } from '../../actions/auth'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import NotificationAlert from 'react-notification-alert'
@@ -23,16 +23,16 @@ class User extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      image: this.props.user.success.data.avatar,
+      image: this.props.user.avatar,
       switch: true,
       visible: true,
       oldpassword: '',
       User_password: '',
       cnewpassword: '',
-      User_name: this.props.user.success.data.User_name,
-      User_surname: this.props.user.success.data.User_surname,
-      User_state: this.props.user.success.data.User_state,
-      User_role: this.props.user.success.data.User_role,
+      User_name: this.props.user.User_name,
+      User_surname: this.props.user.User_surname,
+      User_state: this.props.user.User_state,
+      User_role: this.props.user.User_role,
       validate: {
         oldpasswordS: '',
         User_passwordS: '',
@@ -74,7 +74,7 @@ class User extends React.Component {
   handleUpload = async (e) =>{
     e.preventDefault()
     try {
-      await this.props.updateImage({avatar: this.state.image})
+      await this.props.update_image({avatar: this.state.image})
       if (this.props.message.status > 299) {
         this.notify(this.props.message.msg, 'danger')
       } else {
@@ -95,7 +95,7 @@ class User extends React.Component {
           User_surname: this.state.User_surname,
         }
         try {
-          await this.props.updateUser(formData)
+          await this.props.update_details(formData)
           this.notify(
             this.props.message.msg,
             this.props.message.status > 299 ? 'danger' : 'success'
@@ -104,8 +104,8 @@ class User extends React.Component {
       } else {
         this.notify('Errors in input fields, please fill in again and retry')
         this.setState({
-          User_name: this.props.user.success.data.User_name,
-          User_surname: this.props.user.success.data.User_surname,
+          User_name: this.props.user.User_name,
+          User_surname: this.props.user.User_surname,
         })
       }
     }
@@ -122,7 +122,7 @@ class User extends React.Component {
         User_password: this.state.User_password,
       }
       try {
-        await this.props.updatePassword(formData)
+        await this.props.update_pass(formData)
         if (this.props.message.status > 299) {
           this.notify(this.props.message.msg, 'danger')
         } else {
@@ -287,7 +287,7 @@ class User extends React.Component {
                           <label>EMAIL</label>
                           <Input
                             defaultValue={
-                              this.props.user.success.data.User_email
+                              this.props.user.User_email
                             }
                             disabled={true}
                             placeholder='Email'
@@ -358,11 +358,11 @@ class User extends React.Component {
                         src={this.state.image}
                       />
                       <h5 className='title'>
-                        {this.props.user.success.data.User_name}
+                        {this.props.user.User_name}
                       </h5>
                     </a>
                     <p className='description'>
-                      {this.props.user.success.data.User_role === 1
+                      {this.props.user.User_role === 1
                         ? 'Administrator'
                         : 'Viewer'}
                     </p>
@@ -533,9 +533,9 @@ class User extends React.Component {
 }
 
 User.propTypes = {
-  updateUser: PropTypes.func.isRequired,
-  updateImage: PropTypes.func.isRequired,
-  updatePassword: PropTypes.func.isRequired,
+  update_details: PropTypes.func.isRequired,
+  update_image: PropTypes.func.isRequired,
+  update_pass: PropTypes.func.isRequired,
   user: PropTypes.object,
   message: PropTypes.object,
 }
@@ -545,4 +545,4 @@ const mapStateToProps = (state) => ({
   message: state.auth.message,
 })
 
-export default connect(mapStateToProps, { updateImage, updateUser, updatePassword })(User)
+export default connect(mapStateToProps, { update_details, update_image, update_pass })(User)

@@ -7,6 +7,7 @@ import routes from "../routes/homeRoutes.js";
 import { logout } from '../actions/auth'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import PrivateRoute from "../routes/PrivateRoute";
 
 var ps;
 
@@ -53,14 +54,14 @@ class Home extends React.Component {
           routes={routes}
           backgroundColor={this.state.backgroundColor}
           logoutHandler={this.handleSubmit}
-          role={this.props.user.success.data.User_role}
+          role={this.props.user.User_role}
         />
         <div className="main-panel" ref={this.mainPanel}>
           <Switch>
             {routes.map((prop, key) => {
-              if(prop.auth && this.props.user.success.data.User_role!==1) return null
+              if(prop.auth && this.props.user.User_role!==1) return null
               return (
-                <Route
+                <PrivateRoute
                   exact path={prop.layout + prop.path}
                   component={prop.component}
                   key={key}

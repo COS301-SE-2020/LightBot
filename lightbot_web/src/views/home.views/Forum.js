@@ -1,4 +1,7 @@
 import React from 'react'
+import { sendForum } from '../../actions/auth'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import {
   Card,
   Label,
@@ -47,7 +50,7 @@ class Forum extends React.Component {
       description: this.state.description,
     }
     try {
-      await this.props.addForumData(formData)
+      await this.props.sendForum(formData)
       if (this.props.message.status > 299) {
         this.notify(this.props.message.msg, 'danger')
       } else {
@@ -220,4 +223,15 @@ class Forum extends React.Component {
   }
 }
 
-export default Forum
+Forum.propTypes = {
+  sendForum: PropTypes.func.isRequired,
+  user: PropTypes.object,
+  message: PropTypes.object,
+}
+
+const mapStateToProps = (state) => ({
+  user: state.auth.user,
+  message: state.auth.message,
+})
+
+export default connect(mapStateToProps, { sendForum })(Forum)

@@ -20,15 +20,6 @@ router.get(
     require('../controllers/Data.controller').getForumData
   )
 
-// // @route     GET data/notification
-// // @desc      Notification Data Route
-// // @access    Private
-router.get(
-    '/notification',
-    auth.Guard,
-    require('../controllers/Data.controller').getNotificationData
-  )
-
 // // @route     GET data/state
 // // @desc      State Data Route
 // // @access    Private

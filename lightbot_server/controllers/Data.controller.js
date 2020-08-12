@@ -2,12 +2,10 @@
 const asyncHandler = require('express-async-handler')
 const { ErrorResponse, BadRequest, NotFound } = require('../utils/Error.util')
 const { SuccessResponse } = require('../utils/Success.util')
-const UserController = require('./User.controller')
 const mongoose = require('mongoose')
 const Forum = require('../models/Forum.model')
 const User = require('../models/User.model')
 // const Graph = require('../models/Graph.model')
-// const Notification = require('../models/Notification.model')
 // const State = require('../models/State.model')
 
 module.exports = {
@@ -26,20 +24,11 @@ module.exports = {
     }
     res.json(
       new SuccessResponse(
-        'Successfully removed user.',
+        'Successfully obtained forum posts.',
         posts.map((post) => post.toObject({ getters: true }))
       )
     )
 
-  }),
-
-  getNotificationData: asyncHandler(async (req, res, next) => {
-    res.json(
-      new SuccessResponse(
-        'Successfully acquired notification data.',
-        'Notification data set'
-      )
-    )
   }),
 
   getStateData: asyncHandler(async (req, res, next) => {

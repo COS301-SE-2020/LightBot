@@ -1,6 +1,6 @@
 import React from 'react'
-import { MDBCardHeader, MDBIframe } from 'mdbreact'
-import { Row, Col, Card, CardHeader, CardBody } from 'reactstrap'
+import { MDBIframe } from 'mdbreact'
+import { Row, Col, Card, CardBody } from 'reactstrap'
 
 import PanelHeader from '../../components/PanelHeader/PanelHeader.js'
 
