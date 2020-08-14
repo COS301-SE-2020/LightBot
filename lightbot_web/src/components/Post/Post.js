@@ -111,7 +111,7 @@ class Post extends React.Component {
 
 Post.propTypes = {
   getForum: PropTypes.func.isRequired,
-  forum_data: PropTypes.object,
+  forum_data: PropTypes.array,
   message: PropTypes.object,
 }
 

@@ -71,10 +71,10 @@ class User extends React.Component {
       [name]: value,
     })
   }
-  handleUpload = async (e) =>{
+  handleUpload = async (e) => {
     e.preventDefault()
     try {
-      await this.props.update_image({avatar: this.state.image})
+      await this.props.update_image({ avatar: this.state.image })
       if (this.props.message.status > 299) {
         this.notify(this.props.message.msg, 'danger')
       } else {
@@ -197,21 +197,23 @@ class User extends React.Component {
 
   onImageChange = async (event) => {
     if (event.target.files && event.target.files[0]) {
-      await this.getBase64(event.target.files[0],result=>{this.setState({
-        image: result,
-      })})
+      await this.getBase64(event.target.files[0], (result) => {
+        this.setState({
+          image: result,
+        })
+      })
     }
   }
 
   getBase64(file, cb) {
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
+    let reader = new FileReader()
+    reader.readAsDataURL(file)
     reader.onload = function () {
-        cb(reader.result)
-    };
+      cb(reader.result)
+    }
     reader.onerror = function (error) {
-        console.log('Error: ', error);
-    };
+      console.log('Error: ', error)
+    }
   }
 
   render() {
@@ -286,9 +288,7 @@ class User extends React.Component {
                         <FormGroup>
                           <label>EMAIL</label>
                           <Input
-                            defaultValue={
-                              this.props.user.User_email
-                            }
+                            defaultValue={this.props.user.User_email}
                             disabled={true}
                             placeholder='Email'
                             type='email'
@@ -357,9 +357,7 @@ class User extends React.Component {
                         className='avatar border-gray'
                         src={this.state.image}
                       />
-                      <h5 className='title'>
-                        {this.props.user.User_name}
-                      </h5>
+                      <h5 className='title'>{this.props.user.User_name}</h5>
                     </a>
                     <p className='description'>
                       {this.props.user.User_role === 1
@@ -490,10 +488,10 @@ class User extends React.Component {
                       <Col className='pr-1' md='6'>
                         <FormGroup>
                           <InputGroup>
-                            <div class='custom-file'>
-                              <div class='file-field medium'>
+                            <div className='custom-file'>
+                              <div className='file-field medium'>
                                 <div
-                                  class='btn btn-outline-secondary btn-rounded waves-effect'
+                                  className='btn btn-outline-secondary btn-rounded waves-effect'
                                   style={{ backgroundColor: 'grey' }}
                                 >
                                   <Input
@@ -545,4 +543,8 @@ const mapStateToProps = (state) => ({
   message: state.auth.message,
 })
 
-export default connect(mapStateToProps, { update_details, update_image, update_pass })(User)
+export default connect(mapStateToProps, {
+  update_details,
+  update_image,
+  update_pass,
+})(User)
