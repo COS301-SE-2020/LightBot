@@ -3,6 +3,7 @@ from sumolib import checkBinary
 import os
 import sys
 
+
 def import_test_configuration(config_file):
     content = configparser.ConfigParser()
     content.read(config_file)
@@ -27,5 +28,6 @@ def set_sumo(gui, sumocfg_file_name, max_steps):
         sumoBinary = checkBinary('sumo')
     else:
         sumoBinary = checkBinary('sumo-gui')
-    sumo_cmd = [sumoBinary, "-c", os.path.join('Intersection Jan-South', sumocfg_file_name), "--no-step-log"]
+    sumo_cmd = [sumoBinary, "-c",
+                os.path.join('Intersection Jan-South', sumocfg_file_name), "--no-step-log"]
     return sumo_cmd

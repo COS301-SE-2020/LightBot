@@ -1,9 +1,11 @@
 import matplotlib.pyplot as plt
 import os
+import json
+
 
 class Visualization:
     def __init__(self, dpi):
-            self._dpi = dpi
+        self._dpi = dpi
 
     def save_data_and_plot(self, data, filename, xlabel, ylabel):
         min_val = min(data)
@@ -20,4 +22,9 @@ class Visualization:
         plt.close("all")
         with open('plot_'+filename + '_data.txt', "w") as file:
             for value in data:
-                    file.write("%s\n" % value)
+                file.write("%s\n" % value)
+        data_j = {
+            filename+'': data
+        }
+        with open('json_'+filename + '_data.txt', "w") as file:
+            file.write(json.dumps(data_j))
