@@ -3,8 +3,10 @@ import ReactDOM from 'react-dom'
 import { getForum } from '../../actions/auth'
 import { Card, CardBody, Table, Row, Col } from 'reactstrap'
 import { connect } from 'react-redux'
+import { createBrowserHistory } from 'history'
 import NotificationAlert from 'react-notification-alert'
 import PropTypes from 'prop-types'
+import { controllers } from 'chart.js'
 
 class Post extends React.Component {
   constructor(props) {
@@ -38,15 +40,29 @@ class Post extends React.Component {
     const sortedPosts = this.props.forum_data.sort(
       (a, b) => new Date(b.date) - new Date(a.date)
     )
+    const history = createBrowserHistory()
+    const max = history.location.pathname === '/home/overview' ? true : false
     return sortedPosts.map((item, i) => {
-      return (
-        <tr key={item._id}>
-          <td>{item.title}</td>
-          <td>{item.subject}</td>
-          <td>{item.message}</td>
-          <td>{new Date(item.date).toLocaleString()}</td>
-        </tr>
-      )
+      if (max && i < 5) {
+        return (
+          <tr key={item._id}>
+            <td>{item.title}</td>
+            <td>{item.subject}</td>
+            <td>{item.message}</td>
+            <td>{new Date(item.date).toLocaleString()}</td>
+          </tr>
+        )
+      }
+      if (!max) {
+        return (
+          <tr key={item._id}>
+            <td>{item.title}</td>
+            <td>{item.subject}</td>
+            <td>{item.message}</td>
+            <td>{new Date(item.date).toLocaleString()}</td>
+          </tr>
+        )
+      }
     })
   }
 
@@ -57,7 +73,6 @@ class Post extends React.Component {
         this.notify(this.props.message.msg, 'danger')
       } else {
         this.notify(this.props.message.msg, 'success')
-        console.log(this.props.forum_data)
         ReactDOM.render(this.renderTable(), document.getElementById('table'))
       }
     } catch (err) {}
