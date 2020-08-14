@@ -183,7 +183,7 @@ class Recovery extends React.Component {
                         <h6>
                           <a
                             className='link'
-                            href='/#'
+                            href='/login'
                             onClick={this.navLogin}
                             style={MyStyles.textInputStyle}
                           >
@@ -196,7 +196,7 @@ class Recovery extends React.Component {
                           <a
                             style={MyStyles.textInputStyle}
                             className='link'
-                            href='/#'
+                            href='/register'
                             onClick={this.navRegister}
                           >
                             Register

@@ -226,7 +226,7 @@ class Login extends React.Component {
                         block
                         className='btn-round'
                         color='primary'
-                        href='/#'
+                        href='#'
                         onClick={this.handleSubmit}
                         size='lg'
                       >
@@ -237,7 +237,7 @@ class Login extends React.Component {
                         <h6>
                           <a
                             className='link'
-                            href='/#'
+                            href='/register'
                             onClick={this.navRegister}
                             style={MyStyles.textInputStyle}
                           >
@@ -250,7 +250,7 @@ class Login extends React.Component {
                           <a
                             style={MyStyles.textInputStyle}
                             className='link'
-                            href='/#'
+                            href='/recovery'
                             onClick={this.navRecovery}
                           >
                             Forgot Pasword?

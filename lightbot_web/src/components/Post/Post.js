@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { createBrowserHistory } from 'history'
 import NotificationAlert from 'react-notification-alert'
 import PropTypes from 'prop-types'
-import { controllers } from 'chart.js'
+//import { controllers } from 'chart.js'
 
 class Post extends React.Component {
   constructor(props) {
@@ -48,7 +48,7 @@ class Post extends React.Component {
           <tr key={item._id}>
             <td>{item.title}</td>
             <td>{item.subject}</td>
-            <td>{item.message}</td>
+            <td>{item.description}</td>
             <td>{new Date(item.date).toLocaleString()}</td>
           </tr>
         )
