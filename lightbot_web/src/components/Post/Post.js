@@ -44,7 +44,7 @@ class Post extends React.Component {
           <td>{item.title}</td>
           <td>{item.subject}</td>
           <td>{item.message}</td>
-          <td>{item.date}</td>
+          <td>{new Date(item.date).toLocaleString()}</td>
         </tr>
       )
     })
