@@ -103,7 +103,7 @@ class Forum extends React.Component {
                     <Row>
                       <Col className='ml-auto mr-auto text-center' md='3'>
                         <FormGroup>
-                          <label>Title</label>
+                          <CardTitle>Title</CardTitle>
                           <Input
                             maxLength='30'
                             name='title'
@@ -120,7 +120,7 @@ class Forum extends React.Component {
                     <Row>
                       <Col className='ml-auto mr-auto text-center' md='4'>
                         <FormGroup>
-                          <label>Subject</label>
+                          <CardTitle>Subject</CardTitle>
                           <Input
                             maxLength='50'
                             placeholder='Subject'
@@ -136,55 +136,51 @@ class Forum extends React.Component {
                     </Row>
                     <Row>
                       <Col className='ml-auto mr-auto text-center'>
-                        <label>Urgency</label>
+                        <CardTitle>Urgency</CardTitle>
                       </Col>
                     </Row>
                     <Row>
                       <Col className='ml-auto mr-auto text-center' md='1'>
-                        <Row>
-                          <FormGroup check>
-                            <Label check>
-                              <Input
-                                type='radio'
-                                name='radio1'
-                                value='emergency'
-                              />{' '}
-                              emergency
-                            </Label>
-                          </FormGroup>
-                          <FormGroup check>
-                            <Label check>
-                              <Input
-                                type='radio'
-                                name='radio1'
-                                value='warning'
-                              />{' '}
-                              warning
-                            </Label>
-                          </FormGroup>
-                          <FormGroup check>
-                            <Label check>
-                              <Input type='radio' name='radio1' value='info' />{' '}
-                              info
-                            </Label>
-                          </FormGroup>
-                          <FormGroup check>
-                            <Label check>
-                              <Input
-                                type='radio'
-                                name='radio1'
-                                value='success'
-                              />{' '}
-                              success
-                            </Label>
-                          </FormGroup>
-                        </Row>
+                        <FormGroup check>
+                          <Label check>
+                            <Input
+                              type='radio'
+                              name='radio1'
+                              value='emergency'
+                            />{' '}
+                            emergency
+                          </Label>
+                        </FormGroup>
+                      </Col>
+                      <Col className='ml-auto mr-auto text-center' md='1'>
+                        <FormGroup check>
+                          <Label check>
+                            <Input type='radio' name='radio1' value='warning' />{' '}
+                            warning
+                          </Label>
+                        </FormGroup>
+                      </Col>
+                      <Col className='ml-auto mr-auto text-center' md='1'>
+                        <FormGroup check>
+                          <Label check>
+                            <Input type='radio' name='radio1' value='info' />{' '}
+                            info
+                          </Label>
+                        </FormGroup>
+                      </Col>
+                      <Col className='ml-auto mr-auto text-center' md='1'>
+                        <FormGroup check>
+                          <Label check>
+                            <Input type='radio' name='radio1' value='success' />{' '}
+                            success
+                          </Label>
+                        </FormGroup>
                       </Col>
                     </Row>
                     <Row>
                       <Col className='ml-auto mr-auto text-center' md='6'>
                         <FormGroup>
-                          <label>Description</label>
+                          <CardTitle>Description</CardTitle>
                           <Input
                             maxLength='250'
                             cols='80'
@@ -201,7 +197,7 @@ class Forum extends React.Component {
                       </Col>
                     </Row>
                     <Row>
-                      <Col className='ml-auto mr-auto text-center' md={4}>
+                      <Col className='ml-auto mr-auto text-center' md='4'>
                         <Button
                           className='btn-round'
                           color='primary'
