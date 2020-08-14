@@ -26,7 +26,6 @@ module.exports = {
         User_surname,
         User_email,
         User_password,
-        avatar,
         ForumPosts: [],
       })
 

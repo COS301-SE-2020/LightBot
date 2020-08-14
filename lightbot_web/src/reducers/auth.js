@@ -131,7 +131,7 @@ export default function (state = initialState, action) {
         isAuthenticated: true,
         loading: false,
         message: { status: payload.status, msg: payload.message },
-        user: payload.data
+        user: payload.data,
       }
     case GET_USER_FAIL:
       return {
