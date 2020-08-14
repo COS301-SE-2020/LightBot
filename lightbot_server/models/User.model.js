@@ -31,7 +31,7 @@ const UserSchema = new mongoose.Schema({
   },
   avatar: {
     type: String,
-    default: '../../lightbot_web/src/assets/img/default-avatar.jpg',
+    default: '../../assets/img/default-avatar.jpg',
   },
   date: {
     type: Date,
