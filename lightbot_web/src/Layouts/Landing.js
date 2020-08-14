@@ -7,16 +7,12 @@ import '../assets/buff/scss/now-ui-kit.scss?v=1.4.0'
 import '../assets/buff/demo/demo.css?v=1.4.0'
 import '../assets/buff/demo/nucleo-icons-page-styles.css?v=1.4.0'
 import Login from '../views/landing.views/Login'
-//import Spinner from '../layouts/Spinner'
 
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 class Landing extends React.Component {
   render() {
-    // while (this.props.loading) {
-    //   return <Spinner />
-    // }
     if (this.props.isAuthenticated) {
       return <Redirect to='/home' />
     }
