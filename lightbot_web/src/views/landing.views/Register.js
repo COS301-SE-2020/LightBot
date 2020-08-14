@@ -398,7 +398,7 @@ class Register extends React.Component {
                         <h6>
                           <a
                             className='link'
-                            href='#'
+                            href='/#'
                             onClick={this.navLogin}
                             style={MyStyles.textInputStyle}
                           >
@@ -411,7 +411,7 @@ class Register extends React.Component {
                           <a
                             style={MyStyles.textInputStyle}
                             className='link'
-                            href='#'
+                            href='/#'
                             onClick={this.navRecovery}
                           >
                             Forgot Pasword?

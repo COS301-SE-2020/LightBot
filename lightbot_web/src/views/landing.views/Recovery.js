@@ -40,7 +40,7 @@ class Recovery extends React.Component {
   }
 
   onDismiss() {}
-  notify(Message,type) {
+  notify(Message, type) {
     var options = {}
     options = {
       place: 'tc',
@@ -73,15 +73,17 @@ class Recovery extends React.Component {
       }
       try {
         await this.props.recovery(formData)
-        if (this.props.message.status>299) {
-          this.notify(this.props.message.msg,'danger')
-        }
-        else{
-          this.notify(this.props.message.msg,'success')
+        if (this.props.message.status > 299) {
+          this.notify(this.props.message.msg, 'danger')
+        } else {
+          this.notify(this.props.message.msg, 'success')
         }
       } catch (err) {}
     } else {
-      this.notify('Errors in input fields, please fill in again and retry','danger')
+      this.notify(
+        'Errors in input fields, please fill in again and retry',
+        'danger'
+      )
     }
   }
 
@@ -109,7 +111,7 @@ class Recovery extends React.Component {
     }
     return (
       <>
-      <NotificationAlert ref='notificationAlert' />
+        <NotificationAlert ref='notificationAlert' />
         <div className='page-header clear-filter'>
           <div className='page-header-image'></div>
           <div className='content'>
@@ -181,7 +183,7 @@ class Recovery extends React.Component {
                         <h6>
                           <a
                             className='link'
-                            href='#'
+                            href='/#'
                             onClick={this.navLogin}
                             style={MyStyles.textInputStyle}
                           >
@@ -194,7 +196,7 @@ class Recovery extends React.Component {
                           <a
                             style={MyStyles.textInputStyle}
                             className='link'
-                            href='#'
+                            href='/#'
                             onClick={this.navRegister}
                           >
                             Register
@@ -223,12 +225,12 @@ const MyStyles = {
 Recovery.propTypes = {
   recovery: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
-  message: PropTypes.object
+  message: PropTypes.object,
 }
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  message: state.auth.message
+  message: state.auth.message,
 })
 
 export default connect(mapStateToProps, { recovery })(Recovery)

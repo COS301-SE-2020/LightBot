@@ -351,7 +351,7 @@ class User extends React.Component {
               <Card className='card-user'>
                 <CardBody>
                   <div className='author'>
-                    <a href='#' onClick={(e) => e.preventDefault()}>
+                    <a href='/#' onClick={(e) => e.preventDefault()}>
                       <img
                         alt='...'
                         className='avatar border-gray'

@@ -12,9 +12,10 @@ class Footer extends React.Component {
           <nav>
             <ul>
               <li>
-                <a style={MyStyles.textInputStyle}>
-                  Developed for 5dt in collaboration with the University of Pretoria
-                </a>
+                <b style={MyStyles.textInputStyle}>
+                  Developed for 5dt in collaboration with the University of
+                  Pretoria
+                </b>
               </li>
             </ul>
             <ul>
@@ -32,7 +33,7 @@ class Footer extends React.Component {
           </nav>
           <div className='copyright'>
             &copy; {1900 + new Date().getYear()} All Rights Reserved. Brought to
-            you by <a href='#'>Gradient</a>
+            you by <a href='/#'>Gradient</a>
             <img
               className='footerLogo'
               alt='...'

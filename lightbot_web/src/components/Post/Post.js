@@ -43,7 +43,7 @@ class Post extends React.Component {
     const history = createBrowserHistory()
     const max = history.location.pathname === '/home/overview' ? true : false
     return sortedPosts.map((item, i) => {
-      if (max && i < 5) {
+      while (!max || (max && i < 5)) {
         return (
           <tr key={item._id}>
             <td>{item.title}</td>
@@ -53,16 +53,7 @@ class Post extends React.Component {
           </tr>
         )
       }
-      if (!max) {
-        return (
-          <tr key={item._id}>
-            <td>{item.title}</td>
-            <td>{item.subject}</td>
-            <td>{item.message}</td>
-            <td>{new Date(item.date).toLocaleString()}</td>
-          </tr>
-        )
-      }
+      return null
     })
   }
 
@@ -71,13 +62,17 @@ class Post extends React.Component {
       await this.props.getForum()
       if (this.props.message.status > 299) {
         this.notify(this.props.message.msg, 'danger')
+        ReactDOM.render(
+          this.props.message.msg,
+          document.getElementById('table')
+        )
       } else {
         this.notify(this.props.message.msg, 'success')
         ReactDOM.render(this.renderTable(), document.getElementById('table'))
       }
     } catch (err) {}
   }
-  componentWillMount() {
+  componentDidMount() {
     this.handleLoad()
   }
 

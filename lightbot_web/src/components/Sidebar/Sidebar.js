@@ -41,7 +41,7 @@ class Sidebar extends React.Component {
     return (
       <div className='sidebar' data-color={this.props.backgroundColor}>
         <div className='logo'>
-          <a href='#' className='simple-text logo-normal'>
+          <a href='/#' className='simple-text logo-normal'>
             <div className='logo-img'>
               <img src={logo} alt='react-logo' />
             </div>
@@ -51,7 +51,7 @@ class Sidebar extends React.Component {
           <Nav>
             {this.props.routes.map((prop, key) => {
               if (prop.redirect) return null
-              if(prop.auth && this.props.role !== 1) return null
+              if (prop.auth && this.props.role !== 1) return null
               return (
                 <li
                   className={
@@ -72,7 +72,12 @@ class Sidebar extends React.Component {
               )
             })}
             <li className='active'>
-              <NavLink to="#" className='nav-link' activeClassName='active' onClick={this.props.logoutHandler}>
+              <NavLink
+                to='#'
+                className='nav-link'
+                activeClassName='active'
+                onClick={this.props.logoutHandler}
+              >
                 <i className='now-ui-icons objects_spaceship' />
                 <p>"Logout"</p>
               </NavLink>
