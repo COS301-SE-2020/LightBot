@@ -1,9 +1,11 @@
 //Packages Node core modules, Third-Party libs
+var compression = require('compression')
 require('colors')
 const rateLimit = require('express-rate-limit')
 require('dotenv').config({ path: './config/config.vars.env' })
 const express = require('express')
 const app = express()
+var helmet = require('helmet')
 
 //Ports
 const PORT = process.env.PORT || 3000
@@ -14,15 +16,17 @@ require('./utils/DBConnector.util')()
 //Init Middleware
 // Rate limiting
 const limit = rateLimit({
-    windowMs: 10 * 60 * 1000,
-    max: 100,
-  });
-app.use(limit); 
+  windowMs: 10 * 60 * 1000,
+  max: 100,
+})
+app.use(limit)
+app.use(helmet())
 app.use(express.json({ extended: true }))
+app.use(compression())
 app.use(require('cors')(require('./utils/Cors.util')))
 app.use(express.static(__dirname + '../lightbot_web/'))
 
-//  Landing Page 
+//  Landing Page
 //  Serve static webpage in production
 //
 // if (process.env.NODE_ENV === 'production') {
