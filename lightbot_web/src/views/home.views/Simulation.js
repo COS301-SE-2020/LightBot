@@ -21,7 +21,7 @@ class FullScreenMap extends React.Component {
             <Col xs={12}>
               <Card>
                 <CardBody>
-                  <MDBIframe src='https://www.youtube.com/embed/v64KOxKVLVg' />
+                  <MDBIframe src='http://ec2-18-157-183-138.eu-central-1.compute.amazonaws.com:5000/' />
                 </CardBody>
               </Card>
             </Col>
