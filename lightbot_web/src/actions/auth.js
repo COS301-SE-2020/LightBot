@@ -34,7 +34,7 @@ const stderr = { status: 500, message: 'Internal Server Error' }
 
 // // @route     POST /user/register
 // // @desc      Create a new User Profile
-// // @access    Private
+// // @access    Public
 export const register = (form) => async (dispatch) => {
   try {
     const res = await api.post('/user/register', form)
@@ -53,7 +53,7 @@ export const register = (form) => async (dispatch) => {
 
 // // @route     POST /user/login
 // // @desc      Checks If Login Credentials Are Valid
-// // @access    Private
+// // @access    Public
 export const login = (form) => async (dispatch) => {
   try {
     const res = await api.post('/user/login', form)
@@ -133,7 +133,7 @@ export const update_image = (form) => async (dispatch) => {
 
 // // @route     POST /user/recover-password
 // // @desc      Send Email To Registered User With User Password Change Token
-// // @access    Private
+// // @access    Public
 export const recovery = (form) => async (dispatch) => {
   try {
     const res = await api.post('/user/recover-password', form)
@@ -152,7 +152,7 @@ export const recovery = (form) => async (dispatch) => {
 
 // // @route     PUT /user/reset-password
 // // @desc      Reset Exiting User Password using recovery token
-// // @access    Private
+// // @access    Public
 export const reset = (form, token) => async (dispatch) => {
   try {
     const res = await api.put('/user/reset-password/' + token, form)

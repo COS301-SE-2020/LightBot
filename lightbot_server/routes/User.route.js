@@ -69,7 +69,7 @@ router.post(
 
 // // @route     PUT user/reset-password
 // // @desc      Reset User Password Route
-// // @access    Private
+// // @access    Public
 router.put(
   '/reset-password/:passresetid',
   require('../controllers/User.controller').resetUserPass
