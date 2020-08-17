@@ -14,7 +14,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
     - Authors: R Kapoor, J Gratz
     <br>
     <b>lightbot_web</b>
-    - Author: MPL Strydom
+    - Author: M Gangat
     <br>
     <b>lightbot_server</b>
     - Author: M Gangat
@@ -23,7 +23,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
      - Author: T Pillay
     <br>
     <b>lightbot_doc</b>
-    - Authors: MPL Strydom, M Gangat, R Kapoor, T Pillay, J Gratz
+    - Authors: M Gangat, R Kapoor, T Pillay, J Gratz
     <br>
 </details>
 <details>
@@ -33,7 +33,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
     - Authors: R Kapoor, J Gratz
     <br>
     <b>lightbot_web</b>
-    - Author: MPL Strydom
+    - Author: M Gangat
     <br>
     <b>lightbot_server</b>
     - Author: M Gangat
@@ -42,7 +42,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
      - Author: T Pillay
     <br>
     <b>lightbot_doc</b>
-    - Authors: MPL Strydom, M Gangat, R Kapoor, T Pillay, J Gratz
+    - Authors: M Gangat, R Kapoor, T Pillay, J Gratz
     <br>
 </details>
     
@@ -79,20 +79,6 @@ This repository represents a remote collaboration for LightBot Artificial Intell
     <br>
 </details>
 
-<b>Laura-Lee Strydom :</b><br>
-* <a href="https://github.com/LauraLeeStrydom"> GitHub  Account </a><br>
-* <a href="https://www.linkedin.com/in/laura-lee-strydom-006463101/"> Linkedin  Account </a>
-* Email : u04874359@tuks.co.za
-* <details>
-    <summary><b>What I Did </b></summary>
-    <br>
-    - Demo 1: Set up MongoDB database, set up Git repo, set up the web application (system interface), worked on the SRS document and worked on the demo video & recorded contribution video.
-    <br>
-    <br>
-    - Demo 2: Continued with the development of the web application, designed the system interface, integrated the simulation with the web application, kept the team up to date on the Project Management Tools, scheduled weekly scrum meetings, worked on the updated SRS documentation and user manual and worked on the demo video & recorded contribution video.
-    <br>
-</details>
-
 <b>Rahul Kapoor :</b><br>
 * <a href="https://github.com/rahulkap20"> GitHub  Account </a><br>
 * <a href="https://www.linkedin.com/in/rahulkapoor20/"> Linkedin  Account </a>
@@ -101,6 +87,9 @@ This repository represents a remote collaboration for LightBot Artificial Intell
     <summary><b>What I Did </b></summary>
     <br>
     - Demo 1: Set up machine learning server, worked on the SRS document and recorded contribution video.
+    <br>
+	<br>
+    - Demo 2: Assisted in development of machine learning server.
     <br>
 </details>
 
@@ -131,4 +120,3 @@ This repository represents a remote collaboration for LightBot Artificial Intell
     - Demo 2: Updated the mock functions for serverRL.py in the reinforcement algorithm, mock reinforcement algorithm for mockRL.py, unit testing for serverRL.py, worked on the updated SRS documentation and user manual & recorded contribution video.
     <br>
 </details>
-
