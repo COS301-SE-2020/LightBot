@@ -3,7 +3,7 @@ import {LOGOUT} from '../actions/types'
 import store from '../store'
 
 const api = axios.create({
-  baseURL: 'https://ec2-18-157-183-138.eu-central-1.compute.amazonaws.com:8000/',
+  baseURL: 'https://ec2-18-157-183-138.eu-central-1.compute.amazonaws.com:443/',
   headers: {
     'Content-Type': 'application/json',
   },
