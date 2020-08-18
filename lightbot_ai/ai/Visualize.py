@@ -2,11 +2,25 @@ import matplotlib.pyplot as plt
 import os
 import json
 
-
+## Documentation for the Visualization class.
+#
+#  The main class used to process the simulation data.
 class Visualization:
+    ## The constructor, which sets the dpi value for the graph printed.
+    #  @param self The object pointer.
+    #  @param dpi The dpi value for the quality of the graph.
     def __init__(self, dpi):
         self._dpi = dpi
 
+    ## Documentation for the save_data_and_plot method.
+    #  @param self The object pointer.
+    #  @param data The list of data values from the simulation.
+    #  @param filename The name of the output file.
+    #  @param xlabel The name for the x-axis of the graph.
+    #  @param ylabel The name for the y-axis of the graph.
+    #  
+    #  The save_data_and_plot function uses matplotlib to produce a graph to represent the input data from the simulation, specifically the queue lengths.
+    #  In addition, the function also outputs the data as normal text and json to their respective files.
     def save_data_and_plot(self, data, filename, xlabel, ylabel):
         min_val = min(data)
         max_val = max(data)

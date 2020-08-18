@@ -5,17 +5,27 @@ import timeit
 import os
 
 # The traffic light states in jan_south_peak.net.xml
-PHASE_NS_GREEN = 0  # action 0 code 00
-PHASE_NS_YELLOW = 1
-PHASE_NSR_GREEN = 2  # action 1 code 01
-PHASE_NSR_YELLOW = 3
-PHASE_EW_GREEN = 4  # action 2 code 10
-PHASE_EW_YELLOW = 5
-PHASE_EWR_GREEN = 6  # action 3 code 11
-PHASE_EWR_YELLOW = 7
+PHASE_NS_GREEN = 0  # Green State, action 0 code 00
+PHASE_NS_YELLOW = 1  # Yellow State
+PHASE_NSR_GREEN = 2  # Green State, action 1 code 01
+PHASE_NSR_YELLOW = 3  # Yellow State
+PHASE_EW_GREEN = 4  # Green State, action 2 code 10
+PHASE_EW_YELLOW = 5  # Yellow State
+PHASE_EWR_GREEN = 6  # Green State, action 3 code 11
+PHASE_EWR_YELLOW = 7  # Yellow State
 
-
-class Simulation:
+## Documentation for the Simulation class.
+#
+#  The main class used to interact with the simulation.
+class Simulation:   
+    ## The constructor, which stores the parameters into their respective member variable.
+    #  @param self The object pointer.
+    #  @param sumo_cmd CMD configuration used to start SUMO from TraCI.
+    #  @param max_steps The total number of steps to simulate.
+    #  @param green_duration The duration, in steps, for the Green States.
+    #  @param yellow_duration The duration, in steps, for the Yellow States.
+    #  @param num_states May be used later for the Tensorflow model.
+    #  @param num_actions The number of Green States or actions the Tensorflow model will be able to take.
     def __init__(self, sumo_cmd, max_steps, green_duration, yellow_duration, num_states, num_actions):
         self._sumo_cmd = sumo_cmd
         self._max_steps = max_steps
@@ -46,10 +56,15 @@ class Simulation:
             '<phase duration="4"  state="rrrrrrryyrrrrrrry"/>'
         ]
 
+    ## Documentation for the run method.
+    #  @param self The object pointer.
+    #  
+    #  The run function starts TraCI which executes the SUMO for the simulation.
+    #  This is where the actions or traffic light Green States are chosen to influence the simulation.
     def run(self):
         start_time = timeit.default_timer()
 
-        print("Starting TraCI...")
+        print('Starting TraCI...')
         traci.start(self._sumo_cmd)
 
         self._step = 0
@@ -68,13 +83,19 @@ class Simulation:
             # waiting time = seconds waited by a car since the spawn in the environment, cumulated for every car in incoming lanes
 
         traci.close()
-        print("Ending TraCI...")
+        print('Ending TraCI...')
         simulation_time = round(timeit.default_timer() - start_time, 1)
-        with open('xml_actions_data.txt', "w") as file:
+        with open('xml_actions_data.txt', 'w') as file:
             for value in self._actions_taken:
                 file.write("%s\n" % value)
         return simulation_time
 
+    ## Documentation for the _simulate method.
+    #  @param self The object pointer.
+    #  @param steps_todo The number of steps to simulate.
+    #  
+    #  The _simulate function initially checks if the maximum number of steps won't be reached before executing. 
+    #  If the maximum is not reached then traci will simulate a step with traci.simulationStep() and the queue lenght is recorded.
     def _simulate(self, steps_todo):
         if (self._step + steps_todo) >= self._max_steps:
             steps_todo = self._max_steps - self._step
@@ -85,10 +106,13 @@ class Simulation:
             queue_length = self._get_queue_length()
             self._queue_length_episode.append(queue_length)
 
+    ## Documentation for the _set_yellow_phase method.
+    #  @param self The object pointer.
+    #  @param old_action The last Green State or action taken.
+    #  
+    #  The _set_yellow_phase function will choose the appropriate Yellow State based on old_action.
+    #  The Yellow State is recorded in _actions_taken list and set in SUMO using traci.trafficlight.setPhase().
     def _set_yellow_phase(self, old_action):
-        """
-        Activate the correct yellow light combination in sumo
-        """
         yellow_phase_code = old_action * 2 + \
             1  # obtain the yellow phase code, based on the old action (ref on environment.net.xml)
         self._actions_taken.append(
@@ -96,6 +120,11 @@ class Simulation:
         traci.trafficlight.setPhase(
             "cluster_25290891_611769793", yellow_phase_code)
 
+    ## Documentation for the _set_green_phase method.
+    #  @param self The object pointer.
+    #  @param action_number The new chosen Green State or action to be taken.
+    #  
+    #  The new Green State or action is recorded in _actions_taken list and set in SUMO using traci.trafficlight.setPhase().
     def _set_green_phase(self, action_number):
         """
         Activate the correct green light combination in sumo
@@ -129,6 +158,11 @@ class Simulation:
     #     total_waiting_time = sum(self._waiting_times.values())
     #     return total_waiting_time
 
+    ## Documentation for the _get_queue_length method.
+    #  @param self The object pointer.
+    #  
+    #  The _get_queue_length will retrieve the number of cars halted, specifically in the incoming lane, using traci.edge.getLastStepHaltingNumber.
+    #  The result is then appended to the appropriate list, along with keeping a running total with queue_length.
     def _get_queue_length(self):
         """
         Retrieve the number of cars with speed = 0 in every incoming lane
@@ -167,3 +201,27 @@ class Simulation:
     @property
     def queue_length_west(self):
         return self._queue_length_west
+    
+    ## @var _queue_length_episode
+    #  a list with the combined queue length for all the incoming lanes 
+
+    ## @var _queue_length_north
+    #  a list of queue lenghts for the north incoming lane
+
+    ## @var _queue_length_south
+    #  a list of queue lenghts for the south incoming lane
+
+    ## @var _queue_length_east
+    #  a list of queue lenghts for the east incoming lane
+
+    ## @var _queue_length_west
+    #  a list of queue lenghts for the west incoming lane
+
+    ## @var _actions_taken
+    #  a list of all actions taken during the simulation
+
+    ## @var XML_TRAFFIC_LIGHT_GREEN_STATES
+    #  a constant list of all possible Green States
+
+    ## @var XML_TRAFFIC_LIGHT_YELLOW_STATES
+    #  a constant list of all possible States
