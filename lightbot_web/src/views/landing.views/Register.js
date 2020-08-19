@@ -3,6 +3,7 @@ import { register } from '../../actions/auth'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import NotificationAlert from 'react-notification-alert'
 
 import {
   Button,
@@ -20,12 +21,12 @@ import {
   FormGroup,
   FormFeedback,
 } from 'reactstrap'
-import store from '../../store'
 
 class Register extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      visible: true,
       firstFocus: false,
       lastFocus: false,
       name: '',
@@ -41,7 +42,26 @@ class Register extends React.Component {
         confirmPasswordState: '',
       },
     }
+    this.onDismiss = this.onDismiss.bind(this)
+    this.notify = this.notify.bind(this)
     this.handleChange = this.handleChange.bind(this)
+  }
+
+  onDismiss() {}
+  notify(Message) {
+    var options = {}
+    options = {
+      place: 'tc',
+      message: (
+        <div>
+          <div>{Message}</div>
+        </div>
+      ),
+      type: 'danger',
+      icon: 'now-ui-icons ui-1_bell-53',
+      autoDismiss: 7,
+    }
+    this.refs.notificationAlert.notificationAlert(options)
   }
 
   handleChange = async (e) => {
@@ -53,14 +73,14 @@ class Register extends React.Component {
     })
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault()
     if (
-      (this.state.validate.nameState &&
-        this.state.validate.surnameState &&
-        this.state.validate.emailState &&
-        this.state.validate.passwordState &&
-        this.state.validate.confirmPasswordState) === 'has-success'
+      this.state.validate.nameState === 'has-success' &&
+      this.state.validate.surnameState === 'has-success' &&
+      this.state.validate.emailState === 'has-success' &&
+      this.state.validate.passwordState === 'has-success' &&
+      this.state.validate.confirmPasswordState === 'has-success'
     ) {
       const formData = {
         User_name: this.state.name,
@@ -68,9 +88,16 @@ class Register extends React.Component {
         User_email: this.state.email,
         User_password: this.state.password,
       }
-      store.dispatch(register(formData))
+      try {
+        await this.props.register(formData)
+        if (this.props.message.status > 299) {
+          this.notify(this.props.message.msg)
+        } else {
+          this.navLogin()
+        }
+      } catch (err) {}
     } else {
-      //alert here
+      this.notify('Errors in input fields, please fill in again and retry')
     }
   }
 
@@ -143,6 +170,7 @@ class Register extends React.Component {
     }
     return (
       <>
+        <NotificationAlert ref='notificationAlert' />
         <div className='page-header clear-filter'>
           <div className='page-header-image'></div>
           <div className='content'>
@@ -359,7 +387,7 @@ class Register extends React.Component {
                         block
                         className='btn-round'
                         color='primary'
-                        href='#'
+                        href='/#'
                         onClick={this.handleSubmit}
                         size='lg'
                       >
@@ -370,7 +398,7 @@ class Register extends React.Component {
                         <h6>
                           <a
                             className='link'
-                            href='#'
+                            href='/login'
                             onClick={this.navLogin}
                             style={MyStyles.textInputStyle}
                           >
@@ -383,7 +411,7 @@ class Register extends React.Component {
                           <a
                             style={MyStyles.textInputStyle}
                             className='link'
-                            href='#'
+                            href='/recovery'
                             onClick={this.navRecovery}
                           >
                             Forgot Pasword?
@@ -412,10 +440,12 @@ const MyStyles = {
 Register.propTypes = {
   register: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
+  message: PropTypes.object,
 }
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  message: state.auth.message,
 })
 
 export default connect(mapStateToProps, { register })(Register)

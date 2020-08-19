@@ -9,8 +9,6 @@ import {
   Col,
 } from 'reactstrap'
 
-var ps;
-
 class ErrorPage extends React.Component {
     onSubmitHandler = () => {
       this.props.history.push('/login')

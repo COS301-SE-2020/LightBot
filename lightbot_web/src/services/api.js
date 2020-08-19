@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { LOGOUT } from '../actions/types'
+import store from '../store'
 
 const api = axios.create({
   baseURL: 'http://localhost:8000/',
@@ -8,13 +10,10 @@ const api = axios.create({
 })
 
 api.interceptors.response.use(
-  (res) => {
-    console.log(res.data)
-    return res
-  },
+  (res) => res,
   (err) => {
     if (err.response.data.error.message === 'Authentication failed.') {
-      // store.dispatch({ type: LOGOUT })
+      store.dispatch({ type: LOGOUT })
     }
     return Promise.reject(err)
   }

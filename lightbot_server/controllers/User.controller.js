@@ -5,32 +5,30 @@ const User = require('../models/User.model')
 const Bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const send = require('../utils/Mailer.util')
+const crypto = require('crypto')
 
 SALT_WORK_FACTOR = 12
+
+const reset_tok_list = new Array()
 
 module.exports = {
   registerUser: asyncHandler(async (req, res, next) => {
     const { User_name, User_surname, User_email, User_password } = req.body
-    let existing
     try {
-      existing = await User.findOne({ User_email: User_email })
-    } catch (err) {
-      return next(
-        new ErrorResponse('Something went wrong could not register user.')
-      )
-    }
-    if (existing) {
-      return next(new ErrorResponse('User already exists please sign in.'))
-    }
+      let existing = await User.findOne({ User_email: User_email })
 
-    const createdUser = new User({
-      User_name,
-      User_surname,
-      User_email,
-      User_password,
-      ForumPosts: [],
-    })
-    try {
+      if (existing) {
+        return next(new ErrorResponse('User already exists please sign in.'))
+      }
+
+      const createdUser = new User({
+        User_name,
+        User_surname,
+        User_email,
+        User_password,
+        ForumPosts: [],
+      })
+
       const salt = await Bcrypt.genSalt(SALT_WORK_FACTOR)
       createdUser.User_password = await Bcrypt.hash(
         createdUser.User_password,
@@ -88,29 +86,49 @@ module.exports = {
       })
     } catch (err) {
       return next(
-        new ErrorResponse('Something went wrong could not register user')
+        new ErrorResponse('Something went wrong could not login user')
       )
     }
-    const data = {
-      User_name: existing.User_name,
-      User_surname: existing.User_surname,
-      User_state: existing.User_state,
-      User_role: existing.User_role,
-      Auth_key: token,
-    }
-    res.json(new SuccessResponse('User login successful.', data))
+    res.json(new SuccessResponse('User login successful.', { Auth_key: token }))
   }),
 
   logoutUser: asyncHandler(async (req, res, next) => {
     //remove refresh token from registry in next sprint
     res.json(
-      new SuccessResponse('Successfully signed out user.', 'Redirect sign in.')
+      new SuccessResponse(
+        'Successfully signed out user.',
+        'Redirect to sign in.'
+      )
     )
+  }),
+
+  updateUserImage: asyncHandler(async (req, res, next) => {
+    const { avatar } = req.body
+    const { User_id, User_email } = req.User_data
+    let existing
+    try {
+      existing = await User.findOne({ User_email: User_email })
+    } catch (err) {
+      return next(
+        new ErrorResponse('Something went wrong could not update user image.')
+      )
+    }
+
+    existing.avatar = avatar
+
+    try {
+      await existing.save()
+    } catch (err) {
+      return next(
+        new ErrorResponse('Something went wrong could not update user image.')
+      )
+    }
+    res.json(new SuccessResponse('Successfully updated user image.'))
   }),
 
   updateUserDetails: asyncHandler(async (req, res, next) => {
     //once sure of what data (files/images) update according to password update model
-    const { User_role, User_state, avatar } = req.body
+    const { User_name, User_surname } = req.body
     const { User_id, User_email } = req.User_data
     let existing
     try {
@@ -120,30 +138,24 @@ module.exports = {
         new ErrorResponse('Something went wrong could not update details.')
       )
     }
-    //existing.User_role = User_role
-    if (User_role) {
-      existing.User_role = User_role
+    if (User_name) {
+      existing.User_name = User_name
     }
-    if (User_state) {
-      existing.User_state = User_state
-    }
-    if (avatar) {
-      existing.avatar = avatar
+    if (User_surname) {
+      existing.User_surname = User_surname
     }
     try {
       await existing.save()
     } catch (err) {
       return next(
-        new ErrorResponse('Something went wrong could not update details2.')
+        new ErrorResponse('Something went wrong could not update details.')
       )
     }
-    res.json(
-      new SuccessResponse('Successfully updated user details.', 'existing')
-    )
+    res.json(new SuccessResponse('Successfully updated user details.'))
   }),
 
   updateUserPass: asyncHandler(async (req, res, next) => {
-    const { User_password } = req.body
+    const { User_password, User_oldpassword } = req.body
     const { User_id, User_email } = req.User_data
     let existing
     try {
@@ -152,6 +164,24 @@ module.exports = {
       return next(
         new ErrorResponse('Something went wrong could not update password.')
       )
+    }
+
+    let isValidPassword = false
+    try {
+      isValidPassword = await Bcrypt.compare(
+        User_oldpassword,
+        existing.User_password
+      )
+    } catch (err) {
+      return next(
+        new ErrorResponse(
+          'Something went wrong could not match passwords.',
+          err.body
+        )
+      )
+    }
+    if (!isValidPassword) {
+      return next(new ErrorResponse('Invalid old password'))
     }
 
     try {
@@ -179,8 +209,16 @@ module.exports = {
     if (!existing) {
       return next(new NotFound('User does not exist.'))
     }
-    let token = 'resettoken'
-    const resetURL = `${req.protocol}://${req.get('host')}/${token}`
+    const build = {
+      expiry: Date.now() + 10 * 60 * 1000,
+      User_email: User_email,
+      hash: crypto
+        .createHash('sha256')
+        .update(crypto.randomBytes(20).toString('hex'))
+        .digest('hex'),
+    }
+    reset_tok_list.push(build)
+    const resetURL = `${req.protocol}://localhost:3000/reset?passresetid=${build.hash}`
     const message = `You are receiving this email because you have requested a password reset for your lightbot account.
     If this was not you please ignore this email.
     Please click the link below to reset your password: \n\n --> ${resetURL} `
@@ -207,12 +245,36 @@ module.exports = {
   }),
 
   resetUserPass: asyncHandler(async (req, res, next) => {
-    res.json(
-      new SuccessResponse(
-        'Successfully reset user password.',
-        req.params.passresetid
+    const validate = req.params.passresetid
+
+    const { User_password } = req.body
+    let build = null
+    reset_tok_list.forEach((element) => {
+      if (element.hash === validate) build = element
+    })
+    if (!build) {
+      return next(new BadRequest('Invalid reset token.'))
+    }
+    const { User_email } = build
+
+    let existing
+    try {
+      existing = await User.findOne({ User_email: User_email })
+    } catch (err) {
+      return next(
+        new ErrorResponse('Something went wrong could not update password.')
       )
-    )
+    }
+    try {
+      const salt = await Bcrypt.genSalt(SALT_WORK_FACTOR)
+      existing.User_password = await Bcrypt.hash(User_password, salt)
+      await existing.save()
+    } catch (err) {
+      return next(
+        new ErrorResponse('Something went wrong could not update password.')
+      )
+    }
+    res.json(new SuccessResponse('Successfully reset user password.'))
   }),
 
   deleteUser: asyncHandler(async (req, res, next) => {
@@ -261,13 +323,14 @@ module.exports = {
         new ErrorResponse('Something went wrong could not get user profile.')
       )
     }
-    const token = req.headers.authorization.split(' ')[1]
     const data = {
+      User_email: existing.User_email,
       User_name: existing.User_name,
       User_surname: existing.User_surname,
       User_state: existing.User_state,
       User_role: existing.User_role,
-      Auth_key: token,
+      ForumPosts: existing.ForumPosts,
+      avatar: existing.avatar,
     }
     res.json(new SuccessResponse('Succesfully retrieved user profile.', data))
   }),

@@ -33,7 +33,7 @@ router.get(
 )
 
 // // @route     PUT user/update-details
-// // @desc      Update User Pass Route
+// // @desc      Update User Information Route
 // // @access    Private
 router.put(
   '/update-details',
@@ -41,7 +41,16 @@ router.put(
   require('../controllers/User.controller').updateUserDetails
 )
 
-// // @route     PUT user/update-details
+// // @route     PUT user/update-image
+// // @desc      Update User Image Route
+// // @access    Private
+router.put(
+  '/update-image',
+  auth.Guard,
+  require('../controllers/User.controller').updateUserImage
+)
+
+// // @route     PUT user/update-password
 // // @desc      Update User Pass Route
 // // @access    Private
 router.put(
@@ -60,7 +69,7 @@ router.post(
 
 // // @route     PUT user/reset-password
 // // @desc      Reset User Password Route
-// // @access    Private
+// // @access    Public
 router.put(
   '/reset-password/:passresetid',
   require('../controllers/User.controller').resetUserPass
@@ -75,7 +84,7 @@ router.delete(
   require('../controllers/User.controller').deleteUser
 )
 
-// // @route     GET user/delete
+// // @route     GET user/list-user
 // // @desc      List User Route
 // // @access    Private
 router.get(
@@ -84,7 +93,7 @@ router.get(
   require('../controllers/User.controller').returnUsers
 )
 
-// // @route     GET user/profile
+// // @route     GET user/me
 // // @desc      List User Route
 // // @access    Private
 router.get(

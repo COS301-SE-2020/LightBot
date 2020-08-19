@@ -1,8 +1,9 @@
 import React from 'react'
-import { loginUser } from '../../actions/auth'
+import { login } from '../../actions/auth'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import NotificationAlert from 'react-notification-alert'
 
 import {
   Button,
@@ -20,12 +21,12 @@ import {
   FormGroup,
   FormFeedback,
 } from 'reactstrap'
-import store from '../../store'
 
 class Login extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      visible: true,
       firstFocus: false,
       lastFocus: false,
       email: '',
@@ -35,7 +36,26 @@ class Login extends React.Component {
         passwordState: '',
       },
     }
+    this.onDismiss = this.onDismiss.bind(this)
+    this.notify = this.notify.bind(this)
     this.handleChange = this.handleChange.bind(this)
+  }
+
+  onDismiss() {}
+  notify(Message) {
+    var options = {}
+    options = {
+      place: 'tc',
+      message: (
+        <div>
+          <div>{Message}</div>
+        </div>
+      ),
+      type: 'danger',
+      icon: 'now-ui-icons ui-1_bell-53',
+      autoDismiss: 7,
+    }
+    this.refs.notificationAlert.notificationAlert(options)
   }
 
   handleChange = async (e) => {
@@ -47,7 +67,7 @@ class Login extends React.Component {
     })
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault()
     if (
       this.state.validate.emailState === 'has-success' &&
@@ -57,9 +77,14 @@ class Login extends React.Component {
         User_email: this.state.email,
         User_password: this.state.password,
       }
-      store.dispatch(loginUser(formData))
+      try {
+        await this.props.login(formData)
+        if (this.props.message.status > 299) {
+          this.notify(this.props.message.msg)
+        }
+      } catch (err) {}
     } else {
-      //alert here
+      this.notify('Errors in input fields, please fill in again and retry')
     }
   }
 
@@ -100,6 +125,7 @@ class Login extends React.Component {
     }
     return (
       <>
+        <NotificationAlert ref='notificationAlert' />
         <div className='page-header clear-filter'>
           <div className='page-header-image'></div>
           <div className='content'>
@@ -211,7 +237,7 @@ class Login extends React.Component {
                         <h6>
                           <a
                             className='link'
-                            href='#'
+                            href='/register'
                             onClick={this.navRegister}
                             style={MyStyles.textInputStyle}
                           >
@@ -224,7 +250,7 @@ class Login extends React.Component {
                           <a
                             style={MyStyles.textInputStyle}
                             className='link'
-                            href='#'
+                            href='/recovery'
                             onClick={this.navRecovery}
                           >
                             Forgot Pasword?
@@ -251,12 +277,14 @@ const MyStyles = {
 }
 
 Login.propTypes = {
-  loginUser: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
+  message: PropTypes.object,
 }
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  message: state.auth.message,
 })
 
-export default connect(mapStateToProps, { loginUser })(Login)
+export default connect(mapStateToProps, { login })(Login)

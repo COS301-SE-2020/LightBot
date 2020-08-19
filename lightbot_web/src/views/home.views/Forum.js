@@ -1,116 +1,233 @@
-import React from "react";
-
-// reactstrap components
+import React from 'react'
+import { sendForum } from '../../actions/auth'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import {
   Card,
-  CardBody,
-  CardHeader,
+  Label,
   CardTitle,
-  Table,
+  CardBody,
+  FormGroup,
+  Button,
+  Form,
+  Input,
   Row,
   Col,
-} from "reactstrap";
+} from 'reactstrap'
+import NotificationAlert from 'react-notification-alert'
+import PanelHeader from '../../components/PanelHeader/PanelHeader.js'
+import Post from '../../components/Post/Post'
 
-// core components
-import PanelHeader from "../../components/PanelHeader/PanelHeader.js";
+class Forum extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      title: '',
+      subject: '',
+      description: '',
+    }
 
-import { thead, tbody } from "../../variables/general";
+    this.onDismiss = this.onDismiss.bind(this)
+    this.notify = this.notify.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
 
-class RegularTables extends React.Component {
+  handleChange = async (e) => {
+    const { target } = e
+    const value = target.type === 'checkbox' ? target.checked : target.value
+    const { name } = target
+    await this.setState({
+      [name]: value,
+    })
+  }
+
+  handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const formData = {
+      title: this.state.title,
+      subject: this.state.subject,
+      description: this.state.description,
+    }
+    try {
+      await this.props.sendForum(formData)
+      if (this.props.message.status > 299) {
+        this.notify(this.props.message.msg, 'danger')
+      } else {
+        this.notify(this.props.message.msg, 'success')
+      }
+    } catch (err) {}
+  }
+
+  onDismiss() {}
+  notify(Message, type) {
+    var options = {}
+    options = {
+      place: 'tc',
+      message: (
+        <div>
+          <div>{Message}</div>
+        </div>
+      ),
+      type: type,
+      icon: 'now-ui-icons ui-1_bell-53',
+      autoDismiss: 7,
+    }
+    this.refs.notificationAlert.notificationAlert(options)
+  }
+
   render() {
     return (
       <>
-        <PanelHeader size="sm" />
-        <div className="content">
+        <PanelHeader
+          size='sm'
+          content={
+            <div className='header text-center'>
+              <h2 className='title'>Notification Forum</h2>
+            </div>
+          }
+        />
+        <div className='content'>
+          <NotificationAlert ref='notificationAlert' />
+          <Post />
           <Row>
-            <Col xs={12}>
+            <Col md={12} xs={12}>
               <Card>
-                <CardHeader>
-                  <CardTitle tag="h4">Simple Table</CardTitle>
-                </CardHeader>
                 <CardBody>
-                  <Table responsive>
-                    <thead className="text-primary">
-                      <tr>
-                        {thead.map((prop, key) => {
-                          if (key === thead.length - 1)
-                            return (
-                              <th key={key} className="text-right">
-                                {prop}
-                              </th>
-                            );
-                          return <th key={key}>{prop}</th>;
-                        })}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {tbody.map((prop, key) => {
-                        return (
-                          <tr key={key}>
-                            {prop.data.map((prop, key) => {
-                              if (key === thead.length - 1)
-                                return (
-                                  <td key={key} className="text-right">
-                                    {prop}
-                                  </td>
-                                );
-                              return <td key={key}>{prop}</td>;
-                            })}
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </Table>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col xs={12}>
-              <Card className="card-plain">
-                <CardHeader>
-                  <CardTitle tag="h4">Table on Plain Background</CardTitle>
-                  <p className="category"> Here is a subtitle for this table</p>
-                </CardHeader>
-                <CardBody>
-                  <Table responsive>
-                    <thead className="text-primary">
-                      <tr>
-                        {thead.map((prop, key) => {
-                          if (key === thead.length - 1)
-                            return (
-                              <th key={key} className="text-right">
-                                {prop}
-                              </th>
-                            );
-                          return <th key={key}>{prop}</th>;
-                        })}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {tbody.map((prop, key) => {
-                        return (
-                          <tr key={key}>
-                            {prop.data.map((prop, key) => {
-                              if (key === thead.length - 1)
-                                return (
-                                  <td key={key} className="text-right">
-                                    {prop}
-                                  </td>
-                                );
-                              return <td key={key}>{prop}</td>;
-                            })}
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </Table>
+                  <Row>
+                    <Col md={6} className='ml-auto mr-auto text-center'>
+                      <CardTitle tag='h4'>Submit New Forum Post</CardTitle>
+                    </Col>
+                  </Row>
+                  <Form>
+                    <Row>
+                      <Col className='ml-auto mr-auto text-center' md='3'>
+                        <FormGroup>
+                          <CardTitle>Title</CardTitle>
+                          <Input
+                            maxLength='30'
+                            name='title'
+                            value={this.state.title}
+                            placeholder='Title'
+                            type='text'
+                            onChange={(e) => {
+                              this.handleChange(e)
+                            }}
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className='ml-auto mr-auto text-center' md='4'>
+                        <FormGroup>
+                          <CardTitle>Subject</CardTitle>
+                          <Input
+                            maxLength='50'
+                            placeholder='Subject'
+                            name='subject'
+                            value={this.state.subject}
+                            type='text'
+                            onChange={(e) => {
+                              this.handleChange(e)
+                            }}
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className='ml-auto mr-auto text-center'>
+                        <CardTitle>Urgency</CardTitle>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className='ml-auto mr-auto text-center' md='1'>
+                        <FormGroup check>
+                          <Label check>
+                            <Input
+                              type='radio'
+                              name='radio1'
+                              value='emergency'
+                            />{' '}
+                            emergency
+                          </Label>
+                        </FormGroup>
+                      </Col>
+                      <Col className='ml-auto mr-auto text-center' md='1'>
+                        <FormGroup check>
+                          <Label check>
+                            <Input type='radio' name='radio1' value='warning' />{' '}
+                            warning
+                          </Label>
+                        </FormGroup>
+                      </Col>
+                      <Col className='ml-auto mr-auto text-center' md='1'>
+                        <FormGroup check>
+                          <Label check>
+                            <Input type='radio' name='radio1' value='info' />{' '}
+                            info
+                          </Label>
+                        </FormGroup>
+                      </Col>
+                      <Col className='ml-auto mr-auto text-center' md='1'>
+                        <FormGroup check>
+                          <Label check>
+                            <Input type='radio' name='radio1' value='success' />{' '}
+                            success
+                          </Label>
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className='ml-auto mr-auto text-center' md='6'>
+                        <FormGroup>
+                          <CardTitle>Description</CardTitle>
+                          <Input
+                            maxLength='250'
+                            cols='80'
+                            name='description'
+                            value={this.state.description}
+                            placeholder='Your text Here...'
+                            rows='4'
+                            type='textarea'
+                            onChange={(e) => {
+                              this.handleChange(e)
+                            }}
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className='ml-auto mr-auto text-center' md='4'>
+                        <Button
+                          className='btn-round'
+                          color='primary'
+                          block
+                          onClick={this.handleSubmit}
+                        >
+                          Submit
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Form>
                 </CardBody>
               </Card>
             </Col>
           </Row>
         </div>
       </>
-    );
+    )
   }
 }
 
-export default RegularTables;
+Forum.propTypes = {
+  sendForum: PropTypes.func.isRequired,
+  user: PropTypes.object,
+  message: PropTypes.object,
+}
+
+const mapStateToProps = (state) => ({
+  user: state.auth.user,
+  message: state.auth.message,
+})
+
+export default connect(mapStateToProps, { sendForum })(Forum)

@@ -1,60 +1,49 @@
 import Overview from "../views/home.views/Overview.js";
-import Notifications from "../views/home.views/Notifications.js";
 import Configuration from "../views/home.views/Configuration.js";
 import Forum from "../views/home.views/Forum.js";
 import Simulation from "../views/home.views/Simulation.js";
-import Logout from "../views/home.views/Logout.js";
 import Profile from "../views/home.views/Profile.js";
 
 var homeRoutes = [
   {
     path: "/overview",
     name: "Overview",
-    icon: "design_app",
+    icon: "now-ui-icons design_bullet-list-67",
     component: Overview,
     layout: "/home",
-  },
-  {
-    path: "/simulation",
-    name: "Simulation",
-    icon: "location_map-big",
-    component: Simulation,
-    layout: "/home",
-  },
-  {
-    path: "/notifications",
-    name: "Notifications",
-    icon: "ui-1_bell-53",
-    component: Notifications,
-    layout: "/home",
+    auth: false,
   },
   {
     path: "/profile",
     name: "Profile",
-    icon: "users_single-02",
+    icon: "now-ui-icons users_circle-08",
     component: Profile,
     layout: "/home",
+    auth: false,
   },
   {
     path: "/forum",
-    name: "Forum",
-    icon: "files_paper",
+    name: "Notification Forum",
+    icon: "now-ui-icons objects_globe",
     component: Forum,
     layout: "/home",
+    auth: true,
+  },
+  {
+    path: "/simulation",
+    name: "Simulation",
+    icon: "now-ui-icons media-1_button-play",
+    component: Simulation,
+    layout: "/home",
+    auth: false,
   },
   {
     path: "/configuration",
     name: "Configuration",
-    icon: "design-2_ruler-pencil",
+    icon: "now-ui-icons loader_gear spin",
     component: Configuration,
     layout: "/home",
-  },
-  {
-    path: "/logout",
-    name: "Logout",
-    icon: "objects_spaceship",
-    component: Logout,
-    layout: "/home",
+    auth: true,
   },
 ];
 export default homeRoutes;

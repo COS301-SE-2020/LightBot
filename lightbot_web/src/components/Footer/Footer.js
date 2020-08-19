@@ -12,41 +12,28 @@ class Footer extends React.Component {
           <nav>
             <ul>
               <li>
-                <a
-                  href='https://www.creative-tim.com?ref=nudr-footer'
-                  target='_blank'
-                >
-                  Creative Tim
+                <b style={MyStyles.textInputStyle}>
+                  Developed for 5dt in collaboration with the University of
+                  Pretoria
+                </b>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <a style={MyStyles.textInputStyle2} href='https://5dt.com'>
+                  5DT
                 </a>
               </li>
               <li>
-                <a
-                  href='https://presentation.creative-tim.com?ref=nudr-footer'
-                  target='_blank'
-                >
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a
-                  href='https://blog.creative-tim.com?ref=nudr-footer'
-                  target='_blank'
-                >
-                  Blog
+                <a style={MyStyles.textInputStyle2} href='https://www.up.ac.za'>
+                  University Of Pretoria
                 </a>
               </li>
             </ul>
           </nav>
           <div className='copyright'>
-            &copy; {1900 + new Date().getYear()}, Brought to you by{' '}
-            <a
-              href='https://www.creative-tim.com?ref=nudr-footer'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              Gradient
-            </a>
-            .
+            &copy; {1900 + new Date().getYear()} All Rights Reserved. Brought to
+            you by <a href='/#'>Gradient</a>
             <img
               className='footerLogo'
               alt='...'
@@ -58,6 +45,17 @@ class Footer extends React.Component {
       </footer>
     )
   }
+}
+
+const MyStyles = {
+  textInputStyle: {
+    color: 'white',
+    opacity: '1',
+  },
+  textInputStyle2: {
+    color: '#f96332',
+    opacity: '1',
+  },
 }
 
 Footer.propTypes = {

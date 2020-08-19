@@ -3,15 +3,12 @@ class ErrorResponse extends Error {
     super(message)
     this.data = data
   }
-  getCode(){
-    if(this instanceof BadRequest)
-      return 400;
-    if(this instanceof Unauthorized)
-      return 401;
-    if(this instanceof Forbidden)
-      return 403;
-    if(this instanceof NotFound)
-      return 404;
+  getCode() {
+    if (this instanceof BadRequest) return 400
+    if (this instanceof Unauthorized) return 401
+    if (this instanceof Forbidden) return 403
+    if (this instanceof NotFound) return 404
+    if (this instanceof ErrorResponse) return 500
   }
 }
 
@@ -25,5 +22,5 @@ module.exports = {
   BadRequest,
   Unauthorized,
   Forbidden,
-  NotFound
+  NotFound,
 }
