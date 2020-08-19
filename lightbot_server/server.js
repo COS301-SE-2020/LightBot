@@ -1,7 +1,5 @@
 //Packages Node core modules, Third-Party libs
 var compression = require('compression')
-var https = require('https')
-var fs = require('fs')
 require('colors')
 const rateLimit = require('express-rate-limit')
 require('dotenv').config({ path: './config/config.vars.env' })
@@ -21,10 +19,6 @@ const limit = rateLimit({
   windowMs: 10 * 60 * 1000,
   max: 100,
 })
-var options = {
-  key: fs.readFileSync('./certs/server-key.pem'),
-  cert: fs.readFileSync('./certs/server-cert.pem')
-}
 app.use(limit)
 app.use(helmet())
 app.use(express.json({ extended: true }))
@@ -56,7 +50,7 @@ app.use(require('./routes/Error.route'))
 app.use(require('./middleware/Error.handler'))
 
 //Execute server on port specified by environment var or default
-const server = https.createServer(app).listen(PORT, () =>
+const server = app.listen(PORT, () =>
   console.log(`Server listening on port: ${PORT}`.cyan)
 )
 

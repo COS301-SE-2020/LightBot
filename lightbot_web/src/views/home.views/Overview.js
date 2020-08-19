@@ -26,12 +26,8 @@ import {
 
 import Post from '../../components/Post/Post'
 
-
-
 class Overview extends React.Component {
-
-  constructor(props)
-  {
+  constructor(props) {
     super(props)
     this.state = {
       labelsx: [
@@ -58,7 +54,7 @@ class Overview extends React.Component {
         var gradientFill = ctx.createLinearGradient(0, 200, 0, 50)
         gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)')
         gradientFill.addColorStop(1, 'rgba(255, 255, 255, 0.14)')
-    
+
         return {
           labels: this.state.labelsx,
           datasets: [
@@ -80,15 +76,14 @@ class Overview extends React.Component {
             },
           ],
         }
-      }
-
+      },
     }
   }
 
   render() {
     return (
       <>
-      <PanelHeader
+        <PanelHeader
           content={
             <div className='header text-center'>
               <h2 className='title'>Overview</h2>
@@ -109,8 +104,7 @@ class Overview extends React.Component {
             <Col xs={12} md={6}>
               <Card className='card-chart'>
                 <CardHeader>
-                  <h5 className='card-category'>2020 Sales</h5>
-                  <CardTitle tag='h4'>All products</CardTitle>
+                  <CardTitle tag='h4'>Total Queue Length</CardTitle>
                   <UncontrolledDropdown>
                     <DropdownToggle
                       className='btn-round btn-outline-default btn-icon'
@@ -119,11 +113,13 @@ class Overview extends React.Component {
                       <i className='now-ui-icons loader_gear' />
                     </DropdownToggle>
                     <DropdownMenu right>
-                      <DropdownItem>Action</DropdownItem>
-                      <DropdownItem>Another Action</DropdownItem>
-                      <DropdownItem>Something else here</DropdownItem>
+                      <DropdownItem>Latest Run</DropdownItem>
+                      <DropdownItem>Previous Run</DropdownItem>
+                      <DropdownItem className='text-success'>
+                        Best Run
+                      </DropdownItem>
                       <DropdownItem className='text-danger'>
-                        Remove data
+                        Worst Run
                       </DropdownItem>
                     </DropdownMenu>
                   </UncontrolledDropdown>
@@ -147,37 +143,32 @@ class Overview extends React.Component {
             <Col xs={12} md={6}>
               <Card>
                 <CardHeader>
-                  <h5 className='card-category'>All Persons List</h5>
-                  <CardTitle tag='h4'>Employees Stats</CardTitle>
+                  <CardTitle tag='h4'>System State</CardTitle>
                 </CardHeader>
                 <CardBody>
                   <Table responsive>
                     <thead className='text-primary'>
                       <tr>
-                        <th>Name</th>
-                        <th>Country</th>
-                        <th>City</th>
-                        <th className='text-right'>Salary</th>
+                        <th>Type</th>
+                        <th>Intersection</th>
+                        <th>Status</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Dakota Rice</td>
-                        <td>Niger</td>
-                        <td>Oud-Turnhout</td>
-                        <td className='text-right'>$36,738</td>
+                        <td>Adaptive</td>
+                        <td>Jan Shoba and South</td>
+                        <td className='text-success'>Online</td>
                       </tr>
                       <tr>
-                        <td>Minerva Hooper</td>
-                        <td>Curaçao</td>
-                        <td>Sinaai-Waas</td>
-                        <td className='text-right'>$23,789</td>
+                        <td>Time-based</td>
+                        <td>Jan Shoba and South</td>
+                        <td className='text-danger'>Offline</td>
                       </tr>
                       <tr>
-                        <td>Sage Rodriguez</td>
-                        <td>Netherlands</td>
-                        <td>Baileux</td>
-                        <td className='text-right'>$56,142</td>
+                        <td>Random</td>
+                        <td>Jan Shoba and South</td>
+                        <td className='text-danger'>Offline</td>
                       </tr>
                     </tbody>
                   </Table>

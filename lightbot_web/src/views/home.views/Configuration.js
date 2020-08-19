@@ -1,6 +1,6 @@
-import React from "react";
-import { Card, CardBody, Row, Col } from "reactstrap";
-import PanelHeader from "../../components/PanelHeader/PanelHeader.js";
+import React from 'react'
+import { Card, CardBody, Row, Col, Button } from 'reactstrap'
+import PanelHeader from '../../components/PanelHeader/PanelHeader.js'
 
 class Configuration extends React.Component {
   render() {
@@ -14,25 +14,72 @@ class Configuration extends React.Component {
             </div>
           }
         />
-        <div className="content">
+        <div className='content'>
           <Row>
             <Col md={12}>
               <Card>
-                <CardBody className="all-icons">
+                <CardBody className='all-icons ml-auto mr-auto'>
                   <Row>
-
-                        <Col
-                          lg={2}
-                          md={3}
-                          sm={4}
-                          xs={6}
-                          className="font-icon-list"
-                        >
-                          <div className="font-icon-detail">
-                            <i className={"now-ui-icons design_bullet-list-67"} />
-                            <p>{"design_bullet-list-67"}</p>
-                          </div>
-                        </Col>
+                    <Col
+                      lg={2}
+                      md={3}
+                      sm={3}
+                      xs={3}
+                      className='font-icon-list ml-auto mr-auto'
+                    >
+                      <Button
+                        className='btn-round'
+                        color='primary'
+                        block
+                        onClick={this.handleUpload}
+                      >
+                        Manual Control
+                        <div className='font-icon-detail'>
+                          <i className={'now-ui-icons design_bullet-list-67'} />
+                          <p>{'design_bullet-list-67'}</p>
+                        </div>
+                      </Button>
+                    </Col>
+                    <Col
+                      lg={2}
+                      md={3}
+                      sm={3}
+                      xs={3}
+                      className='font-icon-list ml-auto mr-auto'
+                    >
+                      <Button
+                        className='btn-round'
+                        color='primary'
+                        block
+                        onClick={this.handleUpload}
+                      >
+                        Intersections
+                        <div className='font-icon-detail'>
+                          <i className={'now-ui-icons design_bullet-list-67'} />
+                          <p>{'design_bullet-list-67'}</p>
+                        </div>
+                      </Button>
+                    </Col>
+                    <Col
+                      lg={2}
+                      md={3}
+                      sm={3}
+                      xs={3}
+                      className='font-icon-list ml-auto mr-auto'
+                    >
+                      <Button
+                        className='btn-round'
+                        color='primary'
+                        block
+                        onClick={this.handleUpload}
+                      >
+                        AI Parameters
+                        <div className='font-icon-detail'>
+                          <i className={'now-ui-icons design_bullet-list-67'} />
+                          <p>{'design_bullet-list-67'}</p>
+                        </div>
+                      </Button>
+                    </Col>
                   </Row>
                 </CardBody>
               </Card>
@@ -40,8 +87,8 @@ class Configuration extends React.Component {
           </Row>
         </div>
       </>
-    );
+    )
   }
 }
 
-export default Configuration;
+export default Configuration

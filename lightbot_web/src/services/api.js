@@ -1,9 +1,9 @@
 import axios from 'axios'
-import {LOGOUT} from '../actions/types'
+import { LOGOUT } from '../actions/types'
 import store from '../store'
 
 const api = axios.create({
-  baseURL: 'https://Lightfoot-421442885.eu-central-1.elb.amazonaws.com:443/',
+  baseURL: 'http://localhost:8000/',
   headers: {
     'Content-Type': 'application/json',
   },
