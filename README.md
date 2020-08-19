@@ -14,13 +14,13 @@ This repository represents a remote collaboration for LightBot Artificial Intell
     - Authors: R Kapoor, J Gratz
     <br>
     <b>lightbot_web</b>
-    - Author: M Gangat
+    - Author: M Gangat, T Pillay
     <br>
     <b>lightbot_server</b>
     - Author: M Gangat
     <br>
     <b>lightbot_sim</b>
-     - Author: T Pillay
+     - Author: T Pillay, J Gratz, R Kapoor 
     <br>
     <b>lightbot_doc</b>
     - Authors: M Gangat, R Kapoor, T Pillay, J Gratz
@@ -33,13 +33,13 @@ This repository represents a remote collaboration for LightBot Artificial Intell
     - Authors: R Kapoor, J Gratz
     <br>
     <b>lightbot_web</b>
-    - Author: M Gangat
+    - Author: M Gangat, T Pillay
     <br>
     <b>lightbot_server</b>
     - Author: M Gangat
     <br>
     <b>lightbot_sim</b>
-     - Author: T Pillay
+     - Author: T Pillay, J Gratz, R Kapoor 
     <br>
     <b>lightbot_doc</b>
     - Authors: M Gangat, R Kapoor, T Pillay, J Gratz
@@ -51,18 +51,20 @@ This repository represents a remote collaboration for LightBot Artificial Intell
 
 * Discord (Used for Team Gradient communication) - https://discord.gg/vGRBnNb
 * Slack (Used for communication between Team Gradient and 5DT) - https://gradientcrew.slack.com
-* ClickUp (Used for task allocation and time management) - https://share.clickup.com/l/h/2dyz3-141/e75ad4ae1b0344a
+* ClickUp (Used for task allocation and time management) - 
 * Google Meet (Used for weekly meetings between Team Gradient and 5DT)
 * GitKraken / GitHub Desktop
 
 ## Documentation
-* SRS Document for Demo 1: https://github.com/COS301-SE-2020/LightBot/blob/master/lightbot_doc/Gradient%20-%20SRS%20Document.pdf
-* SRS Document for Demo 2: https://github.com/COS301-SE-2020/LightBot/blob/master/lightbot_doc/Requirements%20Specification.pdf
-* User Manual for Demo 2: https://github.com/COS301-SE-2020/LightBot/blob/master/lightbot_doc/LIGHTBOT_USER_MANUAL.pdf
+* SRS Document:
+* User Manual: 
+* Technical Installation Manual:
+* Coding Strandards Document:
 
 ## Demo Videos
-* Demo 1 Video link: https://drive.google.com/file/d/1Ym5qgCFRDrMjqgOWoS6-tWCDYrcS3Gj5/view?usp=sharing
-* Demo 2 Video link: https://drive.google.com/file/d/1m177RYTdAeIWepgMWhlFx1zDX7eUU8AF/view?usp=sharing
+* Demo 1 Video: https://drive.google.com/file/d/1Ym5qgCFRDrMjqgOWoS6-tWCDYrcS3Gj5/view?usp=sharing
+* Demo 2 Video: https://drive.google.com/file/d/1m177RYTdAeIWepgMWhlFx1zDX7eUU8AF/view?usp=sharing
+* Demo 3 Video: 
 
 ## Collaborators
 <b>Mohammed Gangat :</b><br>
@@ -76,6 +78,9 @@ This repository represents a remote collaboration for LightBot Artificial Intell
     <br>
     <br>
     - Demo 2: Data modeling research, implemented server structure, did web server development, setup deployment, git management, worked on the updated SRS documentation and user manual and worked on the demo video & recorded contribution video.
+    <br>
+	<br>
+    - Demo 3: Worked on revamp on Web Application, added additional functionality to Web Server. Worked with other team members on all Documentation.
     <br>
 </details>
 
@@ -91,6 +96,9 @@ This repository represents a remote collaboration for LightBot Artificial Intell
 	<br>
     - Demo 2: Assisted in development of machine learning server.
     <br>
+	<br>
+    - Demo 3: Worked on Traffic Simulation. Partially implemented Reinforcement Learning component. Worked with other team members on all Documentation.
+    <br>
 </details>
 
 <b>Thiveshan Pillay :</b><br>
@@ -105,6 +113,9 @@ This repository represents a remote collaboration for LightBot Artificial Intell
     <br>
     - Demo 2: Installation of SUMO and SUMO-WEB3D on amazon virtual machine. Configuring virtual machine to properly interface with browser. Configuring and loading scenarios on virtual machine. Modeling a intersection using SUMO after Jan Shoba and South Street. Creating various scenarios based on different traffic flows at intersection. Worked on the updated SRS documentation and user manual & recorded contribution video.
     <br>
+	<br>
+    - Demo 3: Worked on revamp on Web Application. Worked with other team members on all Documentation.
+    <br>
 </details>
 
 <b>Jared Gratz :</b><br>
@@ -118,5 +129,8 @@ This repository represents a remote collaboration for LightBot Artificial Intell
     <br>
     <br>
     - Demo 2: Updated the mock functions for serverRL.py in the reinforcement algorithm, mock reinforcement algorithm for mockRL.py, unit testing for serverRL.py, worked on the updated SRS documentation and user manual & recorded contribution video.
+    <br>
+	<br>
+    - Demo 3: Worked on Traffic Simulation. Partially implemented Reinforcement Learning component. Worked with other team members on all Documentation.
     <br>
 </details>
