@@ -60,6 +60,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
 * User Manual: https://drive.google.com/file/d/1RuygQgWb-3Mti1KrbNINukM6i8YGw1UQ/view?usp=sharing 
 * Technical Installation Manual: https://drive.google.com/file/d/1he-kpPX8rX-zY_YlKB8o62eF6jJKb5ef/view?usp=sharing
 * Coding Standards Document: https://drive.google.com/file/d/1rR8M9J-OyWYQ6CT7Zd2g5-geuV0vCylL/view?usp=sharing
+* Please note that PDF versions of these documents are also available in the "lightbot_doc" folder.
 
 ## Demo Videos
 * Demo 1 Video: https://drive.google.com/file/d/1Ym5qgCFRDrMjqgOWoS6-tWCDYrcS3Gj5/view?usp=sharing
