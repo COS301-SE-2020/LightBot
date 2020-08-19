@@ -43,54 +43,53 @@ class TestSumo(unittest.TestCase):
                 print("Subtest "+str(key+1)+": Returned exit code "+str(exitcode)+".\n")
                 self.assertEqual(exitcode,0)
 
+class TestSumoWeb3d(unittest.TestCase):
 
-# class TestSumoWeb3d(unittest.TestCase):
+    @classmethod
+    def setUpClass(inst):
 
-#     @classmethod
-#     def setUpClass(inst):
+        print("\nTesting all the scenarios with Sumo-Web3d ...\n")
+        inst.driver = webdriver.Chrome('/usr/local/bin/chromedriver')
+        inst.driver.implicitly_wait(30)
+        inst.driver.maximize_window()
+        inst.driver.get("http://ec2-18-157-183-138.eu-central-1.compute.amazonaws.com:5000")
+        inst.driver.title
 
-#         print("\nTesting all the scenarios with Sumo-Web3d ...\n")
-#         inst.driver = webdriver.Chrome('/usr/local/bin/chromedriver')
-#         inst.driver.implicitly_wait(30)
-#         inst.driver.maximize_window()
-#         inst.driver.get("http://ec2-18-224-22-142.us-east-2.compute.amazonaws.com:5000")
-#         inst.driver.title
+    def test_default_peak_traffic_scenario_(self):
+        """This function tests if the default simulation is loaded in the webpage"""
+        print("Testing that Sumo-Web3d loads the default simulation ...\n")
+        try:
+            self.driver.find_element_by_class_name("scenario-row")
+        except NoSuchElementException:
+            return False
+        return True
 
-#     def test_default_peak_traffic_scenario_(self):
-#         """This function tests if the default simulation is loaded in the webpage"""
-#         print("Testing that Sumo-Web3d loads the default simulation ...\n")
-#         try:
-#             self.driver.find_element_by_class_name("scenario-row")
-#         except NoSuchElementException:
-#             return False
-#         return True
+    def test_normal_traffic_scenario_(self):
+        """This function tests if the normal traffic simulation is loaded in the webpage"""
+        print("Testing that Sumo-Web3d loads the normal traffic simulation ...\n")
+        self.driver.get(
+            "http://ec2-18-157-183-138.eu-central-1.compute.amazonaws.com:5000/scenarios/janshoba-south-off-peak/")
+        try:
+            self.driver.find_element_by_class_name("scenario-row")
+        except NoSuchElementException:
+            return False
+        return True
 
-#     def test_normal_traffic_scenario_(self):
-#         """This function tests if the normal traffic simulation is loaded in the webpage"""
-#         print("Testing that Sumo-Web3d loads the normal traffic simulation ...\n")
-#         self.driver.get(
-#             "http://ec2-18-224-22-142.us-east-2.compute.amazonaws.com:5000/scenarios/jan-shoba-and-south-street:-peak-traffic/")
-#         try:
-#             self.driver.find_element_by_class_name("scenario-row")
-#         except NoSuchElementException:
-#             return False
-#         return True
+    def test_low_traffic_scenario_(self):
+        """This function if the low traffic simulation is loaded in the webpage"""
+        print("Testing that Sumo-Web3d loads the low traffic simulation ...\n")
+        self.driver.get(
+            "http://ec2-18-157-183-138.eu-central-1.compute.amazonaws.com:5000/scenarios/janshoba-south-midnight/")
+        try:
+            self.driver.find_element_by_class_name("scenario-row")
+        except NoSuchElementException:
+            return False
+        return True
 
-#     def test_low_traffic_scenario_(self):
-#         """This function if the low traffic simulation is loaded in the webpage"""
-#         print("Testing that Sumo-Web3d loads the low traffic simulation ...\n")
-#         self.driver.get(
-#             "http://ec2-18-224-22-142.us-east-2.compute.amazonaws.com:5000/scenarios/jan-shoba-and-south-street:-low-traffic/")
-#         try:
-#             self.driver.find_element_by_class_name("scenario-row")
-#         except NoSuchElementException:
-#             return False
-#         return True
-
-#     """This function closes the browser"""
-#     @classmethod
-#     def tearDownClass(inst):
-#         inst.driver.quit()
+    """This function closes the browser"""
+    @classmethod
+    def tearDownClass(inst):
+        inst.driver.quit()
 
 
 if __name__ == '__main__':
