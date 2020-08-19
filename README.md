@@ -3,7 +3,7 @@
 # Artificial Intelligence Adaptive Traffic Control Solution
 
 ## Description
-This repository represents a remote collaboration for LightBot Artificial Intelligence Adaptive Traffic Control Solution offered by 5DT for the COS 301 Capstone University of Pretoria. The purpose of LightBot is to minimize the delays that are caused by traffic congestions at various intersections. The LightBot system will be used to prove a concept that the addition of a machine learning algorithm will develop a good policy for which to control the traffic lights at a given intersection.
+Team Gradient - This repository represents a remote collaboration for LightBot Artificial Intelligence Adaptive Traffic Control Solution offered by 5DT for the COS 301 Capstone University of Pretoria. The purpose of LightBot is to minimize the delays that are caused by traffic congestions at various intersections. The LightBot system will be used to prove a concept that the addition of a machine learning algorithm will develop a good policy for which to control the traffic lights at a given intersection.
 <br>
 
 ## Team and Project Management
