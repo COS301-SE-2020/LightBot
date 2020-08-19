@@ -6,9 +6,9 @@
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
-        <net-file value="Network/jan_south_peak.net.xml"/>
-        <route-files value="Routing/jan_south_peak.rou.xml"/>
-        <additional-files value="Additional/jan_south.add.xml"/>
+        <net-file value="jan_south_low.net.xml"/>
+        <route-files value="jan_south_low.rou.xml"/>
+        <additional-files value="jan_south.add.xml"/>
     </input>
 
 </configuration>
