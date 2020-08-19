@@ -59,7 +59,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
 * SRS Document: https://drive.google.com/file/d/1UY9ypcGT2Nt4tOkT_LqWhmbG1ATrHneI/view?usp=sharing
 * User Manual: https://drive.google.com/file/d/1RuygQgWb-3Mti1KrbNINukM6i8YGw1UQ/view?usp=sharing 
 * Technical Installation Manual: https://drive.google.com/file/d/1he-kpPX8rX-zY_YlKB8o62eF6jJKb5ef/view?usp=sharing
-* Coding Strandards Document: https://drive.google.com/file/d/1rR8M9J-OyWYQ6CT7Zd2g5-geuV0vCylL/view?usp=sharing
+* Coding Standards Document: https://drive.google.com/file/d/1rR8M9J-OyWYQ6CT7Zd2g5-geuV0vCylL/view?usp=sharing
 
 ## Demo Videos
 * Demo 1 Video: https://drive.google.com/file/d/1Ym5qgCFRDrMjqgOWoS6-tWCDYrcS3Gj5/view?usp=sharing
