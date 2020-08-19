@@ -121,7 +121,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
 
 <b>Jared Gratz :</b><br>
 * <a href="https://github.com/Jad-91802"> GitHub  Account </a><br>
-* <a href=" https://www.linkedin.com/in/jared-gratz-b61147b9/"> Linkedin  Account </a>
+* <a href="https://www.linkedin.com/in/jared-gratz-b61147b9/"> Linkedin  Account </a>
 * Email : u16054972@tuks.co.za
 * <details>
     <summary><b>What I Did </b></summary>
