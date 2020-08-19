@@ -51,7 +51,7 @@ This repository represents a remote collaboration for LightBot Artificial Intell
 
 * Discord (Used for Team Gradient communication) - https://discord.gg/vGRBnNb
 * Slack (Used for communication between Team Gradient and 5DT) - https://gradientcrew.slack.com
-* ClickUp (Used for task allocation and time management) - 
+* ClickUp (Used for task allocation and time management) - https://share.clickup.com/l/h/6-25795638-1/3d205ccf6305580
 * Google Meet (Used for weekly meetings between Team Gradient and 5DT)
 * GitKraken / GitHub Desktop
 
