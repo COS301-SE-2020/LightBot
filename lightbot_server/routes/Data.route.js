@@ -15,30 +15,21 @@ router.get(
 // // @desc      Forum Data Route
 // // @access    Private
 router.get(
-    '/forum',
-    auth.Guard,
-    require('../controllers/Data.controller').getForumData
-  )
-
-// // @route     GET data/notification
-// // @desc      Notification Data Route
-// // @access    Private
-router.get(
-    '/notification',
-    auth.Guard,
-    require('../controllers/Data.controller').getNotificationData
-  )
+  '/forum',
+  auth.Guard,
+  require('../controllers/Data.controller').getForumData
+)
 
 // // @route     GET data/state
 // // @desc      State Data Route
 // // @access    Private
 router.get(
-    '/state',
-    auth.Guard,
-    require('../controllers/Data.controller').getStateData
-  )
+  '/state',
+  auth.Guard,
+  require('../controllers/Data.controller').getStateData
+)
 
-// // @route     POST data/state
+// // @route     POST data/post-forum
 // // @desc      Update Forum Route
 // // @access    Private
 router.post(

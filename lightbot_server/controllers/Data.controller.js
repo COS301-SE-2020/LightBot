@@ -2,12 +2,10 @@
 const asyncHandler = require('express-async-handler')
 const { ErrorResponse, BadRequest, NotFound } = require('../utils/Error.util')
 const { SuccessResponse } = require('../utils/Success.util')
-const UserController = require('./User.controller')
 const mongoose = require('mongoose')
 const Forum = require('../models/Forum.model')
 const User = require('../models/User.model')
 // const Graph = require('../models/Graph.model')
-// const Notification = require('../models/Notification.model')
 // const State = require('../models/State.model')
 
 module.exports = {
@@ -18,18 +16,19 @@ module.exports = {
   }),
 
   getForumData: asyncHandler(async (req, res, next) => {
-    res.json(
-      new SuccessResponse('Successfully acquired forum data.', 'Forum data set')
-    )
-  }),
-
-  getNotificationData: asyncHandler(async (req, res, next) => {
+    let posts
+    try {
+      posts = await Forum.find({})
+    } catch (err) {
+      return next(new ErrorResponse('Fetching posts failed.'))
+    }
     res.json(
       new SuccessResponse(
-        'Successfully acquired notification data.',
-        'Notification data set'
+        'Successfully obtained forum posts.',
+        posts.map((post) => post.toObject({ getters: true }))
       )
     )
+
   }),
 
   getStateData: asyncHandler(async (req, res, next) => {
@@ -39,11 +38,12 @@ module.exports = {
   }),
 
   addForumData: asyncHandler(async (req, res, next) => {
-    const { title, message } = req.body
+    const { title,subject, description } = req.body
     const { User_id, User_email } = req.User_data
     const createForumPost = new Forum({
       title,
-      message,
+      subject,
+      description,
       creator: User_id,
     })
     let user
