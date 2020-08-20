@@ -65,7 +65,7 @@ Team Gradient - This repository represents a remote collaboration for LightBot A
 ## Demo Videos
 * Demo 1 Video: https://drive.google.com/file/d/1Ym5qgCFRDrMjqgOWoS6-tWCDYrcS3Gj5/view?usp=sharing
 * Demo 2 Video: https://drive.google.com/file/d/1m177RYTdAeIWepgMWhlFx1zDX7eUU8AF/view?usp=sharing
-* Demo 3 Video: 
+* Demo 3 Video: https://drive.google.com/file/d/1o3ybdfmhUFq5EQtwpksMpGdaz7kkfdgg/view?usp=sharing
 
 ## Collaborators
 <b>Mohammed Gangat :</b><br>
