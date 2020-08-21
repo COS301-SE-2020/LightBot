@@ -26,14 +26,13 @@ class Simulation:
     #  @param yellow_duration The duration, in steps, for the Yellow States.
     #  @param num_states May be used later for the Tensorflow model.
     #  @param num_actions The number of Green States or actions the Tensorflow model will be able to take.
-    def __init__(self, sumo_cmd, max_steps, green_duration, yellow_duration, num_states, num_actions, actions_file_name):
+    def __init__(self, sumo_cmd, max_steps, green_duration, yellow_duration, num_states, num_actions):
         self._sumo_cmd = sumo_cmd
         self._max_steps = max_steps
         self._green_duration = green_duration
         self._yellow_duration = yellow_duration
         self._num_states = num_states
         self._num_actions = num_actions
-        self._actions_file_name = actions_file_name
         self._queue_length_episode = []
         self._queue_length_north = []
         self._queue_length_south = []
@@ -86,7 +85,7 @@ class Simulation:
         traci.close()
         print('Ending TraCI...')
         simulation_time = round(timeit.default_timer() - start_time, 1)
-        with open(self._actions_file_name, 'w') as file:
+        with open('xml_actions_data.txt', 'w') as file:
             for value in self._actions_taken:
                 file.write("%s\n" % value)
         return simulation_time
