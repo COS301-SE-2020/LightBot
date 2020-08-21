@@ -18,7 +18,6 @@ def import_test_configuration(config_file):
     config['num_states'] = content['agent'].getint('num_states')
     config['num_actions'] = content['agent'].getint('num_actions')
     config['sumocfg_file_name'] = content['dir']['sumocfg_file_name']
-    config['actions_file_name'] = content['dir']['actions_file_name']
     return config
 
 ## Documentation for a function.

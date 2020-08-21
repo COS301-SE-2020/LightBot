@@ -36,8 +36,7 @@ if __name__ == "__main__":
         config['green_duration'],
         config['yellow_duration'],
         config['num_states'],
-        config['num_actions'],
-        config['actions_file_name']
+        config['num_actions']
     )
     print('Simulation start...')
     ## The simulation is run and the time taken to complete it is given.
