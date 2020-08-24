@@ -192,28 +192,59 @@ class Simulation:
         for car_id in cars:
             lane_pos = traci.vehicle.getLanePosition(car_id)
             lane_id = traci.vehicle.getLaneID(car_id)
-            lane_pos = 30 - lane_pos  # may need to change this
+            lane_pos = 25 - lane_pos  # may need to change this
 
-            if lane_pos < 7:
+            if lane_pos < 2.5:
                 lane_cell = 0
-            elif lane_pos < 14:
+            elif lane_pos < 5:
                 lane_cell = 1
-            elif lane_pos < 21:
+            elif lane_pos < 7.5:
                 lane_cell = 2
-            elif lane_pos < 28:
+            elif lane_pos < 10:
                 lane_cell = 3
-            elif lane_pos < 40:
+            elif lane_pos < 12.5:
                 lane_cell = 4
-            elif lane_pos < 60:
+            elif lane_pos < 15:
                 lane_cell = 5
-            elif lane_pos < 100:
+            elif lane_pos < 17.5:
                 lane_cell = 6
-            elif lane_pos < 160:
+            elif lane_pos < 20:
                 lane_cell = 7
-            elif lane_pos < 400:
+            elif lane_pos < 22.5:
                 lane_cell = 8
-            elif lane_pos <= 750:
+            elif lane_pos <= 25:
                 lane_cell = 9
+
+            if lane_id == "road_triple_JanShobaS_toJunc_0" or lane_id == "road_triple_JanShobaS_toJunc_1":
+                lane_group = 0
+            elif lane_id == "road_triple_JanShobaS_toJunc_2":
+                lane_group = 1
+            elif lane_id == "road_double_SouthStrE_toJunc_0":
+                lane_group = 2
+            elif lane_id == "road_double_SouthStrE_toJunc_1":
+                lane_group = 3
+            elif lane_id == "road_double_SouthStrW_toJunc_0":
+                lane_group = 4
+            elif lane_id == "road_double_SouthStrW_toJunc_1":
+                lane_group = 5
+            elif lane_id == "road_triple_JanShobaN_toJunc_0" or lane_id == "road_triple_JanShobaN_toJunc_1":
+                lane_group = 6
+            elif lane_id == "road_triple_JanShobaN_toJunc_2":
+                lane_group = 7
+            else:
+                lane_group = -1
+
+            if lane_group >= 1 and lane_group <= 7:
+                car_position = int(str(lane_group) + str(lane_cell))
+                valid_car = True
+            elif lane_group == 0:
+                car_position = lane_cell
+                valid_car = True
+            else:
+                valid_car = False
+
+            if valid_car:
+                state[car_position] = 1
 
         return state
 
