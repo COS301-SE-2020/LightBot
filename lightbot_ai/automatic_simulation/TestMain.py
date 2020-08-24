@@ -4,13 +4,14 @@
 #  The main file that sets up the objects used for the Reinforcement Algorithm.
 from __future__ import absolute_import
 from __future__ import print_function
-
+import base64
 import os
 from shutil import copyfile
 
 from TestSimulation import Simulation
 from Visualize import Visualization
 from Utilities import import_test_configuration, set_sumo
+from MongoConnection import MongoDBConnect
 
 ## The entry point of the file.
 #
@@ -39,6 +40,9 @@ if __name__ == "__main__":
         config['num_actions'],
         config['actions_file_name']
     )
+    
+    database = MongoDBConnect()
+    
     print('Simulation start...')
     ## The simulation is run and the time taken to complete it is given.
     simulation_time = Simulation.run()
@@ -56,3 +60,23 @@ if __name__ == "__main__":
                                      filename='East_queue', xlabel='Step', ylabel='Queue length (vehicles)')
     Visualization.save_data_and_plot(data=Simulation.queue_length_west,
                                      filename='West_queue', xlabel='Step', ylabel='Queue length (vehicles)')
+    ## Images are encoded to base64 and saved to MongoDB.
+    encoded = base64.b64encode(open('plot_Total_queue.png', 'rb').read())
+    myDict = {'Image':'plot_Total_queue.png', 'base64':encoded}
+    x = database.addOneToDB(myDict)
+    
+    encoded = base64.b64encode(open('plot_North_queue.png', 'rb').read())
+    myDict = {'Image':'plot_North_queue.png', 'base64':encoded}
+    x = database.addOneToDB(myDict)
+    
+    encoded = base64.b64encode(open('plot_South_queue.png', 'rb').read())
+    myDict = {'Image':'plot_South_queue.png', 'base64':encoded}
+    x = database.addOneToDB(myDict)
+    
+    encoded = base64.b64encode(open('plot_East_queue.png', 'rb').read())
+    myDict = {'Image':'plot_East_queue.png', 'base64':encoded}
+    x = database.addOneToDB(myDict)
+    
+    encoded = base64.b64encode(open('plot_West_queue.png', 'rb').read())
+    myDict = {'Image':'plot_West_queue.png', 'base64':encoded}
+    x = database.addOneToDB(myDict)
