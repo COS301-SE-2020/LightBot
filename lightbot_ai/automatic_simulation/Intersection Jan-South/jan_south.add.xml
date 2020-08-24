@@ -19,4 +19,18 @@
             <destProbReroute id="road_single_SouthStrE_fromJunc" />
         </interval>
     </rerouter>
+	
+	<e1Detector id="det_0" lane="road_triple_JanShobaS_toJunc_0" pos="33" freq="10000" file="det0.out.xml" />
+	<e1Detector id="det_1" lane="road_triple_JanShobaS_toJunc_1" pos="33" freq="10000" file="det1.out.xml" />
+	<e1Detector id="det_2" lane="road_triple_JanShobaS_toJunc_2" pos="33" freq="10000" file="det2.out.xml" />
+	
+	<e1Detector id="det_3" lane="road_double_SouthStrW_toJunc_0" pos="28" freq="10000" file="det3.out.xml" />
+	<e1Detector id="det_4" lane="road_double_SouthStrW_toJunc_1" pos="28" freq="10000" file="det4.out.xml" />
+	
+	<e1Detector id="det_5" lane="road_triple_JanShobaN_toJunc_0" pos="29.9" freq="10000" file="det5.out.xml" />
+	<e1Detector id="det_6" lane="road_triple_JanShobaN_toJunc_1" pos="29.9" freq="10000" file="det6.out.xml" />
+	<e1Detector id="det_7" lane="road_triple_JanShobaN_toJunc_2" pos="29.9" freq="10000" file="det7.out.xml" />
+	
+	<e1Detector id="det_8" lane="road_double_SouthStrE_toJunc_0" pos="24" freq="10000" file="det8.out.xml" />
+	<e1Detector id="det_9" lane="road_double_SouthStrE_toJunc_1" pos="24" freq="10000" file="det9.out.xml" />
 </additionals>
