@@ -14,11 +14,13 @@ PHASE_EW_YELLOW = 5  # Yellow State
 PHASE_EWR_GREEN = 6  # Green State, action 3 code 11
 PHASE_EWR_YELLOW = 7  # Yellow State
 
-## Documentation for the Simulation class.
+# Documentation for the Simulation class.
 #
 #  The main class used to interact with the simulation.
-class Simulation:   
-    ## The constructor, which stores the parameters into their respective member variable.
+
+
+class Simulation:
+    # The constructor, which stores the parameters into their respective member variable.
     #  @param self The object pointer.
     #  @param sumo_cmd CMD configuration used to start SUMO from TraCI.
     #  @param max_steps The total number of steps to simulate.
@@ -57,9 +59,9 @@ class Simulation:
             '<phase duration="4"  state="rrrrrrryyrrrrrrry"/>'
         ]
 
-    ## Documentation for the run method.
+    # Documentation for the run method.
     #  @param self The object pointer.
-    #  
+    #
     #  The run function starts TraCI which executes the SUMO for the simulation.
     #  This is where the actions or traffic light Green States are chosen to influence the simulation.
     def run(self):
@@ -91,11 +93,11 @@ class Simulation:
                 file.write("%s\n" % value)
         return simulation_time
 
-    ## Documentation for the _simulate method.
+    # Documentation for the _simulate method.
     #  @param self The object pointer.
     #  @param steps_todo The number of steps to simulate.
-    #  
-    #  The _simulate function initially checks if the maximum number of steps won't be reached before executing. 
+    #
+    #  The _simulate function initially checks if the maximum number of steps won't be reached before executing.
     #  If the maximum is not reached then traci will simulate a step with traci.simulationStep() and the queue lenght is recorded.
     def _simulate(self, steps_todo):
         if (self._step + steps_todo) >= self._max_steps:
@@ -107,10 +109,10 @@ class Simulation:
             queue_length = self._get_queue_length()
             self._queue_length_episode.append(queue_length)
 
-    ## Documentation for the _set_yellow_phase method.
+    # Documentation for the _set_yellow_phase method.
     #  @param self The object pointer.
     #  @param old_action The last Green State or action taken.
-    #  
+    #
     #  The _set_yellow_phase function will choose the appropriate Yellow State based on old_action.
     #  The Yellow State is recorded in _actions_taken list and set in SUMO using traci.trafficlight.setPhase().
     def _set_yellow_phase(self, old_action):
@@ -121,10 +123,10 @@ class Simulation:
         traci.trafficlight.setPhase(
             "cluster_25290891_611769793", yellow_phase_code)
 
-    ## Documentation for the _set_green_phase method.
+    # Documentation for the _set_green_phase method.
     #  @param self The object pointer.
     #  @param action_number The new chosen Green State or action to be taken.
-    #  
+    #
     #  The new Green State or action is recorded in _actions_taken list and set in SUMO using traci.trafficlight.setPhase().
     def _set_green_phase(self, action_number):
         """
@@ -159,9 +161,9 @@ class Simulation:
     #     total_waiting_time = sum(self._waiting_times.values())
     #     return total_waiting_time
 
-    ## Documentation for the _get_queue_length method.
+    # Documentation for the _get_queue_length method.
     #  @param self The object pointer.
-    #  
+    #
     #  The _get_queue_length will retrieve the number of cars halted, specifically in the incoming lane, using traci.edge.getLastStepHaltingNumber.
     #  The result is then appended to the appropriate list, along with keeping a running total with queue_length.
     def _get_queue_length(self):
@@ -183,6 +185,38 @@ class Simulation:
         queue_length = halt_N + halt_S + halt_E + halt_W
         return queue_length
 
+    def _get_state(self):
+        state = np.zeros(self._num_states)
+        cars = traci.vehicle.getIDList()
+
+        for car_id in cars:
+            lane_pos = traci.vehicle.getLanePosition(car_id)
+            lane_id = traci.vehicle.getLaneID(car_id)
+            lane_pos = 30 - lane_pos  # may need to change this
+
+            if lane_pos < 7:
+                lane_cell = 0
+            elif lane_pos < 14:
+                lane_cell = 1
+            elif lane_pos < 21:
+                lane_cell = 2
+            elif lane_pos < 28:
+                lane_cell = 3
+            elif lane_pos < 40:
+                lane_cell = 4
+            elif lane_pos < 60:
+                lane_cell = 5
+            elif lane_pos < 100:
+                lane_cell = 6
+            elif lane_pos < 160:
+                lane_cell = 7
+            elif lane_pos < 400:
+                lane_cell = 8
+            elif lane_pos <= 750:
+                lane_cell = 9
+
+        return state
+
     @property
     def queue_length_episode(self):
         return self._queue_length_episode
@@ -202,27 +236,27 @@ class Simulation:
     @property
     def queue_length_west(self):
         return self._queue_length_west
-    
-    ## @var _queue_length_episode
-    #  a list with the combined queue length for all the incoming lanes 
 
-    ## @var _queue_length_north
+    # @var _queue_length_episode
+    #  a list with the combined queue length for all the incoming lanes
+
+    # @var _queue_length_north
     #  a list of queue lenghts for the north incoming lane
 
-    ## @var _queue_length_south
+    # @var _queue_length_south
     #  a list of queue lenghts for the south incoming lane
 
-    ## @var _queue_length_east
+    # @var _queue_length_east
     #  a list of queue lenghts for the east incoming lane
 
-    ## @var _queue_length_west
+    # @var _queue_length_west
     #  a list of queue lenghts for the west incoming lane
 
-    ## @var _actions_taken
+    # @var _actions_taken
     #  a list of all actions taken during the simulation
 
-    ## @var XML_TRAFFIC_LIGHT_GREEN_STATES
+    # @var XML_TRAFFIC_LIGHT_GREEN_STATES
     #  a constant list of all possible Green States
 
-    ## @var XML_TRAFFIC_LIGHT_YELLOW_STATES
+    # @var XML_TRAFFIC_LIGHT_YELLOW_STATES
     #  a constant list of all possible States
