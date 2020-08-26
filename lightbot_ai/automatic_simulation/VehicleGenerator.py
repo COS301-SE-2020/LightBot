@@ -1,5 +1,4 @@
 # generation of all vehicles to be done in this file
-
 import numpy as np
 import math
 
@@ -9,10 +8,9 @@ class VehicleGenerator:
         self._number_cars_generated = number_cars_generated
         self._max_steps = max_steps
 
+
+class MockGenerator(VehicleGenerator):
     def generate_routefile(self, seed):
-        """
-        Generation of the route of every car for one episode in the simulation
-        """
         np.random.seed(seed)
 
         # traffic is distributed according a Weibull distribution in this simulation
@@ -31,3 +29,8 @@ class VehicleGenerator:
         car_gen_steps = np.rint(car_gen_steps)
 
         # print data to route file
+
+
+class RealWorldGenerator(VehicleGenerator):
+
+    def generate_routefile(self, seed):
