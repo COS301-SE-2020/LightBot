@@ -15,6 +15,8 @@ def import_test_configuration(config_file):
     config['max_steps'] = content['simulation'].getint('max_steps')
     config['green_duration'] = content['simulation'].getint('green_duration')
     config['yellow_duration'] = content['simulation'].getint('yellow_duration')
+    config['use_mock_traffic'] = content['simulation'].getboolean('use_mock_traffic')
+    config['use_automatic_controller'] = content['simulation'].getboolean('use_automatic_controller')
     config['num_states'] = content['agent'].getint('num_states')
     config['num_actions'] = content['agent'].getint('num_actions')
     config['sumocfg_file_name'] = content['dir']['sumocfg_file_name']

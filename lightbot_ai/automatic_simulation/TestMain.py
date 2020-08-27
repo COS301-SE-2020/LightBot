@@ -6,6 +6,7 @@ from __future__ import absolute_import
 from __future__ import print_function
 import base64
 import os
+import subprocess
 from shutil import copyfile
 
 from TestSimulation import Simulation
@@ -38,14 +39,18 @@ if __name__ == "__main__":
         config['yellow_duration'],
         config['num_states'],
         config['num_actions'],
-        config['actions_file_name']
+        config['actions_file_name'],
+        config['use_automatic_controller']
     )
     
     database = MongoDBConnect()
     
     print('Simulation start...')
     ## The simulation is run and the time taken to complete it is given.
-    simulation_time = Simulation.run()
+    if config['use_automatic_controller']:
+        simulation_time = Simulation.run_automatic()
+    else:
+        simulation_time = Simulation.run_manual()    
     print('Simulation end...')
     print('Simulation time:', simulation_time, 's')
 
@@ -61,22 +66,24 @@ if __name__ == "__main__":
     Visualization.save_data_and_plot(data=Simulation.queue_length_west,
                                      filename='West_queue', xlabel='Step', ylabel='Queue length (vehicles)')
     ## Images are encoded to base64 and saved to MongoDB.
-    encoded = base64.b64encode(open('plot_Total_queue.png', 'rb').read())
-    myDict = {'Image':'plot_Total_queue.png', 'base64':encoded}
-    x = database.addOneToDB(myDict)
+    # encoded = base64.b64encode(open('plot_Total_queue.png', 'rb').read())
+    # myDict = {'Image':'plot_Total_queue.png', 'base64':encoded}
+    # x = database.addOneToDB(myDict)
     
-    encoded = base64.b64encode(open('plot_North_queue.png', 'rb').read())
-    myDict = {'Image':'plot_North_queue.png', 'base64':encoded}
-    x = database.addOneToDB(myDict)
+    # encoded = base64.b64encode(open('plot_North_queue.png', 'rb').read())
+    # myDict = {'Image':'plot_North_queue.png', 'base64':encoded}
+    # x = database.addOneToDB(myDict)
     
-    encoded = base64.b64encode(open('plot_South_queue.png', 'rb').read())
-    myDict = {'Image':'plot_South_queue.png', 'base64':encoded}
-    x = database.addOneToDB(myDict)
+    # encoded = base64.b64encode(open('plot_South_queue.png', 'rb').read())
+    # myDict = {'Image':'plot_South_queue.png', 'base64':encoded}
+    # x = database.addOneToDB(myDict)
     
-    encoded = base64.b64encode(open('plot_East_queue.png', 'rb').read())
-    myDict = {'Image':'plot_East_queue.png', 'base64':encoded}
-    x = database.addOneToDB(myDict)
+    # encoded = base64.b64encode(open('plot_East_queue.png', 'rb').read())
+    # myDict = {'Image':'plot_East_queue.png', 'base64':encoded}
+    # x = database.addOneToDB(myDict)
     
-    encoded = base64.b64encode(open('plot_West_queue.png', 'rb').read())
-    myDict = {'Image':'plot_West_queue.png', 'base64':encoded}
-    x = database.addOneToDB(myDict)
+    # encoded = base64.b64encode(open('plot_West_queue.png', 'rb').read())
+    # myDict = {'Image':'plot_West_queue.png', 'base64':encoded}
+    # x = database.addOneToDB(myDict)
+
+    # run_sumo_web_3d = subprocess.Popen(['sumo-web3d', '-c', 'Intersection Jan-South/sim_JanSouth_peak.sumocfg'])

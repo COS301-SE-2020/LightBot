@@ -28,7 +28,7 @@ class Simulation:
     #  @param yellow_duration The duration, in steps, for the Yellow States.
     #  @param num_states May be used later for the Tensorflow model.
     #  @param num_actions The number of Green States or actions the Tensorflow model will be able to take.
-    def __init__(self, sumo_cmd, max_steps, green_duration, yellow_duration, num_states, num_actions, actions_file_name):
+    def __init__(self, sumo_cmd, max_steps, green_duration, yellow_duration, num_states, num_actions, actions_file_name, use_automatic_controller):
         self._sumo_cmd = sumo_cmd
         self._max_steps = max_steps
         self._green_duration = green_duration
@@ -36,6 +36,7 @@ class Simulation:
         self._num_states = num_states
         self._num_actions = num_actions
         self._actions_file_name = actions_file_name
+        self._use_automatic_controller = use_automatic_controller
         self._queue_length_episode = []
         self._queue_length_north = []
         self._queue_length_south = []
@@ -48,7 +49,7 @@ class Simulation:
             '<phase duration="10" state="rrrrGGGggrrrrGGGg"/>',
             '<phase duration="10"  state="rrrrrrrGGrrrrrrrG"/>'
         ]
-        self.XML_TRAFFIC_LIGHT_YELLOW_STATES = [
+        self.XML_TRAFFIC_LIGHT_ALL_STATES = [
             '<phase duration="10" state="GGGrrrrrrGGGrrrrr"/>',
             '<phase duration="4"  state="yyyrrrrrryyyrrrrr"/>',
             '<phase duration="10"  state="rrrGrrrrrrrrGrrrr"/>',
@@ -64,7 +65,7 @@ class Simulation:
     #
     #  The run function starts TraCI which executes the SUMO for the simulation.
     #  This is where the actions or traffic light Green States are chosen to influence the simulation.
-    def run(self):
+    def run_automatic(self):
         start_time = timeit.default_timer()
 
         print('Starting TraCI...')
@@ -93,6 +94,24 @@ class Simulation:
                 file.write("%s\n" % value)
         return simulation_time
 
+    def run_manual(self):
+        start_time = timeit.default_timer()
+
+        print('Starting TraCI...')
+        traci.start(self._sumo_cmd)
+
+        self._step = 0
+        self._waiting_times = {}
+        while self._step < self._max_steps:
+            self._simulate(1) #Should try pass the manual times to the method call.
+            # current_total_wait = self._collect_waiting_times()
+            # waiting time = seconds waited by a car since the spawn in the environment, cumulated for every car in incoming lanes
+
+        traci.close()
+        print('Ending TraCI...')
+        simulation_time = round(timeit.default_timer() - start_time, 1)
+        return simulation_time
+
     # Documentation for the _simulate method.
     #  @param self The object pointer.
     #  @param steps_todo The number of steps to simulate.
@@ -106,7 +125,7 @@ class Simulation:
             traci.simulationStep()
             self._step += 1
             steps_todo -= 1
-            queue_length = self._get_queue_length()
+            queue_length = self._get_queue_length()#!!!Might need to put this outside the while loop, might give more accurate results!!!
             self._queue_length_episode.append(queue_length)
 
     # Documentation for the _set_yellow_phase method.
@@ -119,7 +138,7 @@ class Simulation:
         yellow_phase_code = old_action * 2 + \
             1  # obtain the yellow phase code, based on the old action (ref on environment.net.xml)
         self._actions_taken.append(
-            self.XML_TRAFFIC_LIGHT_YELLOW_STATES[yellow_phase_code])
+            self.XML_TRAFFIC_LIGHT_ALL_STATES[yellow_phase_code])
         traci.trafficlight.setPhase(
             "cluster_25290891_611769793", yellow_phase_code)
 
@@ -289,5 +308,5 @@ class Simulation:
     # @var XML_TRAFFIC_LIGHT_GREEN_STATES
     #  a constant list of all possible Green States
 
-    # @var XML_TRAFFIC_LIGHT_YELLOW_STATES
+    # @var XML_TRAFFIC_LIGHT_ALL_STATES
     #  a constant list of all possible States
