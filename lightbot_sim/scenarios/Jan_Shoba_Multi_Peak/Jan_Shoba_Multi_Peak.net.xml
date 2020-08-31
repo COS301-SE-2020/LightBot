@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on Mon Aug 31 17:22:38 2020 by Eclipse SUMO netedit Version 1.6.0
+<!-- generated on Mon Aug 31 17:38:35 2020 by Eclipse SUMO netedit Version 1.6.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
 
     <input>
@@ -45,9 +45,6 @@
     <type id="highway.primary_link" priority="7" numLanes="1" speed="22.22" disallow="tram rail_urban rail rail_electric rail_fast ship" oneway="0"/>
     <type id="highway.residential" priority="3" numLanes="1" speed="13.89" disallow="tram rail_urban rail rail_electric rail_fast ship" oneway="0"/>
 
-    <edge id=":junc_Duxbury_w_0" function="internal">
-        <lane id=":junc_Duxbury_w_0_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="3.65" length="4.67" shape="275.12,328.22 274.21,329.35 274.07,330.23 274.70,330.88 276.08,331.28"/>
-    </edge>
     <edge id=":junc_JanShoba_Duxbury_0" function="internal">
         <lane id=":junc_JanShoba_Duxbury_0_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship" speed="7.66" length="12.56" shape="408.64,280.29 404.45,281.04 401.22,280.81 398.97,279.62 397.68,277.45"/>
     </edge>
@@ -55,10 +52,10 @@
         <lane id=":junc_JanShoba_Duxbury_1_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="20.84" length="33.05" shape="409.46,283.38 378.13,293.90"/>
     </edge>
     <edge id=":junc_JanShoba_Duxbury_2" function="internal">
-        <lane id=":junc_JanShoba_Duxbury_2_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="10.34" length="26.73" shape="411.09,289.57 402.92,292.22 397.23,295.60 394.56,300.15 395.46,306.33"/>
+        <lane id=":junc_JanShoba_Duxbury_2_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="10.86" length="29.58" shape="410.27,286.48 403.47,289.71 397.08,295.16 392.85,301.53 392.49,307.52"/>
     </edge>
     <edge id=":junc_JanShoba_Duxbury_3" function="internal">
-        <lane id=":junc_JanShoba_Duxbury_3_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="6.29" length="9.06" shape="408.78,300.99 408.22,298.52 408.62,296.55 409.97,295.07 412.29,294.09"/>
+        <lane id=":junc_JanShoba_Duxbury_3_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="10.34" length="26.73" shape="411.09,289.57 402.92,292.22 397.23,295.60 394.56,300.15 395.46,306.33"/>
     </edge>
     <edge id=":junc_JanShoba_Duxbury_4" function="internal">
         <lane id=":junc_JanShoba_Duxbury_4_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship" speed="20.84" length="26.16" shape="408.78,300.99 397.68,277.45"/>
@@ -74,10 +71,10 @@
         <lane id=":junc_JanShoba_Duxbury_8_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="20.84" length="32.43" shape="381.36,303.81 412.29,294.09"/>
     </edge>
     <edge id=":junc_JanShoba_Duxbury_9" function="internal">
-        <lane id=":junc_JanShoba_Duxbury_9_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship" speed="11.33" length="18.60" shape="380.36,300.76 388.58,297.51 393.70,292.69 394.52,290.09"/>
+        <lane id=":junc_JanShoba_Duxbury_9_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship" speed="11.00" length="18.60" shape="380.36,300.76 386.57,297.54 391.67,291.93 393.30,288.25"/>
     </edge>
     <edge id=":junc_JanShoba_Duxbury_14" function="internal">
-        <lane id=":junc_JanShoba_Duxbury_14_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship" speed="11.33" length="11.96" shape="394.52,290.09 395.71,286.32 394.62,278.38"/>
+        <lane id=":junc_JanShoba_Duxbury_14_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship" speed="11.00" length="10.16" shape="393.30,288.25 394.68,285.14 394.62,278.38"/>
     </edge>
     <edge id=":junc_JanShoba_Duxbury_10" function="internal">
         <lane id=":junc_JanShoba_Duxbury_10_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="7.72" length="12.79" shape="380.63,282.62 381.50,286.92 381.37,290.24 380.25,292.56 378.13,293.90"/>
@@ -203,9 +200,6 @@
     <edge id=":junc_JanShoba_South_21" function="internal">
         <lane id=":junc_JanShoba_South_21_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="3.68" length="2.18" shape="476.12,577.20 475.85,576.55 474.68,575.66"/>
     </edge>
-    <edge id=":junc_Lunnon_w_0" function="internal">
-        <lane id=":junc_Lunnon_w_0_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="3.65" length="4.67" shape="110.98,216.50 110.04,217.59 109.87,218.47 110.47,219.13 111.84,219.58"/>
-    </edge>
     <edge id=":junc_Prospect_e_0" function="internal">
         <lane id=":junc_Prospect_e_0_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="3.65" length="4.67" shape="720.62,757.43 721.87,756.71 722.33,755.94 721.98,755.11 720.84,754.23"/>
     </edge>
@@ -253,10 +247,10 @@
         <lane id=":rs1_South_w_2_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="13.89" length="7.90" shape="527.28,581.44 535.17,581.88"/>
     </edge>
     <edge id=":rs2_Duxbury_e_0" function="internal">
-        <lane id=":rs2_Duxbury_e_0_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="27.78" length="8.07" shape="422.59,291.36 430.39,289.29"/>
+        <lane id=":rs2_Duxbury_e_0_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="27.78" length="3.59" shape="425.00,290.72 426.00,290.72 426.69,291.10 427.39,291.49 428.39,291.48"/>
     </edge>
     <edge id=":rs2_Duxbury_e_1" function="internal">
-        <lane id=":rs2_Duxbury_e_1_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="25.00" length="8.08" shape="423.32,294.08 425.68,293.68 427.29,293.37 428.89,292.99 431.21,292.39"/>
+        <lane id=":rs2_Duxbury_e_1_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="25.00" length="3.51" shape="425.78,293.66 426.67,293.26 427.10,292.63 427.52,291.97 428.39,291.48"/>
     </edge>
     <edge id=":rs2_JanShoba_n_0" function="internal">
         <lane id=":rs2_JanShoba_n_0_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="27.78" length="8.40" shape="364.58,214.52 364.76,217.03 364.12,218.81 363.49,220.60 363.68,223.10"/>
@@ -446,7 +440,7 @@
         <param key="origFrom" value="611769793"/>
     </edge>
     <edge id="rd3_Duxbury_sl_e" from="junc_JanShoba_Duxbury" to="rs2_Duxbury_e" name="Duxbury Road" priority="11" type="highway.residential" spreadType="center" shape="403.59,296.39 426.63,290.29">
-        <lane id="rd3_Duxbury_sl_e_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="27.78" length="10.65" shape="412.29,294.09 422.59,291.36">
+        <lane id="rd3_Duxbury_sl_e_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="27.78" length="13.15" shape="412.29,294.09 425.00,290.72">
             <param key="origId" value="603975606"/>
         </lane>
         <param key="origFrom" value="611769785"/>
@@ -492,11 +486,8 @@
         </lane>
         <param key="origFrom" value="25290891"/>
     </edge>
-    <edge id="rd4_Duxbury_dl_e" from="rs2_Duxbury_e" to="junc_end_Duxbury_e" name="Duxbury Road" priority="11" type="highway.residential" spreadType="center" shape="427.04,291.84 523.70,266.20">
-        <lane id="rd4_Duxbury_dl_e_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="27.78" length="96.11" acceleration="1" shape="431.21,292.39 524.11,267.75">
-            <param key="origId" value="244372135"/>
-        </lane>
-        <lane id="rd4_Duxbury_dl_e_1" index="1" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="27.78" length="96.11" shape="430.39,289.29 523.29,264.65">
+    <edge id="rd4_Duxbury_sl_e" from="rs2_Duxbury_e" to="junc_end_Duxbury_e" name="Duxbury Road" priority="11" type="highway.residential" spreadType="center" shape="427.04,291.84 523.70,266.20">
+        <lane id="rd4_Duxbury_sl_e_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="27.78" length="98.61" acceleration="1" shape="428.39,291.48 523.70,266.20">
             <param key="origId" value="244372135"/>
         </lane>
         <param key="ref" value="M30"/>
@@ -595,7 +586,7 @@
         <lane id="rd7_JanShoba_dl_s_1" index="1" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship" speed="13.89" length="90.48" shape="394.62,278.38 368.36,191.79"/>
     </edge>
     <edge id="rd7_JanShoba_sl_s" from="rs3_JanShoba_s" to="rs2_Duxbury_e" priority="7" type="highway.primary_link" spreadType="center" shape="426.98,335.08 416.80,317.69 415.91,311.81 416.16,306.32 417.42,301.29 419.67,297.22 422.06,294.29 427.45,293.38">
-        <lane id="rd7_JanShoba_sl_s_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="22.22" length="40.78" shape="424.10,330.16 416.80,317.69 415.91,311.81 416.16,306.32 417.42,301.29 419.67,297.22 422.06,294.29 423.32,294.08">
+        <lane id="rd7_JanShoba_sl_s_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="22.22" length="43.28" shape="424.10,330.16 416.80,317.69 415.91,311.81 416.16,306.32 417.42,301.29 419.67,297.22 422.06,294.29 425.78,293.66">
             <param key="origId" value="244372152"/>
         </lane>
     </edge>
@@ -638,14 +629,14 @@
     </edge>
 
     <tlLogic id="cluster_2516980595_2516980597_25290876_611769785" type="actuated" programID="0" offset="0">
-        <phase duration="27" state="rrrGGGrrrrGGGr" minDur="13" maxDur="50"/>
-        <phase duration="6"  state="rrryyyrrrryyyr"/>
+        <phase duration="27" state="rrrrGGrrrrGGGr" minDur="13" maxDur="50"/>
+        <phase duration="6"  state="rrrryyrrrryyyr"/>
         <phase duration="6"  state="rrrrrrGrrrrrrG" minDur="13" maxDur="50"/>
         <phase duration="6"  state="rrrrrryrrrrrry"/>
         <phase duration="27" state="GGrrrrrGGgrrrr" minDur="13" maxDur="50"/>
         <phase duration="6"  state="yyrrrrryygrrrr"/>
-        <phase duration="6"  state="rrGrrrrrrGrrrr" minDur="13" maxDur="50"/>
-        <phase duration="6"  state="rryrrrrrryrrrr"/>
+        <phase duration="6"  state="rrGGrrrrrGrrrr" minDur="13" maxDur="50"/>
+        <phase duration="6"  state="rryyrrrrryrrrr"/>
     </tlLogic>
     <tlLogic id="cluster_25290891_611769793" type="actuated" programID="0" offset="0">
         <phase duration="27" state="GGGrrrrrrGGGrrrrrr" minDur="13" maxDur="50"/>
@@ -658,24 +649,22 @@
         <phase duration="6"  state="rrrrrrryyrrrrrrryy"/>
     </tlLogic>
 
-    <junction id="junc_Duxbury_w" type="priority" x="275.60" y="329.75" incLanes="rd3_Duxbury_sl_w_0" intLanes=":junc_Duxbury_w_0_0" shape="275.60,329.75 274.63,326.70 275.60,329.75">
-        <request index="0" response="0" foes="0" cont="0"/>
-    </junction>
+    <junction id="junc_Duxbury_w" type="dead_end" x="275.60" y="329.75" incLanes="rd3_Duxbury_sl_w_0" intLanes="" shape="275.60,329.75 274.63,326.70 275.60,329.75"/>
     <junction id="junc_JanShoba_Duxbury" type="traffic_light" x="395.87" y="293.52" incLanes="rd1_Duxbury_ql_w_0 rd1_Duxbury_ql_w_1 rd1_Duxbury_ql_w_2 rd1_Duxbury_ql_w_3 rd6_JanShoba_tl_s_0 rd6_JanShoba_tl_s_1 rd6_JanShoba_tl_s_2 rd2_Duxbury_dl_e_0 rd2_Duxbury_dl_e_1 rd4_JanShoba_ql_n_0 rd4_JanShoba_ql_n_1 rd4_JanShoba_ql_n_2 rd4_JanShoba_ql_n_3" intLanes=":junc_JanShoba_Duxbury_0_0 :junc_JanShoba_Duxbury_1_0 :junc_JanShoba_Duxbury_2_0 :junc_JanShoba_Duxbury_3_0 :junc_JanShoba_Duxbury_4_0 :junc_JanShoba_Duxbury_4_1 :junc_JanShoba_Duxbury_6_0 :junc_JanShoba_Duxbury_7_0 :junc_JanShoba_Duxbury_8_0 :junc_JanShoba_Duxbury_14_0 :junc_JanShoba_Duxbury_10_0 :junc_JanShoba_Duxbury_11_0 :junc_JanShoba_Duxbury_11_1 :junc_JanShoba_Duxbury_13_0" shape="408.23,278.74 412.70,295.63 410.71,296.62 410.16,297.34 409.90,298.20 409.93,299.22 410.26,300.39 391.01,308.12 389.16,305.75 387.79,305.11 386.11,304.82 384.13,304.90 381.85,305.33 377.63,292.38 379.47,290.81 379.88,289.45 379.96,287.71 379.69,285.59 379.10,283.09 399.21,276.99 400.73,278.88 402.05,279.34 403.73,279.47 405.79,279.27">
         <request index="0"  response="00000000110000" foes="00000000110000" cont="0"/>
         <request index="1"  response="11110001110000" foes="11111001110000" cont="0"/>
-        <request index="2"  response="11100101110000" foes="11100101110000" cont="0"/>
-        <request index="3"  response="00000000000000" foes="10000100000000" cont="0"/>
-        <request index="4"  response="00001000000000" foes="10001100000111" cont="0"/>
-        <request index="5"  response="00001000000000" foes="10001100000111" cont="0"/>
-        <request index="6"  response="01111000000000" foes="01111100000110" cont="0"/>
-        <request index="7"  response="01100000000000" foes="01100000000000" cont="0"/>
-        <request index="8"  response="11100001111000" foes="11100001111100" cont="0"/>
+        <request index="2"  response="11100111110000" foes="11100111110000" cont="0"/>
+        <request index="3"  response="11100111110000" foes="11100111110000" cont="0"/>
+        <request index="4"  response="00001000000000" foes="10001100001111" cont="0"/>
+        <request index="5"  response="00001000000000" foes="10001100001111" cont="0"/>
+        <request index="6"  response="01111000000000" foes="01111100001110" cont="0"/>
+        <request index="7"  response="01100000000000" foes="01100000001100" cont="0"/>
+        <request index="8"  response="11100001110000" foes="11100001111100" cont="0"/>
         <request index="9"  response="11100001110010" foes="11100001110010" cont="1"/>
         <request index="10" response="00000000000000" foes="00000001000010" cont="0"/>
-        <request index="11" response="00001000000000" foes="00001111000110" cont="0"/>
-        <request index="12" response="00001000000000" foes="00001111000110" cont="0"/>
-        <request index="13" response="00001000111000" foes="00001100111110" cont="0"/>
+        <request index="11" response="00001000000000" foes="00001111001110" cont="0"/>
+        <request index="12" response="00001000000000" foes="00001111001110" cont="0"/>
+        <request index="13" response="00001000110000" foes="00001100111110" cont="0"/>
     </junction>
     <junction id="junc_JanShoba_Lunnon" type="priority" x="353.98" y="151.87" incLanes="rd8_JanShoba_tl_s_0 rd8_JanShoba_tl_s_1 rd8_JanShoba_tl_s_2 rd1_Lunnon_sl_e_0 rd2_JanShoba_tl_n_0 rd2_JanShoba_tl_n_1 rd2_JanShoba_tl_n_2" intLanes=":junc_JanShoba_Lunnon_0_0 :junc_JanShoba_Lunnon_0_1 :junc_JanShoba_Lunnon_8_0 :junc_JanShoba_Lunnon_3_0 :junc_JanShoba_Lunnon_4_0 :junc_JanShoba_Lunnon_5_0 :junc_JanShoba_Lunnon_5_1 :junc_JanShoba_Lunnon_9_0" shape="364.81,146.07 365.66,149.15 363.71,150.35 363.20,151.31 363.01,152.52 363.12,153.97 363.55,155.67 347.60,160.17 346.57,158.15 345.82,157.55 344.92,157.23 343.87,157.17 342.66,157.39 340.95,151.22 343.07,150.17 343.70,149.42 344.05,148.52 344.10,147.47 343.87,146.27 359.29,142.06 360.52,144.79 361.37,145.63 362.36,146.12 363.51,146.27">
         <request index="0" response="00000000" foes="10000000" cont="0"/>
@@ -722,9 +711,7 @@
         <request index="17" response="000001000001000001" foes="000001000001000001" cont="1"/>
     </junction>
     <junction id="junc_Lunnon_e" type="dead_end" x="777.60" y="42.08" incLanes="rd3_Lunnon_sl_e_0" intLanes="" shape="777.60,42.08 776.76,45.17 777.60,42.08"/>
-    <junction id="junc_Lunnon_w" type="priority" x="111.41" y="218.04" incLanes="rd2_Lunnon_sl_w_0" intLanes=":junc_Lunnon_w_0_0" shape="111.41,218.04 110.56,214.96 111.41,218.04">
-        <request index="0" response="0" foes="0" cont="0"/>
-    </junction>
+    <junction id="junc_Lunnon_w" type="dead_end" x="111.41" y="218.04" incLanes="rd2_Lunnon_sl_w_0" intLanes="" shape="111.41,218.04 110.56,214.96 111.41,218.04"/>
     <junction id="junc_Prospect_e" type="priority" x="720.73" y="755.83" incLanes="rd2_Prospect_sl_e_0" intLanes=":junc_Prospect_e_0_0" shape="720.73,755.83 720.51,759.02 720.73,755.83">
         <request index="0" response="0" foes="0" cont="0"/>
     </junction>
@@ -738,7 +725,7 @@
     <junction id="junc_begin_Duxbury_e" type="dead_end" x="544.35" y="249.45" incLanes="" intLanes="" shape="545.98,255.64 542.72,243.26"/>
     <junction id="junc_begin_JanShoba_n" type="dead_end" x="306.94" y="0.00" incLanes="" intLanes="" shape="310.08,-0.61 303.80,0.61"/>
     <junction id="junc_begin_JanShoba_s" type="dead_end" x="474.88" y="821.59" incLanes="" intLanes="" shape="471.69,821.36 478.07,821.82"/>
-    <junction id="junc_end_Duxbury_e" type="dead_end" x="523.29" y="264.66" incLanes="rd4_Duxbury_dl_e_0 rd4_Duxbury_dl_e_1" intLanes="" shape="524.52,269.29 522.88,263.11"/>
+    <junction id="junc_end_Duxbury_e" type="dead_end" x="523.29" y="264.66" incLanes="rd4_Duxbury_sl_e_0" intLanes="" shape="524.11,267.75 523.29,264.65"/>
     <junction id="junc_end_JanShoba_n" type="dead_end" x="466.03" y="816.98" incLanes="rd8_JanShoba_dl_n_0 rd8_JanShoba_dl_n_1" intLanes="" shape="462.85,816.60 469.21,817.36"/>
     <junction id="junc_end_JanShoba_s" type="dead_end" x="346.09" y="105.80" incLanes="rd9_JanShoba_dl_s_0 rd9_JanShoba_dl_s_1 rd10_JanShoba_sl_s_0" intLanes="" shape="349.18,104.96 343.00,106.64 352.34,105.70 349.14,105.75"/>
     <junction id="rs1_Duxbury_e" type="priority" x="327.55" y="313.27" incLanes="rd2_Duxbury_sl_w_0 rd1_Duxbury_sl_e_0" intLanes=":rs1_Duxbury_e_0_0 :rs1_Duxbury_e_1_0 :rs1_Duxbury_e_1_1" shape="329.37,309.09 333.46,317.12 330.33,317.83 329.12,317.59 327.88,317.30 326.43,317.21 324.57,317.57 322.64,311.47">
@@ -770,9 +757,9 @@
         <request index="1" response="000" foes="000" cont="0"/>
         <request index="2" response="000" foes="000" cont="0"/>
     </junction>
-    <junction id="rs2_Duxbury_e" type="priority" x="426.63" y="290.29" incLanes="rd3_Duxbury_sl_e_0 rd7_JanShoba_sl_s_0" intLanes=":rs2_Duxbury_e_0_0 :rs2_Duxbury_e_1_0" shape="429.98,287.75 431.62,293.93 428.73,294.68 427.71,294.92 426.68,295.12 425.43,295.34 423.73,295.63 422.17,289.81">
-        <request index="0" response="00" foes="00" cont="0"/>
-        <request index="1" response="00" foes="00" cont="0"/>
+    <junction id="rs2_Duxbury_e" type="priority" x="426.63" y="290.29" incLanes="rd3_Duxbury_sl_e_0 rd7_JanShoba_sl_s_0" intLanes=":rs2_Duxbury_e_0_0 :rs2_Duxbury_e_1_0" shape="427.98,289.94 428.80,293.03 426.20,295.21 424.59,289.17 425.84,289.27 426.73,289.84 427.26,290.00">
+        <request index="0" response="00" foes="10" cont="0"/>
+        <request index="1" response="01" foes="01" cont="0"/>
     </junction>
     <junction id="rs2_JanShoba_n" type="priority" x="367.20" y="217.94" incLanes="rd3_JanShoba_dl_N_0 rd3_JanShoba_dl_N_1" intLanes=":rs2_JanShoba_n_0_0 :rs2_JanShoba_n_0_1 :rs2_JanShoba_n_0_2 :rs2_JanShoba_n_0_3" shape="374.45,220.03 362.14,223.54 362.11,220.39 363.06,218.11 363.29,216.75 363.04,214.96 369.20,213.22 370.81,215.91 372.82,217.35 373.73,218.38">
         <request index="0" response="0000" foes="0000" cont="0"/>
@@ -803,7 +790,7 @@
         <request index="3" response="0000" foes="0000" cont="0"/>
     </junction>
 
-    <junction id=":junc_JanShoba_Duxbury_14_0" type="internal" x="394.52" y="290.09" incLanes=":junc_JanShoba_Duxbury_9_0 rd1_Duxbury_ql_w_0 rd1_Duxbury_ql_w_1" intLanes=":junc_JanShoba_Duxbury_0_0 :junc_JanShoba_Duxbury_1_0 :junc_JanShoba_Duxbury_4_0 :junc_JanShoba_Duxbury_4_1 :junc_JanShoba_Duxbury_6_0 :junc_JanShoba_Duxbury_11_0 :junc_JanShoba_Duxbury_11_1 :junc_JanShoba_Duxbury_13_0"/>
+    <junction id=":junc_JanShoba_Duxbury_14_0" type="internal" x="393.30" y="288.25" incLanes=":junc_JanShoba_Duxbury_9_0 rd1_Duxbury_ql_w_0 rd1_Duxbury_ql_w_1" intLanes=":junc_JanShoba_Duxbury_0_0 :junc_JanShoba_Duxbury_1_0 :junc_JanShoba_Duxbury_4_0 :junc_JanShoba_Duxbury_4_1 :junc_JanShoba_Duxbury_6_0 :junc_JanShoba_Duxbury_11_0 :junc_JanShoba_Duxbury_11_1 :junc_JanShoba_Duxbury_13_0"/>
     <junction id=":junc_JanShoba_Lunnon_8_0" type="internal" x="352.41" y="153.40" incLanes=":junc_JanShoba_Lunnon_2_0 rd2_JanShoba_tl_n_0 rd2_JanShoba_tl_n_1" intLanes=":junc_JanShoba_Lunnon_4_0 :junc_JanShoba_Lunnon_5_0 :junc_JanShoba_Lunnon_5_1"/>
     <junction id=":junc_JanShoba_Lunnon_9_0" type="internal" x="354.27" y="147.45" incLanes=":junc_JanShoba_Lunnon_7_0 rd8_JanShoba_tl_s_0 rd8_JanShoba_tl_s_1" intLanes=":junc_JanShoba_Lunnon_0_0 :junc_JanShoba_Lunnon_0_1"/>
     <junction id=":junc_JanShoba_South_18_0" type="internal" x="488.96" y="579.84" incLanes=":junc_JanShoba_South_7_0 rd2_South_dl_e_0" intLanes=":junc_JanShoba_South_1_0 :junc_JanShoba_South_1_1 :junc_JanShoba_South_3_0 :junc_JanShoba_South_10_0 :junc_JanShoba_South_10_1 :junc_JanShoba_South_12_0 :junc_JanShoba_South_13_0 :junc_JanShoba_South_14_0 :junc_JanShoba_South_15_0"/>
@@ -813,7 +800,8 @@
 
     <connection from="rd1_Duxbury_ql_w" to="rd7_JanShoba_dl_s" fromLane="0" toLane="0" via=":junc_JanShoba_Duxbury_0_0" tl="cluster_2516980595_2516980597_25290876_611769785" linkIndex="0" dir="l" state="o"/>
     <connection from="rd1_Duxbury_ql_w" to="rd2_Duxbury_sl_w" fromLane="1" toLane="0" via=":junc_JanShoba_Duxbury_1_0" tl="cluster_2516980595_2516980597_25290876_611769785" linkIndex="1" dir="s" state="o"/>
-    <connection from="rd1_Duxbury_ql_w" to="rd5_JanShoba_dl_n" fromLane="3" toLane="1" via=":junc_JanShoba_Duxbury_2_0" tl="cluster_2516980595_2516980597_25290876_611769785" linkIndex="2" dir="r" state="o"/>
+    <connection from="rd1_Duxbury_ql_w" to="rd5_JanShoba_dl_n" fromLane="2" toLane="0" via=":junc_JanShoba_Duxbury_2_0" tl="cluster_2516980595_2516980597_25290876_611769785" linkIndex="2" dir="r" state="o"/>
+    <connection from="rd1_Duxbury_ql_w" to="rd5_JanShoba_dl_n" fromLane="3" toLane="1" via=":junc_JanShoba_Duxbury_3_0" tl="cluster_2516980595_2516980597_25290876_611769785" linkIndex="3" dir="r" state="o"/>
     <connection from="rd1_Duxbury_sl_e" to="rd2_Duxbury_dl_e" fromLane="0" toLane="0" via=":rs1_Duxbury_e_1_0" dir="s" state="M"/>
     <connection from="rd1_Duxbury_sl_e" to="rd2_Duxbury_dl_e" fromLane="0" toLane="1" via=":rs1_Duxbury_e_1_1" dir="s" state="M"/>
     <connection from="rd1_JanShoba_dl_n" to="rd2_JanShoba_tl_n" fromLane="0" toLane="0" via=":rs1_JanShoba_n_0_0" dir="s" state="M"/>
@@ -844,7 +832,6 @@
     <connection from="rd2_JanShoba_tl_n" to="rd3_JanShoba_dl_N" fromLane="1" toLane="1" via=":junc_JanShoba_Lunnon_5_1" dir="s" state="M"/>
     <connection from="rd2_JanShoba_tl_n" to="rd2_Lunnon_sl_e" fromLane="2" toLane="0" via=":junc_JanShoba_Lunnon_7_0" dir="r" state="m"/>
     <connection from="rd2_Lunnon_sl_e" to="rd3_Lunnon_sl_e" fromLane="0" toLane="0" pass="1" via=":rs1_Lunnon_e_2_0" dir="s" state="M"/>
-    <connection from="rd2_Lunnon_sl_w" to="rd1_Lunnon_sl_e" fromLane="0" toLane="0" via=":junc_Lunnon_w_0_0" dir="T" state="M"/>
     <connection from="rd2_Prospect_sl_e" to="rd1_Prospect_sl_w" fromLane="0" toLane="0" via=":junc_Prospect_e_0_0" dir="T" state="M"/>
     <connection from="rd2_South_dl_e" to="rd7_JanShoba_dl_n" fromLane="0" toLane="0" via=":junc_JanShoba_South_14_0" tl="cluster_25290891_611769793" linkIndex="14" dir="l" state="o"/>
     <connection from="rd2_South_dl_e" to="rd2_South_sl_e" fromLane="0" toLane="0" via=":junc_JanShoba_South_15_0" tl="cluster_25290891_611769793" linkIndex="15" dir="s" state="o"/>
@@ -855,8 +842,7 @@
     <connection from="rd2_South_dl_w" to="rd7_JanShoba_dl_n" fromLane="1" toLane="1" via=":junc_JanShoba_South_7_0" tl="cluster_25290891_611769793" linkIndex="7" dir="r" state="o"/>
     <connection from="rd2_South_dl_w" to="rd2_South_sl_e" fromLane="1" toLane="0" via=":junc_JanShoba_South_8_0" tl="cluster_25290891_611769793" linkIndex="8" dir="T" state="o"/>
     <connection from="rd2_South_sl_e" to="rd4_South_sl_e" fromLane="0" toLane="0" via=":rs1_South_w_2_0" dir="s" state="M"/>
-    <connection from="rd3_Duxbury_sl_e" to="rd4_Duxbury_dl_e" fromLane="0" toLane="1" via=":rs2_Duxbury_e_0_0" dir="s" state="M"/>
-    <connection from="rd3_Duxbury_sl_w" to="rd1_Duxbury_sl_e" fromLane="0" toLane="0" via=":junc_Duxbury_w_0_0" dir="T" state="M"/>
+    <connection from="rd3_Duxbury_sl_e" to="rd4_Duxbury_sl_e" fromLane="0" toLane="0" via=":rs2_Duxbury_e_0_0" dir="s" state="M"/>
     <connection from="rd3_JanShoba_dl_N" to="rd4_JanShoba_ql_n" fromLane="0" toLane="0" via=":rs2_JanShoba_n_0_0" dir="s" state="M"/>
     <connection from="rd3_JanShoba_dl_N" to="rd4_JanShoba_ql_n" fromLane="0" toLane="1" via=":rs2_JanShoba_n_0_1" dir="s" state="M"/>
     <connection from="rd3_JanShoba_dl_N" to="rd4_JanShoba_ql_n" fromLane="1" toLane="2" via=":rs2_JanShoba_n_0_2" dir="s" state="M"/>
@@ -887,7 +873,6 @@
     <connection from="rd6_JanShoba_tl_n" to="rd7_JanShoba_dl_n" fromLane="1" toLane="1" via=":junc_JanShoba_South_1_1" tl="cluster_25290891_611769793" linkIndex="2" dir="s" state="O"/>
     <connection from="rd6_JanShoba_tl_n" to="rd2_South_sl_e" fromLane="2" toLane="0" via=":junc_JanShoba_South_3_0" tl="cluster_25290891_611769793" linkIndex="3" dir="r" state="o"/>
     <connection from="rd6_JanShoba_tl_n" to="rd4_JanShoba_dl_s" fromLane="2" toLane="1" via=":junc_JanShoba_South_4_0" tl="cluster_25290891_611769793" linkIndex="4" dir="T" state="o"/>
-    <connection from="rd6_JanShoba_tl_s" to="rd3_Duxbury_sl_e" fromLane="0" toLane="0" via=":junc_JanShoba_Duxbury_3_0" tl="cluster_2516980595_2516980597_25290876_611769785" linkIndex="3" dir="l" state="O"/>
     <connection from="rd6_JanShoba_tl_s" to="rd7_JanShoba_dl_s" fromLane="0" toLane="0" via=":junc_JanShoba_Duxbury_4_0" tl="cluster_2516980595_2516980597_25290876_611769785" linkIndex="4" dir="s" state="O"/>
     <connection from="rd6_JanShoba_tl_s" to="rd7_JanShoba_dl_s" fromLane="1" toLane="1" via=":junc_JanShoba_Duxbury_4_1" tl="cluster_2516980595_2516980597_25290876_611769785" linkIndex="5" dir="s" state="O"/>
     <connection from="rd6_JanShoba_tl_s" to="rd2_Duxbury_sl_w" fromLane="2" toLane="0" via=":junc_JanShoba_Duxbury_6_0" tl="cluster_2516980595_2516980597_25290876_611769785" linkIndex="6" dir="r" state="o"/>
@@ -898,17 +883,16 @@
     <connection from="rd7_JanShoba_dl_s" to="rd8_JanShoba_tl_s" fromLane="0" toLane="0" via=":rs4_JanShoba_s_1_0" dir="s" state="M"/>
     <connection from="rd7_JanShoba_dl_s" to="rd8_JanShoba_tl_s" fromLane="1" toLane="1" via=":rs4_JanShoba_s_1_1" dir="s" state="M"/>
     <connection from="rd7_JanShoba_dl_s" to="rd8_JanShoba_tl_s" fromLane="1" toLane="2" via=":rs4_JanShoba_s_1_2" dir="s" state="M"/>
-    <connection from="rd7_JanShoba_sl_s" to="rd4_Duxbury_dl_e" fromLane="0" toLane="0" via=":rs2_Duxbury_e_1_0" dir="s" state="M"/>
+    <connection from="rd7_JanShoba_sl_s" to="rd4_Duxbury_sl_e" fromLane="0" toLane="0" via=":rs2_Duxbury_e_1_0" dir="s" state="m"/>
     <connection from="rd8_JanShoba_tl_s" to="rd9_JanShoba_dl_s" fromLane="0" toLane="0" via=":junc_JanShoba_Lunnon_0_0" dir="s" state="M"/>
     <connection from="rd8_JanShoba_tl_s" to="rd9_JanShoba_dl_s" fromLane="1" toLane="1" via=":junc_JanShoba_Lunnon_0_1" dir="s" state="M"/>
     <connection from="rd8_JanShoba_tl_s" to="rd2_Lunnon_sl_w" fromLane="2" toLane="0" via=":junc_JanShoba_Lunnon_2_0" dir="r" state="m"/>
     <connection from="rd9_JanShoba_sl_s" to="rd3_Lunnon_sl_e" fromLane="0" toLane="0" via=":rs1_Lunnon_e_1_0" dir="s" state="m"/>
 
-    <connection from=":junc_Duxbury_w_0" to="rd1_Duxbury_sl_e" fromLane="0" toLane="0" dir="T" state="M"/>
     <connection from=":junc_JanShoba_Duxbury_0" to="rd7_JanShoba_dl_s" fromLane="0" toLane="0" dir="l" state="M"/>
     <connection from=":junc_JanShoba_Duxbury_1" to="rd2_Duxbury_sl_w" fromLane="0" toLane="0" dir="s" state="M"/>
-    <connection from=":junc_JanShoba_Duxbury_2" to="rd5_JanShoba_dl_n" fromLane="0" toLane="1" dir="r" state="M"/>
-    <connection from=":junc_JanShoba_Duxbury_3" to="rd3_Duxbury_sl_e" fromLane="0" toLane="0" dir="l" state="M"/>
+    <connection from=":junc_JanShoba_Duxbury_2" to="rd5_JanShoba_dl_n" fromLane="0" toLane="0" dir="r" state="M"/>
+    <connection from=":junc_JanShoba_Duxbury_3" to="rd5_JanShoba_dl_n" fromLane="0" toLane="1" dir="r" state="M"/>
     <connection from=":junc_JanShoba_Duxbury_4" to="rd7_JanShoba_dl_s" fromLane="0" toLane="0" dir="s" state="M"/>
     <connection from=":junc_JanShoba_Duxbury_4" to="rd7_JanShoba_dl_s" fromLane="1" toLane="1" dir="s" state="M"/>
     <connection from=":junc_JanShoba_Duxbury_6" to="rd2_Duxbury_sl_w" fromLane="0" toLane="0" dir="r" state="M"/>
@@ -962,7 +946,6 @@
     <connection from=":junc_JanShoba_South_20" to="rd4_JanShoba_dl_s" fromLane="0" toLane="1" dir="r" state="M"/>
     <connection from=":junc_JanShoba_South_17" to="rd3_South_sl_w" fromLane="0" toLane="0" via=":junc_JanShoba_South_21_0" dir="T" state="m"/>
     <connection from=":junc_JanShoba_South_21" to="rd3_South_sl_w" fromLane="0" toLane="0" dir="T" state="M"/>
-    <connection from=":junc_Lunnon_w_0" to="rd1_Lunnon_sl_e" fromLane="0" toLane="0" dir="T" state="M"/>
     <connection from=":junc_Prospect_e_0" to="rd1_Prospect_sl_w" fromLane="0" toLane="0" dir="T" state="M"/>
     <connection from=":junc_South_e_0" to="rd1_South_sl_w" fromLane="0" toLane="0" dir="T" state="M"/>
     <connection from=":junc_South_w_0" to="rd1_South_sl_e" fromLane="0" toLane="0" dir="T" state="M"/>
@@ -983,8 +966,8 @@
     <connection from=":rs1_South_w_0" to="rd2_South_dl_w" fromLane="0" toLane="0" dir="s" state="M"/>
     <connection from=":rs1_South_w_0" to="rd2_South_dl_w" fromLane="1" toLane="1" dir="s" state="M"/>
     <connection from=":rs1_South_w_2" to="rd4_South_sl_e" fromLane="0" toLane="0" dir="s" state="M"/>
-    <connection from=":rs2_Duxbury_e_0" to="rd4_Duxbury_dl_e" fromLane="0" toLane="1" dir="s" state="M"/>
-    <connection from=":rs2_Duxbury_e_1" to="rd4_Duxbury_dl_e" fromLane="0" toLane="0" dir="s" state="M"/>
+    <connection from=":rs2_Duxbury_e_0" to="rd4_Duxbury_sl_e" fromLane="0" toLane="0" dir="s" state="M"/>
+    <connection from=":rs2_Duxbury_e_1" to="rd4_Duxbury_sl_e" fromLane="0" toLane="0" dir="s" state="M"/>
     <connection from=":rs2_JanShoba_n_0" to="rd4_JanShoba_ql_n" fromLane="0" toLane="0" dir="s" state="M"/>
     <connection from=":rs2_JanShoba_n_0" to="rd4_JanShoba_ql_n" fromLane="1" toLane="1" dir="s" state="M"/>
     <connection from=":rs2_JanShoba_n_0" to="rd4_JanShoba_ql_n" fromLane="2" toLane="2" dir="s" state="M"/>
