@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on Sun Aug 30 21:40:01 2020 by Eclipse SUMO netedit Version 1.6.0
+<!-- generated on Mon Aug 31 17:08:33 2020 by Eclipse SUMO netedit Version 1.6.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
 
     <input>
-        <sumo-net-file value="/Users/thiveshanpillay/Documents/2020/COS%20301/Capstone/GitHub_Lightbot/LightBot/lightbot_sim/scenarios/Jan_Shoba_Multi_Peak/sim.net.xml"/>
+        <sumo-net-file value="/Users/thiveshanpillay/Documents/2020/COS%20301/Capstone/GitHub_Lightbot/LightBot/lightbot_sim/scenarios/Jan_Shoba_Multi_Peak/Jan_Shoba_Multi_Peak.net.xml"/>
     </input>
 
     <output>
-        <output-file value="/Users/thiveshanpillay/Documents/2020/COS%20301/Capstone/GitHub_Lightbot/LightBot/lightbot_sim/scenarios/Jan_Shoba_Multi_Peak/sim.net.xml"/>
+        <output-file value="/Users/thiveshanpillay/Documents/2020/COS%20301/Capstone/GitHub_Lightbot/LightBot/lightbot_sim/scenarios/Jan_Shoba_Multi_Peak/Jan_Shoba_Multi_Peak.net.xml"/>
         <output.street-names value="true"/>
     </output>
 
@@ -41,45 +41,15 @@
 
     <location netOffset="-623905.01,2849515.85" convBoundary="31.09,0.00,777.60,821.59" origBoundary="28.235474,-25.760747,28.250874,-25.745772" projParameter="+proj=utm +zone=35 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"/>
 
-    <type id="highway.bridleway" priority="1" numLanes="1" speed="2.78" allow="pedestrian" oneway="1" width="2.00"/>
-    <type id="highway.bus_guideway" priority="1" numLanes="1" speed="27.78" allow="bus" oneway="1"/>
-    <type id="highway.cycleway" priority="1" numLanes="1" speed="8.33" allow="bicycle" oneway="0" width="1.00"/>
-    <type id="highway.footway" priority="1" numLanes="1" speed="2.78" allow="pedestrian" oneway="1" width="2.00"/>
-    <type id="highway.ford" priority="1" numLanes="1" speed="2.78" allow="army" oneway="0"/>
-    <type id="highway.living_street" priority="2" numLanes="1" speed="2.78" disallow="tram rail_urban rail rail_electric rail_fast ship" oneway="0"/>
-    <type id="highway.motorway" priority="14" numLanes="2" speed="39.44" allow="private emergency authority army vip passenger hov taxi bus coach delivery truck trailer motorcycle evehicle custom1 custom2" oneway="1"/>
-    <type id="highway.motorway_link" priority="9" numLanes="1" speed="22.22" allow="private emergency authority army vip passenger hov taxi bus coach delivery truck trailer motorcycle evehicle custom1 custom2" oneway="1"/>
-    <type id="highway.path" priority="1" numLanes="1" speed="2.78" allow="pedestrian bicycle" oneway="1" width="2.00"/>
-    <type id="highway.pedestrian" priority="1" numLanes="1" speed="2.78" allow="pedestrian" oneway="1" width="2.00"/>
     <type id="highway.primary" priority="12" numLanes="2" speed="27.78" disallow="tram rail_urban rail rail_electric rail_fast ship" oneway="0"/>
     <type id="highway.primary_link" priority="7" numLanes="1" speed="22.22" disallow="tram rail_urban rail rail_electric rail_fast ship" oneway="0"/>
-    <type id="highway.raceway" priority="15" numLanes="2" speed="83.33" allow="vip" oneway="0"/>
     <type id="highway.residential" priority="3" numLanes="1" speed="13.89" disallow="tram rail_urban rail rail_electric rail_fast ship" oneway="0"/>
-    <type id="highway.secondary" priority="11" numLanes="1" speed="27.78" disallow="tram rail_urban rail rail_electric rail_fast ship" oneway="0"/>
-    <type id="highway.secondary_link" priority="6" numLanes="1" speed="22.22" disallow="tram rail_urban rail rail_electric rail_fast ship" oneway="0"/>
-    <type id="highway.service" priority="1" numLanes="1" speed="5.56" allow="pedestrian delivery bicycle" oneway="0"/>
-    <type id="highway.stairs" priority="1" numLanes="1" speed="1.39" allow="pedestrian" oneway="1" width="2.00"/>
-    <type id="highway.step" priority="1" numLanes="1" speed="1.39" allow="pedestrian" oneway="1" width="2.00"/>
-    <type id="highway.steps" priority="1" numLanes="1" speed="1.39" allow="pedestrian" oneway="1" width="2.00"/>
-    <type id="highway.tertiary" priority="10" numLanes="1" speed="22.22" disallow="tram rail_urban rail rail_electric rail_fast ship" oneway="0"/>
-    <type id="highway.tertiary_link" priority="5" numLanes="1" speed="22.22" disallow="tram rail_urban rail rail_electric rail_fast ship" oneway="0"/>
-    <type id="highway.track" priority="1" numLanes="1" speed="5.56" disallow="tram rail_urban rail rail_electric rail_fast ship" oneway="0"/>
-    <type id="highway.trunk" priority="13" numLanes="2" speed="27.78" disallow="pedestrian bicycle tram rail_urban rail rail_electric rail_fast ship" oneway="0"/>
-    <type id="highway.trunk_link" priority="8" numLanes="1" speed="22.22" disallow="pedestrian bicycle tram rail_urban rail rail_electric rail_fast ship" oneway="0"/>
-    <type id="highway.unclassified" priority="4" numLanes="1" speed="13.89" disallow="tram rail_urban rail rail_electric rail_fast ship" oneway="0"/>
-    <type id="highway.unsurfaced" priority="1" numLanes="1" speed="8.33" disallow="tram rail_urban rail rail_electric rail_fast ship" oneway="0"/>
-    <type id="railway.highspeed" priority="21" numLanes="1" speed="69.44" allow="rail_fast" oneway="1"/>
-    <type id="railway.light_rail" priority="19" numLanes="1" speed="27.78" allow="rail_urban" oneway="1"/>
-    <type id="railway.preserved" priority="16" numLanes="1" speed="27.78" allow="rail" oneway="1"/>
-    <type id="railway.rail" priority="20" numLanes="1" speed="44.44" allow="rail" oneway="1"/>
-    <type id="railway.subway" priority="18" numLanes="1" speed="27.78" allow="rail_urban" oneway="1"/>
-    <type id="railway.tram" priority="17" numLanes="1" speed="13.89" allow="tram" oneway="1"/>
 
     <edge id=":junc_Duxbury_w_0" function="internal">
         <lane id=":junc_Duxbury_w_0_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="3.65" length="4.67" shape="275.12,328.22 274.21,329.35 274.07,330.23 274.70,330.88 276.08,331.28"/>
     </edge>
     <edge id=":junc_JanShoba_Duxbury_0" function="internal">
-        <lane id=":junc_JanShoba_Duxbury_0_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="7.66" length="12.56" shape="408.64,280.29 404.45,281.04 401.22,280.81 398.97,279.62 397.68,277.45"/>
+        <lane id=":junc_JanShoba_Duxbury_0_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship" speed="7.66" length="12.56" shape="408.64,280.29 404.45,281.04 401.22,280.81 398.97,279.62 397.68,277.45"/>
     </edge>
     <edge id=":junc_JanShoba_Duxbury_1" function="internal">
         <lane id=":junc_JanShoba_Duxbury_1_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="20.84" length="33.05" shape="409.46,283.38 378.13,293.90"/>
@@ -91,8 +61,8 @@
         <lane id=":junc_JanShoba_Duxbury_3_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="6.29" length="9.06" shape="408.78,300.99 408.22,298.52 408.62,296.55 409.97,295.07 412.29,294.09"/>
     </edge>
     <edge id=":junc_JanShoba_Duxbury_4" function="internal">
-        <lane id=":junc_JanShoba_Duxbury_4_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="20.84" length="26.16" shape="408.78,300.99 397.68,277.45"/>
-        <lane id=":junc_JanShoba_Duxbury_4_1" index="1" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="20.84" length="26.16" shape="405.81,302.18 394.62,278.38"/>
+        <lane id=":junc_JanShoba_Duxbury_4_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship" speed="20.84" length="26.16" shape="408.78,300.99 397.68,277.45"/>
+        <lane id=":junc_JanShoba_Duxbury_4_1" index="1" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship" speed="20.84" length="26.16" shape="405.81,302.18 394.62,278.38"/>
     </edge>
     <edge id=":junc_JanShoba_Duxbury_6" function="internal">
         <lane id=":junc_JanShoba_Duxbury_6_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="11.61" length="29.78" shape="402.84,303.37 399.06,296.95 393.68,293.23 386.70,292.22 378.13,293.90"/>
@@ -104,10 +74,10 @@
         <lane id=":junc_JanShoba_Duxbury_8_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="20.84" length="32.43" shape="381.36,303.81 412.29,294.09"/>
     </edge>
     <edge id=":junc_JanShoba_Duxbury_9" function="internal">
-        <lane id=":junc_JanShoba_Duxbury_9_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="11.33" length="18.60" shape="380.36,300.76 388.58,297.51 393.70,292.69 394.52,290.09"/>
+        <lane id=":junc_JanShoba_Duxbury_9_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship" speed="11.33" length="18.60" shape="380.36,300.76 388.58,297.51 393.70,292.69 394.52,290.09"/>
     </edge>
     <edge id=":junc_JanShoba_Duxbury_14" function="internal">
-        <lane id=":junc_JanShoba_Duxbury_14_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="11.33" length="11.96" shape="394.52,290.09 395.71,286.32 394.62,278.38"/>
+        <lane id=":junc_JanShoba_Duxbury_14_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship" speed="11.33" length="11.96" shape="394.52,290.09 395.71,286.32 394.62,278.38"/>
     </edge>
     <edge id=":junc_JanShoba_Duxbury_10" function="internal">
         <lane id=":junc_JanShoba_Duxbury_10_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="7.72" length="12.79" shape="380.63,282.62 381.50,286.92 381.37,290.24 380.25,292.56 378.13,293.90"/>
@@ -352,12 +322,12 @@
         <lane id=":rs3_JanShoba_s_1_2" index="2" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="27.78" length="9.14" shape="419.92,342.78 418.64,340.53 417.45,339.16 416.30,337.77 415.15,335.46"/>
     </edge>
     <edge id=":rs4_JanShoba_s_0" function="internal">
-        <lane id=":rs4_JanShoba_s_0_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="18.05" length="10.13" shape="371.42,190.87 370.99,187.92 371.29,185.76 371.39,183.67 370.41,180.96"/>
+        <lane id=":rs4_JanShoba_s_0_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship" speed="18.05" length="10.13" shape="371.42,190.87 370.99,187.92 371.29,185.76 371.39,183.67 370.41,180.96"/>
     </edge>
     <edge id=":rs4_JanShoba_s_1" function="internal">
-        <lane id=":rs4_JanShoba_s_1_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="20.84" length="9.12" shape="371.42,190.87 370.82,188.03 370.76,186.01 370.70,183.99 370.05,181.17"/>
-        <lane id=":rs4_JanShoba_s_1_1" index="1" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="20.84" length="9.12" shape="368.36,191.79 367.82,189.17 367.81,187.29 367.79,185.42 367.22,182.81"/>
-        <lane id=":rs4_JanShoba_s_1_2" index="2" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="20.84" length="9.12" shape="368.36,191.79 367.40,189.52 366.39,188.11 365.37,186.70 364.38,184.44"/>
+        <lane id=":rs4_JanShoba_s_1_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship" speed="20.84" length="9.12" shape="371.42,190.87 370.82,188.03 370.76,186.01 370.70,183.99 370.05,181.17"/>
+        <lane id=":rs4_JanShoba_s_1_1" index="1" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship" speed="20.84" length="9.12" shape="368.36,191.79 367.82,189.17 367.81,187.29 367.79,185.42 367.22,182.81"/>
+        <lane id=":rs4_JanShoba_s_1_2" index="2" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship" speed="20.84" length="9.12" shape="368.36,191.79 367.40,189.52 366.39,188.11 365.37,186.70 364.38,184.44"/>
     </edge>
 
     <edge id="rd10_JanShoba_sl_s" from="rs1_Lunnon_e" to="junc_end_JanShoba_s" priority="7" type="highway.primary_link" spreadType="center" shape="382.15,142.96 375.98,140.81 372.64,139.86 368.63,138.45 365.18,136.64 362.72,134.53 360.16,131.15 358.24,127.72 353.37,116.70 350.84,112.10 350.72,104.54">
@@ -365,7 +335,7 @@
             <param key="origId" value="4238851"/>
         </lane>
     </edge>
-    <edge id="rd1_Duxbury_ql_w" from="junc_begin_Duxbury_e" to="junc_JanShoba_Duxbury" name="Duxbury Road" priority="11" type="highway.secondary" spreadType="center" shape="544.35,249.45 400.84,287.31">
+    <edge id="rd1_Duxbury_ql_w" from="junc_begin_Duxbury_e" to="junc_JanShoba_Duxbury" name="Duxbury Road" priority="11" type="highway.residential" spreadType="center" shape="544.35,249.45 400.84,287.31">
         <lane id="rd1_Duxbury_ql_w_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="27.78" length="139.09" shape="543.13,244.81 408.64,280.29">
             <param key="origId" value="617695557"/>
         </lane>
@@ -514,7 +484,7 @@
         </lane>
         <param key="origFrom" value="611769793"/>
     </edge>
-    <edge id="rd3_Duxbury_sl_e" from="junc_JanShoba_Duxbury" to="rs2_Duxbury_e" name="Duxbury Road" priority="11" type="highway.secondary" spreadType="center" shape="403.59,296.39 426.63,290.29">
+    <edge id="rd3_Duxbury_sl_e" from="junc_JanShoba_Duxbury" to="rs2_Duxbury_e" name="Duxbury Road" priority="11" type="highway.residential" spreadType="center" shape="403.59,296.39 426.63,290.29">
         <lane id="rd3_Duxbury_sl_e_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="27.78" length="10.65" shape="412.29,294.09 422.59,291.36">
             <param key="origId" value="603975606"/>
         </lane>
@@ -561,7 +531,7 @@
         </lane>
         <param key="origFrom" value="25290891"/>
     </edge>
-    <edge id="rd4_Duxbury_dl_e" from="rs2_Duxbury_e" to="junc_end_Duxbury_e" name="Duxbury Road" priority="11" type="highway.secondary" spreadType="center" shape="427.04,291.84 523.70,266.20">
+    <edge id="rd4_Duxbury_dl_e" from="rs2_Duxbury_e" to="junc_end_Duxbury_e" name="Duxbury Road" priority="11" type="highway.residential" spreadType="center" shape="427.04,291.84 523.70,266.20">
         <lane id="rd4_Duxbury_dl_e_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="27.78" length="96.11" acceleration="1" shape="431.21,292.39 524.11,267.75">
             <param key="origId" value="244372135"/>
         </lane>
@@ -659,9 +629,9 @@
         <param key="origFrom" value="25290891"/>
         <param key="ref" value="M7"/>
     </edge>
-    <edge id="rd7_JanShoba_dl_s" from="junc_JanShoba_Duxbury" to="rs4_JanShoba_s" priority="-1" spreadType="center" shape="400.52,292.33 368.78,187.68">
-        <lane id="rd7_JanShoba_dl_s_0" index="0" speed="13.89" length="90.48" shape="397.68,277.45 371.42,190.87"/>
-        <lane id="rd7_JanShoba_dl_s_1" index="1" speed="13.89" length="90.48" shape="394.62,278.38 368.36,191.79"/>
+    <edge id="rd7_JanShoba_dl_s" from="junc_JanShoba_Duxbury" to="rs4_JanShoba_s" priority="-1" type="highway.primary" spreadType="center" shape="400.52,292.33 368.78,187.68">
+        <lane id="rd7_JanShoba_dl_s_0" index="0" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship" speed="13.89" length="90.48" shape="397.68,277.45 371.42,190.87"/>
+        <lane id="rd7_JanShoba_dl_s_1" index="1" disallow="pedestrian tram rail_urban rail rail_electric rail_fast ship" speed="13.89" length="90.48" shape="394.62,278.38 368.36,191.79"/>
     </edge>
     <edge id="rd7_JanShoba_sl_s" from="rs3_JanShoba_s" to="rs2_Duxbury_e" priority="7" type="highway.primary_link" spreadType="center" shape="426.98,335.08 416.80,317.69 415.91,311.81 416.16,306.32 417.42,301.29 419.67,297.22 422.06,294.29 427.45,293.38">
         <lane id="rd7_JanShoba_sl_s_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="22.22" length="40.78" shape="424.10,330.16 416.80,317.69 415.91,311.81 416.16,306.32 417.42,301.29 419.67,297.22 422.06,294.29 423.32,294.08">
