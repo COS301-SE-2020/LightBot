@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on Mon Aug 31 14:55:06 2020 by Eclipse SUMO netedit Version 1.6.0
+<!-- generated on Mon Aug 31 15:10:53 2020 by Eclipse SUMO netedit Version 1.6.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
 
     <input>
@@ -39,7 +39,7 @@
 
 <net version="1.6" junctionCornerDetail="5" lefthand="true" limitTurnSpeed="5.50" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/net_file.xsd">
 
-    <location netOffset="-623905.01,2849515.85" convBoundary="31.21,0.00,777.60,821.59" origBoundary="28.235474,-25.760747,28.250874,-25.745772" projParameter="+proj=utm +zone=35 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"/>
+    <location netOffset="-623905.01,2849515.85" convBoundary="31.09,0.00,777.60,821.59" origBoundary="28.235474,-25.760747,28.250874,-25.745772" projParameter="+proj=utm +zone=35 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"/>
 
     <type id="highway.bridleway" priority="1" numLanes="1" speed="2.78" allow="pedestrian" oneway="1" width="2.00"/>
     <type id="highway.bus_guideway" priority="1" numLanes="1" speed="27.78" allow="bus" oneway="1"/>
@@ -183,7 +183,7 @@
         <lane id=":7067264051_1_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="13.89" length="0.37" shape="264.98,727.53 265.09,727.52 265.17,727.52 265.24,727.51 265.35,727.52"/>
     </edge>
     <edge id=":7067264078_0" function="internal">
-        <lane id=":7067264078_0_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="3.65" length="4.67" shape="31.31,545.90 30.06,546.62 29.61,547.39 29.95,548.21 31.09,549.10"/>
+        <lane id=":7067264078_0_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="4.22" length="7.01" shape="31.31,545.90 29.43,546.97 28.75,548.13 29.26,549.37 30.97,550.69"/>
     </edge>
     <edge id=":7139407714_0" function="internal">
         <lane id=":7139407714_0_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="10.71" length="5.73" shape="381.42,141.50 379.80,141.81 378.65,141.71 377.50,141.32 375.88,140.78"/>
@@ -399,8 +399,8 @@
         <lane id=":cluster_25290891_611769793_25_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="3.68" length="2.18" shape="476.12,577.20 475.85,576.55 474.68,575.66"/>
     </edge>
     <edge id=":gneJ3_0" function="internal">
-        <lane id=":gneJ3_0_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="13.89" length="8.20" shape="443.89,578.71 446.26,579.13 447.82,579.79 449.39,580.44 451.77,580.83"/>
-        <lane id=":gneJ3_0_1" index="1" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="13.89" length="8.20" shape="443.89,578.71 446.29,578.63 447.92,578.19 449.55,577.74 451.95,577.63"/>
+        <lane id=":gneJ3_0_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="13.89" length="8.39" shape="443.77,580.31 451.76,580.82"/>
+        <lane id=":gneJ3_0_1" index="1" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="13.89" length="8.39" shape="443.77,580.31 446.25,579.99 447.85,578.99 449.45,577.99 451.94,577.63"/>
     </edge>
     <edge id=":junc_Lunnon_w_0" function="internal">
         <lane id=":junc_Lunnon_w_0_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="3.65" length="4.67" shape="110.98,216.50 110.04,217.59 109.87,218.47 110.47,219.13 111.84,219.58"/>
@@ -502,8 +502,8 @@
             <param key="origId" value="618400346"/>
         </lane>
     </edge>
-    <edge id="rd1_South_sl_e" from="7067264078" to="gneJ3" name="South Street" priority="-1" type="highway.residential" spreadType="center" shape="31.09,549.10 447.87,579.00">
-        <lane id="rd1_South_sl_e_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="13.89" length="413.86" shape="31.09,549.10 443.89,578.71"/>
+    <edge id="rd1_South_sl_e" from="7067264078" to="gneJ3" name="South Street" priority="-1" type="highway.residential" shape="31.09,549.10 447.87,579.00">
+        <lane id="rd1_South_sl_e_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="13.89" length="413.86" shape="30.97,550.69 443.77,580.31"/>
     </edge>
     <edge id="rd1_South_sl_w" from="25290892" to="1749841428" name="South Street" priority="4" type="highway.residential">
         <lane id="rd1_South_sl_w_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="13.89" length="195.48" shape="730.40,592.26 535.39,578.69">
@@ -562,8 +562,8 @@
         <param key="origFrom" value="25290871"/>
     </edge>
     <edge id="rd2_South_dl_e" from="gneJ3" to="cluster_25290891_611769793" name="South Street" priority="-1" type="highway.residential" spreadType="center" shape="447.87,579.00 488.21,581.30">
-        <lane id="rd2_South_dl_e_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="13.89" length="22.53" shape="451.77,580.83 474.24,582.11"/>
-        <lane id="rd2_South_dl_e_1" index="1" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="13.89" length="22.53" shape="451.95,577.63 474.46,578.92"/>
+        <lane id="rd2_South_dl_e_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="13.89" length="22.54" shape="451.76,580.82 474.24,582.11"/>
+        <lane id="rd2_South_dl_e_1" index="1" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="13.89" length="22.54" shape="451.94,577.63 474.46,578.92"/>
     </edge>
     <edge id="rd2_South_dl_w" from="1749841428" to="cluster_25290891_611769793" name="South Street" priority="4" type="highway.residential" shape="531.33,580.01 493.37,578.36">
         <lane id="rd2_South_dl_w_0" index="0" disallow="tram rail_urban rail rail_electric rail_fast ship" speed="13.89" length="25.32" shape="527.56,575.04 502.27,573.94">
@@ -891,7 +891,7 @@
         <request index="0" response="00" foes="00" cont="0"/>
         <request index="1" response="00" foes="00" cont="0"/>
     </junction>
-    <junction id="7067264078" type="priority" x="31.21" y="547.50" incLanes="rd3_South_sl_w_0" intLanes=":7067264078_0_0" shape="31.21,547.50 30.98,550.69 31.42,544.31">
+    <junction id="7067264078" type="priority" x="31.21" y="547.50" incLanes="rd3_South_sl_w_0" intLanes=":7067264078_0_0" shape="30.87,552.29 31.42,544.31 31.21,547.50">
         <request index="0" response="0" foes="0" cont="0"/>
     </junction>
     <junction id="7139407714" type="priority" x="382.15" y="142.96" incLanes="rd1_Lunnon_sl_w_0 rd9_JanShoba_sl_s_0 rd2_Lunnon_sl_e_0" intLanes=":7139407714_0_0 :7139407714_6_0 :7139407714_2_0 :7139407714_7_0 :7139407714_4_0 :7139407714_5_0" shape="381.00,139.96 382.71,146.13 380.33,146.79 378.57,147.33 377.15,147.89 375.82,148.62 374.30,149.66 372.34,151.15 370.73,148.35 370.47,147.83 369.62,144.74 371.80,144.12 373.50,143.58 374.70,143.13 375.41,142.76 375.63,142.49 375.35,142.29 376.40,139.27 378.73,140.09 379.33,140.20 380.05,140.17">
@@ -955,7 +955,7 @@
         <request index="16" response="000001110001001110" foes="000001110001011110" cont="1"/>
         <request index="17" response="000001000001000001" foes="000001000001000001" cont="1"/>
     </junction>
-    <junction id="gneJ3" type="priority" x="447.87" y="579.00" incLanes="rd1_South_sl_e_0" intLanes=":gneJ3_0_0 :gneJ3_0_1" shape="452.04,576.03 451.68,582.42 448.72,581.84 447.72,581.39 446.73,580.94 445.49,580.55 443.77,580.31 444.00,577.12 446.98,576.91 448.02,576.60 449.06,576.28 450.32,576.05">
+    <junction id="gneJ3" type="priority" x="447.87" y="579.00" incLanes="rd1_South_sl_e_0" intLanes=":gneJ3_0_0 :gneJ3_0_1" shape="452.03,576.03 451.66,582.42 443.66,581.91 443.89,578.71 446.95,578.10 447.96,577.40 448.97,576.69 450.24,576.17">
         <request index="0" response="00" foes="00" cont="0"/>
         <request index="1" response="00" foes="00" cont="0"/>
     </junction>
