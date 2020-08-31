@@ -6,6 +6,7 @@ const api = axios.create({
   baseURL: 'https://Lightbot-898295751.eu-central-1.elb.amazonaws.com:8000/',
   headers: {
     'Content-Type': 'application/json',
+    'Host': 'lightbot.co.za',
   },
 })
 
