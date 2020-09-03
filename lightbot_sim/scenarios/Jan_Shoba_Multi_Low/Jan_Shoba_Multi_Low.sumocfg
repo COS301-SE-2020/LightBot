@@ -5,7 +5,6 @@
     <input>
         <net-file value="Jan_Shoba_Multi_Low.net.xml"/>
         <route-files value="Jan_Shoba_Multi_Low.rou.xml,Jan_Shoba_Multi_Low.rou.alt.xml"/>
-        <additional-files value="Jan_Shoba_Multi.add.xml"/>
     </input>
 
 </configuration>
