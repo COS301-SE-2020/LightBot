@@ -3038,11 +3038,6 @@
             <route cost="41.95" probability="1.00000000" edges="rd1_Prospect_sl_w rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd7_JanShoba_sl_s rd4_Duxbury_sl_e"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="1499" depart="374.75">
-        <routeDistribution last="0">
-            <route cost="51.37" probability="1.00000000" edges="rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd3_South_sl_w"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="1506" depart="376.50">
         <routeDistribution last="0">
             <route cost="8.99" probability="1.00000000" edges="rd4_JanShoba_ql_n rd3_Duxbury_sl_e rd4_Duxbury_sl_e"/>
@@ -5318,11 +5313,6 @@
             <route cost="2.86" probability="1.00000000" edges="rd8_JanShoba_tl_s rd9_JanShoba_dl_s"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="2657" depart="664.25">
-        <routeDistribution last="0">
-            <route cost="23.70" probability="1.00000000" edges="rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="2658" depart="664.50">
         <routeDistribution last="0">
             <route cost="51.37" probability="1.00000000" edges="rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd3_South_sl_w"/>
@@ -5353,19 +5343,9 @@
             <route cost="8.18" probability="1.00000000" edges="rd4_JanShoba_dl_s"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="2670" depart="667.50">
-        <routeDistribution last="0">
-            <route cost="51.37" probability="1.00000000" edges="rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd3_South_sl_w"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="2673" depart="668.25">
         <routeDistribution last="0">
             <route cost="37.55" probability="1.00000000" edges="rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n rd2_Prospect_sl_w"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="2674" depart="668.50">
-        <routeDistribution last="0">
-            <route cost="51.37" probability="1.00000000" edges="rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd3_South_sl_w"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="2680" depart="670.00">
@@ -5441,11 +5421,6 @@
     <vehicle id="2717" depart="679.25">
         <routeDistribution last="0">
             <route cost="10.29" probability="1.00000000" edges="rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="2724" depart="681.00">
-        <routeDistribution last="0">
-            <route cost="69.43" probability="1.00000000" edges="rd1_Lunnon_sl_e rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd3_South_sl_w"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="2727" depart="681.75">
@@ -5611,11 +5586,6 @@
     <vehicle id="2815" depart="703.75">
         <routeDistribution last="0">
             <route cost="46.99" probability="1.00000000" edges="rd4_JanShoba_ql_n rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd3_South_sl_w"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="2816" depart="704.00">
-        <routeDistribution last="0">
-            <route cost="34.00" probability="1.00000000" edges="rd1_Lunnon_sl_e rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd5_JanShoba_dl_n"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="2819" depart="704.75">
@@ -5831,11 +5801,6 @@
     <vehicle id="2913" depart="728.25">
         <routeDistribution last="0">
             <route cost="23.70" probability="1.00000000" edges="rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="2914" depart="728.50">
-        <routeDistribution last="0">
-            <route cost="44.83" probability="1.00000000" edges="rd1_Lunnon_sl_e rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n rd8_JanShoba_dl_n"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="2915" depart="728.75">
@@ -6293,11 +6258,6 @@
             <route cost="33.11" probability="1.00000000" edges="rd9_JanShoba_sl_s rd3_Lunnon_sl_e"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="3141" depart="785.25">
-        <routeDistribution last="0">
-            <route cost="34.00" probability="1.00000000" edges="rd1_Lunnon_sl_e rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd5_JanShoba_dl_n"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="3144" depart="786.00">
         <routeDistribution last="0">
             <route cost="15.94" probability="1.00000000" edges="rd1_Duxbury_ql_w rd5_JanShoba_dl_n"/>
@@ -6316,11 +6276,6 @@
     <vehicle id="3152" depart="788.00">
         <routeDistribution last="0">
             <route cost="49.27" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd2_South_sl_e rd4_South_sl_e"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="3154" depart="788.50">
-        <routeDistribution last="0">
-            <route cost="44.83" probability="1.00000000" edges="rd1_Lunnon_sl_e rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n rd8_JanShoba_dl_n"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="3155" depart="788.75">
@@ -6366,11 +6321,6 @@
     <vehicle id="3175" depart="793.75">
         <routeDistribution last="0">
             <route cost="27.62" probability="1.00000000" edges="rd1_JanShoba_dl_n rd2_JanShoba_tl_n rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="3177" depart="794.25">
-        <routeDistribution last="0">
-            <route cost="36.49" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="3179" depart="794.75">
@@ -6838,11 +6788,6 @@
             <route cost="13.59" probability="1.00000000" edges="rd2_Duxbury_dl_e rd5_JanShoba_dl_n"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="3446" depart="861.50">
-        <routeDistribution last="0">
-            <route cost="35.82" probability="1.00000000" edges="rd1_Lunnon_sl_e rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd5_JanShoba_dl_n rd6_JanShoba_tl_n"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="3452" depart="863.00">
         <routeDistribution last="0">
             <route cost="34.00" probability="1.00000000" edges="rd1_Lunnon_sl_e rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd5_JanShoba_dl_n"/>
@@ -6911,11 +6856,6 @@
     <vehicle id="3488" depart="872.00">
         <routeDistribution last="0">
             <route cost="2.05" probability="1.00000000" edges="rd3_JanShoba_dl_N"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="3490" depart="872.50">
-        <routeDistribution last="0">
-            <route cost="39.58" probability="1.00000000" edges="rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n rd2_Prospect_sl_w"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="3495" depart="873.75">
@@ -7171,11 +7111,6 @@
     <vehicle id="3605" depart="901.25">
         <routeDistribution last="0">
             <route cost="44.03" probability="1.00000000" edges="rd1_South_sl_e rd2_South_dl_e rd4_JanShoba_dl_s"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="3606" depart="901.50">
-        <routeDistribution last="0">
-            <route cost="49.27" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd2_South_sl_e rd4_South_sl_e"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="3608" depart="902.00">
@@ -8523,11 +8458,6 @@
             <route cost="17.66" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="4301" depart="1075.25">
-        <routeDistribution last="0">
-            <route cost="28.74" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="4302" depart="1075.50">
         <routeDistribution last="0">
             <route cost="42.66" probability="1.00000000" edges="rd1_JanShoba_dl_s rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd3_South_sl_w"/>
@@ -9643,11 +9573,6 @@
             <route cost="44.03" probability="1.00000000" edges="rd1_South_sl_e rd2_South_dl_e rd4_JanShoba_dl_s"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="4925" depart="1231.25">
-        <routeDistribution last="0">
-            <route cost="52.38" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n rd2_Prospect_sl_w"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="4928" depart="1232.00">
         <routeDistribution last="0">
             <route cost="8.26" probability="1.00000000" edges="rd7_JanShoba_dl_n rd8_JanShoba_dl_n"/>
@@ -9791,11 +9716,6 @@
     <vehicle id="5014" depart="1253.50">
         <routeDistribution last="0">
             <route cost="8.99" probability="1.00000000" edges="rd4_JanShoba_ql_n rd3_Duxbury_sl_e rd4_Duxbury_sl_e"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="5015" depart="1253.75">
-        <routeDistribution last="0">
-            <route cost="28.74" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="5016" depart="1254.00">
@@ -10228,11 +10148,6 @@
             <route cost="54.60" probability="1.00000000" edges="rd1_South_sl_e rd2_South_dl_e rd7_JanShoba_dl_n rd2_Prospect_sl_w"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="5239" depart="1309.75">
-        <routeDistribution last="0">
-            <route cost="36.47" probability="1.00000000" edges="rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd2_South_sl_e rd4_South_sl_e"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="5242" depart="1310.50">
         <routeDistribution last="0">
             <route cost="69.72" probability="1.00000000" edges="rd1_South_sl_w rd2_South_dl_w rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd7_JanShoba_dl_s rd9_JanShoba_sl_s rd3_Lunnon_sl_e"/>
@@ -10503,11 +10418,6 @@
             <route cost="50.48" probability="1.00000000" edges="rd1_South_sl_w rd2_South_dl_w rd3_South_sl_w"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="5398" depart="1349.50">
-        <routeDistribution last="0">
-            <route cost="36.49" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="5399" depart="1349.75">
         <routeDistribution last="0">
             <route cost="17.82" probability="1.00000000" edges="rd1_Duxbury_sl_e rd2_Duxbury_dl_e rd5_JanShoba_dl_n"/>
@@ -10576,11 +10486,6 @@
     <vehicle id="5423" depart="1355.75">
         <routeDistribution last="0">
             <route cost="15.94" probability="1.00000000" edges="rd1_Duxbury_ql_w rd5_JanShoba_dl_n"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="5432" depart="1358.00">
-        <routeDistribution last="0">
-            <route cost="49.27" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd2_South_sl_e rd4_South_sl_e"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="5436" depart="1359.00">
@@ -10863,19 +10768,9 @@
             <route cost="43.71" probability="1.00000000" edges="rd1_Prospect_sl_w rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd7_JanShoba_dl_s"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="5579" depart="1394.75">
-        <routeDistribution last="0">
-            <route cost="34.63" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd2_South_sl_e"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="5582" depart="1395.50">
         <routeDistribution last="0">
             <route cost="26.46" probability="1.00000000" edges="rd1_JanShoba_dl_s rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd2_South_sl_e rd4_South_sl_e"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="5584" depart="1396.00">
-        <routeDistribution last="0">
-            <route cost="36.49" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="5586" depart="1396.50">
@@ -12188,11 +12083,6 @@
             <route cost="36.49" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="6284" depart="1571.00">
-        <routeDistribution last="0">
-            <route cost="36.49" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="6286" depart="1571.50">
         <routeDistribution last="0">
             <route cost="6.81" probability="1.00000000" edges="rd1_JanShoba_dl_s rd2_JanShoba_dl_s"/>
@@ -13188,11 +13078,6 @@
             <route cost="36.49" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="6836" depart="1709.00">
-        <routeDistribution last="0">
-            <route cost="46.99" probability="1.00000000" edges="rd4_JanShoba_ql_n rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd3_South_sl_w"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="6837" depart="1709.25">
         <routeDistribution last="0">
             <route cost="64.17" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd3_South_sl_w"/>
@@ -13251,11 +13136,6 @@
     <vehicle id="6870" depart="1717.50">
         <routeDistribution last="0">
             <route cost="87.58" probability="1.00000000" edges="rd1_South_sl_e rd2_South_dl_e rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd7_JanShoba_dl_s rd9_JanShoba_sl_s rd3_Lunnon_sl_e"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="6871" depart="1717.75">
-        <routeDistribution last="0">
-            <route cost="39.57" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n rd8_JanShoba_dl_n"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="6875" depart="1718.75">
@@ -13453,11 +13333,6 @@
             <route cost="32.00" probability="1.00000000" edges="rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n rd2_Prospect_sl_w"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="6969" depart="1742.25">
-        <routeDistribution last="0">
-            <route cost="36.49" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="6972" depart="1743.00">
         <routeDistribution last="0">
             <route cost="37.23" probability="1.00000000" edges="rd2_Duxbury_dl_e rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n rd2_Prospect_sl_w"/>
@@ -13488,11 +13363,6 @@
             <route cost="42.66" probability="1.00000000" edges="rd1_JanShoba_dl_s rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd3_South_sl_w"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="6990" depart="1747.50">
-        <routeDistribution last="0">
-            <route cost="36.49" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="6993" depart="1748.25">
         <routeDistribution last="0">
             <route cost="50.49" probability="1.00000000" edges="rd1_South_sl_e rd2_South_dl_e rd2_South_sl_e rd4_South_sl_e"/>
@@ -13521,11 +13391,6 @@
     <vehicle id="7006" depart="1751.50">
         <routeDistribution last="0">
             <route cost="34.44" probability="1.00000000" edges="rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd2_South_sl_e rd4_South_sl_e"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="7008" depart="1752.00">
-        <routeDistribution last="0">
-            <route cost="64.17" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd3_South_sl_w"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="7009" depart="1752.25">
@@ -13916,11 +13781,6 @@
     <vehicle id="7208" depart="1802.00">
         <routeDistribution last="0">
             <route cost="33.83" probability="1.00000000" edges="rd1_Prospect_sl_w rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd4_JanShoba_dl_s"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="7211" depart="1802.75">
-        <routeDistribution last="0">
-            <route cost="46.99" probability="1.00000000" edges="rd4_JanShoba_ql_n rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd3_South_sl_w"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="7212" depart="1803.00">
@@ -14838,11 +14698,6 @@
             <route cost="50.48" probability="1.00000000" edges="rd1_South_sl_w rd2_South_dl_w rd3_South_sl_w"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="7711" depart="1927.75">
-        <routeDistribution last="0">
-            <route cost="64.17" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd3_South_sl_w"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="7712" depart="1928.00">
         <routeDistribution last="0">
             <route cost="8.18" probability="1.00000000" edges="rd4_JanShoba_dl_s"/>
@@ -14861,11 +14716,6 @@
     <vehicle id="7722" depart="1930.50">
         <routeDistribution last="0">
             <route cost="38.71" probability="1.00000000" edges="rd1_South_sl_e rd2_South_dl_e rd7_JanShoba_dl_n"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="7723" depart="1930.75">
-        <routeDistribution last="0">
-            <route cost="39.57" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n rd8_JanShoba_dl_n"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="7725" depart="1931.25">
@@ -14908,11 +14758,6 @@
             <route cost="26.77" probability="1.00000000" edges="rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n rd8_JanShoba_dl_n"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="7756" depart="1939.00">
-        <routeDistribution last="0">
-            <route cost="28.74" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="7757" depart="1939.25">
         <routeDistribution last="0">
             <route cost="67.27" probability="1.00000000" edges="rd1_Prospect_sl_w rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd7_JanShoba_dl_s rd8_JanShoba_tl_s rd2_Lunnon_sl_w"/>
@@ -14926,11 +14771,6 @@
     <vehicle id="7761" depart="1940.25">
         <routeDistribution last="0">
             <route cost="8.35" probability="1.00000000" edges="rd5_JanShoba_dl_n"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="7763" depart="1940.75">
-        <routeDistribution last="0">
-            <route cost="34.63" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd2_South_sl_e"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="7764" depart="1941.00">
@@ -14966,11 +14806,6 @@
     <vehicle id="7783" depart="1945.75">
         <routeDistribution last="0">
             <route cost="36.58" probability="1.00000000" edges="rd1_Duxbury_ql_w rd7_JanShoba_dl_s rd8_JanShoba_tl_s rd2_Lunnon_sl_w"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="7785" depart="1946.25">
-        <routeDistribution last="0">
-            <route cost="52.38" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n rd2_Prospect_sl_w"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="7787" depart="1946.75">
@@ -15683,11 +15518,6 @@
             <route cost="57.69" probability="1.00000000" edges="rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd7_JanShoba_dl_s rd9_JanShoba_sl_s rd3_Lunnon_sl_e"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="8170" depart="2042.50">
-        <routeDistribution last="0">
-            <route cost="28.74" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="8174" depart="2043.50">
         <routeDistribution last="0">
             <route cost="16.57" probability="1.00000000" edges="rd2_JanShoba_tl_n rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd5_JanShoba_dl_n"/>
@@ -16051,11 +15881,6 @@
     <vehicle id="8365" depart="2091.25">
         <routeDistribution last="0">
             <route cost="7.14" probability="1.00000000" edges="rd7_JanShoba_sl_s rd4_Duxbury_sl_e"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="8366" depart="2091.50">
-        <routeDistribution last="0">
-            <route cost="39.57" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n rd8_JanShoba_dl_n"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="8368" depart="2092.00">
@@ -17106,11 +16931,6 @@
     <vehicle id="8893" depart="2223.25">
         <routeDistribution last="0">
             <route cost="15.94" probability="1.00000000" edges="rd1_Duxbury_ql_w rd5_JanShoba_dl_n"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="8897" depart="2224.25">
-        <routeDistribution last="0">
-            <route cost="15.85" probability="1.00000000" edges="rd1_JanShoba_dl_n rd2_JanShoba_tl_n rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd2_Duxbury_sl_w"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="8900" depart="2225.00">
@@ -18458,11 +18278,6 @@
             <route cost="7.46" probability="1.00000000" edges="rd6_JanShoba_tl_n rd7_JanShoba_dl_n"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="9567" depart="2391.75">
-        <routeDistribution last="0">
-            <route cost="28.74" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="9568" depart="2392.00">
         <routeDistribution last="0">
             <route cost="4.87" probability="1.00000000" edges="rd1_Duxbury_ql_w"/>
@@ -18636,11 +18451,6 @@
     <vehicle id="9660" depart="2415.00">
         <routeDistribution last="0">
             <route cost="19.48" probability="1.00000000" edges="rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd7_JanShoba_dl_s rd8_JanShoba_tl_s"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="9662" depart="2415.50">
-        <routeDistribution last="0">
-            <route cost="52.38" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n rd2_Prospect_sl_w"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="9667" depart="2416.75">
@@ -21613,11 +21423,6 @@
             <route cost="14.14" probability="1.00000000" edges="rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd4_JanShoba_dl_s"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="11211" depart="2802.75">
-        <routeDistribution last="0">
-            <route cost="55.29" probability="1.00000000" edges="rd1_JanShoba_dl_n rd2_JanShoba_tl_n rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd3_South_sl_w"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="11218" depart="2804.50">
         <routeDistribution last="0">
             <route cost="23.30" probability="1.00000000" edges="rd1_Prospect_sl_w rd2_JanShoba_dl_s"/>
@@ -23443,11 +23248,6 @@
             <route cost="28.74" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="12130" depart="3032.50">
-        <routeDistribution last="0">
-            <route cost="51.37" probability="1.00000000" edges="rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd3_South_sl_w"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="12134" depart="3033.50">
         <routeDistribution last="0">
             <route cost="19.31" probability="1.00000000" edges="rd4_JanShoba_ql_n rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n"/>
@@ -24501,11 +24301,6 @@
     <vehicle id="12673" depart="3168.25">
         <routeDistribution last="0">
             <route cost="8.18" probability="1.00000000" edges="rd4_JanShoba_dl_s"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="12675" depart="3168.75">
-        <routeDistribution last="0">
-            <route cost="36.49" probability="1.00000000" edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="12676" depart="3169.00">
