@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on Mon Aug 31 17:46:23 2020 by Eclipse SUMO netedit Version 1.6.0
+<!-- generated on Thu Sep  3 15:54:17 2020 by Eclipse SUMO netedit Version 1.6.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
 
     <input>
-        <sumo-net-file value="/Users/thiveshanpillay/Documents/2020/COS%20301/Capstone/GitHub_Lightbot/LightBot/lightbot_sim/scenarios/Jan_Shoba_Multi_Peak/Jan_Shoba_Multi_Peak.net.xml"/>
+        <sumo-net-file value="/Users/thiveshanpillay/Documents/2020/COS%20301/Capstone/GitHub_Lightbot/LightBot/lightbot_sim/scenarios/Jan_Shoba_Multi_Low/Jan_Shoba_Multi_Low.net.xml"/>
     </input>
 
     <output>
-        <output-file value="/Users/thiveshanpillay/Documents/2020/COS%20301/Capstone/GitHub_Lightbot/LightBot/lightbot_sim/scenarios/Jan_Shoba_Multi_Peak/Jan_Shoba_Multi_Peak.net.xml"/>
+        <output-file value="/Users/thiveshanpillay/Documents/2020/COS%20301/Capstone/GitHub_Lightbot/LightBot/lightbot_sim/scenarios/Jan_Shoba_Multi_Low/Jan_Shoba_Multi_Low.net.xml"/>
         <output.street-names value="true"/>
     </output>
 
@@ -595,24 +595,24 @@
         </lane>
     </edge>
 
-    <tlLogic id="cluster_2516980595_2516980597_25290876_611769785" type="actuated" programID="0" offset="0">
-        <phase duration="27" state="rrrrGGrrrrGGGr" minDur="13" maxDur="50"/>
+    <tlLogic id="cluster_2516980595_2516980597_25290876_611769785" type="static" programID="0" offset="0">
+        <phase duration="27" state="rrrrGGrrrrGGGr"/>
         <phase duration="6"  state="rrrryyrrrryyyr"/>
-        <phase duration="6"  state="rrrrrrGrrrrrrG" minDur="13" maxDur="50"/>
+        <phase duration="6"  state="rrrrrrGrrrrrrG"/>
         <phase duration="6"  state="rrrrrryrrrrrry"/>
-        <phase duration="27" state="GGrrrrrGGgrrrr" minDur="13" maxDur="50"/>
+        <phase duration="27" state="GGrrrrrGGgrrrr"/>
         <phase duration="6"  state="yyrrrrryygrrrr"/>
-        <phase duration="6"  state="rrGGrrrrrGrrrr" minDur="13" maxDur="50"/>
+        <phase duration="6"  state="rrGGrrrrrGrrrr"/>
         <phase duration="6"  state="rryyrrrrryrrrr"/>
     </tlLogic>
-    <tlLogic id="cluster_25290891_611769793" type="actuated" programID="0" offset="0">
-        <phase duration="27" state="GGGrrrrrrGGGrrrrrr" minDur="13" maxDur="50"/>
+    <tlLogic id="cluster_25290891_611769793" type="static" programID="0" offset="0">
+        <phase duration="27" state="GGGrrrrrrGGGrrrrrr"/>
         <phase duration="6"  state="yyyrrrrrryyyrrrrrr"/>
-        <phase duration="6"  state="rrrGGrrrrrrrGGrrrr" minDur="13" maxDur="50"/>
+        <phase duration="6"  state="rrrGGrrrrrrrGGrrrr"/>
         <phase duration="6"  state="rrryyrrrrrrryyrrrr"/>
-        <phase duration="27" state="rrrrrGGggrrrrrGGgg" minDur="5" maxDur="50"/>
+        <phase duration="27" state="rrrrrGGggrrrrrGGgg"/>
         <phase duration="6"  state="rrrrryyggrrrrryygg"/>
-        <phase duration="6"  state="rrrrrrrGGrrrrrrrGG" minDur="5" maxDur="50"/>
+        <phase duration="6"  state="rrrrrrrGGrrrrrrrGG"/>
         <phase duration="6"  state="rrrrrrryyrrrrrrryy"/>
     </tlLogic>
 
