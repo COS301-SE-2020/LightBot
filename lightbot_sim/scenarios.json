@@ -1,5 +1,17 @@
 [
   {
+    "name": "JanShoba_Multiple_Intersections_Peak",
+    "description": "Simulation of traffic flow on Jan_Shoba at various intersections from 6:45-8:30 and 15:30-18:00",
+    "config_file": "scenarios/Jan_Shoba_Multi_Peak/Jan_Shoba_Multi_Peak.sumocfg",
+    "is_default": false
+  },
+  {
+    "name": "JanShoba_Multiple_Intersections_Midnight",
+    "description": "Simulation of traffic flow on Jan_Shoba at various intersections from 22:00-06:45",
+    "config_file": "scenarios/Jan_Shoba_Multi_Low/Jan_Shoba_Multi_Low.sumocfg",
+    "is_default": false
+  },
+  {
     "name": "JanShoba_South_Peak",
     "description": "Simulation of traffic flow on Jan_Shoba from 6:45-8:30 and 15:30-18:00",
     "config_file": "scenarios/Jan_South_Peak/sim_JanSouth_peak.sumocfg",
@@ -20,12 +32,6 @@
   {
     "name": "Basic_4_Way_Intersection",
     "description": "First intersection modelled for Demo 1",
-    "config_file": "scenarios/Basic_4_Way_Intersection/simulation.sumocfg",
-    "is_default": false
-  },
-  {
-    "name": "JanShoba_Multiple_Intersections_Midnight",
-    "description": "Simulation of traffic flow on Jan_Shoba at various intersections from 22:00-06:45",
     "config_file": "scenarios/Basic_4_Way_Intersection/simulation.sumocfg",
     "is_default": false
   }
