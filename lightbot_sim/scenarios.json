@@ -1,26 +1,32 @@
 [
-    {
-        "name": "JanShoba_South_Peak",
-        "description": "Simulation of traffic flow on Jan_Shoba from 6:45-8:30 and 15:30-18:00",
-        "config_file": "scenarios/Jan_South_Peak/sim_JanSouth_peak.sumocfg",
-        "is_default": true
-    },
-    {
-        "name": "JanShoba_South_Off-Peak",
-        "description": "Simulation of traffic flow on Jan_Shoba from 8:30-15:30 and 18:00-22:00",
-        "config_file": "scenarios/Jan_South_Normal/sim_JanSouth_normal.sumocfg",
-        "is_default": false
-    },
-    {
-        "name": "JanShoba_South_Midnight",
-        "description": "Simulation of traffic flow on Jan_Shoba from 22:00-06:45",
-        "config_file": "scenarios/Jan_South_Low/sim_JanSouth_low.sumocfg",
-        "is_default": false
-    },
-    {
-        "name": "Basic_4_Way_Intersection",
-        "description": "First intersection modelled for Demo 1",
-        "config_file": "scenarios/Basic_4_Way_Intersection/simulation.sumocfg",
-        "is_default": false
-    }
+  {
+    "name": "JanShoba_South_Peak",
+    "description": "Simulation of traffic flow on Jan_Shoba from 6:45-8:30 and 15:30-18:00",
+    "config_file": "scenarios/Jan_South_Peak/sim_JanSouth_peak.sumocfg",
+    "is_default": true
+  },
+  {
+    "name": "JanShoba_South_Off-Peak",
+    "description": "Simulation of traffic flow on Jan_Shoba from 8:30-15:30 and 18:00-22:00",
+    "config_file": "scenarios/Jan_South_Normal/sim_JanSouth_normal.sumocfg",
+    "is_default": false
+  },
+  {
+    "name": "JanShoba_South_Midnight",
+    "description": "Simulation of traffic flow on Jan_Shoba from 22:00-06:45",
+    "config_file": "scenarios/Jan_South_Low/sim_JanSouth_low.sumocfg",
+    "is_default": false
+  },
+  {
+    "name": "Basic_4_Way_Intersection",
+    "description": "First intersection modelled for Demo 1",
+    "config_file": "scenarios/Basic_4_Way_Intersection/simulation.sumocfg",
+    "is_default": false
+  },
+  {
+    "name": "JanShoba_Multiple_Intersections_Midnight",
+    "description": "Simulation of traffic flow on Jan_Shoba at various intersections from 22:00-06:45",
+    "config_file": "scenarios/Basic_4_Way_Intersection/simulation.sumocfg",
+    "is_default": false
+  }
 ]
