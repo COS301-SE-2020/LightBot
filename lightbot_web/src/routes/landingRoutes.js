@@ -2,6 +2,7 @@ import Login from "../views/landing.views/Login.js";
 import Register from "../views/landing.views/Register.js";
 import Recovery from "../views/landing.views/Recovery.js";
 import Reset from "../views/landing.views/Reset.js";
+import Aboutus from "../views/landing.views/Aboutus.js";
 
 var landingRoutes = [
   {
@@ -26,6 +27,12 @@ var landingRoutes = [
     path: "/recovery",
     name: "Recovery",
     component: Recovery,
+    layout: "",
+  },
+  {
+    path: "/aboutus",
+    name: "Aboutus",
+    component: Aboutus,
     layout: "",
   },
 ];

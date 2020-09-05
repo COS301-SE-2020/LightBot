@@ -14,6 +14,7 @@ class Post extends React.Component {
     this.state = {
       colums: ['title', 'subject', 'description'],
     }
+    this.handleLoad = this.handleLoad.bind(this)
     this.onDismiss = this.onDismiss.bind(this)
     this.notify = this.notify.bind(this)
     this.myRef = React.createRef()
@@ -74,6 +75,7 @@ class Post extends React.Component {
   }
   componentDidMount() {
     this.handleLoad()
+    this.props.setClick(this.handleLoad);
   }
 
   render() {

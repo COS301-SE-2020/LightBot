@@ -250,7 +250,7 @@ class Login extends React.Component {
                           <a
                             style={MyStyles.textInputStyle}
                             className='link'
-                            href='/recovery'
+                            href='#'
                             onClick={this.navRecovery}
                           >
                             Forgot Pasword?

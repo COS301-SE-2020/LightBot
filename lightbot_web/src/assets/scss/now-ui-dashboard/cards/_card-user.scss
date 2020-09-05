@@ -1,12 +1,12 @@
 .card-user{
     .image{
-        height: 120px;
+        height: 200px;
     }
 
     .author{
         text-align: center;
         text-transform: none;
-        margin-top: -77px;
+        margin-top: -150px;
 
         a +  p.description{
             margin-top: -7px;
@@ -14,9 +14,9 @@
     }
 
     .avatar{
-        width: 124px;
-        height: 124px;
-        border: 1px solid $white-color;
+        width: 200px;
+        height: 200px;
+        box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.7);
         position: relative;
     }
 

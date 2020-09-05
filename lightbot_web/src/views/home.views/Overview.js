@@ -176,7 +176,7 @@ class Overview extends React.Component {
               </Card>
             </Col>
           </Row>
-          <Post />
+          <Post setClick={click => this.clickChild = click}/>
         </div>
       </>
     )
