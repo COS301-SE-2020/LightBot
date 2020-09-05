@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
-
     <input>
         <net-file value="Jan_Shoba_Multi_Low.net.xml"/>
         <route-files value="Jan_Shoba_Multi_Low.rou.xml,Jan_Shoba_Multi_Low.rou.alt.xml"/>
     </input>
-
+    <processing>
+        <ignore-route-errors value="true"/>
+    </processing>
+    <routing>
+        <no-step-log value="true"/>
+    </routing>
+    <report>
+        <verbose value="false"/>
+        <duration-log.statistics value="false"/>
+     </report>
+    <gui_only>
+        <gui-settings-file value="settings.view.xml"/>
+    </gui_only>
+</configuration>
 </configuration>
