@@ -1,15 +1,14 @@
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # stop warning about tensorflow
 import sys
 import numpy as np
 import tensorflow as tf
-import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # kill warning about tensorflow
 from tensorflow.keras.models import load_model
 from tensorflow.keras.utils import plot_model
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras import losses
 from tensorflow.keras import layers
 from tensorflow import keras
-
 
 
 class TrainModel:
@@ -46,8 +45,6 @@ class TrainModel:
 
     def save_model(self, path):
         self._model.save(os.path.join(path, 'trained_model.h5'))
-        plot_model(self._model, to_file=os.path.join(
-            path, 'model_structure.png'), show_shapes=True, show_layer_names=True)
 
     @property
     def input_dim(self):
