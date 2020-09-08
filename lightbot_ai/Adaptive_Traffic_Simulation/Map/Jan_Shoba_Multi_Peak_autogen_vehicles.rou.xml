@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on Mon Aug 31 19:45:44 2020 by Eclipse SUMO netedit Version 1.6.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
+
+    <input>
+        <sumo-net-file value="/Users/thiveshanpillay/Documents/2020/COS%20301/Capstone/GitHub_Lightbot/LightBot/lightbot_sim/scenarios/Jan_Shoba_Multi_Peak/Jan_Shoba_Multi_Peak.net.xml"/>
+    </input>
+
+    <output>
+        <output-file value="/Users/thiveshanpillay/Documents/2020/COS%20301/Capstone/GitHub_Lightbot/LightBot/lightbot_sim/scenarios/Jan_Shoba_Multi_Peak/Jan_Shoba_Multi_Peak.net.xml"/>
+        <output.street-names value="true"/>
+    </output>
+
+    <processing>
+        <geometry.min-radius.fix.railways value="false"/>
+        <geometry.max-grade.fix value="false"/>
+        <offset.disable-normalization value="true"/>
+        <lefthand value="true"/>
+    </processing>
+
+    <junctions>
+        <no-turnarounds value="true"/>
+        <junctions.corner-detail value="5"/>
+        <junctions.limit-turn-speed value="5.5"/>
+        <rectangular-lane-cut value="false"/>
+    </junctions>
+
+    <pedestrian>
+        <walkingareas value="false"/>
+    </pedestrian>
+
+    <netedit>
+        <route-files value="/Users/thiveshanpillay/Documents/2020/COS%20301/Capstone/GitHub_Lightbot/LightBot/lightbot_sim/scenarios/Jan_Shoba_Multi_Peak/Jan_Shoba_Multi_Peak.rou.xml"/>
+    </netedit>
+
+    <report>
+        <aggregate-warnings value="5"/>
+    </report>
+
+</configuration>
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <route edges="rd1_JanShoba_dl_n rd2_JanShoba_tl_n rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd3_Duxbury_sl_e rd4_Duxbury_sl_e" color="magenta" id="route_JanShoba_n_Duxbury_e"/>
+    <route edges="rd1_JanShoba_dl_n rd2_JanShoba_tl_n rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd2_Duxbury_sl_w rd3_Duxbury_sl_w" color="green" id="route_JanShoba_n_Duxbury_w"/>
+    <route edges="rd1_JanShoba_dl_n rd2_JanShoba_tl_n rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n rd8_JanShoba_dl_n" color="blue" id="route_JanShoba_n_JanShoba_n"/>
+    <route edges="rd1_JanShoba_dl_n rd2_JanShoba_tl_n rd2_Lunnon_sl_e rd3_Lunnon_sl_e" color="magenta" id="route_JanShoba_n_Lunnon_e"/>
+    <route edges="rd1_JanShoba_dl_n rd2_JanShoba_tl_n rd2_Lunnon_sl_w" color="green" id="route_JanShoba_n_Lunnon_w"/>
+    <route edges="rd1_JanShoba_dl_n rd2_JanShoba_tl_n rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n rd2_Prospect_sl_w" color="green" id="route_JanShoba_n_Prospect_w"/>
+    <route edges="rd1_JanShoba_dl_n rd2_JanShoba_tl_n rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd2_South_sl_e rd4_South_sl_e" color="magenta" id="route_JanShoba_n_South_e"/>
+    <route edges="rd1_JanShoba_dl_n rd2_JanShoba_tl_n rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd3_South_sl_w" color="green" id="route_JanShoba_n_South_w"/>
+
+    <route edges="rd1_JanShoba_dl_s rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd7_JanShoba_sl_s rd4_Duxbury_sl_e" color="green" id="route_JanShoba_s_Duxbury_e"/>
+    <route edges="rd1_JanShoba_dl_s rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd2_Duxbury_sl_w rd3_Duxbury_sl_w" color="magenta" id="route_JanShoba_s_Duxbury_w"/>
+    <route edges="rd1_JanShoba_dl_s rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd7_JanShoba_dl_s rd8_JanShoba_tl_s rd9_JanShoba_dl_s" color="blue" id="route_JanShoba_s_JanShoba_s"/>
+    <route edges="rd1_JanShoba_dl_s rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd7_JanShoba_dl_s rd9_JanShoba_sl_s rd3_Lunnon_sl_e" color="green" id="route_JanShoba_s_Lunnon_e"/>
+    <route edges="rd1_JanShoba_dl_s rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd7_JanShoba_dl_s rd8_JanShoba_tl_s rd2_Lunnon_sl_w" color="magenta" id="route_JanShoba_s_Lunnon_w"/>
+    <route edges="rd1_JanShoba_dl_s rd2_Prospect_sl_e" color="green" id="route_JanShoba_s_Prospect_e"/>
+    <route edges="rd1_JanShoba_dl_s rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd2_South_sl_e rd4_South_sl_e" color="green" id="route_JanShoba_s_South_e"/>
+    <route edges="rd1_JanShoba_dl_s rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd3_South_sl_w" color="magenta" id="route_JanShoba_s_South_w"/>
+
+    <route edges="rd1_Prospect_sl_e rd8_JanShoba_dl_n" color="green" id="route_Prospect_e_JanShoba_n"/>
+
+    <route edges="rd1_Prospect_sl_w rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd7_JanShoba_sl_s rd4_Duxbury_sl_e" color="green" id="route_Prospect_w_Duxbury_e"/>
+    <route edges="rd1_Prospect_sl_w rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd2_Duxbury_sl_w rd3_Duxbury_sl_w" color="magenta" id="route_Prospect_w_Duxbury_w"/>
+    <route edges="rd1_Prospect_sl_w rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd7_JanShoba_dl_s rd8_JanShoba_tl_s rd9_JanShoba_dl_s" color="green" id="route_Prospect_w_JanShoba_s"/>
+    <route edges="rd1_Prospect_sl_w rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd7_JanShoba_dl_s rd9_JanShoba_sl_s rd3_Lunnon_sl_e" color="green" id="route_Prospect_w_Lunnon_e"/>
+    <route edges="rd1_Prospect_sl_w rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd7_JanShoba_dl_s rd8_JanShoba_tl_s rd2_Lunnon_sl_w" color="magenta" id="route_Prospect_w_Lunnon_w"/>
+    <route edges="rd1_Prospect_sl_w rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd2_South_sl_e rd4_South_sl_e" color="green" id="route_Prospect_w_South_e"/>
+    <route edges="rd1_Prospect_sl_w rd2_JanShoba_dl_s rd3_JanShoba_tl_s rd3_South_sl_w" color="magenta" id="route_Prospect_w_South_w"/>
+
+    <route edges="rd1_South_sl_e rd2_South_dl_e rd7_JanShoba_dl_n rd8_JanShoba_dl_n" color="green" id="route_South_e_JanShoba_n"/>
+    <route edges="rd1_South_sl_e rd2_South_dl_e rd7_JanShoba_dl_n rd2_Prospect_sl_w" color="green" id="route_South_e_Prospect_w"/>
+    <route edges="rd1_South_sl_e rd2_South_dl_e rd2_South_sl_e rd4_South_sl_e" color="blue" id="route_South_e_South_e"/>
+    <route edges="rd1_South_sl_e rd2_South_dl_e rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd7_JanShoba_dl_s rd8_JanShoba_tl_s rd9_JanShoba_dl_s" color="magenta" id="route_South_e_JanShoba_s"/>
+    <route edges="rd1_South_sl_e rd2_South_dl_e rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd2_Duxbury_sl_w rd3_Duxbury_sl_w" color="green" id="route_South_e_Duxbury_w"/>
+    <route edges="rd1_South_sl_e rd2_South_dl_e rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd7_JanShoba_sl_s rd4_Duxbury_sl_e" color="magenta" id="route_South_e_Duxbury_e"/>
+    <route edges="rd1_South_sl_e rd2_South_dl_e rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd7_JanShoba_dl_s rd8_JanShoba_tl_s rd2_Lunnon_sl_w" color="green" id="route_South_e_Lunnon_w"/>
+    <route edges="rd1_South_sl_e rd2_South_dl_e rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd7_JanShoba_dl_s rd9_JanShoba_sl_s rd3_Lunnon_sl_e" color="magenta" id="route_South_e_Lunnon_e"/>
+
+    <route edges="rd1_South_sl_w rd2_South_dl_w rd7_JanShoba_dl_n rd8_JanShoba_dl_n" color="magenta" id="route_South_w_JanShoba_n"/>
+    <route edges="rd1_South_sl_w rd2_South_dl_w rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd7_JanShoba_dl_s rd8_JanShoba_tl_s rd9_JanShoba_dl_s" color="green" id="route_South_w_JanShoba_s"/>
+    <route edges="rd1_South_sl_w rd2_South_dl_w rd7_JanShoba_dl_n rd2_Prospect_sl_w" color="magenta" id="route_South_w_Prospect_w"/>
+    <route edges="rd1_South_sl_w rd2_South_dl_w rd3_South_sl_w" color="blue" id="route_South_w_South_w"/>
+    <route edges="rd1_South_sl_w rd2_South_dl_w rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd2_Duxbury_sl_w rd3_Duxbury_sl_w" color="magenta" id="route_South_w_Duxbury_w"/>
+    <route edges="rd1_South_sl_w rd2_South_dl_w rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd7_JanShoba_sl_s rd4_Duxbury_sl_e" color="green" id="route_South_w_Duxbury_e"/>
+    <route edges="rd1_South_sl_w rd2_South_dl_w rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd7_JanShoba_dl_s rd8_JanShoba_tl_s rd2_Lunnon_sl_w" color="magenta" id="route_South_w_Lunnon_w"/>
+    <route edges="rd1_South_sl_w rd2_South_dl_w rd4_JanShoba_dl_s rd5_JanShoba_tl_s rd6_JanShoba_tl_s rd7_JanShoba_dl_s rd9_JanShoba_sl_s rd3_Lunnon_sl_e" color="green" id="route_South_w_Lunnon_e"/>
+
+    <route edges="rd1_Duxbury_sl_e rd2_Duxbury_dl_e rd7_JanShoba_dl_s rd8_JanShoba_tl_s rd9_JanShoba_dl_s" color="magenta" id="route_Duxbury_e_JanShoba_s"/>
+    <route edges="rd1_Duxbury_sl_e rd2_Duxbury_dl_e rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n rd8_JanShoba_dl_n" color="green" id="route_Duxbury_e_JanShoba_n"/>
+    <route edges="rd1_Duxbury_sl_e rd2_Duxbury_dl_e rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n rd2_Prospect_sl_w" color="green" id="route_Duxbury_e_Prospect_w"/>
+    <route edges="rd1_Duxbury_sl_e rd2_Duxbury_dl_e rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd3_South_sl_w" color="green" id="route_Duxbury_e_South_w"/>
+    <route edges="rd1_Duxbury_sl_e rd2_Duxbury_dl_e rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd2_South_sl_e rd4_South_sl_e" color="magenta" id="route_Duxbury_e_South_e"/>
+    <route edges="rd1_Duxbury_sl_e rd2_Duxbury_dl_e rd3_Duxbury_sl_e rd4_Duxbury_sl_e" color="blue" id="route_Duxbury_e_Duxbury_e"/>
+    <route edges="rd1_Duxbury_sl_e rd2_Duxbury_dl_e rd7_JanShoba_dl_s rd8_JanShoba_tl_s rd2_Lunnon_sl_w" color="green" id="route_Duxbury_e_Lunnon_w"/>
+    <route edges="rd1_Duxbury_sl_e rd2_Duxbury_dl_e rd7_JanShoba_dl_s rd9_JanShoba_sl_s rd3_Lunnon_sl_e" color="magenta" id="route_Duxbury_e_Lunnon_e"/>
+
+    <route edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd7_JanShoba_dl_s rd8_JanShoba_tl_s rd9_JanShoba_dl_s" color="green" id="route_Duxbury_w_JanShoba_s"/>
+    <route edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n rd8_JanShoba_dl_n" color="magenta" id="route_Duxbury_w_JanShoba_n"/>
+    <route edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n rd2_Prospect_sl_w" color="magenta" id="route_Duxbury_w_Prospect_w"/>
+    <route edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd3_South_sl_w" color="magenta" id="route_Duxbury_w_South_w"/>
+    <route edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd2_South_sl_e rd4_South_sl_e" color="green" id="route_Duxbury_w_South_e"/>
+    <route edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd2_Duxbury_sl_w rd3_Duxbury_sl_w" color="blue" id="route_Duxbury_w_Duxbury_w"/>
+    <route edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd7_JanShoba_dl_s rd8_JanShoba_tl_s rd2_Lunnon_sl_w" color="magenta" id="route_Duxbury_w_Lunnon_w"/>
+    <route edges="rd0_Duxbury_dl_w rd1_Duxbury_ql_w rd7_JanShoba_dl_s rd9_JanShoba_sl_s rd3_Lunnon_sl_e" color="green" id="route_Duxbury_w_Lunnon_e"/>
+
+    <route edges="rd1_Lunnon_sl_e rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n rd8_JanShoba_dl_n" color="green" id="route_Lunnon_e_JanShoba_n"/>
+    <route edges="rd1_Lunnon_sl_e rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd7_JanShoba_dl_n rd2_Prospect_sl_w" color="green" id="route_Lunnon_e_Prospect_w"/>
+    <route edges="rd1_Lunnon_sl_e rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd3_South_sl_w" color="green" id="route_Lunnon_e_South_w"/>
+    <route edges="rd1_Lunnon_sl_e rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd5_JanShoba_dl_n rd6_JanShoba_tl_n rd2_South_sl_e rd4_South_sl_e" color="magenta" id="route_Lunnon_e_South_e"/>
+    <route edges="rd1_Lunnon_sl_e rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd2_Duxbury_sl_w rd3_Duxbury_sl_w" color="green" id="route_Lunnon_e_Duxbury_w"/>
+    <route edges="rd1_Lunnon_sl_e rd3_JanShoba_dl_N rd4_JanShoba_ql_n rd3_Duxbury_sl_e rd4_Duxbury_sl_e" color="magenta" id="route_Lunnon_e_Duxbury_e"/>
+
+    <route edges="rd1_Lunnon_sl_w rd10_JanShoba_sl_s" color="green" id="route_Lunnon_w_JanShoba_s"/>
