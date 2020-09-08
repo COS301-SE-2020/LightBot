@@ -36,14 +36,7 @@ class MockGenerator(VehicleGenerator):
                 straight_or_turn = np.random.uniform()
                 if straight_or_turn < 0.75: 
                     route_straight = np.random.randint(1, 5)
-                    if route_straight == 1:
-                            print('    <vehicle id="W_E_%i" type="standard_car" route="W_E" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                        elif route_straight == 2:
-                            print('    <vehicle id="E_W_%i" type="standard_car" route="E_W" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                        elif route_straight == 3:
-                            print('    <vehicle id="N_S_%i" type="standard_car" route="N_S" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                        else:
-                            print('    <vehicle id="S_N_%i" type="standard_car" route="S_N" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    # finish this
 
             print("</routes>", file=routes)
 
