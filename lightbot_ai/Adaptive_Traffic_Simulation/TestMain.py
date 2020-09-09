@@ -37,13 +37,14 @@ if __name__ == "__main__":
 
     if config['use_mock_traffic']:
         TrafficGen = MockGenerator(
-            # config['max_steps'],
-            # config['n_cars_generated']
+            config['max_steps'],
+            config['n_cars_generated'],
+            config['episode_seed']
         )
     else:
         TrafficGen = RealWorldGenerator(
             config['max_steps'],
-            config['n_cars_generated']
+            config['n_cars_generated']  
         )
 
     if config['use_automatic_controller']:

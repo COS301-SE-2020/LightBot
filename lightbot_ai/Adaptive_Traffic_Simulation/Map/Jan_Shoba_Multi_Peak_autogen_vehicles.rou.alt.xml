@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+                <!-- generated on Thu Sep  3 22:08:46 2020 by Eclipse SUMO duarouter Version 1.6.0
+                <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
+
+                    <input>
+                        <net-file value="Jan_Shoba_Multi_Peak.net.xml"/>
+                        <route-files value="trips.trips.xml"/>
+                    </input>
+
+                    <output>
+                        <output-file value="Jan_Shoba_Multi_Peak.rou.xml"/>
+                        <alternatives-output value="Jan_Shoba_Multi_Peak.rou.alt.xml"/>
+                    </output>
+
+                    <time>
+                        <begin value="0"/>
+                        <end value="3600"/>
+                    </time>
+
+                    <report>
+                        <no-warnings value="true"/>
+                        <ignore-errors value="true"/>
+                        <no-step-log value="true"/>
+                    </report>
+
+                </configuration>
+                -->
+
+                <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+                <vType accel="1.0" decel="4.5" id="standard_car" length="5.0" minGap="2.5" maxSpeed="25" sigma="0.5" />
+     <vehicle id="j_s_j_s_0" type="standard_car" route="route_JanShoba_s_JanShoba_s" depart="21.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_w_l_w_1" type="standard_car" route="route_South_w_Lunnon_w" depart="48.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_w_d_w_2" type="standard_car" route="route_Duxbury_w_Duxbury_w" depart="53.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_s_j_s_3" type="standard_car" route="route_JanShoba_s_JanShoba_s" depart="67.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_s_j_s_4" type="standard_car" route="route_JanShoba_s_JanShoba_s" depart="67.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_e_d_e_5" type="standard_car" route="route_Duxbury_e_Duxbury_e" depart="70.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_e_d_e_6" type="standard_car" route="route_Duxbury_e_Duxbury_e" depart="73.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_s_j_s_7" type="standard_car" route="route_JanShoba_s_JanShoba_s" depart="86.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_w_s_w_8" type="standard_car" route="route_South_w_South_w" depart="96.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_w_s_w_9" type="standard_car" route="route_South_w_South_w" depart="101.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_w_p_w_10" type="standard_car" route="route_South_w_Prospect_w" depart="103.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_n_j_n_11" type="standard_car" route="route_JanShoba_n_JanShoba_n" depart="104.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_w_s_w_12" type="standard_car" route="route_South_w_South_w" depart="116.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_n_j_n_13" type="standard_car" route="route_JanShoba_n_JanShoba_n" depart="131.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_e_d_e_14" type="standard_car" route="route_Duxbury_e_Duxbury_e" depart="135.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_s_s_w_15" type="standard_car" route="route_JanShoba_s_South_w" depart="142.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_w_d_w_16" type="standard_car" route="route_Duxbury_w_Duxbury_w" depart="143.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_w_s_w_17" type="standard_car" route="route_South_w_South_w" depart="157.0" departLane="random" departSpeed="10" />
+     <vehicle id="p_w_l_e_18" type="standard_car" route="route_Prospect_w_Lunnon_e" depart="157.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_w_d_w_19" type="standard_car" route="route_Duxbury_w_Duxbury_w" depart="168.0" departLane="random" departSpeed="10" />
+     <vehicle id="p_w_l_w_20" type="standard_car" route="route_Prospect_w_Lunnon_w" depart="175.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_w_d_w_21" type="standard_car" route="route_Duxbury_w_Duxbury_w" depart="179.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_s_j_s_22" type="standard_car" route="route_JanShoba_s_JanShoba_s" depart="184.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_n_j_n_23" type="standard_car" route="route_JanShoba_n_JanShoba_n" depart="196.0" departLane="random" departSpeed="10" />
+     <vehicle id="p_w_s_w_24" type="standard_car" route="route_Prospect_w_South_w" depart="196.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_e_j_s_25" type="standard_car" route="route_South_e_JanShoba_s" depart="197.0" departLane="random" departSpeed="10" />
+     <vehicle id="l_e_j_n_26" type="standard_car" route="route_Lunnon_e_JanShoba_n" depart="199.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_w_s_w_27" type="standard_car" route="route_South_w_South_w" depart="199.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_n_j_n_28" type="standard_car" route="route_JanShoba_n_JanShoba_n" depart="200.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_s_j_s_29" type="standard_car" route="route_JanShoba_s_JanShoba_s" depart="201.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_n_p_w_30" type="standard_car" route="route_JanShoba_n_Prospect_w" depart="205.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_w_s_w_31" type="standard_car" route="route_South_w_South_w" depart="206.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_w_d_e_32" type="standard_car" route="route_South_w_Duxbury_e" depart="207.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_w_s_w_33" type="standard_car" route="route_South_w_South_w" depart="209.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_n_j_n_34" type="standard_car" route="route_JanShoba_n_JanShoba_n" depart="211.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_w_d_w_35" type="standard_car" route="route_Duxbury_w_Duxbury_w" depart="215.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_s_s_w_36" type="standard_car" route="route_JanShoba_s_South_w" depart="217.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_e_s_e_37" type="standard_car" route="route_South_e_South_e" depart="219.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_s_j_s_38" type="standard_car" route="route_JanShoba_s_JanShoba_s" depart="222.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_w_s_w_39" type="standard_car" route="route_South_w_South_w" depart="228.0" departLane="random" departSpeed="10" />
+     <vehicle id="p_e_j_n_40" type="standard_car" route="route_Prospect_e_JanShoba_n" depart="232.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_w_s_w_41" type="standard_car" route="route_South_w_South_w" depart="235.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_e_d_w_42" type="standard_car" route="route_South_e_Duxbury_w" depart="245.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_e_s_e_43" type="standard_car" route="route_South_e_South_e" depart="250.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_w_s_w_44" type="standard_car" route="route_South_w_South_w" depart="251.0" departLane="random" departSpeed="10" />
+     <vehicle id="p_e_j_n_45" type="standard_car" route="route_Prospect_e_JanShoba_n" depart="254.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_w_d_w_46" type="standard_car" route="route_Duxbury_w_Duxbury_w" depart="255.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_e_s_e_47" type="standard_car" route="route_South_e_South_e" depart="260.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_e_s_e_48" type="standard_car" route="route_South_e_South_e" depart="268.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_n_j_n_49" type="standard_car" route="route_JanShoba_n_JanShoba_n" depart="276.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_w_d_w_50" type="standard_car" route="route_Duxbury_w_Duxbury_w" depart="277.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_e_d_e_51" type="standard_car" route="route_Duxbury_e_Duxbury_e" depart="282.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_w_s_w_52" type="standard_car" route="route_South_w_South_w" depart="283.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_s_j_s_53" type="standard_car" route="route_JanShoba_s_JanShoba_s" depart="283.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_n_j_n_54" type="standard_car" route="route_JanShoba_n_JanShoba_n" depart="285.0" departLane="random" departSpeed="10" />
+     <vehicle id="l_w_j_s_55" type="standard_car" route="route_Lunnon_w_JanShoba_s" depart="286.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_w_s_w_56" type="standard_car" route="route_South_w_South_w" depart="292.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_e_l_e_57" type="standard_car" route="route_South_e_Lunnon_e" depart="295.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_e_j_n_58" type="standard_car" route="route_Duxbury_e_JanShoba_n" depart="297.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_w_s_w_59" type="standard_car" route="route_South_w_South_w" depart="301.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_n_l_w_60" type="standard_car" route="route_JanShoba_n_Lunnon_w" depart="304.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_w_d_w_61" type="standard_car" route="route_Duxbury_w_Duxbury_w" depart="315.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_e_d_e_62" type="standard_car" route="route_Duxbury_e_Duxbury_e" depart="318.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_w_j_n_63" type="standard_car" route="route_Duxbury_w_JanShoba_n" depart="318.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_w_s_w_64" type="standard_car" route="route_South_w_South_w" depart="320.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_n_j_n_65" type="standard_car" route="route_JanShoba_n_JanShoba_n" depart="322.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_s_j_s_66" type="standard_car" route="route_JanShoba_s_JanShoba_s" depart="325.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_e_d_e_67" type="standard_car" route="route_Duxbury_e_Duxbury_e" depart="327.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_n_d_e_68" type="standard_car" route="route_JanShoba_n_Duxbury_e" depart="331.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_w_s_w_69" type="standard_car" route="route_South_w_South_w" depart="334.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_n_j_n_70" type="standard_car" route="route_JanShoba_n_JanShoba_n" depart="335.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_e_s_e_71" type="standard_car" route="route_South_e_South_e" depart="342.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_e_d_e_72" type="standard_car" route="route_Duxbury_e_Duxbury_e" depart="353.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_e_s_e_73" type="standard_car" route="route_South_e_South_e" depart="358.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_e_d_e_74" type="standard_car" route="route_Duxbury_e_Duxbury_e" depart="373.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_n_j_n_75" type="standard_car" route="route_JanShoba_n_JanShoba_n" depart="377.0" departLane="random" departSpeed="10" />
+     <vehicle id="p_w_l_w_76" type="standard_car" route="route_Prospect_w_Lunnon_w" depart="392.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_e_s_e_77" type="standard_car" route="route_South_e_South_e" depart="395.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_e_d_e_78" type="standard_car" route="route_Duxbury_e_Duxbury_e" depart="399.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_e_s_e_79" type="standard_car" route="route_South_e_South_e" depart="400.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_e_d_e_80" type="standard_car" route="route_Duxbury_e_Duxbury_e" depart="405.0" departLane="random" departSpeed="10" />
+     <vehicle id="p_w_s_w_81" type="standard_car" route="route_Prospect_w_South_w" depart="406.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_e_s_e_82" type="standard_car" route="route_South_e_South_e" depart="426.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_e_d_e_83" type="standard_car" route="route_Duxbury_e_Duxbury_e" depart="431.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_e_d_w_84" type="standard_car" route="route_South_e_Duxbury_w" depart="436.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_w_s_w_85" type="standard_car" route="route_South_w_South_w" depart="437.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_e_p_w_86" type="standard_car" route="route_Duxbury_e_Prospect_w" depart="441.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_e_s_e_87" type="standard_car" route="route_South_e_South_e" depart="443.0" departLane="random" departSpeed="10" />
+     <vehicle id="p_w_d_e_88" type="standard_car" route="route_Prospect_w_Duxbury_e" depart="465.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_e_p_w_89" type="standard_car" route="route_Duxbury_e_Prospect_w" depart="484.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_n_d_e_90" type="standard_car" route="route_JanShoba_n_Duxbury_e" depart="485.0" departLane="random" departSpeed="10" />
+     <vehicle id="s_w_j_n_91" type="standard_car" route="route_South_w_JanShoba_n" depart="489.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_w_d_w_92" type="standard_car" route="route_Duxbury_w_Duxbury_w" depart="509.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_w_d_w_93" type="standard_car" route="route_Duxbury_w_Duxbury_w" depart="516.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_w_p_w_94" type="standard_car" route="route_Duxbury_w_Prospect_w" depart="527.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_e_d_e_95" type="standard_car" route="route_Duxbury_e_Duxbury_e" depart="566.0" departLane="random" departSpeed="10" />
+     <vehicle id="d_e_d_e_96" type="standard_car" route="route_Duxbury_e_Duxbury_e" depart="584.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_n_j_n_97" type="standard_car" route="route_JanShoba_n_JanShoba_n" depart="648.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_s_j_s_98" type="standard_car" route="route_JanShoba_s_JanShoba_s" depart="654.0" departLane="random" departSpeed="10" />
+     <vehicle id="j_n_d_e_99" type="standard_car" route="route_JanShoba_n_Duxbury_e" depart="699.0" departLane="random" departSpeed="10" />
+</routes>
