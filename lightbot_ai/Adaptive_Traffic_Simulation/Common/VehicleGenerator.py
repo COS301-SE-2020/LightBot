@@ -69,135 +69,145 @@ class MockGenerator(VehicleGenerator):
 
             for car_counter, step in enumerate(car_gen_steps):
                 straight_or_turn = np.random.uniform()
-                if straight_or_turn < 0.75: 
+                # 35% of cars go straight down or up Jan Shoba, South and Duxbury
+                if straight_or_turn < 0.35: 
                     route_straight = np.random.randint(1, 7)
                     if route_straight == 1:
                         print('     <vehicle id="j_n_j_n_%i" type="standard_car" route="route_JanShoba_n_JanShoba_n" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
                     if route_straight == 2:
-                        print('     <vehicle id="d_e_d_e_%i" type="standard_car" route="route_Duxbury_e_Duxbury_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_straight == 3:
-                        print('     <vehicle id="d_w_d_w_%i" type="standard_car" route="route_Duxbury_w_Duxbury_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_straight == 4:
-                        print('     <vehicle id="s_e_s_e_%i" type="standard_car" route="route_South_e_South_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_straight == 5:
-                        print('     <vehicle id="s_w_s_w_%i" type="standard_car" route="route_South_w_South_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_straight == 6:
                         print('     <vehicle id="j_s_j_s_%i" type="standard_car" route="route_JanShoba_s_JanShoba_s" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                else:
-                    route_turn = np.random.randint(1, 58)
+                    if route_straight == 3:
+                        print('     <vehicle id="d_e_d_e_%i" type="standard_car" route="route_Duxbury_e_Duxbury_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_straight == 4:
+                        print('     <vehicle id="d_w_d_w_%i" type="standard_car" route="route_Duxbury_w_Duxbury_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_straight == 5:
+                        print('     <vehicle id="s_e_s_e_%i" type="standard_car" route="route_South_e_South_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_straight == 6:
+                        print('     <vehicle id="s_w_s_w_%i" type="standard_car" route="route_South_w_South_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                # 25% of cars turn into Jan Shoba
+                elif straight_or_turn >= 0.35 & straight_or_turn < 0.6:
+                    route_turn = np.random.randint(1, 14)
+                    if route_turn == 1:
+                        print('     <vehicle id="l_e_j_n_%i" type="standard_car" route="route_Lunnon_e_JanShoba_n" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 2:
+                        print('     <vehicle id="l_w_j_s_%i" type="standard_car" route="route_Lunnon_w_JanShoba_s" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 3:
+                        print('     <vehicle id="d_e_j_s_%i" type="standard_car" route="route_Duxbury_e_JanShoba_s" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 4:
+                        print('     <vehicle id="d_e_j_n_%i" type="standard_car" route="route_Duxbury_e_JanShoba_n" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 5:
+                        print('     <vehicle id="d_w_j_s_%i" type="standard_car" route="route_Duxbury_w_JanShoba_s" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 6:
+                        print('     <vehicle id="d_w_j_n_%i" type="standard_car" route="route_Duxbury_w_JanShoba_n" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 7:
+                        print('     <vehicle id="s_w_j_n_%i" type="standard_car" route="route_South_w_JanShoba_n" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 8:
+                        print('     <vehicle id="s_w_d_w_%i" type="standard_car" route="route_South_w_Duxbury_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 9:
+                        print('     <vehicle id="s_w_j_s_%i" type="standard_car" route="route_South_w_JanShoba_s" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 10:
+                        print('     <vehicle id="s_e_j_s_%i" type="standard_car" route="route_South_e_JanShoba_s" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 11:
+                        print('     <vehicle id="s_e_j_n_%i" type="standard_car" route="route_South_e_JanShoba_n" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 12:
+                        print('     <vehicle id="p_e_j_n_%i" type="standard_car" route="route_Prospect_e_JanShoba_n" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 13:
+                        print('     <vehicle id="p_w_j_s_%i" type="standard_car" route="route_Prospect_w_JanShoba_s" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    # end
+                # 20% of cars turn into Duxbury and South
+                elif straight_or_turn >= 0.6 & straight_or_turn < 0.8:
+                    route_turn = np.random.randint(1, 24)
+                    if route_turn == 1:
+                        print('     <vehicle id="j_n_d_e_%i" type="standard_car" route="route_JanShoba_n_Duxbury_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 2:
+                        print('     <vehicle id="j_n_d_w_%i" type="standard_car" route="route_JanShoba_n_Duxbury_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 3:
+                        print('     <vehicle id="j_n_s_w_%i" type="standard_car" route="route_JanShoba_n_South_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 4:
+                        print('     <vehicle id="j_n_s_e_%i" type="standard_car" route="route_JanShoba_n_South_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 5:
+                        print('     <vehicle id="l_e_d_w_%i" type="standard_car" route="route_Lunnon_e_Duxbury_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 6:
+                        print('     <vehicle id="l_e_d_e_%i" type="standard_car" route="route_Lunnon_e_Duxbury_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 7:
+                        print('     <vehicle id="l_e_s_w_%i" type="standard_car" route="route_Lunnon_e_South_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 8:
+                        print('     <vehicle id="l_e_s_e_%i" type="standard_car" route="route_Lunnon_e_South_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 9:
+                        print('     <vehicle id="s_e_d_w_%i" type="standard_car" route="route_South_e_Duxbury_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 10:
+                        print('     <vehicle id="s_e_d_e_%i" type="standard_car" route="route_South_e_Duxbury_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 11:
+                        print('     <vehicle id="d_e_s_w_%i" type="standard_car" route="route_Duxbury_e_South_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 12:
+                        print('     <vehicle id="d_e_s_e_%i" type="standard_car" route="route_Duxbury_e_South_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 13:
+                        print('     <vehicle id="d_w_s_w_%i" type="standard_car" route="route_Duxbury_w_South_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 14:
+                        print('     <vehicle id="s_w_d_e_%i" type="standard_car" route="route_South_w_Duxbury_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 15:
+                        print('     <vehicle id="p_w_s_e_%i" type="standard_car" route="route_Prospect_w_South_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 16:
+                        print('     <vehicle id="p_w_s_w_%i" type="standard_car" route="route_Prospect_w_South_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 17:
+                        print('     <vehicle id="p_w_d_w_%i" type="standard_car" route="route_Prospect_w_Duxbury_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 18:
+                        print('     <vehicle id="p_w_d_e_%i" type="standard_car" route="route_Prospect_w_Duxbury_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 19:
+                        print('     <vehicle id="j_s_s_w_%i" type="standard_car" route="route_JanShoba_s_South_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 20:
+                        print('     <vehicle id="j_s_s_e_%i" type="standard_car" route="route_JanShoba_s_South_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 21:
+                        print('     <vehicle id="j_s_d_e_%i" type="standard_car" route="route_JanShoba_s_Duxbury_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 22:
+                        print('     <vehicle id="j_s_d_w_%i" type="standard_car" route="route_JanShoba_s_Duxbury_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    if route_turn == 23:
+                        print('     <vehicle id="d_w_s_e_%i" type="standard_car" route="route_Duxbury_w_South_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                    # end
+                # 10% of cars turn into Lunnon and Prospect
+                elif straight_or_turn >= 0.6 & straight_or_turn < 0.8:
+                    route_turn = np.random.randint(1, 22)
                     if route_turn == 1:
                         print('     <vehicle id="j_n_l_w_%i" type="standard_car" route="route_JanShoba_n_Lunnon_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
                     if route_turn == 2:
                         print('     <vehicle id="j_n_l_e_%i" type="standard_car" route="route_JanShoba_n_Lunnon_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
                     if route_turn == 3:
-                        print('     <vehicle id="j_n_d_e_%i" type="standard_car" route="route_JanShoba_n_Duxbury_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 4:
-                        print('     <vehicle id="j_n_d_w_%i" type="standard_car" route="route_JanShoba_n_Duxbury_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 5:
-                        print('     <vehicle id="j_n_s_w_%i" type="standard_car" route="route_JanShoba_n_South_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 6:
-                        print('     <vehicle id="j_n_s_e_%i" type="standard_car" route="route_JanShoba_n_South_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 7:
                         print('     <vehicle id="j_n_p_w_%i" type="standard_car" route="route_JanShoba_n_Prospect_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 8:
-                        print('     <vehicle id="l_e_j_n_%i" type="standard_car" route="route_Lunnon_e_JanShoba_n" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 9:
-                        print('     <vehicle id="l_e_d_w_%i" type="standard_car" route="route_Lunnon_e_Duxbury_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 10:
-                        print('     <vehicle id="l_e_d_e_%i" type="standard_car" route="route_Lunnon_e_Duxbury_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 11:
-                        print('     <vehicle id="l_e_s_w_%i" type="standard_car" route="route_Lunnon_e_South_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 12:
-                        print('     <vehicle id="l_e_s_e_%i" type="standard_car" route="route_Lunnon_e_South_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 13:
+                    if route_turn == 4:
                         print('     <vehicle id="l_e_p_w_%i" type="standard_car" route="route_Lunnon_e_Prospect_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 14:
-                        print('     <vehicle id="l_w_j_s_%i" type="standard_car" route="route_Lunnon_w_JanShoba_s" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 15:
-                        print('     <vehicle id="d_e_j_s_%i" type="standard_car" route="route_Duxbury_e_JanShoba_s" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 16:
-                        print('     <vehicle id="d_e_j_n_%i" type="standard_car" route="route_Duxbury_e_JanShoba_n" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 17:
+                    if route_turn == 5:
                         print('     <vehicle id="d_e_l_w_%i" type="standard_car" route="route_Duxbury_e_Lunnon_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 18:
+                    if route_turn == 6:
                         print('     <vehicle id="d_e_l_e_%i" type="standard_car" route="route_Duxbury_e_Lunnon_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 19:
-                        print('     <vehicle id="d_e_s_w_%i" type="standard_car" route="route_Duxbury_e_South_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 20:
-                        print('     <vehicle id="d_e_s_e_%i" type="standard_car" route="route_Duxbury_e_South_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 21:
+                    if route_turn == 7:
                         print('     <vehicle id="d_e_p_w_%i" type="standard_car" route="route_Duxbury_e_Prospect_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 22:
-                        print('     <vehicle id="d_w_j_s_%i" type="standard_car" route="route_Duxbury_w_JanShoba_s" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 23:
-                        print('     <vehicle id="d_w_j_n_%i" type="standard_car" route="route_Duxbury_w_JanShoba_n" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 24:
+                    if route_turn == 8:
                         print('     <vehicle id="d_w_l_w_%i" type="standard_car" route="route_Duxbury_w_Lunnon_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 25:
+                    if route_turn == 9:
                         print('     <vehicle id="d_w_l_e_%i" type="standard_car" route="route_Duxbury_w_Lunnon_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 26:
-                        print('     <vehicle id="d_w_s_w_%i" type="standard_car" route="route_Duxbury_w_South_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 27: 
+                    if route_turn == 10: 
                         print('     <vehicle id="s_e_p_w_%i" type="standard_car" route="route_South_e_Prospect_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 28:
-                        print('     <vehicle id="s_e_j_s_%i" type="standard_car" route="route_South_e_JanShoba_s" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 29:
-                        print('     <vehicle id="s_e_j_n_%i" type="standard_car" route="route_South_e_JanShoba_n" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 30:
-                        print('     <vehicle id="s_e_d_w_%i" type="standard_car" route="route_South_e_Duxbury_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 31:
-                        print('     <vehicle id="s_e_d_e_%i" type="standard_car" route="route_South_e_Duxbury_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 32:
+                    if route_turn == 11:
                         print('     <vehicle id="s_e_l_w_%i" type="standard_car" route="route_South_e_Lunnon_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 33:
+                    if route_turn == 12:
                         print('     <vehicle id="s_e_l_e_%i" type="standard_car" route="route_South_e_Lunnon_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 34:
-                        print('     <vehicle id="s_w_j_s_%i" type="standard_car" route="route_South_w_JanShoba_s" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 35:
-                        print('     <vehicle id="s_w_j_n_%i" type="standard_car" route="route_South_w_JanShoba_n" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 36:
-                        print('     <vehicle id="s_w_d_w_%i" type="standard_car" route="route_South_w_Duxbury_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 37:
-                        print('     <vehicle id="s_w_d_e_%i" type="standard_car" route="route_South_w_Duxbury_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 38:
+                    if route_turn == 13:
                         print('     <vehicle id="s_w_l_w_%i" type="standard_car" route="route_South_w_Lunnon_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 39:
+                    if route_turn == 14:
                         print('     <vehicle id="s_w_l_e_%i" type="standard_car" route="route_South_w_Lunnon_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 40: 
+                    if route_turn == 15: 
                         print('     <vehicle id="s_w_p_w_%i" type="standard_car" route="route_South_w_Prospect_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 41:
-                        print('     <vehicle id="p_e_j_n_%i" type="standard_car" route="route_Prospect_e_JanShoba_n" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 42:
-                        print('     <vehicle id="p_w_j_s_%i" type="standard_car" route="route_Prospect_w_JanShoba_s" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 43:
-                        print('     <vehicle id="p_w_s_w_%i" type="standard_car" route="route_Prospect_w_South_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 44:
-                        print('     <vehicle id="p_w_s_w_%i" type="standard_car" route="route_Prospect_w_South_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 45:
-                        print('     <vehicle id="p_w_d_w_%i" type="standard_car" route="route_Prospect_w_Duxbury_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 46:
-                        print('     <vehicle id="p_w_d_e_%i" type="standard_car" route="route_Prospect_w_Duxbury_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 47:
+                    if route_turn == 16:
                         print('     <vehicle id="p_w_l_w_%i" type="standard_car" route="route_Prospect_w_Lunnon_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 48:
+                    if route_turn == 17:
                         print('     <vehicle id="p_w_l_e_%i" type="standard_car" route="route_Prospect_w_Lunnon_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 49:
+                    if route_turn == 18:
                         print('     <vehicle id="j_s_p_e_%i" type="standard_car" route="route_JanShoba_s_Prospect_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 50:
-                        print('     <vehicle id="j_s_s_w_%i" type="standard_car" route="route_JanShoba_s_South_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 51:
-                        print('     <vehicle id="j_s_s_e_%i" type="standard_car" route="route_JanShoba_s_South_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 52:
-                        print('     <vehicle id="j_s_d_e_%i" type="standard_car" route="route_JanShoba_s_Duxbury_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 53:
-                        print('     <vehicle id="j_s_d_w_%i" type="standard_car" route="route_JanShoba_s_Duxbury_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 54:
+                    if route_turn == 19:
                         print('     <vehicle id="j_s_l_e_%i" type="standard_car" route="route_JanShoba_s_Lunnon_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 55:
+                    if route_turn == 20:
                         print('     <vehicle id="j_s_l_w_%i" type="standard_car" route="route_JanShoba_s_Lunnon_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 56:
-                        print('     <vehicle id="d_w_s_e_%i" type="standard_car" route="route_Duxbury_w_South_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_turn == 57:
+                    if route_turn == 21:
                         print('     <vehicle id="d_w_p_w_%i" type="standard_car" route="route_Duxbury_w_Prospect_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
             print("</routes>", file=routes)
 
