@@ -223,7 +223,7 @@ class Simulation:
 
     def run_manual(self):
         start_time = timeit.default_timer()
-
+        self._TrafficGen.generate_routefile()
         print('Starting TraCI...')
         traci.start(self._sumo_cmd)
 
