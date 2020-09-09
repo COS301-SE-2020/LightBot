@@ -141,7 +141,10 @@ class Simulation:
                     jan_south_yellow_state_steps_todo = self._yellow_duration
                     # print("Jan South yellow todo set")
                 self._set_jan_south_green_phase(jan_south_action)
-                jan_south_green_state_steps_todo = self._green_duration
+                if jan_south_action == 0 or jan_south_action == 2:
+                    jan_south_green_state_steps_todo = self._green_duration
+                else:
+                    jan_south_green_state_steps_todo = 6
                 # print("Jan South green todo set")
 
             if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == 0:
@@ -155,7 +158,10 @@ class Simulation:
                     jan_duxbury_yellow_state_steps_todo = self._yellow_duration
                     # print("Jan Duxbury yellow todo set")
                 self._set_jan_duxbury_green_phase(jan_duxbury_action)
-                jan_duxbury_green_state_steps_todo = self._green_duration
+                if jan_duxbury_action == 0 or jan_duxbury_action == 2:
+                    jan_duxbury_green_state_steps_todo = self._green_duration
+                else:
+                    jan_duxbury_green_state_steps_todo = 6
                 # print("Jan Duxbury green todo set")
 
             # if (self._step + steps_todo) >= self._max_steps: # don't think we need this anymore

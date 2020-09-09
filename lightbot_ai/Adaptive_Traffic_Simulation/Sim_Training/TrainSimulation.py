@@ -39,7 +39,7 @@ class Simulation:
         self._yellow_duration = yellow_duration
         self._num_states = num_states
         self._num_actions = num_actions
-        # self._reward_store = []
+        # self._reward_store = []   
         # self._cumulative_wait_store = []
         # self._avg_queue_length_store = []
         self._jan_south_reward_store = []
@@ -58,6 +58,8 @@ class Simulation:
     def run(self, episode, epsilon):
         start_time = timeit.default_timer()
 
+        self._TrafficGen._seed = episode
+        self._TrafficGen.generate_routefile()
         print('Starting TraCI...')
         traci.start(self._sumo_cmd)
 
@@ -111,7 +113,10 @@ class Simulation:
                     jan_south_yellow_state_steps_todo = self._yellow_duration
                     # print("Jan South yellow todo set")
                 self._set_jan_south_green_phase(jan_south_action)
-                jan_south_green_state_steps_todo = self._green_duration
+                if jan_south_action == 0 or jan_south_action == 2:
+                    jan_south_green_state_steps_todo = self._green_duration
+                else:
+                    jan_south_green_state_steps_todo = 6
                 # print("Jan South green todo set")
 
             if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == 0:
@@ -127,7 +132,10 @@ class Simulation:
                     jan_duxbury_yellow_state_steps_todo = self._yellow_duration
                     # print("Jan Duxbury yellow todo set")
                 self._set_jan_duxbury_green_phase(jan_duxbury_action)
-                jan_duxbury_green_state_steps_todo = self._green_duration
+                if jan_duxbury_action == 0 or jan_duxbury_action == 2:
+                    jan_duxbury_green_state_steps_todo = self._green_duration
+                else:
+                    jan_duxbury_green_state_steps_todo = 6
                 # print("Jan Duxbury green todo set")
 
             if (self._step < self._max_steps) and (jan_south_yellow_state_steps_todo > 0 or jan_south_green_state_steps_todo > 0 or jan_duxbury_yellow_state_steps_todo > 0 or jan_duxbury_green_state_steps_todo > 0):
@@ -169,7 +177,7 @@ class Simulation:
             
         self._save_episode_stats()
         print("Jan_South Total reward:", self._jan_south_sum_neg_reward, "- Epsilon:", round(epsilon, 2))
-        print("Jan_Duxbury Total reward:", self._jan_south_sum_neg_reward, "- Epsilon:", round(epsilon, 2))
+        print("Jan_Duxbury Total reward:", self._jan_duxbury_sum_neg_reward, "- Epsilon:", round(epsilon, 2))
         traci.close()
         simulation_time = round(timeit.default_timer() - start_time, 1)
         print("Training...")
