@@ -121,17 +121,20 @@ class Simulation:
         jan_duxbury_action = 0
 
         while self._step < self._max_steps:
+            print("Begin while loop...")
             if jan_south_yellow_state_steps_todo == 0 and jan_south_green_state_steps_todo == 0:
+                print("If yellow and green todo == 0")
                 jan_south_current_sim_state = self._get_jan_south_sim_state()
                 jan_south_current_total_wait = self._collect_jan_south_waiting_times()
                 jan_south_reward = jan_south_old_total_wait - jan_south_current_total_wait
                 jan_south_action = self._choose_action(jan_south_current_sim_state)
-               
+                print("South action = ", jan_south_action)
                 if self._step != 0 and jan_south_old_action != jan_south_action:
+                    print("If self._step != 0 and jan_south_old_action != jan_south_action...")
                     self._set_jan_south_yellow_phase(jan_south_old_action)
                     jan_south_yellow_state_steps_todo = self._yellow_duration
-                    print("Jan South yellow todo set: ", jan_south_yellow_state_steps_todo)
-                self._set_jan_south_green_phase(jan_south_action)
+                    print("South yellow todo set: ", jan_south_yellow_state_steps_todo)
+                # self._set_jan_south_green_phase(jan_south_action)
                 # jan_south_green_state_steps_todo = self._green_duration                
                 if jan_south_action == 0 or jan_south_action == 2:
                     jan_south_green_state_steps_todo = self._green_duration
@@ -139,6 +142,14 @@ class Simulation:
                 else:
                     jan_south_green_state_steps_todo = 6
                     print("South: Action: ", jan_south_action, "Green Steps set: ", jan_south_green_state_steps_todo)
+            if jan_south_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo != 0:
+                self._set_jan_south_green_phase(jan_south_action)
+                # if jan_south_action == 0 or jan_south_action == 2:
+                #     jan_south_green_state_steps_todo = self._green_duration
+                #     print("South: Action: ", jan_south_action, "Green Steps set: ", jan_south_green_state_steps_todo)
+                # else:
+                #     jan_south_green_state_steps_todo = 6
+                #     print("South: Action: ", jan_south_action, "Green Steps set: ", jan_south_green_state_steps_todo)
 
             if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == 0:
                 jan_duxbury_current_sim_state = self._get_jan_duxbury_sim_state()
@@ -170,6 +181,7 @@ class Simulation:
             #     self._queue_length_episode.append(queue_length)
 
             if (self._step < self._max_steps) and (jan_south_yellow_state_steps_todo > 0 or jan_south_green_state_steps_todo > 0 or jan_duxbury_yellow_state_steps_todo > 0 or jan_duxbury_green_state_steps_todo > 0):
+                print("If stuff to simulate... ")
                 traci.simulationStep()
                 self._step += 1
                 # queue_length = self._get_queue_length()
@@ -194,6 +206,7 @@ class Simulation:
 
                 
             jan_south_old_action = jan_south_action
+            print("South old action = ", jan_south_old_action)
             jan_duxbury_old_action = jan_duxbury_action
 
 
@@ -256,10 +269,10 @@ class Simulation:
     #  The _set_yellow_phase function will choose the appropriate Yellow State based on old_action.
     #  The Yellow State is recorded in _actions_taken list and set in SUMO using traci.trafficlight.setPhase().
     def _set_jan_south_yellow_phase(self, old_action):
-        yellow_phase_code = old_action * 2 + \
-            1  # obtain the yellow phase code, based on the old action (ref on environment.net.xml)
+        yellow_phase_code = old_action * 2 + 1
         self._jan_south_actions_taken.append(
             self.JanShoba_South_XML_TRAFFIC_LIGHT_ALL_STATES[yellow_phase_code])
+        print("South yellow phase set for old action: ", old_action)
         traci.trafficlight.setPhase(
             "cluster_25290891_611769793", yellow_phase_code)
 
