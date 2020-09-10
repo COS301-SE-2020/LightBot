@@ -137,7 +137,7 @@ class Simulation:
                     print("South yellow todo set: ", jan_south_yellow_state_steps_todo)
                 # self._set_jan_south_green_phase(jan_south_action)
                 # jan_south_green_state_steps_todo = self._green_duration 
-                self._jan_south_actions_taken.append(self.JanShoba_South_XML_TRAFFIC_LIGHT_GREEN_STATES[jan_south_old_action])               
+                self._jan_south_actions_taken.append(self.JanShoba_South_XML_TRAFFIC_LIGHT_GREEN_STATES[jan_south_action])               
                 if jan_south_action == 0 or jan_south_action == 2:
                     jan_south_green_state_steps_todo = self._green_duration
                     print("South: Action: ", jan_south_action, "Green Steps set: ", jan_south_green_state_steps_todo)
@@ -205,14 +205,16 @@ class Simulation:
                 jan_south_old_action = jan_south_action
                 print("South old action = ", jan_south_old_action)
 
-            jan_duxbury_old_action = jan_duxbury_action
+            if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == 0:
+                jan_duxbury_old_action = jan_duxbury_action
 
             if jan_south_yellow_state_steps_todo == 0 and jan_south_green_state_steps_todo == 0:
                 jan_south_old_total_wait = jan_south_current_total_wait
                 self._jan_south_reward_episode.append(jan_south_reward)
-
-            jan_duxbury_old_total_wait = jan_duxbury_current_total_wait
-            self._jan_duxbury_reward_episode.append(jan_duxbury_reward)
+                
+            if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == 0:
+                jan_duxbury_old_total_wait = jan_duxbury_current_total_wait
+                self._jan_duxbury_reward_episode.append(jan_duxbury_reward)
 
         traci.close()
         print('Ending TraCI...')
