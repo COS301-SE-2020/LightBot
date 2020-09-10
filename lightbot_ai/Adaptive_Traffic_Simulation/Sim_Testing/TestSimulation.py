@@ -234,7 +234,6 @@ class Simulation:
     #  The Yellow State is recorded in _actions_taken list and set in SUMO using traci.trafficlight.setPhase().
     def _set_jan_south_yellow_phase(self, old_action):
         yellow_phase_code = old_action * 2 + 1        
-        print("South yellow phase set for old action: ", old_action)
         traci.trafficlight.setPhase(
             "cluster_25290891_611769793", yellow_phase_code)
 
