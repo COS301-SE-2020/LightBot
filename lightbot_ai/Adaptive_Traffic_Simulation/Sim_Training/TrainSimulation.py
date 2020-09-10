@@ -58,7 +58,7 @@ class Simulation:
     def run(self, episode, epsilon):
         start_time = timeit.default_timer()
 
-        self._TrafficGen._seed = episode
+        self._TrafficGen.seed = episode
         self._TrafficGen.generate_routefile()
         print('Starting TraCI...')
         traci.start(self._sumo_cmd)

@@ -121,31 +121,21 @@ class Simulation:
         jan_duxbury_action = 0
 
         while self._step < self._max_steps:
-            # current_state = self._get_state()
-            # current_total_wait = self._collect_waiting_times()
-            # reward = old_total_wait - current_total_wait
-            # action = self._choose_action(current_state)
-            # if self._step != 0 and old_action != action:
-            #     self._set_yellow_phase(old_action)
-            #     self._simulate(self._yellow_duration)
-            # self._set_green_phase(action)
-            # self._simulate(self._green_duration)
             if jan_south_yellow_state_steps_todo == 0 and jan_south_green_state_steps_todo == 0:
                 jan_south_current_sim_state = self._get_jan_south_sim_state()
                 jan_south_current_total_wait = self._collect_jan_south_waiting_times()
                 jan_south_reward = jan_south_old_total_wait - jan_south_current_total_wait
                 jan_south_action = self._choose_action(jan_south_current_sim_state)
-                # print("Jan South action: ",jan_south_action)
                 if self._step != 0 and jan_south_old_action != jan_south_action:
                     self._set_jan_south_yellow_phase(jan_south_old_action)
                     jan_south_yellow_state_steps_todo = self._yellow_duration
-                    # print("Jan South yellow todo set")
                 self._set_jan_south_green_phase(jan_south_action)
+                # jan_south_green_state_steps_todo = self._green_duration
                 if jan_south_action == 0 or jan_south_action == 2:
                     jan_south_green_state_steps_todo = self._green_duration
                 else:
                     jan_south_green_state_steps_todo = 6
-                # print("Jan South green todo set")
+
 
             if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == 0:
                 jan_duxbury_current_sim_state = self._get_jan_duxbury_sim_state()
@@ -158,6 +148,7 @@ class Simulation:
                     jan_duxbury_yellow_state_steps_todo = self._yellow_duration
                     # print("Jan Duxbury yellow todo set")
                 self._set_jan_duxbury_green_phase(jan_duxbury_action)
+                # jan_duxbury_green_state_steps_todo = self._green_duration
                 if jan_duxbury_action == 0 or jan_duxbury_action == 2:
                     jan_duxbury_green_state_steps_todo = self._green_duration
                 else:
@@ -173,7 +164,6 @@ class Simulation:
             #     queue_length = self._get_queue_length()#!!!Might need to put this outside the while loop, might give more accurate results!!!
             #     self._queue_length_episode.append(queue_length)
 
-            # lol, please check logic below, please...
             if (self._step < self._max_steps) and (jan_south_yellow_state_steps_todo > 0 or jan_south_green_state_steps_todo > 0 or jan_duxbury_yellow_state_steps_todo > 0 or jan_duxbury_green_state_steps_todo > 0):
                 traci.simulationStep()
                 self._step += 1
@@ -187,35 +177,24 @@ class Simulation:
 
                 if jan_south_yellow_state_steps_todo > 0:
                     jan_south_yellow_state_steps_todo -= 1
-                    # print("Jan South yellow todo Decreased")
                 else:
                     jan_south_green_state_steps_todo -= 1
-                    # print("Jan South green todo Decreased")
 
                 if jan_duxbury_yellow_state_steps_todo > 0:
                     jan_duxbury_yellow_state_steps_todo -= 1
-                    # print("Jan Duxbury yellow todo Decreased")
                 else:
                     jan_duxbury_green_state_steps_todo -= 1
-                #     print("Jan Duxbury green todo Decreased")
-                # print("jan_south_yellow_state_steps_todo: ",jan_south_yellow_state_steps_todo)
-                # print("jan_south_green_state_steps_todo: ",jan_south_green_state_steps_todo)
-                # print("jan_duxbury_yellow_state_steps_todo: ",jan_duxbury_yellow_state_steps_todo)
-                # print("jan_duxbury_green_state_steps_todo: ",jan_duxbury_green_state_steps_todo)
-                
 
-            # old_action = action
+                
             jan_south_old_action = jan_south_action
             jan_duxbury_old_action = jan_duxbury_action
 
-            # old_total_wait = current_total_wait
-            # self._reward_episode.append(reward)
+
             jan_south_old_total_wait = jan_south_current_total_wait
             self._jan_south_reward_episode.append(jan_south_reward)
             jan_duxbury_old_total_wait = jan_duxbury_current_total_wait
             self._jan_duxbury_reward_episode.append(jan_duxbury_reward)
-        # print("Waiting time: " + str(self._collect_waiting_times()))
-        # self._total_waiting_time = self._collect_waiting_times() # didn't work
+
         traci.close()
         print('Ending TraCI...')
         simulation_time = round(timeit.default_timer() - start_time, 1)

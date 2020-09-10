@@ -42,13 +42,13 @@ if __name__ == "__main__":
     )
 
     if config['use_mock_traffic']:
-        TrafficGen=MockGenerator(
+        TrafficGen = MockGenerator(
             config['max_steps'],
             config['n_cars_generated'],
             config['episode_seed']
         )
     else:
-        TrafficGen=RealWorldGenerator()
+        pass
         
 
     Memory = Memory(

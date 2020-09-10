@@ -13,13 +13,13 @@ class MockGenerator(VehicleGenerator):
     def __init__(self, max_steps, n_cars_generated, episode_seed):
         self._max_steps = max_steps
         self._number_cars_generated = n_cars_generated
-        self._seed = episode_seed
+        self.seed = episode_seed
+
     
 
 
     def generate_routefile(self):
-        
-        np.random.seed(self._seed)
+        np.random.seed(self.seed)
 
         # traffic is distributed according a Weibull distribution
         timings = np.random.weibull(2, self._number_cars_generated)
