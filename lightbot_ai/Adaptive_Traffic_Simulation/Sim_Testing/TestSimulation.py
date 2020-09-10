@@ -62,26 +62,26 @@ class Simulation:
             '<phase duration="6"  state="rrrrrrGrrrrrrG"/>',
             '<phase duration="6"  state="rrrrrryrrrrrry"/>',
             '<phase duration="27" state="GGrrrrrGGgrrrr"/>',
-            '<phase duration="6"  state="yyrrrrryygrrrr"/>',
+            '<phase duration="6"  state="yyrrrrryyyrrrr"/>',   #  Quick fix!!
             '<phase duration="6"  state="rrGGrrrrrGrrrr"/>',
             '<phase duration="6"  state="rryyrrrrryrrrr"/>'
         ]
         # JanShoba_South_tl_=_cluster_25290891_611769793
         self.JanShoba_South_XML_TRAFFIC_LIGHT_GREEN_STATES = [
-            '<phase duration="10" state="GGGrrrrrrGGGrrrrr"/>',
-            '<phase duration="10"  state="rrrGrrrrrrrrGrrrr"/>',
-            '<phase duration="10" state="rrrrGGGggrrrrGGGg"/>',
-            '<phase duration="10"  state="rrrrrrrGGrrrrrrrG"/>'
+            '<phase duration="27" state="GGGrrrrrrGGGrrrrr"/>',
+            '<phase duration="6"  state="rrrGrrrrrrrrGrrrr"/>',
+            '<phase duration="27" state="rrrrGGGggrrrrGGGg"/>',
+            '<phase duration="6"  state="rrrrrrrGGrrrrrrrG"/>'
         ]
         self.JanShoba_South_XML_TRAFFIC_LIGHT_ALL_STATES = [
-            '<phase duration="10" state="GGGrrrrrrGGGrrrrr"/>',
-            '<phase duration="4"  state="yyyrrrrrryyyrrrrr"/>',
-            '<phase duration="10"  state="rrrGrrrrrrrrGrrrr"/>',
-            '<phase duration="4"  state="rrryrrrrrrrryrrrr"/>',
-            '<phase duration="10" state="rrrrGGGggrrrrGGGg"/>',
-            '<phase duration="4"  state="rrrryyyggrrrryyyg"/>', #  Check this state
-            '<phase duration="10"  state="rrrrrrrGGrrrrrrrG"/>',
-            '<phase duration="4"  state="rrrrrrryyrrrrrrry"/>'
+            '<phase duration="27" state="GGGrrrrrrGGGrrrrr"/>',
+            '<phase duration="6"  state="yyyrrrrrryyyrrrrr"/>',
+            '<phase duration="6"  state="rrrGrrrrrrrrGrrrr"/>',
+            '<phase duration="6"  state="rrryrrrrrrrryrrrr"/>',
+            '<phase duration="27" state="rrrrGGGggrrrrGGGg"/>',
+            '<phase duration="6"  state="rrrryyyyyrrrryyyy"/>', #  Quick fix!!
+            '<phase duration="6"  state="rrrrrrrGGrrrrrrrG"/>',
+            '<phase duration="6"  state="rrrrrrryyrrrrrrry"/>'
         ]
 
     # Documentation for the run method.
@@ -126,16 +126,19 @@ class Simulation:
                 jan_south_current_total_wait = self._collect_jan_south_waiting_times()
                 jan_south_reward = jan_south_old_total_wait - jan_south_current_total_wait
                 jan_south_action = self._choose_action(jan_south_current_sim_state)
+               
                 if self._step != 0 and jan_south_old_action != jan_south_action:
                     self._set_jan_south_yellow_phase(jan_south_old_action)
                     jan_south_yellow_state_steps_todo = self._yellow_duration
+                    print("Jan South yellow todo set: ", jan_south_yellow_state_steps_todo)
                 self._set_jan_south_green_phase(jan_south_action)
-                # jan_south_green_state_steps_todo = self._green_duration
+                # jan_south_green_state_steps_todo = self._green_duration                
                 if jan_south_action == 0 or jan_south_action == 2:
                     jan_south_green_state_steps_todo = self._green_duration
+                    print("South: Action: ", jan_south_action, "Green Steps set: ", jan_south_green_state_steps_todo)
                 else:
                     jan_south_green_state_steps_todo = 6
-
+                    print("South: Action: ", jan_south_action, "Green Steps set: ", jan_south_green_state_steps_todo)
 
             if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == 0:
                 jan_duxbury_current_sim_state = self._get_jan_duxbury_sim_state()
@@ -148,12 +151,14 @@ class Simulation:
                     jan_duxbury_yellow_state_steps_todo = self._yellow_duration
                     # print("Jan Duxbury yellow todo set")
                 self._set_jan_duxbury_green_phase(jan_duxbury_action)
-                # jan_duxbury_green_state_steps_todo = self._green_duration
+
                 if jan_duxbury_action == 0 or jan_duxbury_action == 2:
                     jan_duxbury_green_state_steps_todo = self._green_duration
+                    # print("Duxbury action: ",jan_duxbury_action, " todo: ",jan_duxbury_green_state_steps_todo)
                 else:
                     jan_duxbury_green_state_steps_todo = 6
-                # print("Jan Duxbury green todo set")
+                    # print("Duxbury action: ",jan_duxbury_action, " todo: ",jan_duxbury_green_state_steps_todo)
+                    
 
             # if (self._step + steps_todo) >= self._max_steps: # don't think we need this anymore
             #     steps_todo = self._max_steps - self._step
@@ -177,8 +182,10 @@ class Simulation:
 
                 if jan_south_yellow_state_steps_todo > 0:
                     jan_south_yellow_state_steps_todo -= 1
+                    print("south yellow todo: ", jan_south_yellow_state_steps_todo)
                 else:
                     jan_south_green_state_steps_todo -= 1
+                    print("south green todo: ", jan_south_green_state_steps_todo)
 
                 if jan_duxbury_yellow_state_steps_todo > 0:
                     jan_duxbury_yellow_state_steps_todo -= 1

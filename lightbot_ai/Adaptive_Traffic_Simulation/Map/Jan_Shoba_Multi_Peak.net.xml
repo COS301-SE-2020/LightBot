@@ -611,7 +611,7 @@
         <phase duration="6"  state="rrrrrrGrrrrrrG"/>
         <phase duration="6"  state="rrrrrryrrrrrry"/>
         <phase duration="27" state="GGrrrrrGGgrrrr"/>
-        <phase duration="6"  state="yyrrrrryygrrrr"/>
+        <phase duration="6"  state="yyrrrrryyyrrrr"/> <!-- Quick fix!! -->
         <phase duration="6"  state="rrGGrrrrrGrrrr"/>
         <phase duration="6"  state="rryyrrrrryrrrr"/>
     </tlLogic>
@@ -621,7 +621,7 @@
         <phase duration="6"  state="rrrGGrrrrrrrGGrrrr"/>
         <phase duration="6"  state="rrryyrrrrrrryyrrrr"/>
         <phase duration="27" state="rrrrrGGggrrrrrGGgg"/>
-        <phase duration="6"  state="rrrrryyggrrrrryygg"/>
+        <phase duration="6"  state="rrrrryyyyrrrrryyyy"/> <!-- Quick fix!! -->
         <phase duration="6"  state="rrrrrrrGGrrrrrrrGG"/>
         <phase duration="6"  state="rrrrrrryyrrrrrrryy"/>
     </tlLogic>
