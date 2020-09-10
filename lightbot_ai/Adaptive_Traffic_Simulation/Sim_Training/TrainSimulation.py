@@ -64,14 +64,6 @@ class Simulation:
         traci.start(self._sumo_cmd)
 
         self._step = 0
-        # self._waiting_times = {}
-        # self._sum_neg_reward = 0
-        # self._sum_queue_length = 0
-        # self._sum_waiting_time = 0
-        # old_total_wait = 0
-        # old_state = -1
-        # old_action = -1
-
         self._jan_south_waiting_times = {}
         self._jan_duxbury_waiting_times = {}
         self._jan_south_sum_neg_reward = 0
@@ -105,75 +97,68 @@ class Simulation:
                 jan_south_current_total_wait = self._collect_jan_south_waiting_times()
                 jan_south_reward = jan_south_old_total_wait - jan_south_current_total_wait
                 jan_south_action = self._choose_action(jan_south_current_sim_state, epsilon)
-                # print("Jan South action: ",jan_south_action)
                 if self._step != 0:
                     self._Memory.add_sample((jan_south_old_sim_state, jan_south_old_action, jan_south_reward, jan_south_current_sim_state))
                 if self._step != 0 and jan_south_old_action != jan_south_action:
                     self._set_jan_south_yellow_phase(jan_south_old_action)
                     jan_south_yellow_state_steps_todo = self._yellow_duration
-                    # print("Jan South yellow todo set")
-                self._set_jan_south_green_phase(jan_south_action)
                 if jan_south_action == 0 or jan_south_action == 2:
                     jan_south_green_state_steps_todo = self._green_duration
                 else:
                     jan_south_green_state_steps_todo = 6
-                # print("Jan South green todo set")
+
+            if jan_south_yellow_state_steps_todo == 0 and (jan_south_green_state_steps_todo == 6 or jan_south_green_state_steps_todo == 27):
+                self._set_jan_south_green_phase(jan_south_action)
 
             if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == 0:
                 jan_duxbury_current_sim_state = self._get_jan_duxbury_sim_state()
                 jan_duxbury_current_total_wait = self._collect_jan_duxbury_waiting_times()
                 jan_duxbury_reward = jan_duxbury_old_total_wait - jan_duxbury_current_total_wait
                 jan_duxbury_action = self._choose_action(jan_duxbury_current_sim_state, epsilon)
-                # print("Jan duxbury action: ",jan_duxbury_action)
                 if self._step != 0:
                     self._Memory.add_sample((jan_duxbury_old_sim_state, jan_duxbury_old_action, jan_duxbury_reward, jan_duxbury_current_sim_state))
                 if self._step != 0 and jan_duxbury_old_action != jan_duxbury_action:
                     self._set_jan_duxbury_yellow_phase(jan_duxbury_old_action)
-                    jan_duxbury_yellow_state_steps_todo = self._yellow_duration
-                    # print("Jan Duxbury yellow todo set")
-                self._set_jan_duxbury_green_phase(jan_duxbury_action)
+                    jan_duxbury_yellow_state_steps_todo = self._yellow_duration                
                 if jan_duxbury_action == 0 or jan_duxbury_action == 2:
                     jan_duxbury_green_state_steps_todo = self._green_duration
                 else:
                     jan_duxbury_green_state_steps_todo = 6
-                # print("Jan Duxbury green todo set")
+
+            if jan_duxbury_yellow_state_steps_todo == 0 and (jan_duxbury_green_state_steps_todo == 6 or jan_duxbury_green_state_steps_todo == 27):
+                self._set_jan_duxbury_green_phase(jan_duxbury_action)
 
             if (self._step < self._max_steps) and (jan_south_yellow_state_steps_todo > 0 or jan_south_green_state_steps_todo > 0 or jan_duxbury_yellow_state_steps_todo > 0 or jan_duxbury_green_state_steps_todo > 0):
                 traci.simulationStep()
                 self._step += 1
-
                 jan_south_queue_length = self._get_jan_south_queue_length()
                 self._jan_south_sum_queue_length += jan_south_queue_length
                 self._jan_south_sum_waiting_time += jan_south_queue_length
-
                 jan_duxbury_queue_length = self._get_jan_duxbury_queue_length()
                 self._jan_duxbury_sum_queue_length += jan_duxbury_queue_length
                 self._jan_duxbury_sum_waiting_time += jan_duxbury_queue_length
-
                 if jan_south_yellow_state_steps_todo > 0:
                     jan_south_yellow_state_steps_todo -= 1
-                    # print("Jan South yellow todo Decreased")
                 else:
                     jan_south_green_state_steps_todo -= 1
-                    # print("Jan South green todo Decreased")
-
                 if jan_duxbury_yellow_state_steps_todo > 0:
                     jan_duxbury_yellow_state_steps_todo -= 1
-                    # print("Jan Duxbury yellow todo Decreased")
                 else:
                     jan_duxbury_green_state_steps_todo -= 1
-                    # print("Jan Duxbury green todo Decreased")
-            
-            jan_south_old_sim_state = jan_south_current_sim_state
-            jan_duxbury_old_sim_state = jan_duxbury_current_sim_state
-            jan_south_old_action = jan_south_action
-            jan_duxbury_old_action = jan_duxbury_action
-            jan_south_old_total_wait = jan_south_current_total_wait
-            jan_duxbury_old_total_wait = jan_duxbury_current_total_wait
-            if jan_south_reward < 0:
-                self._jan_south_sum_neg_reward += jan_south_reward        
-            if jan_duxbury_reward < 0:
-                self._jan_duxbury_sum_neg_reward += jan_duxbury_reward
+                    
+            if jan_south_yellow_state_steps_todo == 0 and jan_south_green_state_steps_todo == 0:
+                jan_south_old_sim_state = jan_south_current_sim_state
+                jan_south_old_action = jan_south_action
+                jan_south_old_total_wait = jan_south_current_total_wait
+                if jan_south_reward < 0:
+                    self._jan_south_sum_neg_reward += jan_south_reward
+
+            if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == 0:    
+                jan_duxbury_old_sim_state = jan_duxbury_current_sim_state            
+                jan_duxbury_old_action = jan_duxbury_action            
+                jan_duxbury_old_total_wait = jan_duxbury_current_total_wait                    
+                if jan_duxbury_reward < 0:
+                    self._jan_duxbury_sum_neg_reward += jan_duxbury_reward
             
         self._save_episode_stats()
         print("Jan_South Total reward:", self._jan_south_sum_neg_reward, "- Epsilon:", round(epsilon, 2))
@@ -187,36 +172,6 @@ class Simulation:
         training_time = round(timeit.default_timer() - start_time, 1)
         return simulation_time, training_time
 
-    # Documentation for the _simulate method.
-    #  @param self The object pointer.
-    #  @param steps_todo The number of steps to simulate.
-    #
-    #  The _simulate function initially checks if the maximum number of steps won't be reached before executing.
-    #  If the maximum is not reached then traci will simulate a step with traci.simulationStep() and the queue lenght is recorded.
-    # def _simulate(self, steps_todo):
-    #     if (self._step + steps_todo) >= self._max_steps:
-    #         steps_todo = self._max_steps - self._step
-    #     while steps_todo > 0:
-    #         traci.simulationStep()
-    #         self._step += 1
-    #         steps_todo -= 1
-    #         queue_length = self._get_queue_length()#!!!Might need to put this outside the while loop, might give more accurate results!!!
-    #         self._sum_queue_length += queue_length
-    #         self._sum_waiting_time += queue_length
-
-    # def _collect_waiting_times(self):
-    #     incoming_roads = ["road_triple_JanShobaS_toJunc", "road_double_SouthStrW_toJunc", "road_triple_JanShobaN_toJunc", "road_double_SouthStrE_toJunc"]
-    #     car_list = traci.vehicle.getIDList()
-    #     for car_id in car_list:
-    #         wait_time = traci.vehicle.getAccumulatedWaitingTime(car_id)
-    #         road_id = traci.vehicle.getRoadID(car_id)  # get the road id where the car is located
-    #         if road_id in incoming_roads:  # consider only the waiting times of cars in incoming roads
-    #             self._waiting_times[car_id] = wait_time
-    #         else:
-    #             if car_id in self._waiting_times: # a car that was tracked has cleared the intersection
-    #                 del self._waiting_times[car_id] 
-    #     total_waiting_time = sum(self._waiting_times.values())
-    #     return total_waiting_time
 
     def _collect_jan_south_waiting_times(self):
         incoming_roads = ["rd6_JanShoba_tl_n", "rd2_South_dl_e", "rd3_JanShoba_tl_s", "rd2_South_dl_w"]
@@ -271,14 +226,12 @@ class Simulation:
     #         "cluster_25290891_611769793", yellow_phase_code)
 
     def _set_jan_south_yellow_phase(self, old_action):
-        yellow_phase_code = old_action * 2 + \
-            1  # obtain the yellow phase code, based on the old action (ref on environment.net.xml)
+        yellow_phase_code = old_action * 2 + 1
         traci.trafficlight.setPhase(
             "cluster_25290891_611769793", yellow_phase_code)
 
     def _set_jan_duxbury_yellow_phase(self, old_action):
-        yellow_phase_code = old_action * 2 + \
-            1  # obtain the yellow phase code, based on the old action (ref on environment.net.xml)
+        yellow_phase_code = old_action * 2 + 1 
         traci.trafficlight.setPhase(
             "cluster_2516980595_2516980597_25290876_611769785", yellow_phase_code)
 

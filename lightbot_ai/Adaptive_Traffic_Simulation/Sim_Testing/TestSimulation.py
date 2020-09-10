@@ -98,14 +98,10 @@ class Simulation:
 
         self._step = 0
 
-        # self._waiting_times = {}
-        # old_total_wait = 0
         self._jan_south_waiting_times = {}
         jan_south_old_total_wait = 0
         self._jan_duxbury_waiting_times = {}
         jan_duxbury_old_total_wait = 0
-
-        # old_action = -1
         jan_south_old_action = -1
         jan_duxbury_old_action = -1
 
@@ -121,81 +117,53 @@ class Simulation:
         jan_duxbury_action = 0
 
         while self._step < self._max_steps:
-            print("Begin while loop...")
             if jan_south_yellow_state_steps_todo == 0 and jan_south_green_state_steps_todo == 0:
-                print("If yellow and green todo == 0")
                 jan_south_current_sim_state = self._get_jan_south_sim_state()
                 jan_south_current_total_wait = self._collect_jan_south_waiting_times()
                 jan_south_reward = jan_south_old_total_wait - jan_south_current_total_wait
                 jan_south_action = self._choose_action(jan_south_current_sim_state)
-                print("South action = ", jan_south_action)
                 if self._step != 0 and jan_south_old_action != jan_south_action:
-                    print("If self._step != 0 and jan_south_old_action != jan_south_action...")
                     self._set_jan_south_yellow_phase(jan_south_old_action)
                     jan_south_yellow_state_steps_todo = self._yellow_duration
                     self._jan_south_actions_taken.append(self.JanShoba_South_XML_TRAFFIC_LIGHT_ALL_STATES[jan_south_old_action * 2 + 1])
-                    print("South yellow todo set: ", jan_south_yellow_state_steps_todo)
-                # self._set_jan_south_green_phase(jan_south_action)
-                # jan_south_green_state_steps_todo = self._green_duration 
                 self._jan_south_actions_taken.append(self.JanShoba_South_XML_TRAFFIC_LIGHT_GREEN_STATES[jan_south_action])               
                 if jan_south_action == 0 or jan_south_action == 2:
                     jan_south_green_state_steps_todo = self._green_duration
-                    print("South: Action: ", jan_south_action, "Green Steps set: ", jan_south_green_state_steps_todo)
                 else:
                     jan_south_green_state_steps_todo = 6
-                    print("South: Action: ", jan_south_action, "Green Steps set: ", jan_south_green_state_steps_todo)
+
             if jan_south_yellow_state_steps_todo == 0 and (jan_south_green_state_steps_todo == 6 or jan_south_green_state_steps_todo == 27):
                 self._set_jan_south_green_phase(jan_south_action)
-                # if jan_south_action == 0 or jan_south_action == 2:
-                #     jan_south_green_state_steps_todo = self._green_duration
-                #     print("South: Action: ", jan_south_action, "Green Steps set: ", jan_south_green_state_steps_todo)
-                # else:
-                #     jan_south_green_state_steps_todo = 6
-                #     print("South: Action: ", jan_south_action, "Green Steps set: ", jan_south_green_state_steps_todo)
 
             if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == 0:
                 jan_duxbury_current_sim_state = self._get_jan_duxbury_sim_state()
                 jan_duxbury_current_total_wait = self._collect_jan_duxbury_waiting_times()
                 jan_duxbury_reward = jan_duxbury_old_total_wait - jan_duxbury_current_total_wait
                 jan_duxbury_action = self._choose_action(jan_duxbury_current_sim_state)
-                # print("Jan duxbury action: ",jan_duxbury_action)
                 if self._step != 0 and jan_duxbury_old_action != jan_duxbury_action:
                     self._set_jan_duxbury_yellow_phase(jan_duxbury_old_action)
                     jan_duxbury_yellow_state_steps_todo = self._yellow_duration
                     self._jan_duxbury_actions_taken.append(self.JanShoba_Duxbury_XML_TRAFFIC_LIGHT_ALL_STATES[jan_duxbury_old_action * 2 + 1])
-                    # print("Jan Duxbury yellow todo set")
-                # self._set_jan_duxbury_green_phase(jan_duxbury_action)
                 self._jan_duxbury_actions_taken.append(self.JanShoba_Duxbury_XML_TRAFFIC_LIGHT_GREEN_STATES[jan_duxbury_action])
                 if jan_duxbury_action == 0 or jan_duxbury_action == 2:
                     jan_duxbury_green_state_steps_todo = self._green_duration
-                    # print("Duxbury action: ",jan_duxbury_action, " todo: ",jan_duxbury_green_state_steps_todo)
                 else:
                     jan_duxbury_green_state_steps_todo = 6
-                    # print("Duxbury action: ",jan_duxbury_action, " todo: ",jan_duxbury_green_state_steps_todo)
+
             if jan_duxbury_yellow_state_steps_todo == 0 and (jan_duxbury_green_state_steps_todo == 6 or jan_duxbury_green_state_steps_todo == 27):
-                self._set_jan_duxbury_green_phase(jan_duxbury_action)
-                
-                    
+                self._set_jan_duxbury_green_phase(jan_duxbury_action) 
 
             if (self._step < self._max_steps) and (jan_south_yellow_state_steps_todo > 0 or jan_south_green_state_steps_todo > 0 or jan_duxbury_yellow_state_steps_todo > 0 or jan_duxbury_green_state_steps_todo > 0):
-                print("If stuff to simulate... ")
                 traci.simulationStep()
                 self._step += 1
-                # queue_length = self._get_queue_length()
-                # self._queue_length_episode.append(queue_length)
-
                 jan_south_queue_length = self._get_jan_south_queue_length()
                 self._jan_south_queue_length_episode.append(jan_south_queue_length)
                 jan_duxbury_queue_length = self._get_jan_duxbury_queue_length()
                 self._jan_duxbury_queue_length_episode.append(jan_duxbury_queue_length)
-
                 if jan_south_yellow_state_steps_todo > 0:
                     jan_south_yellow_state_steps_todo -= 1
-                    print("south yellow todo: ", jan_south_yellow_state_steps_todo)
                 else:
                     jan_south_green_state_steps_todo -= 1
-                    print("south green todo: ", jan_south_green_state_steps_todo)
-
                 if jan_duxbury_yellow_state_steps_todo > 0:
                     jan_duxbury_yellow_state_steps_todo -= 1
                 else:
@@ -203,16 +171,11 @@ class Simulation:
 
             if jan_south_yellow_state_steps_todo == 0 and jan_south_green_state_steps_todo == 0:    
                 jan_south_old_action = jan_south_action
-                print("South old action = ", jan_south_old_action)
+                jan_south_old_total_wait = jan_south_current_total_wait
+                self._jan_south_reward_episode.append(jan_south_reward)
 
             if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == 0:
                 jan_duxbury_old_action = jan_duxbury_action
-
-            if jan_south_yellow_state_steps_todo == 0 and jan_south_green_state_steps_todo == 0:
-                jan_south_old_total_wait = jan_south_current_total_wait
-                self._jan_south_reward_episode.append(jan_south_reward)
-                
-            if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == 0:
                 jan_duxbury_old_total_wait = jan_duxbury_current_total_wait
                 self._jan_duxbury_reward_episode.append(jan_duxbury_reward)
 
