@@ -148,9 +148,9 @@ class MockGenerator(VehicleGenerator):
                         print('     <vehicle id="j_n_s_e_%i" type="standard_car" route="route_JanShoba_n_South_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
                     if end_edge > 0.8 and end_edge <= 0.9:
                         print('     <vehicle id="j_n_l_w_%i" type="standard_car" route="route_JanShoba_n_Lunnon_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                    if end_edge > 0.9 and end_edge <= 0.96:
+                    if end_edge > 0.9 and end_edge <= 0.95:
                         print('     <vehicle id="j_n_l_e_%i" type="standard_car" route="route_JanShoba_n_Lunnon_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                    if end_edge > 0.96:
+                    if end_edge > 0.95:
                         print('     <vehicle id="j_n_p_w_%i" type="standard_car" route="route_JanShoba_n_Prospect_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
             #South Start
                 elif start_edge > 0.6 and start_edge <= 0.8:
@@ -158,11 +158,11 @@ class MockGenerator(VehicleGenerator):
                     #Initially Travelling West
                     if end_edge <= 0.5:
                         route_select = np.random.uniform()
-                        if route_select <= 0.15:
+                        if route_select <= 0.12:
                             print('     <vehicle id="s_w_j_n_%i" type="standard_car" route="route_South_w_JanShoba_n" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                        if route_select > 0.15 and route_select <= 0.35:
+                        if route_select > 0.12 and route_select <= 0.32:
                             print('     <vehicle id="s_w_j_s_%i" type="standard_car" route="route_South_w_JanShoba_s" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                        if route_select > 0.35 and route_select <= 0.55:
+                        if route_select > 0.32 and route_select <= 0.55:
                             print('     <vehicle id="s_w_s_w_%i" type="standard_car" route="route_South_w_South_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
                         if route_select > 0.55 and route_select <= 0.65:
                             print('     <vehicle id="s_w_l_w_%i" type="standard_car" route="route_South_w_Lunnon_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
@@ -222,11 +222,11 @@ class MockGenerator(VehicleGenerator):
                 elif start_edge > 0.9:
                     end_edge = np.random.uniform()
                     #Intially Travelling West
-                    if end_edge <= 0.65:
+                    if end_edge <= 0.7:
                         print('     <vehicle id="l_w_j_s_%i" type="standard_car" route="route_Lunnon_w_JanShoba_s" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
                 
                     #Initially Travelling East
-                    if end_edge > 0.35:
+                    if end_edge > 0.3:
                         route_select = np.random.uniform()
                         if route_select <= 0.20:
                             print('     <vehicle id="l_e_j_n_%i" type="standard_car" route="route_Lunnon_e_JanShoba_n" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
