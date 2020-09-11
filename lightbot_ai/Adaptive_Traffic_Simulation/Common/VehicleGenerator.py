@@ -72,22 +72,14 @@ class MockGenerator(VehicleGenerator):
 
             for car_counter, step in enumerate(car_gen_steps):
                 straight_or_turn = np.random.uniform()
-                # 40% of cars go straight down or up Jan Shoba, South and Duxbury
+                # 40% of cars go straight down or up Jan Shoba
                 if straight_or_turn < 0.4: 
-                    route_straight = np.random.randint(1, 7)
+                    route_straight = np.random.randint(1, 2)
                     if route_straight == 1:
                         print('     <vehicle id="j_n_j_n_%i" type="standard_car" route="route_JanShoba_n_JanShoba_n" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
                     if route_straight == 2:
                         print('     <vehicle id="j_s_j_s_%i" type="standard_car" route="route_JanShoba_s_JanShoba_s" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_straight == 3:
-                        print('     <vehicle id="d_e_d_e_%i" type="standard_car" route="route_Duxbury_e_Duxbury_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_straight == 4:
-                        print('     <vehicle id="d_w_d_w_%i" type="standard_car" route="route_Duxbury_w_Duxbury_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_straight == 5:
-                        print('     <vehicle id="s_e_s_e_%i" type="standard_car" route="route_South_e_South_e" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                    if route_straight == 6:
-                        print('     <vehicle id="s_w_s_w_%i" type="standard_car" route="route_South_w_South_w" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
-                # 25% of cars turn into Jan Shoba
+                   # 25% of cars turn into Jan Shoba
                 elif straight_or_turn >= 0.4 and straight_or_turn < 0.65:
                     route_turn = np.random.randint(1, 14)
                     if route_turn == 1:
