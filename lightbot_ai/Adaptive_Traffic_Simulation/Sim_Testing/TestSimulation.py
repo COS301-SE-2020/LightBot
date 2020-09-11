@@ -186,7 +186,7 @@ class Simulation:
             for value in self._jan_south_actions_taken:
                 file.write("%s\n" % value)
         with open('Display_Data/Automatic/jan_duxbury_Actions_Taken.xml', 'w') as file:
-            for value in self._jan_south_actions_taken:
+            for value in self._jan_duxbury_actions_taken:
                 file.write("%s\n" % value)
         return simulation_time
 
