@@ -73,14 +73,14 @@ class MockGenerator(VehicleGenerator):
             for car_counter, step in enumerate(car_gen_steps):
                 straight_or_turn = np.random.uniform()
                 # 40% of cars go straight down or up Jan Shoba
-                if straight_or_turn < 0.4: 
+                if straight_or_turn < 0.25: 
                     route_straight = np.random.randint(1, 3)
                     if route_straight == 1:
                         print('     <vehicle id="j_n_j_n_%i" type="standard_car" route="route_JanShoba_n_JanShoba_n" depart="%s" departLane="best" departSpeed="max" departPos="random"/>' % (car_counter, step), file=routes)
                     if route_straight == 2:
                         print('     <vehicle id="j_s_j_s_%i" type="standard_car" route="route_JanShoba_s_JanShoba_s" depart="%s" departLane="best" departSpeed="max" departPos="random"/>' % (car_counter, step), file=routes)
                    # 25% of cars turn into Jan Shoba 
-                elif straight_or_turn >= 0.4 and straight_or_turn < 0.65:
+                elif straight_or_turn >= 0.25 and straight_or_turn < 0.50:
                     route_turn = np.random.randint(1, 13)
                     if route_turn == 1:
                         print('     <vehicle id="l_e_j_n_%i" type="standard_car" route="route_Lunnon_e_JanShoba_n" depart="%s" departLane="best" departSpeed="max" departPos="random"/>' % (car_counter, step), file=routes)
@@ -108,7 +108,7 @@ class MockGenerator(VehicleGenerator):
                         print('     <vehicle id="p_w_j_s_%i" type="standard_car" route="route_Prospect_w_JanShoba_s" depart="%s" departLane="best" departSpeed="max" departPos="random"/>' % (car_counter, step), file=routes)
                     # end
                 # 15% of cars go straight on Duxbury, South
-                elif straight_or_turn >= 0.65 and straight_or_turn < 0.75:
+                elif straight_or_turn >= 0.50 and straight_or_turn < 0.65:
                     route_straight = np.random.randint(1,5)
                     if route_straight == 1:
                         print('     <vehicle id="d_e_d_e_%i" type="standard_car" route="route_Duxbury_e_Duxbury_e" depart="%s" departLane="best" departSpeed="max" departPos="random"/>' % (car_counter, step), file=routes)
@@ -119,8 +119,8 @@ class MockGenerator(VehicleGenerator):
                     if route_straight == 4:
                         print('     <vehicle id="s_w_s_w_%i" type="standard_car" route="route_South_w_South_w" depart="%s" departLane="best" departSpeed="max" departPos="random"/>' % (car_counter, step), file=routes)
                 
-                # 15% of cars turn into Duxbury or South
-                elif straight_or_turn >= 0.75 and straight_or_turn < 0.90:
+                # 20% of cars turn into Duxbury or South
+                elif straight_or_turn >= 0.65 and straight_or_turn < 0.85:
                     route_turn = np.random.randint(1, 25)
                     if route_turn == 1:
                         print('     <vehicle id="j_n_d_e_%i" type="standard_car" route="route_JanShoba_n_Duxbury_e" depart="%s" departLane="best" departSpeed="max" departPos="random"/>' % (car_counter, step), file=routes)
@@ -171,8 +171,8 @@ class MockGenerator(VehicleGenerator):
                     if route_turn == 24:
                         print('     <vehicle id="s_w_d_w_%i" type="standard_car" route="route_South_w_Duxbury_w" depart="%s" departLane="best" departSpeed="max" departPos="random"/>' % (car_counter, step), file=routes)
                     # end
-                # 10% of cars turn into Lunnon and Prospect
-                elif straight_or_turn >= 0.9:
+                # 15% of cars turn into Lunnon and Prospect
+                elif straight_or_turn >= 0.85:
                     route_turn = np.random.randint(1, 22)
                     if route_turn == 1:
                         print('     <vehicle id="j_n_l_w_%i" type="standard_car" route="route_JanShoba_n_Lunnon_w" depart="%s" departLane="best" departSpeed="max" departPos="random"/>' % (car_counter, step), file=routes)
