@@ -76,14 +76,14 @@ class MockGenerator(VehicleGenerator):
                 if straight_or_turn < 0.4: 
                     route_straight = np.random.randint(1, 2)
                     if route_straight == 1:
-                        print('     <vehicle id="j_n_j_n_%i" type="standard_car" route="route_JanShoba_n_JanShoba_n" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                        print('     <vehicle id="j_n_j_n_%i" type="standard_car" route="route_JanShoba_n_JanShoba_n" depart="%s" departLane="best" departSpeed="max" departPos="random"/>' % (car_counter, step), file=routes)
                     if route_straight == 2:
-                        print('     <vehicle id="j_s_j_s_%i" type="standard_car" route="route_JanShoba_s_JanShoba_s" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                        print('     <vehicle id="j_s_j_s_%i" type="standard_car" route="route_JanShoba_s_JanShoba_s" depart="%s" departLane="best" departSpeed="max" departPos="random" />' % (car_counter, step), file=routes)
                    # 25% of cars turn into Jan Shoba
                 elif straight_or_turn >= 0.4 and straight_or_turn < 0.65:
                     route_turn = np.random.randint(1, 14)
                     if route_turn == 1:
-                        print('     <vehicle id="l_e_j_n_%i" type="standard_car" route="route_Lunnon_e_JanShoba_n" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
+                        print('     <vehicle id="l_e_j_n_%i" type="standard_car" route="route_Lunnon_e_JanShoba_n" depart="%s" departLane="best" departSpeed="max" departPos="random" />' % (car_counter, step), file=routes)
                     if route_turn == 2:
                         print('     <vehicle id="l_w_j_s_%i" type="standard_car" route="route_Lunnon_w_JanShoba_s" depart="%s" departLane="random" departSpeed="10" />' % (car_counter, step), file=routes)
                     if route_turn == 3:
