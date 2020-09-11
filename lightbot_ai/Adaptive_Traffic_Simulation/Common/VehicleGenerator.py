@@ -78,81 +78,81 @@ class MockGenerator(VehicleGenerator):
                     #Initially Travelling West
                     if end_edge <= 0.7:
                         route_select = np.random.uniform()
-                            if route_select <= 0.2:
-                                print('     <vehicle id="d_w_j_s_%i" type="standard_car" route="route_Duxbury_w_JanShoba_s" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                            if route_select > 0.2 and route_select <= 0.4:
-                                print('     <vehicle id="d_w_j_n_%i" type="standard_car" route="route_Duxbury_w_JanShoba_n" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                            if route_select > 0.4 and route_select <= 0.5:
-                                print('     <vehicle id="d_w_d_w_%i" type="standard_car" route="route_Duxbury_w_Duxbury_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                            if route_select > 0.5 and route_select <= 0.7:
-                                print('     <vehicle id="d_w_s_w_%i" type="standard_car" route="route_Duxbury_w_South_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                            if route_select > 0.7 and route_select <= 0.75:
-                                print('     <vehicle id="d_w_p_w_%i" type="standard_car" route="route_Duxbury_w_Prospect_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                            if route_select > 0.75 and route_select <= 0.8:
-                                print('     <vehicle id="d_w_l_w_%i" type="standard_car" route="route_Duxbury_w_Lunnon_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                            if route_select > 0.8 and route_select <= 0.9:
-                                print('     <vehicle id="d_w_l_e_%i" type="standard_car" route="route_Duxbury_w_Lunnon_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                            if route_select > 0.9 :
-                                print('     <vehicle id="d_w_s_e_%i" type="standard_car" route="route_Duxbury_w_South_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                    #Initially Travelling East        
+                        if route_select <= 0.2:
+                            print('     <vehicle id="d_w_j_s_%i" type="standard_car" route="route_Duxbury_w_JanShoba_s" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        if route_select > 0.2 and route_select <= 0.4:
+                            print('     <vehicle id="d_w_j_n_%i" type="standard_car" route="route_Duxbury_w_JanShoba_n" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        if route_select > 0.4 and route_select <= 0.5:
+                            print('     <vehicle id="d_w_d_w_%i" type="standard_car" route="route_Duxbury_w_Duxbury_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        if route_select > 0.5 and route_select <= 0.7:
+                            print('     <vehicle id="d_w_s_w_%i" type="standard_car" route="route_Duxbury_w_South_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        if route_select > 0.7 and route_select <= 0.75:
+                            print('     <vehicle id="d_w_p_w_%i" type="standard_car" route="route_Duxbury_w_Prospect_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        if route_select > 0.75 and route_select <= 0.8:
+                            print('     <vehicle id="d_w_l_w_%i" type="standard_car" route="route_Duxbury_w_Lunnon_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        if route_select > 0.8 and route_select <= 0.9:
+                            print('     <vehicle id="d_w_l_e_%i" type="standard_car" route="route_Duxbury_w_Lunnon_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        if route_select > 0.9 :
+                            print('     <vehicle id="d_w_s_e_%i" type="standard_car" route="route_Duxbury_w_South_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                #Initially Travelling East        
                     if end_edge > 0.7:
                         route_select = np.random.uniform()
-                            if route_select <= 0.2:
-                                print('     <vehicle id="d_e_j_s_%i" type="standard_car" route="route_Duxbury_e_JanShoba_s" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                            if route_select > 0.2 and route_select <= 0.4:
-                                print('     <vehicle id="d_e_j_n_%i" type="standard_car" route="route_Duxbury_e_JanShoba_n" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                            if route_select > 0.4 and route_select <= 0.5:
-                                print('     <vehicle id="d_e_d_e_%i" type="standard_car" route="route_Duxbury_e_Duxbury_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                            if route_select > 0.5 and route_select <= 0.6:
-                                print('     <vehicle id="d_e_s_w_%i" type="standard_car" route="route_Duxbury_e_South_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                            if route_select > 0.6 and route_select <= 0.7:
-                                print('     <vehicle id="d_e_s_e_%i" type="standard_car" route="route_Duxbury_e_South_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                            if route_select > 0.7 and route_select <= 0.75:
-                                print('     <vehicle id="d_e_l_w_%i" type="standard_car" route="route_Duxbury_e_Lunnon_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                            if route_select > 0.75 and route_select <= 0.85:
-                                print('     <vehicle id="d_e_l_e_%i" type="standard_car" route="route_Duxbury_e_Lunnon_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                            if route_select > 0.85
-                                print('     <vehicle id="d_e_p_w_%i" type="standard_car" route="route_Duxbury_e_Prospect_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                # Jan Shoba Southbound Begin Point
+                        if route_select <= 0.2:
+                            print('     <vehicle id="d_e_j_s_%i" type="standard_car" route="route_Duxbury_e_JanShoba_s" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        if route_select > 0.2 and route_select <= 0.4:
+                            print('     <vehicle id="d_e_j_n_%i" type="standard_car" route="route_Duxbury_e_JanShoba_n" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        if route_select > 0.4 and route_select <= 0.5:
+                            print('     <vehicle id="d_e_d_e_%i" type="standard_car" route="route_Duxbury_e_Duxbury_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        if route_select > 0.5 and route_select <= 0.6:
+                            print('     <vehicle id="d_e_s_w_%i" type="standard_car" route="route_Duxbury_e_South_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        if route_select > 0.6 and route_select <= 0.7:
+                            print('     <vehicle id="d_e_s_e_%i" type="standard_car" route="route_Duxbury_e_South_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        if route_select > 0.7 and route_select <= 0.75:
+                            print('     <vehicle id="d_e_l_w_%i" type="standard_car" route="route_Duxbury_e_Lunnon_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        if route_select > 0.75 and route_select <= 0.85:
+                            print('     <vehicle id="d_e_l_e_%i" type="standard_car" route="route_Duxbury_e_Lunnon_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        if route_select > 0.85
+                            print('     <vehicle id="d_e_p_w_%i" type="standard_car" route="route_Duxbury_e_Prospect_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+            # Jan Shoba Southbound Begin Point
                 elif start_edge > 0.25 and start_edge <= 0.45:
                     end_edge = np.random.uniform()
-                        if end_edge <= 0.4:
-                            print('     <vehicle id="j_s_j_s_%i" type="standard_car" route="route_JanShoba_s_JanShoba_s" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                        if end_edge > 0.4 and end_edge <= 0.5:
-                            print('     <vehicle id="j_s_s_w_%i" type="standard_car" route="route_JanShoba_s_South_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                        if end_edge > 0.5 and end_edge <= 0.6:
-                            print('     <vehicle id="j_s_s_e_%i" type="standard_car" route="route_JanShoba_s_South_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                        if end_edge > 0.6 and end_edge <= 0.7:
-                            print('     <vehicle id="j_s_d_e_%i" type="standard_car" route="route_JanShoba_s_Duxbury_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                        if end_edge > 0.7 and end_edge <= 0.75:
-                            print('     <vehicle id="j_s_d_w_%i" type="standard_car" route="route_JanShoba_s_Duxbury_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                        if end_edge > 0.75 and end_edge <= 0.85:
-                            print('     <vehicle id="j_s_p_e_%i" type="standard_car" route="route_JanShoba_s_Prospect_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                        if end_edge > 0.85 and end_edge <= 0.95:
-                            print('     <vehicle id="j_s_l_e_%i" type="standard_car" route="route_JanShoba_s_Lunnon_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                        if end_edge > 0.95:
-                            print('     <vehicle id="j_s_l_w_%i" type="standard_car" route="route_JanShoba_s_Lunnon_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                           
+                    if end_edge <= 0.4:
+                        print('     <vehicle id="j_s_j_s_%i" type="standard_car" route="route_JanShoba_s_JanShoba_s" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                    if end_edge > 0.4 and end_edge <= 0.5:
+                        print('     <vehicle id="j_s_s_w_%i" type="standard_car" route="route_JanShoba_s_South_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                    if end_edge > 0.5 and end_edge <= 0.6:
+                        print('     <vehicle id="j_s_s_e_%i" type="standard_car" route="route_JanShoba_s_South_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                    if end_edge > 0.6 and end_edge <= 0.7:
+                        print('     <vehicle id="j_s_d_e_%i" type="standard_car" route="route_JanShoba_s_Duxbury_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                    if end_edge > 0.7 and end_edge <= 0.75:
+                        print('     <vehicle id="j_s_d_w_%i" type="standard_car" route="route_JanShoba_s_Duxbury_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                    if end_edge > 0.75 and end_edge <= 0.85:
+                        print('     <vehicle id="j_s_p_e_%i" type="standard_car" route="route_JanShoba_s_Prospect_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                    if end_edge > 0.85 and end_edge <= 0.95:
+                        print('     <vehicle id="j_s_l_e_%i" type="standard_car" route="route_JanShoba_s_Lunnon_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                    if end_edge > 0.95:
+                        print('     <vehicle id="j_s_l_w_%i" type="standard_car" route="route_JanShoba_s_Lunnon_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        
                 #Jan Shoba Northbound Begin Point
                 elif start_edge > 0.45 and start_edge <= 0.65:
                     end_edge = np.random.uniform()
-                        if end_edge <= 0.4:
-                            print('     <vehicle id="j_n_j_n_%i" type="standard_car" route="route_JanShoba_n_JanShoba_n" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                        if end_edge > 0.4 and end_edge <= 0.5:
-                            print('     <vehicle id="j_n_d_e_%i" type="standard_car" route="route_JanShoba_n_Duxbury_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                        if end_edge > 0.5 and end_edge <= 0.6:
-                            print('     <vehicle id="j_n_d_w_%i" type="standard_car" route="route_JanShoba_n_Duxbury_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                        if end_edge > 0.6 and end_edge <= 0.7:
-                            print('     <vehicle id="j_n_s_w_%i" type="standard_car" route="route_JanShoba_n_South_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                        if end_edge > 0.7 and end_edge <= 0.8:
-                            print('     <vehicle id="j_n_s_e_%i" type="standard_car" route="route_JanShoba_n_South_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                        if end_edge > 0.8 and end_edge <= 0.9:
-                            print('     <vehicle id="j_n_l_w_%i" type="standard_car" route="route_JanShoba_n_Lunnon_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                        if end_edge > 0.9 and end_edge <= 0.95:
-                            print('     <vehicle id="j_n_l_e_%i" type="standard_car" route="route_JanShoba_n_Lunnon_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                        if end_edge > 0.95:
-                            print('     <vehicle id="j_n_p_w_%i" type="standard_car" route="route_JanShoba_n_Prospect_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                #South Start
+                    if end_edge <= 0.4:
+                        print('     <vehicle id="j_n_j_n_%i" type="standard_car" route="route_JanShoba_n_JanShoba_n" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                    if end_edge > 0.4 and end_edge <= 0.5:
+                        print('     <vehicle id="j_n_d_e_%i" type="standard_car" route="route_JanShoba_n_Duxbury_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                    if end_edge > 0.5 and end_edge <= 0.6:
+                        print('     <vehicle id="j_n_d_w_%i" type="standard_car" route="route_JanShoba_n_Duxbury_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                    if end_edge > 0.6 and end_edge <= 0.7:
+                        print('     <vehicle id="j_n_s_w_%i" type="standard_car" route="route_JanShoba_n_South_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                    if end_edge > 0.7 and end_edge <= 0.8:
+                        print('     <vehicle id="j_n_s_e_%i" type="standard_car" route="route_JanShoba_n_South_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                    if end_edge > 0.8 and end_edge <= 0.9:
+                        print('     <vehicle id="j_n_l_w_%i" type="standard_car" route="route_JanShoba_n_Lunnon_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                    if end_edge > 0.9 and end_edge <= 0.95:
+                        print('     <vehicle id="j_n_l_e_%i" type="standard_car" route="route_JanShoba_n_Lunnon_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                    if end_edge > 0.95:
+                        print('     <vehicle id="j_n_p_w_%i" type="standard_car" route="route_JanShoba_n_Prospect_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+            #South Start
                 elif start_edge > 0.65 and start_edge <= 0.8:
                     end_edge = np.random.uniform()
                     #Initially Travelling West
