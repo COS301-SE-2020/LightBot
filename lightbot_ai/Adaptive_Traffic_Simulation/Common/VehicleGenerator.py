@@ -113,7 +113,7 @@ class MockGenerator(VehicleGenerator):
                                 print('     <vehicle id="d_e_l_e_%i" type="standard_car" route="route_Duxbury_e_Lunnon_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
                             if route_select > 0.85
                                 print('     <vehicle id="d_e_p_w_%i" type="standard_car" route="route_Duxbury_e_Prospect_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                # Jan Shoba South Begin Point
+                # Jan Shoba Southbound Begin Point
                 elif start_edge > 0.2 and start_edge <= 0.4:
                     end_edge = np.random.uniform()
                         if end_edge > 0.4:
@@ -133,18 +133,33 @@ class MockGenerator(VehicleGenerator):
                         if end_edge > 0.95:
                             print('     <vehicle id="j_s_l_w_%i" type="standard_car" route="route_JanShoba_s_Lunnon_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
                            
-
-
-
-
+                #Jan Shoba Northbound Begin Point
+                elif start_edge > 0.4 and start_edge <= 0.6
+                    end_edge = np.random.uniform()
+                        if end_edge > 0.4:
+                            print('     <vehicle id="j_n_j_n_%i" type="standard_car" route="route_JanShoba_n_JanShoba_n" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        if end_edge > 0.4 and end_edge <= 0.5:
+                            print('     <vehicle id="j_n_d_e_%i" type="standard_car" route="route_JanShoba_n_Duxbury_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        if end_edge > 0.5 and end_edge <= 0.6:
+                            print('     <vehicle id="j_n_d_w_%i" type="standard_car" route="route_JanShoba_n_Duxbury_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        if end_edge > 0.6 and end_edge <= 0.7:
+                            print('     <vehicle id="j_n_s_w_%i" type="standard_car" route="route_JanShoba_n_South_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        if end_edge > 0.7 and end_edge <= 0.8:
+                            print('     <vehicle id="j_n_s_e_%i" type="standard_car" route="route_JanShoba_n_South_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        if end_edge > 0.8 and end_edge <= 0.9:
+                            print('     <vehicle id="j_n_l_w_%i" type="standard_car" route="route_JanShoba_n_Lunnon_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        if end_edge > 0.9 and end_edge <= 0.95:
+                            print('     <vehicle id="j_n_l_e_%i" type="standard_car" route="route_JanShoba_n_Lunnon_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                        if end_edge > 0.95:
+                            print('     <vehicle id="j_n_p_w_%i" type="standard_car" route="route_JanShoba_n_Prospect_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                    
 
                     if end_edge <= 0.7:
-                    if route_straight == 1:
+                    
                                                 if route_turn == 14:
                             print('     <vehicle id="s_w_d_e_%i" type="standard_car" route="route_South_w_Duxbury_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
                         
-                        print('     <vehicle id="j_n_j_n_%i" type="standard_car" route="route_JanShoba_n_JanShoba_n" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                   # 25% of cars turn into Jan Shoba 
+                         # 25% of cars turn into Jan Shoba 
                 elif straight_or_turn >= 0.25 and straight_or_turn < 0.50:
                     route_turn = np.random.randint(1, 13)
                     if route_turn == 1:
@@ -175,14 +190,6 @@ class MockGenerator(VehicleGenerator):
                 # 20% of cars turn into Duxbury or South
                 elif straight_or_turn >= 0.65 and straight_or_turn < 0.85:
                     route_turn = np.random.randint(1, 25)
-                    if route_turn == 1:
-                        print('     <vehicle id="j_n_d_e_%i" type="standard_car" route="route_JanShoba_n_Duxbury_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                    if route_turn == 2:
-                        print('     <vehicle id="j_n_d_w_%i" type="standard_car" route="route_JanShoba_n_Duxbury_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                    if route_turn == 3:
-                        print('     <vehicle id="j_n_s_w_%i" type="standard_car" route="route_JanShoba_n_South_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                    if route_turn == 4:
-                        print('     <vehicle id="j_n_s_e_%i" type="standard_car" route="route_JanShoba_n_South_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
                     if route_turn == 5:
                         print('     <vehicle id="l_e_d_w_%i" type="standard_car" route="route_Lunnon_e_Duxbury_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
                     if route_turn == 6:
@@ -209,12 +216,6 @@ class MockGenerator(VehicleGenerator):
                 # 15% of cars turn into Lunnon and Prospect
                 elif straight_or_turn >= 0.85:
                     route_turn = np.random.randint(1, 22)
-                    if route_turn == 1:
-                        print('     <vehicle id="j_n_l_w_%i" type="standard_car" route="route_JanShoba_n_Lunnon_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                    if route_turn == 2:
-                        print('     <vehicle id="j_n_l_e_%i" type="standard_car" route="route_JanShoba_n_Lunnon_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                    if route_turn == 3:
-                        print('     <vehicle id="j_n_p_w_%i" type="standard_car" route="route_JanShoba_n_Prospect_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
                     if route_turn == 4:
                         print('     <vehicle id="l_e_p_w_%i" type="standard_car" route="route_Lunnon_e_Prospect_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
                     if route_turn == 10: 
