@@ -4,7 +4,7 @@
 
     <input>
         <net-file value="Jan_Shoba_Multi_Peak.net.xml"/>
-        <route-files value="Jan_Shoba_Multi_Peak.rou.xml,Jan_Shoba_Multi_Normal.rou.alt.xml"/>
+        <route-files value="Jan_Shoba_Multi_Peak.rou.xml,Jan_Shoba_Multi_Peak.rou.alt.xml"/>
     </input>
 
 </configuration>
