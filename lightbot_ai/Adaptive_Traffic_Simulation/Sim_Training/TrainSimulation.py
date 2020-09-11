@@ -50,6 +50,11 @@ class Simulation:
         self._jan_duxbury_avg_queue_length_store = []
         self._training_epochs = training_epochs
 
+        self.Jan_Duxbury_XML_GREEN_TIMES = [27,12,27,27]
+        self.Jan_Duxbury_XML_ALL_TIMES = [27,6,12,6,27,12,27,6]
+        self.Jan_South_XML_GREEN_TIMES = [27,12,27,12]
+        self.Jan_South_XML_ALL_TIMES = [27,6,12,6,27,6,12,6]
+
     # Documentation for the run method.
     #  @param self The object pointer.
     #
@@ -101,13 +106,11 @@ class Simulation:
                     self._Memory.add_sample((jan_south_old_sim_state, jan_south_old_action, jan_south_reward, jan_south_current_sim_state))
                 if self._step != 0 and jan_south_old_action != jan_south_action:
                     self._set_jan_south_yellow_phase(jan_south_old_action)
-                    jan_south_yellow_state_steps_todo = self._yellow_duration
-                if jan_south_action == 0 or jan_south_action == 2:
-                    jan_south_green_state_steps_todo = self._green_duration
-                else:
-                    jan_south_green_state_steps_todo = 6
+                    jan_south_yellow_state_steps_todo = self.Jan_South_XML_ALL_TIMES[jan_south_old_action * 2 + 1]
+                jan_south_green_state_steps_todo = self.Jan_South_XML_GREEN_TIMES[jan_south_action]
+                x = self.Jan_South_XML_GREEN_TIMES[jan_south_action]
 
-            if jan_south_yellow_state_steps_todo == 0 and (jan_south_green_state_steps_todo == 6 or jan_south_green_state_steps_todo == 27):
+            if jan_south_yellow_state_steps_todo == 0 and jan_south_green_state_steps_todo == x:
                 self._set_jan_south_green_phase(jan_south_action)
 
             if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == 0:
@@ -119,13 +122,11 @@ class Simulation:
                     self._Memory.add_sample((jan_duxbury_old_sim_state, jan_duxbury_old_action, jan_duxbury_reward, jan_duxbury_current_sim_state))
                 if self._step != 0 and jan_duxbury_old_action != jan_duxbury_action:
                     self._set_jan_duxbury_yellow_phase(jan_duxbury_old_action)
-                    jan_duxbury_yellow_state_steps_todo = self._yellow_duration                
-                if jan_duxbury_action == 0 or jan_duxbury_action == 2:
-                    jan_duxbury_green_state_steps_todo = self._green_duration
-                else:
-                    jan_duxbury_green_state_steps_todo = 6
+                    jan_duxbury_yellow_state_steps_todo = self.Jan_Duxbury_XML_ALL_TIMES[jan_duxbury_old_action * 2 + 1]               
+                jan_duxbury_green_state_steps_todo = self.Jan_Duxbury_XML_GREEN_TIMES[jan_duxbury_action]
+                y = self.Jan_Duxbury_XML_GREEN_TIMES[jan_duxbury_action]
 
-            if jan_duxbury_yellow_state_steps_todo == 0 and (jan_duxbury_green_state_steps_todo == 6 or jan_duxbury_green_state_steps_todo == 27):
+            if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == y:
                 self._set_jan_duxbury_green_phase(jan_duxbury_action)
 
             if (self._step < self._max_steps) and (jan_south_yellow_state_steps_todo > 0 or jan_south_green_state_steps_todo > 0 or jan_duxbury_yellow_state_steps_todo > 0 or jan_duxbury_green_state_steps_todo > 0):
@@ -282,40 +283,36 @@ class Simulation:
             traci.trafficlight.setPhase(
                 "cluster_2516980595_2516980597_25290876_611769785", PHASE_EWR_GREEN)
 
-
-    # def _get_queue_length(self):
-    #     halt_N = traci.edge.getLastStepHaltingNumber(
-    #         "road_triple_JanShobaN_toJunc")
-    #     halt_S = traci.edge.getLastStepHaltingNumber(
-    #         "road_triple_JanShobaS_toJunc")
-    #     halt_E = traci.edge.getLastStepHaltingNumber(
-    #         "road_double_SouthStrW_toJunc")
-    #     halt_W = traci.edge.getLastStepHaltingNumber(
-    #         "road_double_SouthStrE_toJunc")
-    #     queue_length = halt_N + halt_S + halt_E + halt_W
-    #     return queue_length
-
     def _get_jan_south_queue_length(self):
         halt_N = traci.edge.getLastStepHaltingNumber(
-            "rd6_JanShoba_tl_n")
+            "rd6_JanShoba_tl_n") + traci.edge.getLastStepHaltingNumber(
+            "rd5_JanShoba_dl_n")
         halt_S = traci.edge.getLastStepHaltingNumber(
-            "rd3_JanShoba_tl_s")
+            "rd3_JanShoba_tl_s") + traci.edge.getLastStepHaltingNumber(
+            "rd2_JanShoba_dl_s")
         halt_E = traci.edge.getLastStepHaltingNumber(
-            "rd2_South_dl_e")
+            "rd2_South_dl_e") + traci.edge.getLastStepHaltingNumber(
+            "rd1_South_sl_e")
         halt_W = traci.edge.getLastStepHaltingNumber(
-            "rd2_South_dl_w")
+            "rd2_South_dl_w") + traci.edge.getLastStepHaltingNumber(
+            "rd1_South_sl_w")
         queue_length = halt_N + halt_S + halt_E + halt_W
         return queue_length
 
     def _get_jan_duxbury_queue_length(self):
         halt_N = traci.edge.getLastStepHaltingNumber(
-            "rd4_JanShoba_ql_n")
+            "rd4_JanShoba_ql_n") + traci.edge.getLastStepHaltingNumber(
+            "rd3_JanShoba_dl_N")
         halt_S = traci.edge.getLastStepHaltingNumber(
-            "rd6_JanShoba_tl_s")
+            "rd6_JanShoba_tl_s") + traci.edge.getLastStepHaltingNumber(
+            "rd5_JanShoba_tl_s") + traci.edge.getLastStepHaltingNumber(
+            "rd4_JanShoba_dl_s")
         halt_E = traci.edge.getLastStepHaltingNumber(
-            "rd2_Duxbury_dl_e")
+            "rd2_Duxbury_dl_e") + traci.edge.getLastStepHaltingNumber(
+            "rd1_Duxbury_sl_e")
         halt_W = traci.edge.getLastStepHaltingNumber(
-            "rd1_Duxbury_ql_w")
+            "rd1_Duxbury_ql_w") + traci.edge.getLastStepHaltingNumber(
+            "rd0_Duxbury_dl_w")
         queue_length = halt_N + halt_S + halt_E + halt_W
         return queue_length
 
@@ -362,6 +359,69 @@ class Simulation:
             elif lane_id == "rd2_South_dl_w_1":
                 lane_group = 5
             elif lane_id == "rd6_JanShoba_tl_n_0" or lane_id == "rd6_JanShoba_tl_n_1":
+                lane_group = 6
+            elif lane_id == "rd6_JanShoba_tl_n_2":
+                lane_group = 7
+            else:
+                lane_group = -1
+
+            if lane_group >= 1 and lane_group <= 7:
+                car_position = int(str(lane_group) + str(lane_cell))
+                valid_car = True
+            elif lane_group == 0:
+                car_position = lane_cell
+                valid_car = True
+            else:
+                valid_car = False
+
+            if valid_car:
+                state[car_position] = 1
+
+        return state
+
+    def _get_extended_jan_south_sim_state(self):
+        state = np.zeros(self._num_states)
+        cars = traci.vehicle.getIDList()
+
+        for car_id in cars:
+            lane_pos = traci.vehicle.getLanePosition(car_id)
+            lane_id = traci.vehicle.getLaneID(car_id)
+            lane_pos = 25 - lane_pos  # may need to change this
+
+            if lane_pos < x:
+                lane_cell = 0
+            elif lane_pos < x:
+                lane_cell = 1
+            elif lane_pos < x:
+                lane_cell = 2
+            elif lane_pos < x:
+                lane_cell = 3
+            elif lane_pos < x:
+                lane_cell = 4
+            elif lane_pos < x:
+                lane_cell = 5
+            elif lane_pos < x:
+                lane_cell = 6
+            elif lane_pos < x:
+                lane_cell = 7
+            elif lane_pos < x:
+                lane_cell = 8
+            elif lane_pos <= 136:
+                lane_cell = 9
+
+            if lane_id == "rd3_JanShoba_tl_s_0" or lane_id == "rd3_JanShoba_tl_s_1" or lane_id == 'rd2_JanShoba_dl_s_0' or lane_id == 'rd2_JanShoba_dl_s_1':
+                lane_group = 0
+            elif lane_id == "rd3_JanShoba_tl_s_2":
+                lane_group = 1
+            elif lane_id == "rd2_South_dl_e_0" or lane_id == 'rd1_South_sl_e_0':
+                lane_group = 2
+            elif lane_id == "rd2_South_dl_e_1":
+                lane_group = 3
+            elif lane_id == "rd2_South_dl_w_0" or lane_id == 'rd1_South_sl_w':
+                lane_group = 4
+            elif lane_id == "rd2_South_dl_w_1":
+                lane_group = 5
+            elif lane_id == "rd6_JanShoba_tl_n_0" or lane_id == "rd6_JanShoba_tl_n_1" or lane_id == "rd5_JanShoba_dl_n_0" or lane_id == "rd5_JanShoba_dl_n_1":
                 lane_group = 6
             elif lane_id == "rd6_JanShoba_tl_n_2":
                 lane_group = 7

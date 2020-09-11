@@ -54,37 +54,41 @@ class Simulation:
         # JanShoba_Duxbury_tl_=_cluster_2516980595_2516980597_25290876_611769785
         self.JanShoba_Duxbury_XML_TRAFFIC_LIGHT_GREEN_STATES = [
             '<phase duration="27" state="rrrrGGrrrrGGGr"/>',
-            '<phase duration="6"  state="rrrrrrGrrrrrrG"/>',
+            '<phase duration="12"  state="rrrrrrGrrrrrrG"/>',
             '<phase duration="27" state="GGrrrrrGGgrrrr"/>',
-            '<phase duration="6"  state="rrGGrrrrrGrrrr"/>'
+            '<phase duration="27"  state="rrGGrrrrrGrrrr"/>'
         ]
         self.JanShoba_Duxbury_XML_TRAFFIC_LIGHT_ALL_STATES = [
             '<phase duration="27" state="rrrrGGrrrrGGGr"/>',
             '<phase duration="6"  state="rrrryyrrrryyyr"/>',
-            '<phase duration="6"  state="rrrrrrGrrrrrrG"/>',
+            '<phase duration="12"  state="rrrrrrGrrrrrrG"/>',
             '<phase duration="6"  state="rrrrrryrrrrrry"/>',
             '<phase duration="27" state="GGrrrrrGGgrrrr"/>',
-            '<phase duration="6"  state="yyrrrrryyyrrrr"/>',   #  Quick fix!!
-            '<phase duration="6"  state="rrGGrrrrrGrrrr"/>',
+            '<phase duration="12"  state="yyrrrrryyyrrrr"/>',   
+            '<phase duration="27"  state="rrGGrrrrrGrrrr"/>',
             '<phase duration="6"  state="rryyrrrrryrrrr"/>'
         ]
+        self.Jan_Duxbury_XML_GREEN_TIMES = [27,12,27,27]
+        self.Jan_Duxbury_XML_ALL_TIMES = [27,6,12,6,27,12,27,6]
         # JanShoba_South_tl_=_cluster_25290891_611769793
         self.JanShoba_South_XML_TRAFFIC_LIGHT_GREEN_STATES = [
             '<phase duration="27" state="GGGrrrrrrGGGrrrrr"/>',
-            '<phase duration="6"  state="rrrGrrrrrrrrGrrrr"/>',
+            '<phase duration="12"  state="rrrGrrrrrrrrGrrrr"/>',
             '<phase duration="27" state="rrrrGGGggrrrrGGGg"/>',
-            '<phase duration="6"  state="rrrrrrrGGrrrrrrrG"/>'
+            '<phase duration="12"  state="rrrrrrrGGrrrrrrrG"/>'
         ]
         self.JanShoba_South_XML_TRAFFIC_LIGHT_ALL_STATES = [
             '<phase duration="27" state="GGGrrrrrrGGGrrrrr"/>',
             '<phase duration="6"  state="yyyrrrrrryyyrrrrr"/>',
-            '<phase duration="6"  state="rrrGrrrrrrrrGrrrr"/>',
+            '<phase duration="12"  state="rrrGrrrrrrrrGrrrr"/>',
             '<phase duration="6"  state="rrryrrrrrrrryrrrr"/>',
             '<phase duration="27" state="rrrrGGGggrrrrGGGg"/>',
-            '<phase duration="6"  state="rrrryyyyyrrrryyyy"/>', #  Quick fix!!
-            '<phase duration="6"  state="rrrrrrrGGrrrrrrrG"/>',
+            '<phase duration="6"  state="rrrryyyyyrrrryyyy"/>', 
+            '<phase duration="12"  state="rrrrrrrGGrrrrrrrG"/>',
             '<phase duration="6"  state="rrrrrrryyrrrrrrry"/>'
         ]
+        self.Jan_South_XML_GREEN_TIMES = [27,12,27,12]
+        self.Jan_South_XML_ALL_TIMES = [27,6,12,6,27,6,12,6]
 
     # Documentation for the run method.
     #  @param self The object pointer.
@@ -115,15 +119,13 @@ class Simulation:
                 jan_south_action = self._choose_action(jan_south_current_sim_state)
                 if self._step != 0 and jan_south_old_action != jan_south_action:
                     self._set_jan_south_yellow_phase(jan_south_old_action)
-                    jan_south_yellow_state_steps_todo = self._yellow_duration
+                    jan_south_yellow_state_steps_todo = self.Jan_South_XML_ALL_TIMES[jan_south_old_action * 2 + 1]
                     self._jan_south_actions_taken.append(self.JanShoba_South_XML_TRAFFIC_LIGHT_ALL_STATES[jan_south_old_action * 2 + 1])
                 self._jan_south_actions_taken.append(self.JanShoba_South_XML_TRAFFIC_LIGHT_GREEN_STATES[jan_south_action])               
-                if jan_south_action == 0 or jan_south_action == 2:
-                    jan_south_green_state_steps_todo = self._green_duration
-                else:
-                    jan_south_green_state_steps_todo = 6
+                jan_south_green_state_steps_todo = self.Jan_South_XML_GREEN_TIMES[jan_south_action]
+                x = self.Jan_South_XML_GREEN_TIMES[jan_south_action]
 
-            if jan_south_yellow_state_steps_todo == 0 and (jan_south_green_state_steps_todo == 6 or jan_south_green_state_steps_todo == 27):
+            if jan_south_yellow_state_steps_todo == 0 and jan_south_green_state_steps_todo == x:
                 self._set_jan_south_green_phase(jan_south_action)
 
             if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == 0:
@@ -131,15 +133,13 @@ class Simulation:
                 jan_duxbury_action = self._choose_action(jan_duxbury_current_sim_state)
                 if self._step != 0 and jan_duxbury_old_action != jan_duxbury_action:
                     self._set_jan_duxbury_yellow_phase(jan_duxbury_old_action)
-                    jan_duxbury_yellow_state_steps_todo = self._yellow_duration
+                    jan_duxbury_yellow_state_steps_todo = self.Jan_Duxbury_XML_ALL_TIMES[jan_duxbury_old_action * 2 + 1]
                     self._jan_duxbury_actions_taken.append(self.JanShoba_Duxbury_XML_TRAFFIC_LIGHT_ALL_STATES[jan_duxbury_old_action * 2 + 1])
                 self._jan_duxbury_actions_taken.append(self.JanShoba_Duxbury_XML_TRAFFIC_LIGHT_GREEN_STATES[jan_duxbury_action])
-                if jan_duxbury_action == 0 or jan_duxbury_action == 2:
-                    jan_duxbury_green_state_steps_todo = self._green_duration
-                else:
-                    jan_duxbury_green_state_steps_todo = 6
+                jan_duxbury_green_state_steps_todo = self.Jan_Duxbury_XML_GREEN_TIMES[jan_duxbury_action]
+                y = self.Jan_Duxbury_XML_GREEN_TIMES[jan_duxbury_action]
 
-            if jan_duxbury_yellow_state_steps_todo == 0 and (jan_duxbury_green_state_steps_todo == 6 or jan_duxbury_green_state_steps_todo == 27):
+            if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == y:
                 self._set_jan_duxbury_green_phase(jan_duxbury_action) 
 
             if (traci.simulation.getMinExpectedNumber() > 0) and (jan_south_yellow_state_steps_todo > 0 or jan_south_green_state_steps_todo > 0 or jan_duxbury_yellow_state_steps_todo > 0 or jan_duxbury_green_state_steps_todo > 0):
@@ -153,9 +153,6 @@ class Simulation:
                 self._collect_jan_south_waiting_times()
                 self._collect_fuel_consumption()
                 self._collect_co2_emission()
-                # if (self._step+1) % 10 == 0:
-                #     self._collect_jan_south_waiting_times()
-                #     self._collect_jan_duxbury_waiting_times()
                 if jan_south_yellow_state_steps_todo > 0:
                     jan_south_yellow_state_steps_todo -= 1
                 else:
@@ -200,12 +197,7 @@ class Simulation:
             self._collect_jan_duxbury_waiting_times()
             self._collect_fuel_consumption()
             self._collect_co2_emission()
-            # current_total_wait = self._collect_waiting_times()
-            # waiting time = seconds waited by a car since the spawn in the environment, cumulated for every car in incoming lanes
-        
-        print("Total wait for South with every 10 steps:" + str(sum(self._jan_south_wait_time_episode)))
-        print("Total wait for Duxbury with every 10 steps:" + str(sum(self._jan_duxbury_wait_time_episode)))
-
+            
         traci.close()
         print('Ending TraCI...')
         simulation_time = round(timeit.default_timer() - start_time, 1)
@@ -345,15 +337,6 @@ class Simulation:
     #  The _get_queue_length will retrieve the number of cars halted, specifically in the incoming lane, using traci.edge.getLastStepHaltingNumber.
     #  The result is then appended to the appropriate list, along with keeping a running total with queue_length.
     def _get_jan_south_queue_length(self):
-        # halt_N = traci.edge.getLastStepHaltingNumber(
-        #     "rd6_JanShoba_tl_n")
-        # halt_S = traci.edge.getLastStepHaltingNumber(
-        #     "rd3_JanShoba_tl_s")
-        # halt_E = traci.edge.getLastStepHaltingNumber(
-        #     "rd2_South_dl_e")
-        # halt_W = traci.edge.getLastStepHaltingNumber(
-        #     "rd2_South_dl_w")
-        
         halt_N = traci.edge.getLastStepHaltingNumber(
             "rd6_JanShoba_tl_n") + traci.edge.getLastStepHaltingNumber(
             "rd5_JanShoba_dl_n")
@@ -370,15 +353,6 @@ class Simulation:
         return queue_length
 
     def _get_jan_duxbury_queue_length(self):
-        # halt_N = traci.edge.getLastStepHaltingNumber(
-        #     "rd4_JanShoba_ql_n")
-        # halt_S = traci.edge.getLastStepHaltingNumber(
-        #     "rd6_JanShoba_tl_s")
-        # halt_E = traci.edge.getLastStepHaltingNumber(
-        #     "rd2_Duxbury_dl_e")
-        # halt_W = traci.edge.getLastStepHaltingNumber(
-        #     "rd1_Duxbury_ql_w")
-
         halt_N = traci.edge.getLastStepHaltingNumber(
             "rd4_JanShoba_ql_n") + traci.edge.getLastStepHaltingNumber(
             "rd3_JanShoba_dl_N")
