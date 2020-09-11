@@ -214,8 +214,10 @@ class MockGenerator(VehicleGenerator):
                             print('     <vehicle id="p_w_l_w_%i" type="standard_car" route="route_Prospect_w_Lunnon_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
                         if route_select > 0.9:
                             print('     <vehicle id="p_w_l_e_%i" type="standard_car" route="route_Prospect_w_Lunnon_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                    
-                                                
+                    #Intially Travelling East
+                    if end_edge > 0.5:
+                        print('     <vehicle id="p_e_j_n_%i" type="standard_car" route="route_Prospect_e_JanShoba_n" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
+                                            
                          # 25% of cars turn into Jan Shoba 
                 elif straight_or_turn >= 0.25 and straight_or_turn < 0.50:
                     route_turn = np.random.randint(1, 13)
@@ -223,9 +225,7 @@ class MockGenerator(VehicleGenerator):
                         print('     <vehicle id="l_e_j_n_%i" type="standard_car" route="route_Lunnon_e_JanShoba_n" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
                     if route_turn == 2:
                         print('     <vehicle id="l_w_j_s_%i" type="standard_car" route="route_Lunnon_w_JanShoba_s" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                   if route_turn == 11:
-                        print('     <vehicle id="p_e_j_n_%i" type="standard_car" route="route_Prospect_e_JanShoba_n" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                    # end
+                   # end
                 # 15% of cars go straight on Duxbury, South
                 elif straight_or_turn >= 0.50 and straight_or_turn < 0.65:
                     route_straight = np.random.randint(1,5)
