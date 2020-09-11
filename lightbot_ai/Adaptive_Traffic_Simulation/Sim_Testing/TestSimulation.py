@@ -45,9 +45,11 @@ class Simulation:
         # self._queue_length_episode = []
         self._jan_south_queue_length_episode = []
         self._jan_duxbury_queue_length_episode = []
+        # added these:
+        self._jan_south_wait_time_episode = []
+        self._jan_duxbury_wait_time_episode = []
         # self._actions_taken = []
         self._jan_south_actions_taken = []
-        self._jan_duxbury_actions_taken = []
         self._total_waiting_time = 0
         # JanShoba_Duxbury_tl_=_cluster_2516980595_2516980597_25290876_611769785
         self.JanShoba_Duxbury_XML_TRAFFIC_LIGHT_GREEN_STATES = [
@@ -160,6 +162,9 @@ class Simulation:
                 self._jan_south_queue_length_episode.append(jan_south_queue_length)
                 jan_duxbury_queue_length = self._get_jan_duxbury_queue_length()
                 self._jan_duxbury_queue_length_episode.append(jan_duxbury_queue_length)
+                # added this:
+                self._jan_south_wait_time_episode.append(sum(self._jan_south_waiting_times.values()))
+                self._jan_duxbury_wait_time_episode.append(sum(self._jan_duxbury_waiting_times.values()))
                 if jan_south_yellow_state_steps_todo > 0:
                     jan_south_yellow_state_steps_todo -= 1
                 else:
