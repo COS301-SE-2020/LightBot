@@ -153,8 +153,11 @@ class Simulation:
                 self._jan_south_queue_length_episode.append(jan_south_queue_length)
                 jan_duxbury_queue_length = self._get_jan_duxbury_queue_length()
                 self._jan_duxbury_queue_length_episode.append(jan_duxbury_queue_length)
-                self._collect_jan_duxbury_waiting_times()
-                self._collect_jan_south_waiting_times()
+                # self._collect_jan_duxbury_waiting_times()
+                # self._collect_jan_south_waiting_times()
+                if (self._step+1) % 10 == 0:
+                    self._collect_jan_south_waiting_times()
+                    self._collect_jan_duxbury_waiting_times()
                 if jan_south_yellow_state_steps_todo > 0:
                     jan_south_yellow_state_steps_todo -= 1
                 else:
@@ -169,7 +172,7 @@ class Simulation:
 
             if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == 0:
                 jan_duxbury_old_action = jan_duxbury_action
-
+        
         traci.close()
         print('Ending TraCI...')
         simulation_time = round(timeit.default_timer() - start_time, 1)
@@ -194,6 +197,9 @@ class Simulation:
             self._simulate(1) #Should try pass the manual times to the method call.
             # current_total_wait = self._collect_waiting_times()
             # waiting time = seconds waited by a car since the spawn in the environment, cumulated for every car in incoming lanes
+        
+        print("Total wait for South with every 10 steps:" + str(sum(self._jan_south_wait_time_episode)))
+        print("Total wait for Duxbury with every 10 steps:" + str(sum(self._jan_duxbury_wait_time_episode)))
 
         traci.close()
         print('Ending TraCI...')
@@ -217,9 +223,13 @@ class Simulation:
             self._jan_south_queue_length_episode.append(jan_south_queue_length)
             jan_duxbury_queue_length = self._get_jan_duxbury_queue_length()
             self._jan_duxbury_queue_length_episode.append(jan_duxbury_queue_length)
-            self._collect_jan_south_waiting_times()
-            self._collect_jan_duxbury_waiting_times()
+            # self._collect_jan_south_waiting_times()
+            # self._collect_jan_duxbury_waiting_times()
+            if (self._step+1) % 10 == 0:
+                self._collect_jan_south_waiting_times()
+                self._collect_jan_duxbury_waiting_times()
 
+        
 
     # Documentation for the _set_yellow_phase method.
     #  @param self The object pointer.
@@ -305,26 +315,53 @@ class Simulation:
     #  The _get_queue_length will retrieve the number of cars halted, specifically in the incoming lane, using traci.edge.getLastStepHaltingNumber.
     #  The result is then appended to the appropriate list, along with keeping a running total with queue_length.
     def _get_jan_south_queue_length(self):
+        # halt_N = traci.edge.getLastStepHaltingNumber(
+        #     "rd6_JanShoba_tl_n")
+        # halt_S = traci.edge.getLastStepHaltingNumber(
+        #     "rd3_JanShoba_tl_s")
+        # halt_E = traci.edge.getLastStepHaltingNumber(
+        #     "rd2_South_dl_e")
+        # halt_W = traci.edge.getLastStepHaltingNumber(
+        #     "rd2_South_dl_w")
+        
         halt_N = traci.edge.getLastStepHaltingNumber(
-            "rd6_JanShoba_tl_n")
+            "rd6_JanShoba_tl_n") + traci.edge.getLastStepHaltingNumber(
+            "rd5_JanShoba_dl_n")
         halt_S = traci.edge.getLastStepHaltingNumber(
-            "rd3_JanShoba_tl_s")
+            "rd3_JanShoba_tl_s") + traci.edge.getLastStepHaltingNumber(
+            "rd2_JanShoba_dl_s")
         halt_E = traci.edge.getLastStepHaltingNumber(
-            "rd2_South_dl_e")
+            "rd2_South_dl_e") + traci.edge.getLastStepHaltingNumber(
+            "rd1_South_sl_e")
         halt_W = traci.edge.getLastStepHaltingNumber(
-            "rd2_South_dl_w")
+            "rd2_South_dl_w") + traci.edge.getLastStepHaltingNumber(
+            "rd1_South_sl_w")
         queue_length = halt_N + halt_S + halt_E + halt_W
         return queue_length
 
     def _get_jan_duxbury_queue_length(self):
+        # halt_N = traci.edge.getLastStepHaltingNumber(
+        #     "rd4_JanShoba_ql_n")
+        # halt_S = traci.edge.getLastStepHaltingNumber(
+        #     "rd6_JanShoba_tl_s")
+        # halt_E = traci.edge.getLastStepHaltingNumber(
+        #     "rd2_Duxbury_dl_e")
+        # halt_W = traci.edge.getLastStepHaltingNumber(
+        #     "rd1_Duxbury_ql_w")
+
         halt_N = traci.edge.getLastStepHaltingNumber(
-            "rd4_JanShoba_ql_n")
+            "rd4_JanShoba_ql_n") + traci.edge.getLastStepHaltingNumber(
+            "rd3_JanShoba_dl_N")
         halt_S = traci.edge.getLastStepHaltingNumber(
-            "rd6_JanShoba_tl_s")
+            "rd6_JanShoba_tl_s") + traci.edge.getLastStepHaltingNumber(
+            "rd5_JanShoba_tl_s") + traci.edge.getLastStepHaltingNumber(
+            "rd4_JanShoba_dl_s")
         halt_E = traci.edge.getLastStepHaltingNumber(
-            "rd2_Duxbury_dl_e")
+            "rd2_Duxbury_dl_e") + traci.edge.getLastStepHaltingNumber(
+            "rd1_Duxbury_sl_e")
         halt_W = traci.edge.getLastStepHaltingNumber(
-            "rd1_Duxbury_ql_w")
+            "rd1_Duxbury_ql_w") + traci.edge.getLastStepHaltingNumber(
+            "rd0_Duxbury_dl_w")
         queue_length = halt_N + halt_S + halt_E + halt_W
         return queue_length
 
