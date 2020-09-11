@@ -222,11 +222,11 @@ class MockGenerator(VehicleGenerator):
                 elif start_edge > 0.9:
                     end_edge = np.random.uniform()
                     #Intially Travelling West
-                    if end_edge <= 0.5:
+                    if end_edge <= 0.6:
                         print('     <vehicle id="l_w_j_s_%i" type="standard_car" route="route_Lunnon_w_JanShoba_s" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
                 
                     #Initially Travelling East
-                    if end_edge > 0.5:
+                    if end_edge > 0.4:
                         route_select = np.random.uniform()
                         if route_select <= 0.20:
                             print('     <vehicle id="l_e_j_n_%i" type="standard_car" route="route_Lunnon_e_JanShoba_n" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
