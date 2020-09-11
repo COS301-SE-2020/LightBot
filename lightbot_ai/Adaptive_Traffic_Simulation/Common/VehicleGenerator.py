@@ -111,7 +111,7 @@ class MockGenerator(VehicleGenerator):
                             print('     <vehicle id="d_e_l_w_%i" type="standard_car" route="route_Duxbury_e_Lunnon_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
                         if route_select > 0.75 and route_select <= 0.85:
                             print('     <vehicle id="d_e_l_e_%i" type="standard_car" route="route_Duxbury_e_Lunnon_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                        if route_select > 0.85
+                        if route_select > 0.85:
                             print('     <vehicle id="d_e_p_w_%i" type="standard_car" route="route_Duxbury_e_Prospect_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
             # Jan Shoba Southbound Begin Point
                 elif start_edge > 0.3 and start_edge <= 0.45:
