@@ -39,8 +39,6 @@ class Simulation:
         self._num_actions = num_actions
         self._actions_file_name = actions_file_name
         self._use_automatic_controller = use_automatic_controller
-        self._jan_south_reward_episode = []
-        self._jan_duxbury_reward_episode = []
         # self._reward_episode = []
         # self._queue_length_episode = []
         self._jan_south_queue_length_episode = []
@@ -122,8 +120,6 @@ class Simulation:
         while self._step < self._max_steps:
             if jan_south_yellow_state_steps_todo == 0 and jan_south_green_state_steps_todo == 0:
                 jan_south_current_sim_state = self._get_jan_south_sim_state()
-                jan_south_current_total_wait = self._collect_jan_south_waiting_times()
-                jan_south_reward = jan_south_old_total_wait - jan_south_current_total_wait
                 jan_south_action = self._choose_action(jan_south_current_sim_state)
                 if self._step != 0 and jan_south_old_action != jan_south_action:
                     self._set_jan_south_yellow_phase(jan_south_old_action)
@@ -140,8 +136,6 @@ class Simulation:
 
             if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == 0:
                 jan_duxbury_current_sim_state = self._get_jan_duxbury_sim_state()
-                jan_duxbury_current_total_wait = self._collect_jan_duxbury_waiting_times()
-                jan_duxbury_reward = jan_duxbury_old_total_wait - jan_duxbury_current_total_wait
                 jan_duxbury_action = self._choose_action(jan_duxbury_current_sim_state)
                 if self._step != 0 and jan_duxbury_old_action != jan_duxbury_action:
                     self._set_jan_duxbury_yellow_phase(jan_duxbury_old_action)
@@ -164,8 +158,8 @@ class Simulation:
                 jan_duxbury_queue_length = self._get_jan_duxbury_queue_length()
                 self._jan_duxbury_queue_length_episode.append(jan_duxbury_queue_length)
                 # added this:
-                self._jan_south_wait_time_episode.append(sum(self._jan_south_waiting_times.values()))
-                self._jan_duxbury_wait_time_episode.append(sum(self._jan_duxbury_waiting_times.values()))
+                self._collect_jan_duxbury_waiting_times()
+                self._collect_jan_south_waiting_times()
                 if jan_south_yellow_state_steps_todo > 0:
                     jan_south_yellow_state_steps_todo -= 1
                 else:
@@ -206,8 +200,8 @@ class Simulation:
         self._jan_south_waiting_times = {}
         self._jan_duxbury_waiting_times = {}
         while self._step < self._max_steps:
-            jan_south_current_total_wait = self._collect_jan_south_waiting_times()
-            jan_duxbury_current_total_wait = self._collect_jan_duxbury_waiting_times()
+            self._collect_jan_south_waiting_times()
+            self._collect_jan_duxbury_waiting_times()
             self._simulate(1) #Should try pass the manual times to the method call.
             # current_total_wait = self._collect_waiting_times()
             # waiting time = seconds waited by a car since the spawn in the environment, cumulated for every car in incoming lanes
@@ -298,6 +292,8 @@ class Simulation:
                 if car_id in self._jan_south_waiting_times: # a car that was tracked has cleared the intersection
                     del self._jan_south_waiting_times[car_id]
         total_waiting_time = sum(self._jan_south_waiting_times.values())
+                        self._jan_south_wait_time_episode.append(sum(self._jan_south_waiting_times.values()))
+                self._jan_duxbury_wait_time_episode.append(sum(self._jan_duxbury_waiting_times.values()))
         return total_waiting_time
 
     def _collect_jan_duxbury_waiting_times(self):
@@ -312,6 +308,8 @@ class Simulation:
                 if car_id in self._jan_duxbury_waiting_times: # a car that was tracked has cleared the intersection
                     del self._jan_duxbury_waiting_times[car_id]
         total_waiting_time = sum(self._jan_duxbury_waiting_times.values())
+                        self._jan_south_wait_time_episode.append(sum(self._jan_south_waiting_times.values()))
+                self._jan_duxbury_wait_time_episode.append(sum(self._jan_duxbury_waiting_times.values()))
         return total_waiting_time
 
     def _choose_action(self, state):
@@ -486,14 +484,6 @@ class Simulation:
     @property
     def jan_duxbury_queue_length_episode(self):
         return self._jan_duxbury_queue_length_episode
-
-    @property
-    def jan_south_reward_episode(self):
-        return self._jan_south_reward_episode
-
-    @property
-    def jan_duxbury_reward_episode(self):
-        return self._jan_duxbury_reward_episode
 
     @property
     def jan_south_time_waiting_times(self):
