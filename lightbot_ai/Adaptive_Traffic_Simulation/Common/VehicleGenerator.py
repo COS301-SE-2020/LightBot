@@ -148,9 +148,9 @@ class MockGenerator(VehicleGenerator):
                         print('     <vehicle id="j_n_s_e_%i" type="standard_car" route="route_JanShoba_n_South_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
                     if end_edge > 0.8 and end_edge <= 0.9:
                         print('     <vehicle id="j_n_l_w_%i" type="standard_car" route="route_JanShoba_n_Lunnon_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                    if end_edge > 0.9 and end_edge <= 0.95:
+                    if end_edge > 0.9 and end_edge <= 0.96:
                         print('     <vehicle id="j_n_l_e_%i" type="standard_car" route="route_JanShoba_n_Lunnon_e" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
-                    if end_edge > 0.95:
+                    if end_edge > 0.96:
                         print('     <vehicle id="j_n_p_w_%i" type="standard_car" route="route_JanShoba_n_Prospect_w" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
             #South Start
                 elif start_edge > 0.6 and start_edge <= 0.8:
@@ -222,11 +222,11 @@ class MockGenerator(VehicleGenerator):
                 elif start_edge > 0.9:
                     end_edge = np.random.uniform()
                     #Intially Travelling West
-                    if end_edge <= 0.6:
+                    if end_edge <= 0.65:
                         print('     <vehicle id="l_w_j_s_%i" type="standard_car" route="route_Lunnon_w_JanShoba_s" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
                 
                     #Initially Travelling East
-                    if end_edge > 0.4:
+                    if end_edge > 0.35:
                         route_select = np.random.uniform()
                         if route_select <= 0.20:
                             print('     <vehicle id="l_e_j_n_%i" type="standard_car" route="route_Lunnon_e_JanShoba_n" depart="%s" departLane="best" departSpeed="max" departPos="base"/>' % (car_counter, step), file=routes)
