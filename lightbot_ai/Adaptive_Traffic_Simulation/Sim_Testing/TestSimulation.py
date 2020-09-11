@@ -50,7 +50,7 @@ class Simulation:
         self._jan_duxbury_wait_time_episode = []
         # self._actions_taken = []
         self._jan_south_actions_taken = []
-        self._total_waiting_time = 0
+        self._jan_duxbury_actions_taken = []
         # JanShoba_Duxbury_tl_=_cluster_2516980595_2516980597_25290876_611769785
         self.JanShoba_Duxbury_XML_TRAFFIC_LIGHT_GREEN_STATES = [
             '<phase duration="27" state="rrrrGGrrrrGGGr"/>',
@@ -101,8 +101,9 @@ class Simulation:
         self._step = 0
 
         self._jan_south_waiting_times = {}
-        jan_south_old_total_wait = 0
         self._jan_duxbury_waiting_times = {}
+        jan_south_old_total_wait = 0
+        
         jan_duxbury_old_total_wait = 0
         jan_south_old_action = -1
         jan_duxbury_old_action = -1
@@ -202,8 +203,11 @@ class Simulation:
         traci.start(self._sumo_cmd)
 
         self._step = 0
-        self._waiting_times = {}
+        self._jan_south_waiting_times = {}
+        self._jan_duxbury_waiting_times = {}
         while self._step < self._max_steps:
+            jan_south_current_total_wait = self._collect_jan_south_waiting_times()
+            jan_duxbury_current_total_wait = self._collect_jan_duxbury_waiting_times()
             self._simulate(1) #Should try pass the manual times to the method call.
             # current_total_wait = self._collect_waiting_times()
             # waiting time = seconds waited by a car since the spawn in the environment, cumulated for every car in incoming lanes
@@ -230,6 +234,8 @@ class Simulation:
             self._jan_south_queue_length_episode.append(jan_south_queue_length)
             jan_duxbury_queue_length = self._get_jan_duxbury_queue_length()
             self._jan_duxbury_queue_length_episode.append(jan_duxbury_queue_length)
+            self._jan_south_wait_time_episode.append(sum(self._jan_south_waiting_times.values()))
+            self._jan_duxbury_wait_time_episode.append(sum(self._jan_duxbury_waiting_times.values()))
 
     # Documentation for the _set_yellow_phase method.
     #  @param self The object pointer.
@@ -491,11 +497,11 @@ class Simulation:
 
     @property
     def jan_south_time_waiting_times(self):
-        return self._jan_south_total_waiting_time
+        return self._jan_south_wait_time_episode
 
     @property
     def jan_duxbury_time_waiting_times(self):
-        return self._jan_duxbury_total_waiting_time
+        return self._jan_duxbury_wait_time_episode
 
     # @var _queue_length_episode
     #  a list with the combined queue length for all the incoming lanes
