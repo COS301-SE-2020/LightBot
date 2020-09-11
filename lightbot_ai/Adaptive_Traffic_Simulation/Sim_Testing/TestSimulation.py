@@ -100,9 +100,7 @@ class Simulation:
 
         self._jan_south_waiting_times = {}
         self._jan_duxbury_waiting_times = {}
-        jan_south_old_total_wait = 0
-        
-        jan_duxbury_old_total_wait = 0
+
         jan_south_old_action = -1
         jan_duxbury_old_action = -1
 
@@ -110,8 +108,6 @@ class Simulation:
         jan_south_green_state_steps_todo = 0
         jan_duxbury_yellow_state_steps_todo = 0
         jan_duxbury_green_state_steps_todo = 0
-        jan_south_current_total_wait = 0
-        jan_duxbury_current_total_wait = 0
         jan_south_reward = 0 
         jan_duxbury_reward = 0
         jan_south_action = 0
@@ -157,7 +153,6 @@ class Simulation:
                 self._jan_south_queue_length_episode.append(jan_south_queue_length)
                 jan_duxbury_queue_length = self._get_jan_duxbury_queue_length()
                 self._jan_duxbury_queue_length_episode.append(jan_duxbury_queue_length)
-                # added this:
                 self._collect_jan_duxbury_waiting_times()
                 self._collect_jan_south_waiting_times()
                 if jan_south_yellow_state_steps_todo > 0:
@@ -171,13 +166,9 @@ class Simulation:
 
             if jan_south_yellow_state_steps_todo == 0 and jan_south_green_state_steps_todo == 0:    
                 jan_south_old_action = jan_south_action
-                jan_south_old_total_wait = jan_south_current_total_wait
-                self._jan_south_reward_episode.append(jan_south_reward)
 
             if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == 0:
                 jan_duxbury_old_action = jan_duxbury_action
-                jan_duxbury_old_total_wait = jan_duxbury_current_total_wait
-                self._jan_duxbury_reward_episode.append(jan_duxbury_reward)
 
         traci.close()
         print('Ending TraCI...')
@@ -200,8 +191,6 @@ class Simulation:
         self._jan_south_waiting_times = {}
         self._jan_duxbury_waiting_times = {}
         while self._step < self._max_steps:
-            self._collect_jan_south_waiting_times()
-            self._collect_jan_duxbury_waiting_times()
             self._simulate(1) #Should try pass the manual times to the method call.
             # current_total_wait = self._collect_waiting_times()
             # waiting time = seconds waited by a car since the spawn in the environment, cumulated for every car in incoming lanes
@@ -228,8 +217,9 @@ class Simulation:
             self._jan_south_queue_length_episode.append(jan_south_queue_length)
             jan_duxbury_queue_length = self._get_jan_duxbury_queue_length()
             self._jan_duxbury_queue_length_episode.append(jan_duxbury_queue_length)
-            self._jan_south_wait_time_episode.append(sum(self._jan_south_waiting_times.values()))
-            self._jan_duxbury_wait_time_episode.append(sum(self._jan_duxbury_waiting_times.values()))
+            self._collect_jan_south_waiting_times()
+            self._collect_jan_duxbury_waiting_times()
+
 
     # Documentation for the _set_yellow_phase method.
     #  @param self The object pointer.
@@ -282,35 +272,24 @@ class Simulation:
 
     def _collect_jan_south_waiting_times(self):
         incoming_roads = ["rd6_JanShoba_tl_n", "rd2_South_dl_e", "rd3_JanShoba_tl_s", "rd2_South_dl_w"]
+        total_waiting_time = 0
         car_list = traci.vehicle.getIDList()
         for car_id in car_list:
-            wait_time = traci.vehicle.getAccumulatedWaitingTime(car_id)
-            road_id = traci.vehicle.getRoadID(car_id)  # get the road id where the car is located
-            if road_id in incoming_roads:  # consider only the waiting times of cars in incoming roads
-                self._jan_south_waiting_times[car_id] = wait_time
-            else:
-                if car_id in self._jan_south_waiting_times: # a car that was tracked has cleared the intersection
-                    del self._jan_south_waiting_times[car_id]
-        total_waiting_time = sum(self._jan_south_waiting_times.values())
-                        self._jan_south_wait_time_episode.append(sum(self._jan_south_waiting_times.values()))
-                self._jan_duxbury_wait_time_episode.append(sum(self._jan_duxbury_waiting_times.values()))
-        return total_waiting_time
+            road_id = traci.vehicle.getRoadID(car_id)
+            if road_id in incoming_roads:
+                total_waiting_time += traci.vehicle.getAccumulatedWaitingTime(car_id)
+        self._jan_south_wait_time_episode.append(total_waiting_time)
 
     def _collect_jan_duxbury_waiting_times(self):
         incoming_roads = ["rd4_JanShoba_ql_n", "rd2_Duxbury_dl_e", "rd6_JanShoba_tl_s", "rd1_Duxbury_ql_w"]
+        total_waiting_time = 0
         car_list = traci.vehicle.getIDList()
         for car_id in car_list:
-            wait_time = traci.vehicle.getAccumulatedWaitingTime(car_id)
-            road_id = traci.vehicle.getRoadID(car_id)  # get the road id where the car is located
-            if road_id in incoming_roads:  # consider only the waiting times of cars in incoming roads
-                self._jan_duxbury_waiting_times[car_id] = wait_time
-            else:
-                if car_id in self._jan_duxbury_waiting_times: # a car that was tracked has cleared the intersection
-                    del self._jan_duxbury_waiting_times[car_id]
-        total_waiting_time = sum(self._jan_duxbury_waiting_times.values())
-                        self._jan_south_wait_time_episode.append(sum(self._jan_south_waiting_times.values()))
-                self._jan_duxbury_wait_time_episode.append(sum(self._jan_duxbury_waiting_times.values()))
-        return total_waiting_time
+            road_id = traci.vehicle.getRoadID(car_id)
+            if road_id in incoming_roads:
+                total_waiting_time += traci.vehicle.getAccumulatedWaitingTime(car_id)
+        self._jan_duxbury_wait_time_episode.append(total_waiting_time)
+
 
     def _choose_action(self, state):
         return np.argmax(self._Model.predict_one(state))
@@ -486,11 +465,11 @@ class Simulation:
         return self._jan_duxbury_queue_length_episode
 
     @property
-    def jan_south_time_waiting_times(self):
+    def jan_south_time_waiting(self):
         return self._jan_south_wait_time_episode
 
     @property
-    def jan_duxbury_time_waiting_times(self):
+    def jan_duxbury_time_waiting(self):
         return self._jan_duxbury_wait_time_episode
 
     # @var _queue_length_episode

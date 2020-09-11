@@ -85,13 +85,13 @@ if __name__ == "__main__":
 
     # Data is saved and plotted.
     Visualization.save_data_and_plot(data=Simulation.jan_south_queue_length_episode,
-                                     filename='Jan_South_Total_queue', xlabel='Step', ylabel='Queue length (vehicles)')
+                                     filename='Jan_South_Total_queue', xlabel='Step', ylabel='Cumulative Queue length (vehicles)')
     Visualization.save_data_and_plot(data=Simulation.jan_duxbury_queue_length_episode,
-                                     filename='Jan_Duxbury_Total_queue', xlabel='Step', ylabel='Queue length (vehicles)')
-    Visualization.save_data_and_plot(data=Simulation.jan_south_time_waiting_times,
-                                     filename='Jan_South_Waiting_Times', xlabel='Step', ylabel='Waiting Time (seconds)')
-    Visualization.save_data_and_plot(data=Simulation.jan_duxbury_time_waiting_times,
-                                     filename='Jan_Duxbury_Waiting_Times', xlabel='Step', ylabel='Waiting Time (seconds)')
+                                     filename='Jan_Duxbury_Total_queue', xlabel='Step', ylabel='Cumulative Queue length (vehicles)')
+    Visualization.save_data_and_plot(data=Simulation.jan_south_time_waiting,
+                                     filename='Jan_South_Waiting_Times', xlabel='Step', ylabel='Cumulative Waiting Time (seconds)')
+    Visualization.save_data_and_plot(data=Simulation.jan_duxbury_time_waiting,
+                                     filename='Jan_Duxbury_Waiting_Times', xlabel='Step', ylabel='Cumulative Waiting Time (seconds)')
     
     averageQueueLength = sum(Simulation.jan_south_queue_length_episode) / len(Simulation.jan_south_queue_length_episode) 
     print("Jan_South Average queue length: ", averageQueueLength)
