@@ -72,7 +72,7 @@ class MockGenerator(VehicleGenerator):
 
             for car_counter, step in enumerate(car_gen_steps):
                 straight_or_turn = np.random.uniform()
-                # 40% of cars go straight down or up Jan Shoba
+                # 25% of cars go straight down or up Jan Shoba
                 if straight_or_turn < 0.25: 
                     route_straight = np.random.randint(1, 3)
                     if route_straight == 1:
