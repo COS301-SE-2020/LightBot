@@ -46,6 +46,8 @@ class Simulation:
         # added these:
         self._jan_south_wait_time_episode = []
         self._jan_duxbury_wait_time_episode = []
+        self._total_fuel_consumption_episode = []
+        self._total_co2_emission_episode = []
         # self._actions_taken = []
         self._jan_south_actions_taken = []
         self._jan_duxbury_actions_taken = []
@@ -97,10 +99,6 @@ class Simulation:
         traci.start(self._sumo_cmd)
 
         self._step = 0
-
-        self._jan_south_waiting_times = {}
-        self._jan_duxbury_waiting_times = {}
-
         jan_south_old_action = -1
         jan_duxbury_old_action = -1
 
@@ -108,12 +106,10 @@ class Simulation:
         jan_south_green_state_steps_todo = 0
         jan_duxbury_yellow_state_steps_todo = 0
         jan_duxbury_green_state_steps_todo = 0
-        jan_south_reward = 0 
-        jan_duxbury_reward = 0
         jan_south_action = 0
         jan_duxbury_action = 0
 
-        while self._step < self._max_steps:
+        while traci.simulation.getMinExpectedNumber() > 0:
             if jan_south_yellow_state_steps_todo == 0 and jan_south_green_state_steps_todo == 0:
                 jan_south_current_sim_state = self._get_jan_south_sim_state()
                 jan_south_action = self._choose_action(jan_south_current_sim_state)
@@ -146,18 +142,20 @@ class Simulation:
             if jan_duxbury_yellow_state_steps_todo == 0 and (jan_duxbury_green_state_steps_todo == 6 or jan_duxbury_green_state_steps_todo == 27):
                 self._set_jan_duxbury_green_phase(jan_duxbury_action) 
 
-            if (self._step < self._max_steps) and (jan_south_yellow_state_steps_todo > 0 or jan_south_green_state_steps_todo > 0 or jan_duxbury_yellow_state_steps_todo > 0 or jan_duxbury_green_state_steps_todo > 0):
+            if (traci.simulation.getMinExpectedNumber() > 0) and (jan_south_yellow_state_steps_todo > 0 or jan_south_green_state_steps_todo > 0 or jan_duxbury_yellow_state_steps_todo > 0 or jan_duxbury_green_state_steps_todo > 0):
                 traci.simulationStep()
                 self._step += 1
                 jan_south_queue_length = self._get_jan_south_queue_length()
                 self._jan_south_queue_length_episode.append(jan_south_queue_length)
                 jan_duxbury_queue_length = self._get_jan_duxbury_queue_length()
                 self._jan_duxbury_queue_length_episode.append(jan_duxbury_queue_length)
-                # self._collect_jan_duxbury_waiting_times()
-                # self._collect_jan_south_waiting_times()
-                if (self._step+1) % 10 == 0:
-                    self._collect_jan_south_waiting_times()
-                    self._collect_jan_duxbury_waiting_times()
+                self._collect_jan_duxbury_waiting_times()
+                self._collect_jan_south_waiting_times()
+                self._collect_fuel_consumption()
+                self._collect_co2_emission()
+                # if (self._step+1) % 10 == 0:
+                #     self._collect_jan_south_waiting_times()
+                #     self._collect_jan_duxbury_waiting_times()
                 if jan_south_yellow_state_steps_todo > 0:
                     jan_south_yellow_state_steps_todo -= 1
                 else:
@@ -191,10 +189,17 @@ class Simulation:
         traci.start(self._sumo_cmd)
 
         self._step = 0
-        self._jan_south_waiting_times = {}
-        self._jan_duxbury_waiting_times = {}
-        while self._step < self._max_steps:
-            self._simulate(1) #Should try pass the manual times to the method call.
+        while traci.simulation.getMinExpectedNumber() > 0:
+            traci.simulationStep()
+            self._step += 1
+            jan_south_queue_length = self._get_jan_south_queue_length()
+            self._jan_south_queue_length_episode.append(jan_south_queue_length)
+            jan_duxbury_queue_length = self._get_jan_duxbury_queue_length()
+            self._jan_duxbury_queue_length_episode.append(jan_duxbury_queue_length)
+            self._collect_jan_south_waiting_times()
+            self._collect_jan_duxbury_waiting_times()
+            self._collect_fuel_consumption()
+            self._collect_co2_emission()
             # current_total_wait = self._collect_waiting_times()
             # waiting time = seconds waited by a car since the spawn in the environment, cumulated for every car in incoming lanes
         
@@ -212,22 +217,24 @@ class Simulation:
     #
     #  The _simulate function initially checks if the maximum number of steps won't be reached before executing.
     #  If the maximum is not reached then traci will simulate a step with traci.simulationStep() and the queue lenght is recorded.
-    def _simulate(self, steps_todo):
-        if (self._step + steps_todo) >= self._max_steps:
-            steps_todo = self._max_steps - self._step
-        while steps_todo > 0:
-            traci.simulationStep()
-            self._step += 1
-            steps_todo -= 1
-            jan_south_queue_length = self._get_jan_south_queue_length()
-            self._jan_south_queue_length_episode.append(jan_south_queue_length)
-            jan_duxbury_queue_length = self._get_jan_duxbury_queue_length()
-            self._jan_duxbury_queue_length_episode.append(jan_duxbury_queue_length)
+    # def _simulate(self, steps_todo):
+    #     if (self._step + steps_todo) >= self._max_steps:
+    #         steps_todo = self._max_steps - self._step
+    #     while steps_todo > 0:
+    #         # traci.simulationStep()
+            # self._step += 1
+            # steps_todo -= 1
+            # jan_south_queue_length = self._get_jan_south_queue_length()
+            # self._jan_south_queue_length_episode.append(jan_south_queue_length)
+            # jan_duxbury_queue_length = self._get_jan_duxbury_queue_length()
+            # self._jan_duxbury_queue_length_episode.append(jan_duxbury_queue_length)
             # self._collect_jan_south_waiting_times()
             # self._collect_jan_duxbury_waiting_times()
-            if (self._step+1) % 10 == 0:
-                self._collect_jan_south_waiting_times()
-                self._collect_jan_duxbury_waiting_times()
+            # self._collect_fuel_consumption()
+            # self._collect_co2_emission()
+            # if (self._step+1) % 10 == 0:
+            #     self._collect_jan_south_waiting_times()
+            #     self._collect_jan_duxbury_waiting_times()
 
         
 
@@ -280,34 +287,57 @@ class Simulation:
             traci.trafficlight.setPhase(
                 "cluster_2516980595_2516980597_25290876_611769785", PHASE_EWR_GREEN)
 
-    def _collect_jan_south_waiting_times(self):
-        incoming_roads = ["rd6_JanShoba_tl_n", "rd2_South_dl_e", "rd3_JanShoba_tl_s", "rd2_South_dl_w"]
-        total_waiting_time = 0
-        car_list = traci.vehicle.getIDList()
-        for car_id in car_list:
-            road_id = traci.vehicle.getRoadID(car_id)
-            if road_id in incoming_roads:
-                total_waiting_time += traci.vehicle.getAccumulatedWaitingTime(car_id)
-        self._jan_south_wait_time_episode.append(total_waiting_time)
+    # def _collect_jan_south_waiting_times(self):
+    #     incoming_roads = ["rd6_JanShoba_tl_n", "rd2_South_dl_e", "rd3_JanShoba_tl_s", "rd2_South_dl_w"]
+    #     total_waiting_time = 0
+    #     car_list = traci.vehicle.getIDList()
+    #     for car_id in car_list:
+    #         road_id = traci.vehicle.getRoadID(car_id)
+    #         if road_id in incoming_roads:
+    #             total_waiting_time += traci.vehicle.getAccumulatedWaitingTime(car_id)
+    #     self._jan_south_wait_time_episode.append(total_waiting_time)
+
+    # def _collect_jan_duxbury_waiting_times(self):
+    #     incoming_roads = ["rd4_JanShoba_ql_n", "rd2_Duxbury_dl_e", "rd6_JanShoba_tl_s", "rd1_Duxbury_ql_w"]
+    #     total_waiting_time = 0
+    #     car_list = traci.vehicle.getIDList()
+    #     for car_id in car_list:
+    #         road_id = traci.vehicle.getRoadID(car_id)
+    #         if road_id in incoming_roads:
+    #             total_waiting_time += traci.vehicle.getAccumulatedWaitingTime(car_id)
+    #     self._jan_duxbury_wait_time_episode.append(total_waiting_time)
 
     def _collect_jan_duxbury_waiting_times(self):
         incoming_roads = ["rd4_JanShoba_ql_n", "rd2_Duxbury_dl_e", "rd6_JanShoba_tl_s", "rd1_Duxbury_ql_w"]
         total_waiting_time = 0
-        car_list = traci.vehicle.getIDList()
-        for car_id in car_list:
-            road_id = traci.vehicle.getRoadID(car_id)
-            if road_id in incoming_roads:
-                total_waiting_time += traci.vehicle.getAccumulatedWaitingTime(car_id)
+        for road_id in incoming_roads:
+            total_waiting_time += traci.edge.getWaitingTime(road_id)
         self._jan_duxbury_wait_time_episode.append(total_waiting_time)
+
+    def _collect_jan_south_waiting_times(self):
+        incoming_roads = ["rd6_JanShoba_tl_n", "rd2_South_dl_e", "rd3_JanShoba_tl_s", "rd2_South_dl_w"]
+        total_waiting_time = 0
+        for road_id in incoming_roads:
+            total_waiting_time += traci.edge.getWaitingTime(road_id)
+        self._jan_south_wait_time_episode.append(total_waiting_time)
+
+    def _collect_fuel_consumption(self):
+        roads = ["rd6_JanShoba_tl_n", "rd2_South_dl_e", "rd3_JanShoba_tl_s", "rd2_South_dl_w"]
+        running_total = 0
+        for road_id in roads:
+            running_total += traci.edge.getFuelConsumption(road_id)
+        self._total_fuel_consumption_episode.append(running_total)
+
+    def _collect_co2_emission(self):
+        roads = ["rd6_JanShoba_tl_n", "rd2_South_dl_e", "rd3_JanShoba_tl_s", "rd2_South_dl_w"]
+        running_total = 0
+        for road_id in roads:
+            running_total += traci.edge.getCO2Emission(road_id)
+        self._total_co2_emission_episode.append(running_total)
 
 
     def _choose_action(self, state):
         return np.argmax(self._Model.predict_one(state))
-    # def _choose_jan_south_action(self, state):
-    #     return np.argmax(self._Model.predict_one(state))
-    
-    # def _choose_jan_duxbury_action(self, state):
-    #     return np.argmax(self._Model.predict_one(state))
 
     # Documentation for the _get_queue_length method.
     #  @param self The object pointer.

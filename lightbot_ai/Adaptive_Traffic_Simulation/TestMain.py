@@ -42,10 +42,7 @@ if __name__ == "__main__":
             config['episode_seed']
         )
     else:
-        TrafficGen = RealWorldGenerator(
-            config['max_steps'],
-            config['n_cars_generated']  
-        )
+        TrafficGen = RealWorldGenerator()
 
     if config['use_automatic_controller']:
         plot_path = 'Display_Data/Automatic'
