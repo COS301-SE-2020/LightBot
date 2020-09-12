@@ -83,7 +83,7 @@ class Simulation:
             '<phase duration="27" state="rrrrrGGggrrrrrGGgg"/>',
             '<phase duration="6"  state="rrrrryyyyrrrrryyyy"/>',
             '<phase duration="12"  state="rrrrrrrGGrrrrrrrGG"/>',
-            '<phase duration="6"  state="rrrrrrryyrrrrrrryy"/>
+            '<phase duration="6"  state="rrrrrrryyrrrrrrryy"/>'
         ]
         self.Jan_Duxbury_XML_GREEN_TIMES = [27,12,27,27]
         self.Jan_Duxbury_XML_ALL_TIMES = [27,6,12,6,27,12,27,6]
@@ -153,7 +153,7 @@ class Simulation:
                 self._collect_jan_south_waiting_times()
                 self._collect_fuel_consumption()
                 self._collect_co2_emission()
-                
+
                 if jan_south_yellow_state_steps_todo > 0:
                     jan_south_yellow_state_steps_todo -= 1
                 else:
