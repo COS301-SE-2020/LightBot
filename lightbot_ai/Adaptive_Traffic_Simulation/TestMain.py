@@ -94,10 +94,38 @@ if __name__ == "__main__":
     Visualization.save_data_and_plot(data=Simulation.total_co2_emission,
                                      filename='Total_co2_Emission', xlabel='Step', ylabel='Cumulative Emission (mg/s)')
     
-    averageQueueLength = sum(Simulation.jan_south_queue_length_episode) / len(Simulation.jan_south_queue_length_episode) 
-    print("Jan_South Average queue length: ", averageQueueLength)
-    averageQueueLength = sum(Simulation.jan_duxbury_queue_length_episode) / len(Simulation.jan_duxbury_queue_length_episode) 
-    print("Jan_Duxbury Average queue length: ", averageQueueLength)
+    
+    # Calculate Average QL and WT for the simulation and append to files
+    
+    if config['use_automatic_controller']:
+        simType = "Automatic"
+    else:
+        simType = "Manual"
+    
+    averageQueueLengthSouth = sum(Simulation.jan_south_queue_length_episode) / len(Simulation.jan_south_queue_length_episode) 
+    print("Jan_South Average queue length (", simType, "): ", averageQueueLengthSouth)
+    averageWaitingTimeSouth = sum(Simulation.jan_south_time_waiting) / len(Simulation.jan_south_time_waiting)
+    print("Jan_South Average waiting time (", simType, "): ", averageWaitingTimeSouth)
+
+    averageQueueLengthDuxbury = sum(Simulation.jan_duxbury_queue_length_episode) / len(Simulation.jan_duxbury_queue_length_episode) 
+    print("Jan_Duxbury Average queue length (", simType, "): ", averageQueueLengthDuxbury)
+    averageWaitingTimeDuxbury = sum(Simulation.jan_duxbury_time_waiting) / len(Simulation.jan_duxbury_time_waiting)
+    print("Jan_Duxbury Average waiting time (", simType, "): ", averageWaitingTimeDuxbury)
+
+    
+    with open("Display_Data/" + simType + "/Jan_South_Avg_Queue_Length.txt", "w") as queues:
+        print(averageQueueLengthSouth, file=queues)
+
+    with open("Display_Data/" + simType + "/Jan_South_Avg_Waiting_Time.txt", "w") as times:
+        print(averageWaitingTimeSouth, file=times)
+    
+    with open("Display_Data/" + simType + "/Jan_Duxbury_Avg_Queue_Length.txt", "w") as queues:
+        print(averageQueueLengthDuxbury, file=queues)
+
+    with open("Display_Data/" + simType + "/Jan_Duxbury_Avg_Waiting_Time.txt", "w") as times:
+        print(averageWaitingTimeDuxbury, file=times)
+    
+    
     # database.appendAvgLength(averageQueueLength)
     # # database.appendTotalWaitTime(Simulation.time_waiting_times)
     # database.addTotalQueueLength(Simulation.queue_length_episode)
