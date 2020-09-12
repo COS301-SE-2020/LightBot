@@ -39,7 +39,7 @@ class MockGenerator(VehicleGenerator):
         with open("Map\Jan_Shoba_Multi_Peak_autogen_vehicles.rou.alt.xml", "w") as routes:
             print("""<?xml version="1.0" encoding="UTF-8"?>
 
-                <!-- generated on "%d" by Lightbot Vehicle Generator
+                <!-- generated on "%s" by Lightbot Vehicle Generator
                 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
 
                     <input>
