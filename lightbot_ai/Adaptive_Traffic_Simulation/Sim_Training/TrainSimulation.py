@@ -175,7 +175,7 @@ class Simulation:
 
 
     def _collect_jan_south_waiting_times(self):
-        incoming_roads = ["rd6_JanShoba_tl_n", "rd2_South_dl_e", "rd3_JanShoba_tl_s", "rd2_South_dl_w"]
+        incoming_roads = ["rd6_JanShoba_tl_n", "rd2_South_dl_e", "rd3_JanShoba_tl_s", "rd2_South_dl_w", "rd5_JanShoba_dl_n", "rd1_South_sl_e", "rd2_JanShoba_dl_s", "rd1_South_sl_w"]
         car_list = traci.vehicle.getIDList()
         for car_id in car_list:
             wait_time = traci.vehicle.getAccumulatedWaitingTime(car_id)
@@ -189,7 +189,7 @@ class Simulation:
         return total_waiting_time
 
     def _collect_jan_duxbury_waiting_times(self):
-        incoming_roads = ["rd4_JanShoba_ql_n", "rd2_Duxbury_dl_e", "rd6_JanShoba_tl_s", "rd1_Duxbury_ql_w"]
+        incoming_roads = ["rd4_JanShoba_ql_n", "rd2_Duxbury_dl_e", "rd6_JanShoba_tl_s", "rd1_Duxbury_ql_w", "rd3_JanShoba_dl_N", "rd1_Duxbury_sl_e", "rd5_JanShoba_tl_s", "rd4_JanShoba_dl_s", "rd0_Duxbury_dl_w"]
         car_list = traci.vehicle.getIDList()
         for car_id in car_list:
             wait_time = traci.vehicle.getAccumulatedWaitingTime(car_id)
@@ -462,9 +462,9 @@ class Simulation:
             else:
                 if road_id == 'rd2_South_dl_e':
                     lane_pos = 22.54 - lane_pos
-                elif road_id == 'rd3_JanShoba_tl_s'
+                elif road_id == 'rd3_JanShoba_tl_s':
                     lane_pos = 36.38 - lane_pos
-                elif road_id == 'rd2_South_dl_w'
+                elif road_id == 'rd2_South_dl_w':
                     lane_pos = 25.32 - lane_pos
                 elif road_id == 'rd6_JanShoba_tl_n':
                     lane_pos = 42.32 - lane_pos
@@ -547,9 +547,9 @@ class Simulation:
             else:
                 if road_id == 'rd2_Duxbury_dl_e':
                     lane_pos = 50.47 - lane_pos
-                elif road_id == 'rd6_JanShoba_tl_s'
+                elif road_id == 'rd6_JanShoba_tl_s':
                     lane_pos = 33.88 - lane_pos
-                elif road_id == 'rd1_Duxbury_ql_w'
+                elif road_id == 'rd1_Duxbury_ql_w':
                     lane_pos = 135.16 - lane_pos
                 elif road_id == 'rd4_JanShoba_ql_n':
                     lane_pos = 61.81 - lane_pos

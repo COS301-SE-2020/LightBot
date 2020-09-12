@@ -515,9 +515,9 @@ class Simulation:
             else:
                 if road_id == 'rd2_South_dl_e':
                     lane_pos = 22.54 - lane_pos
-                elif road_id == 'rd3_JanShoba_tl_s'
+                elif road_id == 'rd3_JanShoba_tl_s':
                     lane_pos = 36.38 - lane_pos
-                elif road_id == 'rd2_South_dl_w'
+                elif road_id == 'rd2_South_dl_w':
                     lane_pos = 25.32 - lane_pos
                 elif road_id == 'rd6_JanShoba_tl_n':
                     lane_pos = 42.32 - lane_pos
@@ -600,9 +600,9 @@ class Simulation:
             else:
                 if road_id == 'rd2_Duxbury_dl_e':
                     lane_pos = 50.47 - lane_pos
-                elif road_id == 'rd6_JanShoba_tl_s'
+                elif road_id == 'rd6_JanShoba_tl_s':
                     lane_pos = 33.88 - lane_pos
-                elif road_id == 'rd1_Duxbury_ql_w'
+                elif road_id == 'rd1_Duxbury_ql_w':
                     lane_pos = 135.16 - lane_pos
                 elif road_id == 'rd4_JanShoba_ql_n':
                     lane_pos = 61.81 - lane_pos
