@@ -98,7 +98,7 @@ class Simulation:
 
         while self._step < self._max_steps:
             if jan_south_yellow_state_steps_todo == 0 and jan_south_green_state_steps_todo == 0:
-                jan_south_current_sim_state = self._get_jan_south_sim_state()
+                jan_south_current_sim_state = self._get_extended_jan_south_sim_state()
                 jan_south_current_total_wait = self._collect_jan_south_waiting_times()
                 jan_south_reward = jan_south_old_total_wait - jan_south_current_total_wait
                 jan_south_action = self._choose_action(jan_south_current_sim_state, epsilon)
@@ -114,7 +114,7 @@ class Simulation:
                 self._set_jan_south_green_phase(jan_south_action)
 
             if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == 0:
-                jan_duxbury_current_sim_state = self._get_jan_duxbury_sim_state()
+                jan_duxbury_current_sim_state = self._get_extended_jan_duxbury_sim_state()
                 jan_duxbury_current_total_wait = self._collect_jan_duxbury_waiting_times()
                 jan_duxbury_reward = jan_duxbury_old_total_wait - jan_duxbury_current_total_wait
                 jan_duxbury_action = self._choose_action(jan_duxbury_current_sim_state, epsilon)
@@ -377,70 +377,7 @@ class Simulation:
             if valid_car:
                 state[car_position] = 1
 
-        return state
-
-    def _get_extended_jan_south_sim_state(self):
-        state = np.zeros(self._num_states)
-        cars = traci.vehicle.getIDList()
-
-        for car_id in cars:
-            lane_pos = traci.vehicle.getLanePosition(car_id)
-            lane_id = traci.vehicle.getLaneID(car_id)
-            lane_pos = 25 - lane_pos  # may need to change this
-
-            if lane_pos < x:
-                lane_cell = 0
-            elif lane_pos < x:
-                lane_cell = 1
-            elif lane_pos < x:
-                lane_cell = 2
-            elif lane_pos < x:
-                lane_cell = 3
-            elif lane_pos < x:
-                lane_cell = 4
-            elif lane_pos < x:
-                lane_cell = 5
-            elif lane_pos < x:
-                lane_cell = 6
-            elif lane_pos < x:
-                lane_cell = 7
-            elif lane_pos < x:
-                lane_cell = 8
-            elif lane_pos <= 136:
-                lane_cell = 9
-
-            if lane_id == "rd3_JanShoba_tl_s_0" or lane_id == "rd3_JanShoba_tl_s_1" or lane_id == 'rd2_JanShoba_dl_s_0' or lane_id == 'rd2_JanShoba_dl_s_1':
-                lane_group = 0
-            elif lane_id == "rd3_JanShoba_tl_s_2":
-                lane_group = 1
-            elif lane_id == "rd2_South_dl_e_0" or lane_id == 'rd1_South_sl_e_0':
-                lane_group = 2
-            elif lane_id == "rd2_South_dl_e_1":
-                lane_group = 3
-            elif lane_id == "rd2_South_dl_w_0" or lane_id == 'rd1_South_sl_w':
-                lane_group = 4
-            elif lane_id == "rd2_South_dl_w_1":
-                lane_group = 5
-            elif lane_id == "rd6_JanShoba_tl_n_0" or lane_id == "rd6_JanShoba_tl_n_1" or lane_id == "rd5_JanShoba_dl_n_0" or lane_id == "rd5_JanShoba_dl_n_1":
-                lane_group = 6
-            elif lane_id == "rd6_JanShoba_tl_n_2":
-                lane_group = 7
-            else:
-                lane_group = -1
-
-            if lane_group >= 1 and lane_group <= 7:
-                car_position = int(str(lane_group) + str(lane_cell))
-                valid_car = True
-            elif lane_group == 0:
-                car_position = lane_cell
-                valid_car = True
-            else:
-                valid_car = False
-
-            if valid_car:
-                state[car_position] = 1
-
-        return state
+        return state    
 
     def _get_jan_duxbury_sim_state(self):
         state = np.zeros(self._num_states)
@@ -504,6 +441,177 @@ class Simulation:
                 state[car_position] = 1
 
         return state
+
+    def _get_extended_jan_south_sim_state(self):
+        state = np.zeros(self._num_states)
+        cars = traci.vehicle.getIDList()
+
+        for car_id in cars:
+            lane_pos = traci.vehicle.getLanePosition(car_id)
+            lane_id = traci.vehicle.getLaneID(car_id) 
+            road_id = traci.vehicle.getRoadID(car_id)
+            out_of_range = False
+            if road_id == 'rd1_South_sl_e':
+                lane_pos = 413.86 - lane_pos + 22.54
+            elif road_id == 'rd2_JanShoba_dl_s':
+                lane_pos = 100.06 - lane_pos + 36.38
+            elif road_id == 'rd1_South_sl_w':
+                lane_pos = 195.48 - lane_pos + 25.32
+            elif road_id == 'rd5_JanShoba_dl_n':
+                lane_pos = 232.01 - lane_pos + 42.32
+            else:
+                if road_id == 'rd2_South_dl_e':
+                    lane_pos = 22.54 - lane_pos
+                elif road_id == 'rd3_JanShoba_tl_s'
+                    lane_pos = 36.38 - lane_pos
+                elif road_id == 'rd2_South_dl_w'
+                    lane_pos = 25.32 - lane_pos
+                elif road_id == 'rd6_JanShoba_tl_n':
+                    lane_pos = 42.32 - lane_pos
+                else: 
+                    out_of_range = True
+
+            if lane_pos < 14:
+                lane_cell = 0
+            elif lane_pos < 27:
+                lane_cell = 1
+            elif lane_pos < 41:
+                lane_cell = 2
+            elif lane_pos < 54:
+                lane_cell = 3
+            elif lane_pos < 68:
+                lane_cell = 4
+            elif lane_pos < 82:
+                lane_cell = 5
+            elif lane_pos < 95:
+                lane_cell = 6
+            elif lane_pos < 109:
+                lane_cell = 7
+            elif lane_pos < 122:
+                lane_cell = 8
+            elif lane_pos <= 136:
+                lane_cell = 9
+            else:
+                out_of_range = True
+
+            if lane_id == "rd3_JanShoba_tl_s_0" or lane_id == "rd3_JanShoba_tl_s_1" or lane_id == 'rd2_JanShoba_dl_s_0' or lane_id == 'rd2_JanShoba_dl_s_1':
+                lane_group = 0
+            elif lane_id == "rd3_JanShoba_tl_s_2":
+                lane_group = 1
+            elif lane_id == "rd2_South_dl_e_0" or lane_id == 'rd1_South_sl_e_0':
+                lane_group = 2
+            elif lane_id == "rd2_South_dl_e_1":
+                lane_group = 3
+            elif lane_id == "rd2_South_dl_w_0" or lane_id == 'rd1_South_sl_w':
+                lane_group = 4
+            elif lane_id == "rd2_South_dl_w_1":
+                lane_group = 5
+            elif lane_id == "rd6_JanShoba_tl_n_0" or lane_id == "rd6_JanShoba_tl_n_1" or lane_id == "rd5_JanShoba_dl_n_0" or lane_id == "rd5_JanShoba_dl_n_1":
+                lane_group = 6
+            elif lane_id == "rd6_JanShoba_tl_n_2":
+                lane_group = 7
+            else:
+                lane_group = -1
+
+            if lane_group >= 1 and lane_group <= 7 and (not out_of_range):
+                car_position = int(str(lane_group) + str(lane_cell))
+                valid_car = True
+            elif lane_group == 0 and (not out_of_range):
+                car_position = lane_cell
+                valid_car = True
+            else:
+                valid_car = False
+
+            if valid_car:
+                state[car_position] = 1
+
+        return state
+
+    def _get_extended_jan_duxbury_sim_state(self):
+        state = np.zeros(self._num_states)
+        cars = traci.vehicle.getIDList()
+
+        for car_id in cars:
+            lane_pos = traci.vehicle.getLanePosition(car_id)
+            lane_id = traci.vehicle.getLaneID(car_id) 
+            road_id = traci.vehicle.getRoadID(car_id)
+            out_of_range = False
+            if road_id == 'rd1_Duxbury_sl_e':
+                lane_pos = 50.36 - lane_pos + 50.47
+            elif road_id == 'rd4_JanShoba_dl_s':
+                lane_pos = 227.31 - lane_pos + 33.88 + 7.37
+            elif road_id == 'rd0_Duxbury_dl_w':
+                lane_pos = 172.23 - lane_pos + 135.16
+            elif road_id == 'rd3_JanShoba_dl_N':
+                lane_pos = 56.92 - lane_pos + 61.81
+            else:
+                if road_id == 'rd2_Duxbury_dl_e':
+                    lane_pos = 50.47 - lane_pos
+                elif road_id == 'rd6_JanShoba_tl_s'
+                    lane_pos = 33.88 - lane_pos
+                elif road_id == 'rd1_Duxbury_ql_w'
+                    lane_pos = 135.16 - lane_pos
+                elif road_id == 'rd4_JanShoba_ql_n':
+                    lane_pos = 61.81 - lane_pos
+                else: 
+                    out_of_range = True
+
+            if lane_pos < 10:
+                lane_cell = 0
+            elif lane_pos < 20:
+                lane_cell = 1
+            elif lane_pos < 30:
+                lane_cell = 2
+            elif lane_pos < 40:
+                lane_cell = 3
+            elif lane_pos < 50:
+                lane_cell = 4
+            elif lane_pos < 60:
+                lane_cell = 5
+            elif lane_pos < 70:
+                lane_cell = 6
+            elif lane_pos < 80:
+                lane_cell = 7
+            elif lane_pos < 90:
+                lane_cell = 8
+            elif lane_pos <= 100:
+                lane_cell = 9
+            else:
+                out_of_range = True
+
+            if lane_id == "rd3_JanShoba_tl_s_0" or lane_id == "rd3_JanShoba_tl_s_1" or lane_id == 'rd2_JanShoba_dl_s_0' or lane_id == 'rd2_JanShoba_dl_s_1':
+                lane_group = 0
+            elif lane_id == "rd3_JanShoba_tl_s_2":
+                lane_group = 1
+            elif lane_id == "rd2_South_dl_e_0" or lane_id == 'rd1_South_sl_e_0':
+                lane_group = 2
+            elif lane_id == "rd2_South_dl_e_1":
+                lane_group = 3
+            elif lane_id == "rd2_South_dl_w_0" or lane_id == 'rd1_South_sl_w':
+                lane_group = 4
+            elif lane_id == "rd2_South_dl_w_1":
+                lane_group = 5
+            elif lane_id == "rd6_JanShoba_tl_n_0" or lane_id == "rd6_JanShoba_tl_n_1" or lane_id == "rd5_JanShoba_dl_n_0" or lane_id == "rd5_JanShoba_dl_n_1":
+                lane_group = 6
+            elif lane_id == "rd6_JanShoba_tl_n_2":
+                lane_group = 7
+            else:
+                lane_group = -1
+
+            if lane_group >= 1 and lane_group <= 7 and (not out_of_range):
+                car_position = int(str(lane_group) + str(lane_cell))
+                valid_car = True
+            elif lane_group == 0 and (not out_of_range):
+                car_position = lane_cell
+                valid_car = True
+            else:
+                valid_car = False
+
+            if valid_car:
+                state[car_position] = 1
+
+        return state
+
     
     def _replay(self):
         batch = self._Memory.get_samples(self._Model.batch_size)
