@@ -98,7 +98,7 @@ class Simulation:
 
         while self._step < self._max_steps:
             if jan_south_yellow_state_steps_todo == 0 and jan_south_green_state_steps_todo == 0:
-                jan_south_current_sim_state = self._get_extended_jan_south_sim_state()
+                jan_south_current_sim_state = self._get_jan_south_sim_state()
                 jan_south_current_total_wait = self._collect_jan_south_waiting_times()
                 jan_south_reward = jan_south_old_total_wait - jan_south_current_total_wait
                 jan_south_action = self._choose_action(jan_south_current_sim_state, epsilon)
@@ -114,7 +114,7 @@ class Simulation:
                 self._set_jan_south_green_phase(jan_south_action)
 
             if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == 0:
-                jan_duxbury_current_sim_state = self._get_extended_jan_duxbury_sim_state()
+                jan_duxbury_current_sim_state = self._get_jan_duxbury_sim_state()
                 jan_duxbury_current_total_wait = self._collect_jan_duxbury_waiting_times()
                 jan_duxbury_reward = jan_duxbury_old_total_wait - jan_duxbury_current_total_wait
                 jan_duxbury_action = self._choose_action(jan_duxbury_current_sim_state, epsilon)

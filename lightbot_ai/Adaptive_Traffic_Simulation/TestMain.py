@@ -89,6 +89,10 @@ if __name__ == "__main__":
                                      filename='Jan_South_Waiting_Times', xlabel='Step', ylabel='Cumulative Waiting Time (seconds)')
     Visualization.save_data_and_plot(data=Simulation.jan_duxbury_time_waiting,
                                      filename='Jan_Duxbury_Waiting_Times', xlabel='Step', ylabel='Cumulative Waiting Time (seconds)')
+    Visualization.save_data_and_plot(data=Simulation.total_fuel_consumption,
+                                     filename='Total_Fuel_Consumption', xlabel='Step', ylabel='Cumulative Fuel (ml/s)')
+    Visualization.save_data_and_plot(data=Simulation.total_co2_emission,
+                                     filename='Total_co2_Emission', xlabel='Step', ylabel='Cumulative Emission (mg/s)')
     
     averageQueueLength = sum(Simulation.jan_south_queue_length_episode) / len(Simulation.jan_south_queue_length_episode) 
     print("Jan_South Average queue length: ", averageQueueLength)

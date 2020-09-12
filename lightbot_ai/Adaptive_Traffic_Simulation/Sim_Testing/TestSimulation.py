@@ -115,7 +115,7 @@ class Simulation:
 
         while traci.simulation.getMinExpectedNumber() > 0:
             if jan_south_yellow_state_steps_todo == 0 and jan_south_green_state_steps_todo == 0:
-                jan_south_current_sim_state = self._get_extended_jan_south_sim_state()
+                jan_south_current_sim_state = self._get_jan_south_sim_state()
                 jan_south_action = self._choose_action(jan_south_current_sim_state)
                 if self._step != 0 and jan_south_old_action != jan_south_action:
                     self._set_jan_south_yellow_phase(jan_south_old_action)
@@ -129,7 +129,7 @@ class Simulation:
                 self._set_jan_south_green_phase(jan_south_action)
 
             if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == 0:
-                jan_duxbury_current_sim_state = self._get_extended_jan_duxbury_sim_state()
+                jan_duxbury_current_sim_state = self._get_jan_duxbury_sim_state()
                 jan_duxbury_action = self._choose_action(jan_duxbury_current_sim_state)
                 if self._step != 0 and jan_duxbury_old_action != jan_duxbury_action:
                     self._set_jan_duxbury_yellow_phase(jan_duxbury_old_action)
@@ -314,14 +314,14 @@ class Simulation:
         self._jan_south_wait_time_episode.append(total_waiting_time)
 
     def _collect_fuel_consumption(self):
-        roads = ["rd6_JanShoba_tl_n", "rd2_South_dl_e", "rd3_JanShoba_tl_s", "rd2_South_dl_w"]
+        roads = ['rd2_South_dl_e', 'rd1_South_sl_e', 'rd1_JanShoba_dl_s', 'rd1_Prospect_sl_w', 'rd2_JanShoba_dl_s', 'rd3_JanShoba_tl_s', 'rd2_South_dl_w', 'rd1_South_sl_w', 'rd6_JanShoba_tl_n', 'rd5_JanShoba_dl_n', 'rd1_Duxbury_sl_e', 'rd2_Duxbury_dl_e', 'rd4_JanShoba_dl_s', 'rd5_JanShoba_tl_s', 'rd6_JanShoba_tl_s', 'rd0_Duxbury_dl_w', 'rd1_Duxbury_ql_w', 'rd4_JanShoba_ql_n', 'rd3_JanShoba_dl_N', 'rd2_JanShoba_tl_n', 'rd1_JanShoba_dl_n']
         running_total = 0
         for road_id in roads:
             running_total += traci.edge.getFuelConsumption(road_id)
         self._total_fuel_consumption_episode.append(running_total)
 
     def _collect_co2_emission(self):
-        roads = ["rd6_JanShoba_tl_n", "rd2_South_dl_e", "rd3_JanShoba_tl_s", "rd2_South_dl_w"]
+        roads = ['rd2_South_dl_e', 'rd1_South_sl_e', 'rd1_JanShoba_dl_s', 'rd1_Prospect_sl_w', 'rd2_JanShoba_dl_s', 'rd3_JanShoba_tl_s', 'rd2_South_dl_w', 'rd1_South_sl_w', 'rd6_JanShoba_tl_n', 'rd5_JanShoba_dl_n', 'rd1_Duxbury_sl_e', 'rd2_Duxbury_dl_e', 'rd4_JanShoba_dl_s', 'rd5_JanShoba_tl_s', 'rd6_JanShoba_tl_s', 'rd0_Duxbury_dl_w', 'rd1_Duxbury_ql_w', 'rd4_JanShoba_ql_n', 'rd3_JanShoba_dl_N', 'rd2_JanShoba_tl_n', 'rd1_JanShoba_dl_n']
         running_total = 0
         for road_id in roads:
             running_total += traci.edge.getCO2Emission(road_id)
@@ -376,7 +376,7 @@ class Simulation:
         for car_id in cars:
             lane_pos = traci.vehicle.getLanePosition(car_id)
             lane_id = traci.vehicle.getLaneID(car_id)
-            lane_pos = 25 - lane_pos  # may need to change this
+            lane_pos = 25 - lane_pos 
 
             if lane_pos < 2.5:
                 lane_cell = 0
@@ -439,7 +439,7 @@ class Simulation:
         for car_id in cars:
             lane_pos = traci.vehicle.getLanePosition(car_id)
             lane_id = traci.vehicle.getLaneID(car_id)
-            lane_pos = 25 - lane_pos  # may need to change this
+            lane_pos = 25 - lane_pos 
 
             if lane_pos < 2.5:
                 lane_cell = 0
@@ -681,6 +681,14 @@ class Simulation:
     @property
     def jan_duxbury_time_waiting(self):
         return self._jan_duxbury_wait_time_episode
+        
+    @property
+    def total_fuel_consumption(self):
+        return self._total_fuel_consumption_episode
+
+    @property
+    def total_co2_emission(self):
+        return self._total_co2_emission_episode
 
     # @var _queue_length_episode
     #  a list with the combined queue length for all the incoming lanes
