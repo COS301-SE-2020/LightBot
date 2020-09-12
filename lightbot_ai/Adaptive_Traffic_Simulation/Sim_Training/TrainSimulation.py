@@ -138,10 +138,12 @@ class Simulation:
                 jan_duxbury_queue_length = self._get_jan_duxbury_queue_length()
                 self._jan_duxbury_sum_queue_length += jan_duxbury_queue_length
                 self._jan_duxbury_sum_waiting_time += jan_duxbury_queue_length
+                
                 if jan_south_yellow_state_steps_todo > 0:
                     jan_south_yellow_state_steps_todo -= 1
                 else:
                     jan_south_green_state_steps_todo -= 1
+
                 if jan_duxbury_yellow_state_steps_todo > 0:
                     jan_duxbury_yellow_state_steps_todo -= 1
                 else:
@@ -175,7 +177,7 @@ class Simulation:
 
 
     def _collect_jan_south_waiting_times(self):
-        incoming_roads = ["rd6_JanShoba_tl_n", "rd2_South_dl_e", "rd3_JanShoba_tl_s", "rd2_South_dl_w", "rd5_JanShoba_dl_n", "rd1_South_sl_e", "rd2_JanShoba_dl_s", "rd1_South_sl_w"]
+        incoming_roads = ["rd6_JanShoba_tl_n", "rd2_South_dl_e", "rd3_JanShoba_tl_s", "rd2_South_dl_w"]
         car_list = traci.vehicle.getIDList()
         for car_id in car_list:
             wait_time = traci.vehicle.getAccumulatedWaitingTime(car_id)
@@ -189,7 +191,7 @@ class Simulation:
         return total_waiting_time
 
     def _collect_jan_duxbury_waiting_times(self):
-        incoming_roads = ["rd4_JanShoba_ql_n", "rd2_Duxbury_dl_e", "rd6_JanShoba_tl_s", "rd1_Duxbury_ql_w", "rd3_JanShoba_dl_N", "rd1_Duxbury_sl_e", "rd5_JanShoba_tl_s", "rd4_JanShoba_dl_s", "rd0_Duxbury_dl_w"]
+        incoming_roads = ["rd4_JanShoba_ql_n", "rd2_Duxbury_dl_e", "rd6_JanShoba_tl_s", "rd1_Duxbury_ql_w"]
         car_list = traci.vehicle.getIDList()
         for car_id in car_list:
             wait_time = traci.vehicle.getAccumulatedWaitingTime(car_id)

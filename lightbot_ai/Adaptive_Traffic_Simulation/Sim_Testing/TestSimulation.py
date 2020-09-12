@@ -64,29 +64,29 @@ class Simulation:
             '<phase duration="12"  state="rrrrrrGrrrrrrG"/>',
             '<phase duration="6"  state="rrrrrryrrrrrry"/>',
             '<phase duration="27" state="GGrrrrrGGgrrrr"/>',
-            '<phase duration="12"  state="yyrrrrryyyrrrr"/>',   
+            '<phase duration="12"  state="yyrrrrryyyrrrr"/>',
             '<phase duration="27"  state="rrGGrrrrrGrrrr"/>',
             '<phase duration="6"  state="rryyrrrrryrrrr"/>'
         ]
-        self.Jan_Duxbury_XML_GREEN_TIMES = [27,12,27,27]
-        self.Jan_Duxbury_XML_ALL_TIMES = [27,6,12,6,27,12,27,6]
         # JanShoba_South_tl_=_cluster_25290891_611769793
         self.JanShoba_South_XML_TRAFFIC_LIGHT_GREEN_STATES = [
-            '<phase duration="27" state="GGGrrrrrrGGGrrrrr"/>',
-            '<phase duration="12"  state="rrrGrrrrrrrrGrrrr"/>',
-            '<phase duration="27" state="rrrrGGGggrrrrGGGg"/>',
-            '<phase duration="12"  state="rrrrrrrGGrrrrrrrG"/>'
+            '<phase duration="27" state="GGGrrrrrrGGGrrrrrr"/>',
+            '<phase duration="12"  state="rrrGGrrrrrrrGGrrrr"/>',
+            '<phase duration="27" state="rrrrrGGggrrrrrGGgg"/>',
+            '<phase duration="12"  state="rrrrrrrGGrrrrrrrGG"/>'
         ]
         self.JanShoba_South_XML_TRAFFIC_LIGHT_ALL_STATES = [
-            '<phase duration="27" state="GGGrrrrrrGGGrrrrr"/>',
-            '<phase duration="6"  state="yyyrrrrrryyyrrrrr"/>',
-            '<phase duration="12"  state="rrrGrrrrrrrrGrrrr"/>',
-            '<phase duration="6"  state="rrryrrrrrrrryrrrr"/>',
-            '<phase duration="27" state="rrrrGGGggrrrrGGGg"/>',
-            '<phase duration="6"  state="rrrryyyyyrrrryyyy"/>', 
-            '<phase duration="12"  state="rrrrrrrGGrrrrrrrG"/>',
-            '<phase duration="6"  state="rrrrrrryyrrrrrrry"/>'
+            '<phase duration="27" state="GGGrrrrrrGGGrrrrrr"/>',
+            '<phase duration="6"  state="yyyrrrrrryyyrrrrrr"/>',
+            '<phase duration="12"  state="rrrGGrrrrrrrGGrrrr"/>',
+            '<phase duration="6"  state="rrryyrrrrrrryyrrrr"/>',
+            '<phase duration="27" state="rrrrrGGggrrrrrGGgg"/>',
+            '<phase duration="6"  state="rrrrryyyyrrrrryyyy"/>',
+            '<phase duration="12"  state="rrrrrrrGGrrrrrrrGG"/>',
+            '<phase duration="6"  state="rrrrrrryyrrrrrrryy"/>
         ]
+        self.Jan_Duxbury_XML_GREEN_TIMES = [27,12,27,27]
+        self.Jan_Duxbury_XML_ALL_TIMES = [27,6,12,6,27,12,27,6]
         self.Jan_South_XML_GREEN_TIMES = [27,12,27,12]
         self.Jan_South_XML_ALL_TIMES = [27,6,12,6,27,6,12,6]
 
@@ -153,10 +153,12 @@ class Simulation:
                 self._collect_jan_south_waiting_times()
                 self._collect_fuel_consumption()
                 self._collect_co2_emission()
+                
                 if jan_south_yellow_state_steps_todo > 0:
                     jan_south_yellow_state_steps_todo -= 1
                 else:
                     jan_south_green_state_steps_todo -= 1
+
                 if jan_duxbury_yellow_state_steps_todo > 0:
                     jan_duxbury_yellow_state_steps_todo -= 1
                 else:
