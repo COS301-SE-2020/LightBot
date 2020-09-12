@@ -34,12 +34,12 @@ class MockGenerator(VehicleGenerator):
 
         car_gen_steps = np.rint(car_gen_steps)
         timeGen = datetime.now()
-        dateStr = timeGen.strftime("%A, %d %B %Y %H:%M:%S")
+        dateGen = timeGen.strftime("%A, %d %B %Y %H:%M:%S")
 
         with open("Map\Jan_Shoba_Multi_Peak_autogen_vehicles.rou.alt.xml", "w") as routes:
             print("""<?xml version="1.0" encoding="UTF-8"?>
 
-                <!-- generated on "%dateStr" by Lightbot Vehicle Generator
+                <!-- generated on "%d" by Lightbot Vehicle Generator
                 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
 
                     <input>
@@ -67,7 +67,7 @@ class MockGenerator(VehicleGenerator):
                 -->
 
                 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
-                <vType accel="1.0" decel="4.5" id="standard_car" length="5.0" minGap="2.5" maxSpeed="25" sigma="0.5" />""", file=routes)
+                <vType accel="1.0" decel="4.5" id="standard_car" length="5.0" minGap="2.5" maxSpeed="25" sigma="0.5" />""" % (dateGen), file=routes)
 
             for car_counter, step in enumerate(car_gen_steps):
                 start_edge = np.random.uniform()
