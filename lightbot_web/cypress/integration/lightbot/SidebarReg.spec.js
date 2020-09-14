@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
-describe('Test sidebar component and routing for Admin user', () => {
-  let userEmail = 'lightbot_cypress@testing.web'
-  let userPass = 'Cypress301#'
+describe('Test sidebar component and routing for regular user', () => {
+  let userEmail = 'lightbot_cypress@testingreg.web'
+  let userPass = 'Password1!'
 
   context('Actions', () => {
     before(() => {
@@ -60,28 +60,9 @@ describe('Test sidebar component and routing for Admin user', () => {
         })
       cy.get('a').contains('Overview').parent().should('have.class', 'active')
     })
-    //Test routing to users
-    it('Test sidebar and routing to users', () => {
-      cy.get('a')
-        .contains('Users')
-        .click()
-        .then(() => {
-          cy.url().should('contain', Cypress.config().baseUrl + '/home/users')
-        })
-      cy.get('a').contains('Users').parent().should('have.class', 'active')
-    })
     //Test routing to forum
     it('Test sidebar and routing to forum', () => {
-      cy.get('a')
-        .contains('Notification Forum')
-        .click()
-        .then(() => {
-          cy.url().should('contain', Cypress.config().baseUrl + '/home/forum')
-        })
-      cy.get('a')
-        .contains('Notification Forum')
-        .parent()
-        .should('have.class', 'active')
+      cy.get('a').contains('Notification Forum').should('not.be.visible')
     })
     //Test routing to simulation
     it('Test sidebar and routing to simulation', () => {
@@ -96,21 +77,19 @@ describe('Test sidebar component and routing for Admin user', () => {
         })
       cy.get('a').contains('Simulation').parent().should('have.class', 'active')
     })
-    //Test routing to Configuration
-    it('Test sidebar and routing to configuration', () => {
+    //Test routing to users
+    it('Test sidebar and routing to users', () => {
       cy.get('a')
-        .contains('Configuration')
+        .contains('Users')
         .click()
         .then(() => {
-          cy.url().should(
-            'contain',
-            Cypress.config().baseUrl + '/home/configuration'
-          )
+          cy.url().should('contain', Cypress.config().baseUrl + '/home/users')
         })
-      cy.get('a')
-        .contains('Configuration')
-        .parent()
-        .should('have.class', 'active')
+      cy.get('a').contains('Users').parent().should('have.class', 'active')
+    })
+    //Test routing to Configuration
+    it('Test sidebar and routing to configuration', () => {
+      cy.get('a').contains('Configuration').should('not.be.visible')
     })
     //Test routing to Logout and click no on logout popup
     it('Test sidebar and routing to logout and cancel of logout', () => {
