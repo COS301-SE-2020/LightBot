@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe('Test sidebar page', () => {
+describe('Test sidebar component', () => {
   let userEmail = 'lightbot_cypress@testing.web'
   let userPass = 'Cypress301#'
 
@@ -35,7 +35,6 @@ describe('Test sidebar page', () => {
       cy.visit('/home/overview')
       //Check if sidebar loads
       cy.get('.sidebar').should('be.visible')
-      cy.get('.navbar-collapse').should('be.visible')
     })
 
     it('Test sidebar and routing to profile', () => {
@@ -131,7 +130,6 @@ describe('Test sidebar page', () => {
     })
     //Test Logout and Yes
     it('Test logout', () => {
-      //Test the logout pop up
       cy.get('a')
         .contains('"Logout"')
         .click()
