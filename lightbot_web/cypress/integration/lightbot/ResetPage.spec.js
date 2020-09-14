@@ -8,7 +8,9 @@ describe('Test reset page', () => {
 
     //Check if page loads successfully
     it('successfully loads', () => {
-      cy.visit('/reset') // change URL to match your dev URL
+      cy.visit('/reset')
+      //Check if footer loads
+      cy.get('.footer').should('be.visible')
     })
 
     //Check if able to type data into password and confirm password fields

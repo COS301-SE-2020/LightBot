@@ -9,7 +9,9 @@ describe('Test register page', () => {
 
     //Check if page loads successfully
     it('successfully loads', () => {
-      cy.visit('/register') // change URL to match your dev URL
+      cy.visit('/register')
+      //Check if footer loads
+      cy.get('.footer').should('be.visible')
     })
 
     //Check if link to login page works
