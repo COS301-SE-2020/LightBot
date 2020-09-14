@@ -38,7 +38,7 @@ describe('Test recovery page', () => {
         .should('have.value', 'fake@email.com')
     })
 
-    //Check input validation for password and email
+    //Check input validation for email
     it('Input validation for email', () => {
       //Input validation for email
       cy.get('#idEmail')
