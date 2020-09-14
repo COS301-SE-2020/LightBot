@@ -1,6 +1,5 @@
 /// <reference types="cypress" />
-describe('Unit Test our login page', () => {
-  let userEmail = 'lightbot_cypress@testing.web'
+describe('Unit Test register page', () => {
   let userEmailRegister = 'lightbot_cypress@testingb.web'
   let userPass = 'Cypress301#'
   context('Actions', () => {
@@ -151,39 +150,6 @@ describe('Unit Test our login page', () => {
         .should('be.visible')
     })
 
-    //Test register functionality with existing email
-    it('Test register with existing email', () => {
-      cy.server()
-      cy.route({
-        method: 'POST',
-        url: '/user/register',
-      }).as('apiCheck')
-      cy.get('#idName')
-        .clear()
-        .type('Name')
-        .get('#idSurname')
-        .clear()
-        .type('Surname')
-        .get('#idEmail')
-        .clear()
-        .type(userEmail)
-        .get('#idPassword')
-        .clear()
-        .type('Password1@')
-        .get('#idPassword2')
-        .clear()
-        .type('Password1@')
-        .get('.btn-round')
-        .contains('Register')
-        .click()
-      cy.wait('@apiCheck').then((xhr) => {
-        assert.equal(
-          xhr.response.body.error.message,
-          'User already exists please sign in.'
-        )
-      })
-    })
-
     //Test valid register request and check that user is redirected to login page
     it('Test valid reigster request', () => {
       cy.server()
@@ -223,6 +189,39 @@ describe('Unit Test our login page', () => {
         User_password: 'Cypress301#',
       }).then((xhr) => {
         assert.equal(xhr.status, '200')
+      })
+    })
+
+    //Test register functionality with existing email
+    it('Test register with existing email', () => {
+      cy.server()
+      cy.route({
+        method: 'POST',
+        url: '/user/register',
+      }).as('apiCheck')
+      cy.get('#idName')
+        .clear()
+        .type('Name')
+        .get('#idSurname')
+        .clear()
+        .type('Surname')
+        .get('#idEmail')
+        .clear()
+        .type(userEmailRegister)
+        .get('#idPassword')
+        .clear()
+        .type('Password1@')
+        .get('#idPassword2')
+        .clear()
+        .type('Password1@')
+        .get('.btn-round')
+        .contains('Register')
+        .click()
+      cy.wait('@apiCheck').then((xhr) => {
+        assert.equal(
+          xhr.response.body.error.message,
+          'User already exists please sign in.'
+        )
       })
     })
   })

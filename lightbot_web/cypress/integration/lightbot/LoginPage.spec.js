@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe('Unit Test our login page', () => {
+describe('Test login page', () => {
   let userEmail = 'lightbot_cypress@testing.web'
   let userPass = 'Cypress301#'
   context('Actions', () => {
