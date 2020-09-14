@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe('Test profile page', () => {
+describe('Test forum page', () => {
   let userEmail = 'lightbot_cypress@testing.web'
   let userPass = 'Cypress301#'
 
@@ -29,13 +29,16 @@ describe('Test profile page', () => {
     })
 
     //Check if page loads successfully
-    it('successfully loads', () => {
-      cy.visit('/home/profile')
+    it('successfully load forum page', () => {
+      cy.visit('/home/forum')
       //Check if sidebar loads
       cy.get('.sidebar').should('be.visible')
+      //Check if footer loads
       cy.get('.footer').should('exist')
+      //Check if navbar loads
       cy.get('.navbar-collapse').should('be.visible')
-      cy.get('h2.title').contains('Profile').should('be.visible')
+      //Check if title has correct text
+      cy.get('h2.title').contains('Notification Forum').should('be.visible')
     })
   })
 })

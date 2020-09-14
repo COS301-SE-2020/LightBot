@@ -20,9 +20,7 @@ describe('Test navbar component', () => {
         .get('.btn-round')
         .contains('Login')
         .click()
-      cy.wait('@apiLogin').then(() => {
-        cy.getCookie('token').should('exist')
-      })
+      cy.wait('@apiLogin')
       cy.server()
       cy.route({
         method: 'GET',
