@@ -130,13 +130,13 @@ module.exports = {
   returnUsers: asyncHandler(async (req, res, next) => {
     let users
     try {
-      users = await User.find({}, '-User_password -User_email -ForumPosts -date -_id')
+      users = await User.find({}, '-User_password -User_email -date -_id -ForumPosts')
     } catch (err) {
       return next(new ErrorResponse('Fetching users failed.'))
     }
     res.json(
       new SuccessResponse(
-        'Successfully retrieved user list.',
+        'Successfully removed user.',
         users.map((user) => user.toObject({ getters: true }))
       )
     )
