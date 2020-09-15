@@ -70,7 +70,7 @@ def import_test_configuration(config_file):
 #  The set_sumo function will check if the environment is set for SUMO, set the sumoBinary and return sumo_cmd for traci to run SUMO.
 
 
-def set_sumo(gui, sumocfg_file_name):
+def set_sumo(gui, sumocfg_file_name, max_steps):
     if 'SUMO_HOME' in os.environ:
         tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
         sys.path.append(tools)
@@ -81,9 +81,7 @@ def set_sumo(gui, sumocfg_file_name):
         sumoBinary = checkBinary('sumo')
     else:
         sumoBinary = checkBinary('sumo-gui')
-    sumo_cmd = [sumoBinary, "-c", os.path.join('Map', sumocfg_file_name), "--no-step-log"]
-    # Test this:
-    #sumo_cmd = [sumoBinary, "-c", os.path.join('Map', sumocfg_file_name), "--no-step-log", "true", "--waiting-time-memory", str(max_steps)]
+    sumo_cmd = [sumoBinary, "-c", os.path.join('Map', sumocfg_file_name), "--no-step-log", "true"]
     return sumo_cmd
 
 # Documentation for the set_train_path function.

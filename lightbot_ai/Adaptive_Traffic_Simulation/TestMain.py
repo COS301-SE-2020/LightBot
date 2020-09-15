@@ -25,14 +25,22 @@ if __name__ == "__main__":
 
     # Sumo cmd object passed to the Simulation object.
     sumo_cmd = set_sumo(
-        config['gui'], config['sumocfg_file_name'])
+        config['gui'], config['sumocfg_file_name'], config['max_steps'])
 
-    model_path, plot_path = set_test_path(
-        config['models_path_name'], config['model_to_test'])
+    model_path_south, plot_path = set_test_path(
+        config['models_path_name'] + "/South", config['model_to_test'])
 
-    Model = TestModel(
+    model_path_duxbury, plot_path = set_test_path(
+        config['models_path_name'] + "/Duxbury", config['model_to_test'])
+    
+    Model_South = TestModel(
         config['num_states'],
-        model_path
+        model_path_south
+    )
+    
+    Model_Duxbury = TestModel(
+        config['num_states'],
+        model_path_duxbury
     )
 
     if config['use_mock_traffic']:
@@ -57,7 +65,8 @@ if __name__ == "__main__":
 
     # Simulation object used to run the simulation with the given configuration properties.
     Simulation = Simulation(
-        Model,
+        Model_South,
+        Model_Duxbury,
         TrafficGen,
         sumo_cmd,
         config['max_steps'],

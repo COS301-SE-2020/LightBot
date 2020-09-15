@@ -6,5 +6,8 @@
         <net-file value="Jan_Shoba_Multi_Peak.net.xml"/>
         <route-files value="Jan_Shoba_Multi_Peak.rou.xml,Jan_Shoba_Multi_Peak_autogen_vehicles.rou.alt.xml"/>
     </input>
-
+    <processing>
+        <waiting-time-memory value="5000"/>
+        <time-to-teleport value="5000"/>
+    </processing>
 </configuration>

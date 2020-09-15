@@ -28,9 +28,11 @@ class Simulation:
     #  @param yellow_duration The duration, in steps, for the Yellow States.
     #  @param num_states May be used later for the Tensorflow model.
     #  @param num_actions The number of Green States or actions the Tensorflow model will be able to take.
-    def __init__(self, Model, Memory, TrafficGen, sumo_cmd, gamma, max_steps, green_duration, yellow_duration, num_states, num_actions, training_epochs):
-        self._Model = Model
-        self._Memory = Memory
+    def __init__(self, Model_South, Model_Duxbury, Memory_South, Memory_Duxbury, TrafficGen, sumo_cmd, gamma, max_steps, green_duration, yellow_duration, num_states, num_actions, training_epochs):
+        self._Model_South = Model_South
+        self._Model_Duxbury = Model_Duxbury
+        self._Memory_South = Memory_South 
+        self._Memory_Duxbury = Memory_Duxbury 
         self._TrafficGen = TrafficGen
         self._gamma = gamma
         self._sumo_cmd = sumo_cmd
@@ -101,9 +103,9 @@ class Simulation:
                 jan_south_current_sim_state = self._get_jan_south_sim_state()
                 jan_south_current_total_wait = self._collect_jan_south_waiting_times()
                 jan_south_reward = jan_south_old_total_wait - jan_south_current_total_wait
-                jan_south_action = self._choose_action(jan_south_current_sim_state, epsilon)
+                jan_south_action = self._choose_action_south(jan_south_current_sim_state, epsilon)
                 if self._step != 0:
-                    self._Memory.add_sample((jan_south_old_sim_state, jan_south_old_action, jan_south_reward, jan_south_current_sim_state))
+                    self._Memory_South.add_sample((jan_south_old_sim_state, jan_south_old_action, jan_south_reward, jan_south_current_sim_state))
                 if self._step != 0 and jan_south_old_action != jan_south_action:
                     self._set_jan_south_yellow_phase(jan_south_old_action)
                     jan_south_yellow_state_steps_todo = self.Jan_South_XML_ALL_TIMES[jan_south_old_action * 2 + 1]
@@ -117,9 +119,9 @@ class Simulation:
                 jan_duxbury_current_sim_state = self._get_jan_duxbury_sim_state()
                 jan_duxbury_current_total_wait = self._collect_jan_duxbury_waiting_times()
                 jan_duxbury_reward = jan_duxbury_old_total_wait - jan_duxbury_current_total_wait
-                jan_duxbury_action = self._choose_action(jan_duxbury_current_sim_state, epsilon)
+                jan_duxbury_action = self._choose_action_duxbury(jan_duxbury_current_sim_state, epsilon)
                 if self._step != 0:
-                    self._Memory.add_sample((jan_duxbury_old_sim_state, jan_duxbury_old_action, jan_duxbury_reward, jan_duxbury_current_sim_state))
+                    self._Memory_Duxbury.add_sample((jan_duxbury_old_sim_state, jan_duxbury_old_action, jan_duxbury_reward, jan_duxbury_current_sim_state))
                 if self._step != 0 and jan_duxbury_old_action != jan_duxbury_action:
                     self._set_jan_duxbury_yellow_phase(jan_duxbury_old_action)
                     jan_duxbury_yellow_state_steps_todo = self.Jan_Duxbury_XML_ALL_TIMES[jan_duxbury_old_action * 2 + 1]               
@@ -204,17 +206,17 @@ class Simulation:
         total_waiting_time = sum(self._jan_duxbury_waiting_times.values())
         return total_waiting_time
 
-    def _choose_action(self, state, epsilon):
+    def _choose_action_south(self, state, epsilon):
         if random.random() < epsilon:
             return random.randint(0, self._num_actions - 1) # random action
         else:
-            return np.argmax(self._Model.predict_one(state)) # the best action given the current state
+            return np.argmax(self._Model_South.predict_one(state)) # the best action given the current state
 
-    def _choose_action(self, state, epsilon):
+    def _choose_action_duxbury(self, state, epsilon):
         if random.random() < epsilon:
             return random.randint(0, self._num_actions - 1) # random action
         else:
-            return np.argmax(self._Model.predict_one(state)) # the best action given the current state
+            return np.argmax(self._Model_Duxbury.predict_one(state)) # the best action given the current state
 
     # Documentation for the _set_yellow_phase method.
     #  @param self The object pointer.
@@ -616,28 +618,55 @@ class Simulation:
 
     
     def _replay(self):
-        batch = self._Memory.get_samples(self._Model.batch_size)
+        
+        # SOUTH
+        batch_south = self._Memory_South.get_samples(self._Model_South.batch_size)
 
-        if len(batch) > 0:  # if the memory is full enough
-            states = np.array([val[0] for val in batch])  # extract states from the batch
-            next_states = np.array([val[3] for val in batch])  # extract next states from the batch
+        if len(batch_south) > 0:  # if the memory is full enough
+            states = np.array([val[0] for val in batch_south])  # extract states from the batch
+            next_states = np.array([val[3] for val in batch_south])  # extract next states from the batch
 
             # prediction
-            q_s_a = self._Model.predict_batch(states)  # predict Q(state), for every sample
-            q_s_a_d = self._Model.predict_batch(next_states)  # predict Q(next_state), for every sample
+            q_s_a = self._Model_South.predict_batch(states)  # predict Q(state), for every sample
+            q_s_a_d = self._Model_South.predict_batch(next_states)  # predict Q(next_state), for every sample
 
             # setup training arrays
-            x = np.zeros((len(batch), self._num_states))
-            y = np.zeros((len(batch), self._num_actions))
+            x = np.zeros((len(batch_south), self._num_states))
+            y = np.zeros((len(batch_south), self._num_actions))
 
-            for i, b in enumerate(batch):
+            for i, b in enumerate(batch_south):
                 state, action, reward, _ = b[0], b[1], b[2], b[3]  # extract data from one sample
                 current_q = q_s_a[i]  # get the Q(state) predicted before
                 current_q[action] = reward + self._gamma * np.amax(q_s_a_d[i])  # update Q(state, action)
                 x[i] = state
                 y[i] = current_q  # Q(state) that includes the updated action value
 
-            self._Model.train_batch(x, y)  # train the NN
+            self._Model_South.train_batch(x, y)  # train the NN
+
+        # DUXBURY
+        
+        batch_duxbury = self._Memory_Duxbury.get_samples(self._Model_Duxbury.batch_size)
+
+        if len(batch_duxbury) > 0:  # if the memory is full enough
+            states = np.array([val[0] for val in batch_duxbury])  # extract states from the batch
+            next_states = np.array([val[3] for val in batch_duxbury])  # extract next states from the batch
+
+            # prediction
+            q_s_a = self._Model_Duxbury.predict_batch(states)  # predict Q(state), for every sample
+            q_s_a_d = self._Model_Duxbury.predict_batch(next_states)  # predict Q(next_state), for every sample
+
+            # setup training arrays
+            x = np.zeros((len(batch_duxbury), self._num_states))
+            y = np.zeros((len(batch_duxbury), self._num_actions))
+
+            for i, b in enumerate(batch_duxbury):
+                state, action, reward, _ = b[0], b[1], b[2], b[3]  # extract data from one sample
+                current_q = q_s_a[i]  # get the Q(state) predicted before
+                current_q[action] = reward + self._gamma * np.amax(q_s_a_d[i])  # update Q(state, action)
+                x[i] = state
+                y[i] = current_q  # Q(state) that includes the updated action value
+
+            self._Model_Duxbury.train_batch(x, y)  # train the NN
 
     def _save_episode_stats(self):
         self._jan_south_reward_store.append(self._jan_south_sum_neg_reward)  # how much negative reward in this episode

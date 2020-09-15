@@ -28,11 +28,23 @@ if __name__ == "__main__":
 
     # Sumo cmd object passed to the Simulation object.
     sumo_cmd = set_sumo(
-        config['gui'], config['sumocfg_file_name'])
+        config['gui'], config['sumocfg_file_name'], config['max_steps'])
 
     plot_path = set_train_path(config['models_path_name'])
+    
+    plot_path_south = set_train_path(config['models_path_name'] + "/South")
+    plot_path_duxbury = set_train_path(config['models_path_name'] + "/Duxbury")
 
-    Model=TrainModel(
+    Model_South=TrainModel(
+        config['num_layers'], 
+        config['width_layers'], 
+        config['batch_size'], 
+        config['learning_rate'], 
+        config['num_states'], 
+        config['num_actions']
+    )
+
+    Model_Duxbury=TrainModel(
         config['num_layers'], 
         config['width_layers'], 
         config['batch_size'], 
@@ -51,7 +63,12 @@ if __name__ == "__main__":
         pass
         
 
-    Memory = Memory(
+    Memory_South = Memory(
+        config['memory_size_max'], 
+        config['memory_size_min']
+    )
+
+    Memory_Duxbury = Memory(
         config['memory_size_max'], 
         config['memory_size_min']
     )
@@ -63,8 +80,10 @@ if __name__ == "__main__":
 
     # Simulation object used to run the simulation with the given configuration properties.
     Simulation=Simulation(
-        Model,
-        Memory,
+        Model_South,
+        Model_Duxbury,
+        Memory_South,
+        Memory_Duxbury,
         TrafficGen,
         sumo_cmd,
         config['gamma'],
@@ -92,7 +111,8 @@ if __name__ == "__main__":
     print("----- End time:", datetime.datetime.now())
     print("----- Session info saved at:", plot_path)
 
-    Model.save_model(plot_path)
+    Model_South.save_model(plot_path_south)
+    Model_Duxbury.save_model(plot_path_duxbury)
 
     copyfile(src='Settings/TrainSettings.ini', dst=os.path.join(plot_path, 'TrainSettings.ini'))
 
@@ -104,33 +124,3 @@ if __name__ == "__main__":
     Visualization.save_data_and_plot(data=Simulation.jan_duxbury_cumulative_wait_store, filename='Jan_Duxbury_delay', xlabel='Episode', ylabel='Cumulative delay (s)')
     Visualization.save_data_and_plot(data=Simulation.jan_duxbury_avg_queue_length_store, filename='Jan_Duxbury_queue', xlabel='Episode', ylabel='Average queue length (vehicles)')
 
-    # Visualization.save_data_and_plot(data=Simulation.queue_length_episode,
-    #                                  filename='Total_queue', xlabel='Step', ylabel='Queue length (vehicles)')
-    # Visualization.save_data_and_plot(data=Simulation.queue_length_north,
-    #                                  filename='North_queue', xlabel='Step', ylabel='Queue length (vehicles)')
-    # Visualization.save_data_and_plot(data=Simulation.queue_length_south,
-    #                                  filename='South_queue', xlabel='Step', ylabel='Queue length (vehicles)')
-    # Visualization.save_data_and_plot(data=Simulation.queue_length_east,
-    #                                  filename='East_queue', xlabel='Step', ylabel='Queue length (vehicles)')
-    # Visualization.save_data_and_plot(data=Simulation.queue_length_west,
-                                    #  filename='West_queue', xlabel='Step', ylabel='Queue length (vehicles)')
-    # Images are encoded to base64 and saved to MongoDB.
-    # encoded = base64.b64encode(open('plot_Total_queue.png', 'rb').read())
-    # myDict = {'Image':'plot_Total_queue.png', 'base64':encoded}
-    # x = database.addOneToDB(myDict)
-
-    # encoded = base64.b64encode(open('plot_North_queue.png', 'rb').read())
-    # myDict = {'Image':'plot_North_queue.png', 'base64':encoded}
-    # x = database.addOneToDB(myDict)
-
-    # encoded = base64.b64encode(open('plot_South_queue.png', 'rb').read())
-    # myDict = {'Image':'plot_South_queue.png', 'base64':encoded}
-    # x = database.addOneToDB(myDict)
-
-    # encoded = base64.b64encode(open('plot_East_queue.png', 'rb').read())
-    # myDict = {'Image':'plot_East_queue.png', 'base64':encoded}
-    # x = database.addOneToDB(myDict)
-
-    # encoded = base64.b64encode(open('plot_West_queue.png', 'rb').read())
-    # myDict = {'Image':'plot_West_queue.png', 'base64':encoded}
-    # x = database.addOneToDB(myDict)

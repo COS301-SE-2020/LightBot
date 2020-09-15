@@ -66,7 +66,6 @@ class TestModel:
 
     def _load_my_model(self, model_folder_path):
         model_file_path = os.path.join(model_folder_path, 'trained_model.h5')
-
         if os.path.isfile(model_file_path):
             loaded_model = load_model(model_file_path)
             return loaded_model

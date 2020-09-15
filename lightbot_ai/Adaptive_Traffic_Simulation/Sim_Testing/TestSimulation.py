@@ -28,8 +28,9 @@ class Simulation:
     #  @param yellow_duration The duration, in steps, for the Yellow States.
     #  @param num_states May be used later for the Tensorflow model.
     #  @param num_actions The number of Green States or actions the Tensorflow model will be able to take.
-    def __init__(self, Model, TrafficGen, sumo_cmd, max_steps, green_duration, yellow_duration, num_states, num_actions, actions_file_name, use_automatic_controller):
-        self._Model = Model
+    def __init__(self, Model_South, Model_Duxbury, TrafficGen, sumo_cmd, max_steps, green_duration, yellow_duration, num_states, num_actions, actions_file_name, use_automatic_controller):
+        self._Model_South = Model_South
+        self._Model_Duxbury = Model_Duxbury
         self._TrafficGen = TrafficGen
         self._sumo_cmd = sumo_cmd
         self._max_steps = max_steps
@@ -113,10 +114,11 @@ class Simulation:
         jan_south_action = 0
         jan_duxbury_action = 0
 
-        while traci.simulation.getMinExpectedNumber() > 0:
+        # while traci.simulation.getMinExpectedNumber() > 0:
+        while self._step < self._max_steps:
             if jan_south_yellow_state_steps_todo == 0 and jan_south_green_state_steps_todo == 0:
                 jan_south_current_sim_state = self._get_jan_south_sim_state()
-                jan_south_action = self._choose_action(jan_south_current_sim_state)
+                jan_south_action = self._choose_action_south(jan_south_current_sim_state)
                 if self._step != 0 and jan_south_old_action != jan_south_action:
                     self._set_jan_south_yellow_phase(jan_south_old_action)
                     jan_south_yellow_state_steps_todo = self.Jan_South_XML_ALL_TIMES[jan_south_old_action * 2 + 1]
@@ -130,7 +132,7 @@ class Simulation:
 
             if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == 0:
                 jan_duxbury_current_sim_state = self._get_jan_duxbury_sim_state()
-                jan_duxbury_action = self._choose_action(jan_duxbury_current_sim_state)
+                jan_duxbury_action = self._choose_action_duxbury(jan_duxbury_current_sim_state)
                 if self._step != 0 and jan_duxbury_old_action != jan_duxbury_action:
                     self._set_jan_duxbury_yellow_phase(jan_duxbury_old_action)
                     jan_duxbury_yellow_state_steps_todo = self.Jan_Duxbury_XML_ALL_TIMES[jan_duxbury_old_action * 2 + 1]
@@ -142,7 +144,8 @@ class Simulation:
             if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == y:
                 self._set_jan_duxbury_green_phase(jan_duxbury_action) 
 
-            if (traci.simulation.getMinExpectedNumber() > 0) and (jan_south_yellow_state_steps_todo > 0 or jan_south_green_state_steps_todo > 0 or jan_duxbury_yellow_state_steps_todo > 0 or jan_duxbury_green_state_steps_todo > 0):
+            # if (traci.simulation.getMinExpectedNumber() > 0) and (jan_south_yellow_state_steps_todo > 0 or jan_south_green_state_steps_todo > 0 or jan_duxbury_yellow_state_steps_todo > 0 or jan_duxbury_green_state_steps_todo > 0):
+            if (self._step < self._max_steps) and (jan_south_yellow_state_steps_todo > 0 or jan_south_green_state_steps_todo > 0 or jan_duxbury_yellow_state_steps_todo > 0 or jan_duxbury_green_state_steps_todo > 0):
                 traci.simulationStep()
                 self._step += 1
                 jan_south_queue_length = self._get_jan_south_queue_length()
@@ -188,7 +191,8 @@ class Simulation:
         traci.start(self._sumo_cmd)
 
         self._step = 0
-        while traci.simulation.getMinExpectedNumber() > 0:
+        # while traci.simulation.getMinExpectedNumber() > 0:
+        while self._step < self._max_steps:
             traci.simulationStep()
             self._step += 1
             jan_south_queue_length = self._get_jan_south_queue_length()
@@ -330,8 +334,11 @@ class Simulation:
         self._total_co2_emission_episode.append(running_total)
 
 
-    def _choose_action(self, state):
-        return np.argmax(self._Model.predict_one(state))
+    def _choose_action_south(self, state):
+        return np.argmax(self._Model_South.predict_one(state))
+
+    def _choose_action_duxbury(self, state):
+        return np.argmax(self._Model_Duxbury.predict_one(state))
 
     # Documentation for the _get_queue_length method.
     #  @param self The object pointer.
