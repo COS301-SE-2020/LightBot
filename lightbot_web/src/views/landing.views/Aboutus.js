@@ -3,9 +3,6 @@ import React from 'react'
 import { Card, Container, Col, CardHeader } from 'reactstrap'
 
 class Aboutus extends React.Component {
-  constructor(props) {
-    super(props)
-  }
 
   render() {
     return (

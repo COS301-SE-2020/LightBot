@@ -54,7 +54,7 @@ class Users extends React.Component {
                 <Col className='ml-auto mr-auto text-center' md='6'>
                   <Card className='card-user'>
                     <CardHeader className='image'>
-                      <img src={require('../../assets/img/login.png')} />
+                      <img src={require('../../assets/img/login.png')} alt={''} />
                     </CardHeader>
                     <CardBody>
                       <div className='author'>
@@ -85,7 +85,7 @@ class Users extends React.Component {
                 <Col className='ml-auto mr-auto text-center' md='6'>
                   <Card className='card-user'>
                     <CardHeader className='image'>
-                      <img src={require('../../assets/img/login.png')} />
+                      <img src={require('../../assets/img/login.png')}  alt={''}  />
                     </CardHeader>
                     <CardBody>
                       <div className='author'>

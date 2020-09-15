@@ -236,7 +236,10 @@ class User extends React.Component {
                 <Col md='12'>
                   <Card className='card-user'>
                     <CardHeader className='image'>
-                      <img src={require('../../assets/img/login.png')} />
+                      <img
+                        src={require('../../assets/img/login.png')}
+                        alt={''}
+                      />
                     </CardHeader>
                     <CardBody>
                       <div className='author'>
@@ -271,7 +274,10 @@ class User extends React.Component {
                         <Col>
                           <Form>
                             <Row>
-                              <Col className='ml-auto mr-auto text-center' md='6'>
+                              <Col
+                                className='ml-auto mr-auto text-center'
+                                md='6'
+                              >
                                 <FormGroup>
                                   <InputGroup>
                                     <div className='custom-file'>
@@ -296,7 +302,11 @@ class User extends React.Component {
                               </Col>
                             </Row>
                             <Row>
-                              <Col className='ml-auto mr-auto text-center' md={4} xs={12}>
+                              <Col
+                                className='ml-auto mr-auto text-center'
+                                md={4}
+                                xs={12}
+                              >
                                 <Button
                                   className='btn-round'
                                   color='primary'
@@ -309,10 +319,13 @@ class User extends React.Component {
                             </Row>
                           </Form>
                         </Col>
-                        <Col >
+                        <Col>
                           <Form>
                             <Row>
-                              <Col className='ml-auto mr-auto text-center' md='6'>
+                              <Col
+                                className='ml-auto mr-auto text-center'
+                                md='6'
+                              >
                                 <FormGroup>
                                   <InputGroup>
                                     <div className='custom-file'>
@@ -337,7 +350,11 @@ class User extends React.Component {
                               </Col>
                             </Row>
                             <Row>
-                              <Col className='ml-auto mr-auto text-center' md={4} xs={12}>
+                              <Col
+                                className='ml-auto mr-auto text-center'
+                                md={4}
+                                xs={12}
+                              >
                                 <Button
                                   className='btn-round'
                                   color='primary'
@@ -576,7 +593,11 @@ class User extends React.Component {
                           </Col>
                         </Row>
                         <Row>
-                          <Col className='ml-auto mr-auto text-center' md={4} xs={12}>
+                          <Col
+                            className='ml-auto mr-auto text-center'
+                            md={4}
+                            xs={12}
+                          >
                             <Button
                               className='btn-round'
                               color='primary'

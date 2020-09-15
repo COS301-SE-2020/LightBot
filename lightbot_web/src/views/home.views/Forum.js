@@ -89,7 +89,18 @@ class Forum extends React.Component {
         />
         <div className='content'>
           <NotificationAlert ref='notificationAlert' />
-          <Post setClick={click => this.clickChild = click}/>
+          <Post setClick={(click) => (this.clickChild = click)} />
+          <Col md='14'>
+            <Card>
+              <CardTitle>Submit New Forum Post</CardTitle>
+              <CardBody>
+                <Row>
+                  <Col md='9'>BODY</Col>
+                  <Col md='5'>IMAGE</Col>
+                </Row>
+              </CardBody>
+            </Card>
+          </Col>
           <Row>
             <Col className='ml-auto mr-auto text-center' md={8} xs={12}>
               <Card>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PerfectScrollbar from 'perfect-scrollbar'
 import { Switch, Redirect } from 'react-router-dom'
 import Footer from '../components/Footer/Footer.js'
@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import PrivateRoute from '../routes/PrivateRoute'
 
-import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
+import { Modal, ModalHeader, ModalBody, Button } from 'reactstrap'
 
 var ps
 

@@ -46,17 +46,6 @@ class Footer extends React.Component {
   }
 }
 
-const MyStyles = {
-  textInputStyle: {
-    color: 'white',
-    opacity: '1',
-  },
-  textInputStyle2: {
-    color: '#f96332',
-    opacity: '1',
-  },
-}
-
 Footer.propTypes = {
   default: PropTypes.bool,
   fluid: PropTypes.bool,

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardBody, Row, Col, Button } from 'reactstrap'
+import { Row, Col, Button } from 'reactstrap'
 import PanelHeader from '../../components/PanelHeader/PanelHeader.js'
 
 class Configuration extends React.Component {
