@@ -10,13 +10,21 @@ import NotificationAlert from 'react-notification-alert'
 class Users extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      views: null
+    }
     this.onDismiss = this.onDismiss.bind(this)
     this.notify = this.notify.bind(this)
   }
 
-  renderTable() {
-    this.props.user_list.map((prop, key) => {
+  setViews = (e) => {
+    let { views } = this.state
+    views = e
+    this.setState({views})
+  }
+
+  async renderTable() {
+    return this.props.user_list.map((prop, key) => {
       return (
         <UserComponent
           name={prop.User_name}
@@ -37,7 +45,11 @@ class Users extends React.Component {
         
       } else {
         this.notify(this.props.message.msg, 'success')
-        ReactDOM.render(this.renderTable(), document.getElementsByClassName('content'))
+        const x = await this.renderTable()
+        console.log(x)
+        Promise.all(x).then(()=>{
+          this.setViews(x)
+        })
       }
     } catch (err) {}
   }
@@ -75,6 +87,7 @@ class Users extends React.Component {
         />
         <div className='content'>
           <NotificationAlert ref='notificationAlert' />
+          {this.state.views}
         </div>
       </>
     )
