@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
-import { getUsers } from '../../actions/auth'
+import { getUsers, elevate } from '../../actions/auth'
 import PropTypes from 'prop-types'
 import UserComponent from '../../components/UserComponent/UserComponent'
 import PanelHeader from '../../components/PanelHeader/PanelHeader.js'
@@ -15,7 +15,10 @@ class Users extends React.Component {
     }
     this.onDismiss = this.onDismiss.bind(this)
     this.notify = this.notify.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
+
+  
 
   setViews = (e) => {
     let { views } = this.state
@@ -32,9 +35,27 @@ class Users extends React.Component {
           avatar={prop.avatar}
           role={prop.User_role}
           ustate={prop.User_state}
+          key={key}
+          elevate={key}
+          handleC={this.handleChange}
         ></UserComponent>
       )
     })
+  }
+
+  handleChange = async (key,type) => {
+
+    try {
+      await this.props.elevate(key, type)
+      if (this.props.message.status > 299) {
+        this.notify(this.props.message.msg, 'danger')
+        
+      } else {
+        this.notify(this.props.message.msg, 'success')
+        this.handleLoad()
+      }        
+    } catch (err) {}
+  
   }
 
   handleLoad = async (e) => {
@@ -46,7 +67,6 @@ class Users extends React.Component {
       } else {
         this.notify(this.props.message.msg, 'success')
         const x = await this.renderTable()
-        console.log(x)
         Promise.all(x).then(()=>{
           this.setViews(x)
         })
@@ -96,6 +116,7 @@ class Users extends React.Component {
 
 Users.propTypes = {
   getUsers: PropTypes.func.isRequired,
+  elevate: PropTypes.func.isRequired,
   user_list: PropTypes.array,
   message: PropTypes.object,
 }
@@ -105,4 +126,4 @@ const mapStateToProps = (state) => ({
   message: state.auth.message,
 })
 
-export default connect(mapStateToProps, { getUsers })(Users)
+export default connect(mapStateToProps, { elevate, getUsers })(Users)

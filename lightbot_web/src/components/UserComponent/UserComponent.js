@@ -1,14 +1,16 @@
 import React from 'react'
 
-import { Card, CardBody, Row, Col, CardHeader } from 'reactstrap'
+import { Card, CardBody, Row, Col, CardHeader, Button } from 'reactstrap'
 
 export default (props) => {
+
+  
   return (
     <Row>
       <Col className='ml-auto mr-auto text-center' md='6'>
         <Card className='card-user'>
           <CardHeader className='image'>
-            <img src={require('../../assets/img/login.png')} alt={''} />
+            <img src={require('../../assets/img/profile.jpg')} alt={''} />
           </CardHeader>
           <CardBody>
             <div className='author'>
@@ -23,9 +25,31 @@ export default (props) => {
                 </h5>
               </a>
               <p className='description'>
-                {props.role === 1 ? 'Administrator' : 'Viewer'}
+                {props.role === 1 ? 'Administrator' : 'Regular'}
               </p>
             </div>
+            <Row>
+              <Col className='ml-auto mr-auto text-center' md='3'>
+                <Button
+                  className='btn-round'
+                  color='success'
+                  block
+                  onClick={()=>{props.handleC(props.elevate,1)}}
+                >
+                  Promote
+                </Button>
+              </Col>
+              <Col className='ml-auto mr-auto text-center' md='3'>
+                <Button
+                  className='btn-round'
+                  color='danger'
+                  block
+                  onClick={()=>{props.handleC(props.elevate,2)}}
+                >
+                  Demote
+                </Button>
+              </Col>
+            </Row>
           </CardBody>
         </Card>
       </Col>

@@ -28,7 +28,7 @@ var homeRoutes = [
     icon: "now-ui-icons users_circle-08",
     component: Users,
     layout: "/home",
-    auth: false,
+    auth: true,
   },
   {
     path: "/forum",

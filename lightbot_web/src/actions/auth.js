@@ -28,6 +28,8 @@ import {
   // DELETE_ACCOUNT_FAIL,
   DELETE_POST_SUCCESS,
   DELETE_POST_FAIL,
+  ELEVATE_SUCCESS,
+  ELEVATE_FAIL,
 } from './types'
 
 const stderr = { status: 500, message: 'Internal Server Error' }
@@ -266,6 +268,25 @@ export const delForum = (token) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: DELETE_POST_FAIL,
+      payload: err.response ? err.response.data.error : stderr,
+    })
+  }
+}
+
+// // @route     GET /user/list-users
+// // @desc      Acquires List Of Users
+// // @access    Private
+export const elevate = (key,type) => async (dispatch) => {
+  try {
+    const res = await api.get('/data/elevate/'+key+type)
+
+    dispatch({
+      type: ELEVATE_SUCCESS,
+      payload: res.data.success,
+    })
+  } catch (err) {
+    dispatch({
+      type: ELEVATE_FAIL,
       payload: err.response ? err.response.data.error : stderr,
     })
   }

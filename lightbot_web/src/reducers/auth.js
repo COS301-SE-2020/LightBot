@@ -26,6 +26,8 @@ import {
   DELETE_ACCOUNT_FAIL,
   DELETE_POST_SUCCESS,
   DELETE_POST_FAIL,
+  ELEVATE_SUCCESS,
+  ELEVATE_FAIL,
 } from '../actions/types'
 
 import cookies from 'universal-cookie'
@@ -193,6 +195,16 @@ export default function (state = initialState, action) {
         ...state,
         message: { status: payload.status, msg: payload.message },
       }
+      case ELEVATE_SUCCESS:
+        return {
+          ...state,
+          message: { status: payload.status, msg: payload.message },
+        }
+      case ELEVATE_FAIL:
+        return {
+          ...state,
+          message: { status: payload.status, msg: payload.message },
+        }
     default:
       return state
   }

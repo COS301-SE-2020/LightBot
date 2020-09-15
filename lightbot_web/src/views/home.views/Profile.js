@@ -237,7 +237,7 @@ class User extends React.Component {
                   <Card className='card-user'>
                     <CardHeader className='image'>
                       <img
-                        src={require('../../assets/img/login.png')}
+                        src={require('../../assets/img/profile.jpg')}
                         alt={''}
                       />
                     </CardHeader>
@@ -254,7 +254,7 @@ class User extends React.Component {
                         <p className='description'>
                           {this.props.user.User_role === 1
                             ? 'Administrator'
-                            : 'Viewer'}
+                            : 'Regular'}
                         </p>
                       </div>
                     </CardBody>

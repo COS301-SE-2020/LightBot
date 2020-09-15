@@ -1,3 +1,6 @@
+// // Config imports
+const config = require('../config')
+
 // // Library imports
 const asyncHandler = require('express-async-handler')
 const jwt = require('jsonwebtoken')
@@ -12,7 +15,7 @@ module.exports = {
       if (!token) {
         return next(new Unauthorized('Authentication failed.'))
       }
-      const decoded = jwt.verify(token, process.env.AppSecret)
+      const decoded = jwt.verify(token, config.appSecret)
       req.User_data = {
         User_id: decoded.user.id,
         User_email: decoded.user.User_email,

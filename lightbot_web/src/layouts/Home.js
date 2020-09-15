@@ -65,7 +65,7 @@ class Home extends React.Component {
           role={this.props.user.User_role}
         />
         <div className='main-panel' ref={this.mainPanel}>
-          <TopNavbar {...this.props} modaltoggleX={this.modaltoggle} />
+          <TopNavbar {...this.props} modaltoggleX={this.modaltoggle} role={this.props.user.User_role} />
           <Switch>
             {routes.map((prop, key) => {
               if (prop.auth && this.props.user.User_role !== 1) return null

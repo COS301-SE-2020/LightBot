@@ -1,12 +1,12 @@
 .card-user{
     .image{
-        height: 200px;
+        height: 250px;
     }
 
     .author{
         text-align: center;
         text-transform: none;
-        margin-top: -150px;
+        margin-top: -180px;
 
         a +  p.description{
             margin-top: -7px;
@@ -21,7 +21,7 @@
     }
 
     .card-body{
-        min-height: 240px;
+        min-height: 100px;
     }
 
     hr{

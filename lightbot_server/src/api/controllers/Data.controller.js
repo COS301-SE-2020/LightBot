@@ -136,8 +136,28 @@ module.exports = {
     }
     res.json(
       new SuccessResponse(
-        'Successfully removed user.',
+        'Successfully acquired user list.',
         users.map((user) => user.toObject({ getters: true }))
+      )
+    )
+  }),
+  elevateUser: asyncHandler(async (req, res, next) => {
+    const info = req.params.info
+    const pos = info.substr(0,info.length-1)
+    const type = info.substr(info.length-1)
+
+    let users
+    try {
+      users = await User.find({})
+      users[pos].User_role = type
+      await users[pos].save()
+    } catch (err) {
+      return next(new ErrorResponse('Failed to change user privilege.'))
+    }
+    res.json(
+      new SuccessResponse(
+        'Successfully changed user privilege.',
+        //users.map((user) => user.toObject({ getters: true }))
       )
     )
   }),

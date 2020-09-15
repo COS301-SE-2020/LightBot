@@ -67,4 +67,13 @@ router.get(
   require('../controllers/Data.controller').returnUsers
 )
 
+// // @route     GET user/list-user
+// // @desc      List User Route
+// // @access    Private
+router.get(
+  '/elevate/:info',
+  auth.Guard,
+  require('../controllers/Data.controller').elevateUser
+)
+
 module.exports = router
