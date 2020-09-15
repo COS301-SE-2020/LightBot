@@ -3,13 +3,15 @@
 // Now Ui Kit Design element Dialogs
 // --------------------------------------------------
 .modal-content {
-
+    color: $primary-color;
   border-radius: $border-radius-small;
   border: none;
   box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   // Modal header
   // Top section of the modal w/ title and dismiss
   .modal-header {
+    margin: 0 auto;
     border-bottom: none;
     padding-top:    24px;
     padding-right:  24px;
@@ -25,11 +27,13 @@
     .title{
         margin-top: 5px;
         margin-bottom: 0;
+
     }
   }
   // Modal body
   // Where all modal content resides (sibling of .modal-header and .modal-footer)
   .modal-body {
+    margin: 0 auto;
     padding-top:    24px;
     padding-right:  24px;
     padding-bottom: 16px;

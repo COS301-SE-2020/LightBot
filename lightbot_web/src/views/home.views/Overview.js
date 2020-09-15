@@ -24,6 +24,8 @@ import {
   dashboardAllProductsChart,
 } from '../../variables/charts.js'
 
+import Map from '../../components/Map/MapComponent'
+
 import Post from '../../components/Post/Post'
 
 class Overview extends React.Component {
@@ -44,7 +46,7 @@ class Overview extends React.Component {
         'NOV',
         'DEC',
       ],
-      datax: [50, 150, 100, 190, 130, 90, 150, 160, 120, 140, 190, 95],
+      datax: [50, 150, 100, 190, 130, 90, 150, 160, 120, 140, 500, 95],
       data: (canvas) => {
         const ctx = canvas.getContext('2d')
         var chartColor = '#FFFFFF'
@@ -176,11 +178,28 @@ class Overview extends React.Component {
               </Card>
             </Col>
           </Row>
-          <Post />
+          <Post setClick={(click) => (this.clickChild = click)} />
+          <Row>
+            <Col className='ml-auto mr-auto text-center'>
+              <Card>
+                <CardBody style={mapStyles}>
+                    <Col>
+                      <CardTitle className='ml-auto mr-auto text-center'><h3>Intersections Covered</h3></CardTitle>
+                    </Col>
+                  <Map/>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
         </div>
       </>
     )
   }
+}
+
+const mapStyles = {
+  width: '80vw',
+  height: '80vh',
 }
 
 export default Overview

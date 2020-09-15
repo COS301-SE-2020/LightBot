@@ -3,6 +3,7 @@ import Configuration from "../views/home.views/Configuration.js";
 import Forum from "../views/home.views/Forum.js";
 import Simulation from "../views/home.views/Simulation.js";
 import Profile from "../views/home.views/Profile.js";
+import Users from "../views/home.views/Users.js";
 
 var homeRoutes = [
   {
@@ -18,6 +19,14 @@ var homeRoutes = [
     name: "Profile",
     icon: "now-ui-icons users_circle-08",
     component: Profile,
+    layout: "/home",
+    auth: false,
+  },
+  {
+    path: "/users",
+    name: "Users",
+    icon: "now-ui-icons users_circle-08",
+    component: Users,
     layout: "/home",
     auth: false,
   },

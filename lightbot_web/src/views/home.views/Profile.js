@@ -15,6 +15,7 @@ import {
   Row,
   Col,
   InputGroup,
+  CardHeader,
 } from 'reactstrap'
 
 import PanelHeader from '../../components/PanelHeader/PanelHeader.js'
@@ -230,298 +231,388 @@ class User extends React.Component {
         <div className='content'>
           <NotificationAlert ref='notificationAlert' />
           <Row>
-            <Col md='8'>
-              <Card>
-                <CardBody>
-                  <Form>
-                    <Row>
-                      <Col className='pr-1' md='6'>
-                        <FormGroup>
-                          <label>NAME</label>
-                          <Input
-                            name='User_name'
-                            value={this.state.User_name}
-                            valid={
-                              this.state.validate.User_nameS === 'has-success'
-                            }
-                            invalid={
-                              this.state.validate.User_nameS === 'has-danger'
-                            }
-                            onChange={(e) => {
-                              this.validateName(e)
-                              this.handleChange(e)
-                            }}
-                            disabled={this.state.switch}
-                            placeholder='Name'
-                            type='text'
-                            required
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col className='pl-1' md='6'>
-                        <FormGroup>
-                          <label>SURNAME</label>
-                          <Input
-                            name='User_surname'
-                            value={this.state.User_surname}
-                            valid={
-                              this.state.validate.User_surnameS ===
-                              'has-success'
-                            }
-                            invalid={
-                              this.state.validate.User_surnameS === 'has-danger'
-                            }
-                            onChange={(e) => {
-                              this.validateSurname(e)
-                              this.handleChange(e)
-                            }}
-                            disabled={this.state.switch}
-                            placeholder='Surname'
-                            type='text'
-                            required
-                          />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col className='pr-1' md='8'>
-                        <FormGroup>
-                          <label>EMAIL</label>
-                          <Input
-                            defaultValue={this.props.user.User_email}
-                            disabled={true}
-                            placeholder='Email'
-                            type='email'
-                          />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col className='pr-1' md='6'>
-                        <FormGroup>
-                          <label>ROLE</label>
-                          <Input
-                            value={
-                              this.state.User_role === 1
-                                ? 'Administrator'
-                                : 'Viewer'
-                            }
-                            disabled={true}
-                            placeholder='Role'
-                            type='text'
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col className='pl-1' md='6'>
-                        <FormGroup>
-                          <label>State</label>
-                          <Input
-                            value={this.state.User_state}
-                            disabled={true}
-                            placeholder='State'
-                            type='text'
-                            required
-                          />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col className='pr-1'>
-                        <div className='custom-control custom-switch'>
-                          <input
-                            type='checkbox'
-                            className='custom-control-input'
-                            id='customSwitches'
-                            onClick={this.handleSwitch}
-                          />
-                          <label
-                            className='custom-control-label'
-                            htmlFor='customSwitches'
-                          >
-                            Toggle this to change fields
-                          </label>
-                        </div>
-                      </Col>
-                    </Row>
-                  </Form>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col md='4'>
-              <Card className='card-user'>
-                <CardBody>
-                  <div className='author'>
-                    <a href='/#' onClick={(e) => e.preventDefault()}>
+            <Col>
+              <Row>
+                <Col md='12'>
+                  <Card className='card-user'>
+                    <CardHeader className='image'>
                       <img
-                        alt='...'
-                        className='avatar border-gray'
-                        src={this.state.image}
+                        src={require('../../assets/img/login.png')}
+                        alt={''}
                       />
-                      <h5 className='title'>{this.props.user.User_name}</h5>
-                    </a>
-                    <p className='description'>
-                      {this.props.user.User_role === 1
-                        ? 'Administrator'
-                        : 'Viewer'}
-                    </p>
-                  </div>
-                  <p className='description text-center'>
-                    Some fancy about me
-                    <br />
-                    description
-                  </p>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-          <Row>
-            <Col md='8'>
-              <Card>
-                <CardBody>
-                  <Form>
-                    <Row>
-                      <Col className='pr-1' md='6'>
-                        <FormGroup>
-                          <label>Current Password</label>
-                          <Input
-                            name='oldpassword'
-                            type='password'
-                            id='idPassword'
-                            placeholder='Password'
-                            value={this.state.oldpassword}
-                            valid={
-                              this.state.validate.oldpasswordS === 'has-success'
-                            }
-                            invalid={
-                              this.state.validate.oldpasswordS === 'has-danger'
-                            }
-                            onChange={(e) => {
-                              this.validatePassword(e)
-                              this.handleChange(e)
-                            }}
-                            required
+                    </CardHeader>
+                    <CardBody>
+                      <div className='author'>
+                        <a href='/#' onClick={(e) => e.preventDefault()}>
+                          <img
+                            alt='...'
+                            className='avatar border-gray'
+                            src={this.state.image}
                           />
-                          <FormFeedback>
-                            Password must contain an uppercase character,
-                            lowercase character a number and a symbol.
-                          </FormFeedback>
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col className='pr-1' md='6'>
-                        <FormGroup>
-                          <label>New Password</label>
-                          <Input
-                            name='User_password'
-                            placeholder='*******'
-                            type='password'
-                            value={this.state.User_password}
-                            valid={
-                              this.state.validate.User_passwordS ===
-                              'has-success'
-                            }
-                            invalid={
-                              this.state.validate.User_passwordS ===
-                              'has-danger'
-                            }
-                            onChange={(e) => {
-                              this.validateUPassword(e)
-                              this.handleChange(e)
-                            }}
-                            required
-                          />
-                          <FormFeedback>
-                            Password must contain an uppercase character,
-                            lowercase character a number and a symbol.
-                          </FormFeedback>
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col className='pr-1' md='6'>
-                        <FormGroup>
-                          <label>Confirm Password</label>
-                          <Input
-                            name='cnewpassword'
-                            placeholder='*******'
-                            type='password'
-                            value={this.state.cnewpassword}
-                            valid={
-                              this.state.validate.cnewpasswordS ===
-                              'has-success'
-                            }
-                            invalid={
-                              this.state.validate.cnewpasswordS === 'has-danger'
-                            }
-                            onChange={(e) => {
-                              this.validatePasswordMatch(e)
-                              this.handleChange(e)
-                            }}
-                            required
-                          />
-                          <FormFeedback>Passwords do not match.</FormFeedback>
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={4} xs={12}>
-                        <Button
-                          className='btn-round'
-                          color='primary'
-                          block
-                          onClick={this.handleSubmit}
-                        >
-                          Submit
-                        </Button>
-                      </Col>
-                    </Row>
-                  </Form>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col md='4'>
-              <Card>
-                <CardBody>
-                  <Form>
-                    <Row>
-                      <Col className='pr-1' md='6'>
-                        <FormGroup>
-                          <InputGroup>
-                            <div className='custom-file'>
-                              <div className='file-field medium'>
-                                <div
-                                  className='btn btn-outline-secondary btn-rounded waves-effect'
-                                  style={{ backgroundColor: 'grey' }}
+                          <h5 className='title'>{this.props.user.User_name}</h5>
+                        </a>
+                        <p className='description'>
+                          {this.props.user.User_role === 1
+                            ? 'Administrator'
+                            : 'Viewer'}
+                        </p>
+                      </div>
+                      <p className='description text-center'>
+                        Some fancy about me
+                        <br />
+                        description
+                      </p>
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+              <Row>
+                <Col md='12'>
+                  <Row>
+                    <Card>
+                      <CardBody>
+                        <Col>
+                          <Form>
+                            <Row>
+                              <Col
+                                className='ml-auto mr-auto text-center'
+                                md='6'
+                              >
+                                <FormGroup>
+                                  <InputGroup>
+                                    <div className='custom-file'>
+                                      <div className='file-field medium'>
+                                        <div
+                                          className='btn btn-outline-secondary btn-rounded waves-effect'
+                                          style={{ backgroundColor: 'grey' }}
+                                        >
+                                          <Input
+                                            name='file'
+                                            type='file'
+                                            onChange={this.onImageChange}
+                                          />
+                                          <span>
+                                            Click here to select profile image
+                                          </span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </InputGroup>
+                                </FormGroup>
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col
+                                className='ml-auto mr-auto text-center'
+                                md={4}
+                                xs={12}
+                              >
+                                <Button
+                                  className='btn-round'
+                                  color='primary'
+                                  block
+                                  onClick={this.handleUpload}
                                 >
-                                  <Input
-                                    name='file'
-                                    type='file'
-                                    onChange={this.onImageChange}
-                                  />
-                                  <span>Click here to select image</span>
-                                </div>
-                              </div>
+                                  Submit
+                                </Button>
+                              </Col>
+                            </Row>
+                          </Form>
+                        </Col>
+                        <Col>
+                          <Form>
+                            <Row>
+                              <Col
+                                className='ml-auto mr-auto text-center'
+                                md='6'
+                              >
+                                <FormGroup>
+                                  <InputGroup>
+                                    <div className='custom-file'>
+                                      <div className='file-field medium'>
+                                        <div
+                                          className='btn btn-outline-secondary btn-rounded waves-effect'
+                                          style={{ backgroundColor: 'grey' }}
+                                        >
+                                          <Input
+                                            name='file'
+                                            type='file'
+                                            onChange={this.onImageChange}
+                                          />
+                                          <span>
+                                            Click here to select banner image
+                                          </span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </InputGroup>
+                                </FormGroup>
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col
+                                className='ml-auto mr-auto text-center'
+                                md={4}
+                                xs={12}
+                              >
+                                <Button
+                                  className='btn-round'
+                                  color='primary'
+                                  block
+                                  onClick={this.handleUpload}
+                                >
+                                  Submit
+                                </Button>
+                              </Col>
+                            </Row>
+                          </Form>
+                        </Col>
+                      </CardBody>
+                    </Card>
+                  </Row>
+                </Col>
+              </Row>
+            </Col>
+
+            <Col>
+              <Row>
+                <Col md='12'>
+                  <Card>
+                    <CardBody>
+                      <Form>
+                        <Row>
+                          <Col className='pr-1' md='6'>
+                            <FormGroup>
+                              <label>NAME</label>
+                              <Input
+                                name='User_name'
+                                value={this.state.User_name}
+                                valid={
+                                  this.state.validate.User_nameS ===
+                                  'has-success'
+                                }
+                                invalid={
+                                  this.state.validate.User_nameS ===
+                                  'has-danger'
+                                }
+                                onChange={(e) => {
+                                  this.validateName(e)
+                                  this.handleChange(e)
+                                }}
+                                disabled={this.state.switch}
+                                placeholder='Name'
+                                type='text'
+                                required
+                              />
+                            </FormGroup>
+                          </Col>
+                          <Col className='pl-1' md='6'>
+                            <FormGroup>
+                              <label>SURNAME</label>
+                              <Input
+                                name='User_surname'
+                                value={this.state.User_surname}
+                                valid={
+                                  this.state.validate.User_surnameS ===
+                                  'has-success'
+                                }
+                                invalid={
+                                  this.state.validate.User_surnameS ===
+                                  'has-danger'
+                                }
+                                onChange={(e) => {
+                                  this.validateSurname(e)
+                                  this.handleChange(e)
+                                }}
+                                disabled={this.state.switch}
+                                placeholder='Surname'
+                                type='text'
+                                required
+                              />
+                            </FormGroup>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col className='pr-1' md='8'>
+                            <FormGroup>
+                              <label>EMAIL</label>
+                              <Input
+                                defaultValue={this.props.user.User_email}
+                                disabled={true}
+                                placeholder='Email'
+                                type='email'
+                              />
+                            </FormGroup>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col className='pr-1' md='6'>
+                            <FormGroup>
+                              <label>ROLE</label>
+                              <Input
+                                value={
+                                  this.state.User_role === 1
+                                    ? 'Administrator'
+                                    : 'Viewer'
+                                }
+                                disabled={true}
+                                placeholder='Role'
+                                type='text'
+                              />
+                            </FormGroup>
+                          </Col>
+                          <Col className='pl-1' md='6'>
+                            <FormGroup>
+                              <label>State</label>
+                              <Input
+                                value={this.state.User_state}
+                                disabled={true}
+                                placeholder='State'
+                                type='text'
+                                required
+                              />
+                            </FormGroup>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col className='pr-1'>
+                            <div className='custom-control custom-switch'>
+                              <input
+                                type='checkbox'
+                                className='custom-control-input'
+                                id='customSwitches'
+                                onClick={this.handleSwitch}
+                              />
+                              <label
+                                className='custom-control-label'
+                                htmlFor='customSwitches'
+                              >
+                                Toggle this to change fields
+                              </label>
                             </div>
-                          </InputGroup>
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={4} xs={12}>
-                        <Button
-                          className='btn-round'
-                          color='primary'
-                          block
-                          onClick={this.handleUpload}
-                        >
-                          Submit
-                        </Button>
-                      </Col>
-                    </Row>
-                  </Form>
-                </CardBody>
-              </Card>
+                          </Col>
+                        </Row>
+                      </Form>
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+              <Row>
+                <Col md='12'>
+                  <Card>
+                    <CardBody>
+                      <Form>
+                        <Row>
+                          <Col className='ml-auto mr-auto text-center' md='6'>
+                            <FormGroup>
+                              <label>Current Password</label>
+                              <Input
+                                name='oldpassword'
+                                type='password'
+                                id='idPassword'
+                                placeholder='Password'
+                                value={this.state.oldpassword}
+                                valid={
+                                  this.state.validate.oldpasswordS ===
+                                  'has-success'
+                                }
+                                invalid={
+                                  this.state.validate.oldpasswordS ===
+                                  'has-danger'
+                                }
+                                onChange={(e) => {
+                                  this.validatePassword(e)
+                                  this.handleChange(e)
+                                }}
+                                required
+                              />
+                              <FormFeedback>
+                                Password must contain an uppercase character,
+                                lowercase character a number and a symbol.
+                              </FormFeedback>
+                            </FormGroup>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col className='ml-auto mr-auto text-center' md='6'>
+                            <FormGroup>
+                              <label>New Password</label>
+                              <Input
+                                name='User_password'
+                                placeholder='*******'
+                                type='password'
+                                value={this.state.User_password}
+                                valid={
+                                  this.state.validate.User_passwordS ===
+                                  'has-success'
+                                }
+                                invalid={
+                                  this.state.validate.User_passwordS ===
+                                  'has-danger'
+                                }
+                                onChange={(e) => {
+                                  this.validateUPassword(e)
+                                  this.handleChange(e)
+                                }}
+                                required
+                              />
+                              <FormFeedback>
+                                Password must contain an uppercase character,
+                                lowercase character a number and a symbol.
+                              </FormFeedback>
+                            </FormGroup>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col className='ml-auto mr-auto text-center' md='6'>
+                            <FormGroup>
+                              <label>Confirm Password</label>
+                              <Input
+                                name='cnewpassword'
+                                placeholder='*******'
+                                type='password'
+                                value={this.state.cnewpassword}
+                                valid={
+                                  this.state.validate.cnewpasswordS ===
+                                  'has-success'
+                                }
+                                invalid={
+                                  this.state.validate.cnewpasswordS ===
+                                  'has-danger'
+                                }
+                                onChange={(e) => {
+                                  this.validatePasswordMatch(e)
+                                  this.handleChange(e)
+                                }}
+                                required
+                              />
+                              <FormFeedback>
+                                Passwords do not match.
+                              </FormFeedback>
+                            </FormGroup>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col
+                            className='ml-auto mr-auto text-center'
+                            md={4}
+                            xs={12}
+                          >
+                            <Button
+                              className='btn-round'
+                              color='primary'
+                              block
+                              onClick={this.handleSubmit}
+                            >
+                              Submit
+                            </Button>
+                          </Col>
+                        </Row>
+                      </Form>
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
             </Col>
           </Row>
         </div>

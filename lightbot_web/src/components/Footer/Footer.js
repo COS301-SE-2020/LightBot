@@ -1,8 +1,12 @@
 import React from 'react'
 import { Container } from 'reactstrap'
+
 import PropTypes from 'prop-types'
 
 class Footer extends React.Component {
+  navAboutus = () => {
+    this.props.history.push('/aboutus')
+  }
   render() {
     return (
       <footer
@@ -12,21 +16,16 @@ class Footer extends React.Component {
           <nav>
             <ul>
               <li>
-                <b style={MyStyles.textInputStyle}>
-                  Developed for 5dt in collaboration with the University of
-                  Pretoria
-                </b>
+                Developed for <a href='https://5dt.com'>5DT</a> in collaboration
+                with the{' '}
+                <a href='https://www.up.ac.za'>University Of Pretoria</a>
               </li>
             </ul>
             <ul>
               <li>
-                <a style={MyStyles.textInputStyle2} href='https://5dt.com'>
-                  5DT
-                </a>
-              </li>
-              <li>
-                <a style={MyStyles.textInputStyle2} href='https://www.up.ac.za'>
-                  University Of Pretoria
+                Learn more{': '}
+                <a href='/aboutus' onClick={this.navAboutus}>
+                  About Us
                 </a>
               </li>
             </ul>
@@ -45,17 +44,6 @@ class Footer extends React.Component {
       </footer>
     )
   }
-}
-
-const MyStyles = {
-  textInputStyle: {
-    color: 'white',
-    opacity: '1',
-  },
-  textInputStyle2: {
-    color: '#f96332',
-    opacity: '1',
-  },
 }
 
 Footer.propTypes = {

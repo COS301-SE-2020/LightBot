@@ -38,14 +38,16 @@ const App = () => {
           <Route exact path='/login' component={Landing} />
           <Route exact path='/register' component={Landing} />
           <Route exact path='/recovery' component={Landing} />
+          <Route exact path='/aboutus' component={Landing} />
           <Route path='/reset' component={Landing} />
           <PrivateRoute exact path='/home' component={Home} />
           <PrivateRoute exact path='/home/overview' component={Home} />
-          <Route exact path='/home/simulation' component={Home} />
+          <PrivateRoute exact path='/home/simulation' component={Home} />
           <PrivateRoute exact path='/home/configuration' component={Home} />
           <PrivateRoute exact path='/home/forum' component={Home} />
           <PrivateRoute exact path='/home/notifications' component={Home} />
           <PrivateRoute exact path='/home/profile' component={Home} />
+          <PrivateRoute exact path='/home/users' component={Home} />
           <PrivateRoute exact path='/404' component={ErrorPage} />
           <Redirect to='/404' />
         </Switch>

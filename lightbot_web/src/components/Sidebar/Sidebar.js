@@ -41,7 +41,7 @@ class Sidebar extends React.Component {
     return (
       <div className='sidebar' data-color={this.props.backgroundColor}>
         <div className='logo'>
-          <a href='/#' className='simple-text logo-normal'>
+          <a href='#' className='simple-text logo-normal'>
             <div className='logo-img'>
               <img src={logo} alt='react-logo' />
             </div>
@@ -76,7 +76,7 @@ class Sidebar extends React.Component {
                 to='#'
                 className='nav-link'
                 activeClassName='active'
-                onClick={this.props.logoutHandler}
+                onClick={this.props.modaltoggleX}
               >
                 <i className='now-ui-icons objects_spaceship' />
                 <p>"Logout"</p>

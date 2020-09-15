@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import {
   Card,
-  Label,
   CardTitle,
   CardBody,
   FormGroup,
@@ -55,6 +54,7 @@ class Forum extends React.Component {
         this.notify(this.props.message.msg, 'danger')
       } else {
         this.notify(this.props.message.msg, 'success')
+        this.clickChild()
       }
     } catch (err) {}
   }
@@ -89,9 +89,20 @@ class Forum extends React.Component {
         />
         <div className='content'>
           <NotificationAlert ref='notificationAlert' />
-          <Post />
+          <Post setClick={(click) => (this.clickChild = click)} />
+          <Col md='14'>
+            <Card>
+              <CardTitle>Submit New Forum Post</CardTitle>
+              <CardBody>
+                <Row>
+                  <Col md='9'>BODY</Col>
+                  <Col md='5'>IMAGE</Col>
+                </Row>
+              </CardBody>
+            </Card>
+          </Col>
           <Row>
-            <Col md={12} xs={12}>
+            <Col className='ml-auto mr-auto text-center' md={8} xs={12}>
               <Card>
                 <CardBody>
                   <Row>
@@ -131,49 +142,6 @@ class Forum extends React.Component {
                               this.handleChange(e)
                             }}
                           />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col className='ml-auto mr-auto text-center'>
-                        <CardTitle>Urgency</CardTitle>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col className='ml-auto mr-auto text-center' md='1'>
-                        <FormGroup check>
-                          <Label check>
-                            <Input
-                              type='radio'
-                              name='radio1'
-                              value='emergency'
-                            />{' '}
-                            emergency
-                          </Label>
-                        </FormGroup>
-                      </Col>
-                      <Col className='ml-auto mr-auto text-center' md='1'>
-                        <FormGroup check>
-                          <Label check>
-                            <Input type='radio' name='radio1' value='warning' />{' '}
-                            warning
-                          </Label>
-                        </FormGroup>
-                      </Col>
-                      <Col className='ml-auto mr-auto text-center' md='1'>
-                        <FormGroup check>
-                          <Label check>
-                            <Input type='radio' name='radio1' value='info' />{' '}
-                            info
-                          </Label>
-                        </FormGroup>
-                      </Col>
-                      <Col className='ml-auto mr-auto text-center' md='1'>
-                        <FormGroup check>
-                          <Label check>
-                            <Input type='radio' name='radio1' value='success' />{' '}
-                            success
-                          </Label>
                         </FormGroup>
                       </Col>
                     </Row>
