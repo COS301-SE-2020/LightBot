@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "LightBot:src/actions/auth.getUsers (nodejs10.x)",
+            "invokeTarget": {
+                "target": "code",
+                "projectRoot": "lightbot_web",
+                "lambdaHandler": "src/actions/auth.getUsers"
+            },
+            "lambda": {
+                "runtime": "nodejs10.x",
+                "payload": {},
+                "environmentVariables": {}
+            }
+        }
+    ]
+}

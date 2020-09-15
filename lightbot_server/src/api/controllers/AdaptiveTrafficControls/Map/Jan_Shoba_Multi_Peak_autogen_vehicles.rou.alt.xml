@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+                <!-- generated on "Sunday, 13 September 2020 11:30:32" by Lightbot Vehicle Generator
+                <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
+
+                    <input>
+                        <net-file value="Jan_Shoba_Multi_Peak.net.xml"/>
+                        <route-files value="trips.trips.xml"/>
+                    </input>
+
+                    <output>
+                        <output-file value="Jan_Shoba_Multi_Peak.rou.xml"/>
+                        <alternatives-output value="Jan_Shoba_Multi_Peak.rou.alt.xml"/>
+                    </output>
+
+                    <time>
+                        <begin value="0"/>
+                        <end value="3600"/>
+                    </time>
+
+                    <report>
+                        <no-warnings value="true"/>
+                        <ignore-errors value="true"/>
+                        <no-step-log value="true"/>
+                    </report>
+
+                </configuration>
+                -->
+
+                <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+                <vType accel="1.0" decel="4.5" id="standard_car" length="5.0" minGap="2.5" maxSpeed="25" sigma="0.5" />
+     <vehicle id="s_e_d_w_0" type="standard_car" route="route_South_e_Duxbury_w" depart="3.0" departLane="best" departSpeed="max" departPos="base"/>
+     <vehicle id="l_w_j_s_1" type="standard_car" route="route_Lunnon_w_JanShoba_s" depart="4.0" departLane="best" departSpeed="max" departPos="base"/>
+     <vehicle id="d_w_l_e_2" type="standard_car" route="route_Duxbury_w_Lunnon_e" depart="4.0" departLane="best" departSpeed="max" departPos="base"/>
+     <vehicle id="s_e_l_e_3" type="standard_car" route="route_South_e_Lunnon_e" depart="4.0" departLane="best" departSpeed="max" departPos="base"/>
+     <vehicle id="s_w_p_w_4" type="standard_car" route="route_South_w_Prospect_w" depart="4.0" departLane="best" departSpeed="max" departPos="base"/>
+     <vehicle id="d_e_j_s_5" type="standard_car" route="route_Duxbury_e_JanShoba_s" depart="5.0" departLane="best" departSpeed="max" departPos="base"/>
+     <vehicle id="l_w_j_s_6" type="standard_car" route="route_Lunnon_w_JanShoba_s" depart="5.0" departLane="best" departSpeed="max" departPos="base"/>
+     <vehicle id="l_e_d_w_6" type="standard_car" route="route_Lunnon_e_Duxbury_w" depart="5.0" departLane="best" departSpeed="max" departPos="base"/>
+     <vehicle id="d_e_d_e_7" type="standard_car" route="route_Duxbury_e_Duxbury_e" depart="6.0" departLane="best" departSpeed="max" departPos="base"/>
+     <vehicle id="j_n_j_n_8" type="standard_car" route="route_JanShoba_n_JanShoba_n" depart="7.0" departLane="best" departSpeed="max" departPos="base"/>
+     <vehicle id="s_e_d_w_9" type="standard_car" route="route_South_e_Duxbury_w" depart="9.0" departLane="best" departSpeed="max" departPos="base"/>
+</routes>

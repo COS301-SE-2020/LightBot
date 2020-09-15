@@ -217,7 +217,7 @@ export const getForum = () => async (dispatch) => {
 // // @access    Private
 export const getUsers = () => async (dispatch) => {
   try {
-    const res = await api.get('/user/list-users')
+    const res = await api.get('/data/list-user')
 
     dispatch({
       type: GET_USERS_SUCCCESS,
