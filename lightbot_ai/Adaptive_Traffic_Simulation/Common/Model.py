@@ -1,3 +1,5 @@
+# This file represents a fully connected deep neural network as a model for the automatic simulation.
+ 
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # stop warning about tensorflow
 import sys
@@ -12,6 +14,14 @@ from tensorflow import keras
 
 
 class TrainModel:
+    # The constructor, which stores the parameters into their respective member variable.
+    #  @param self The object pointer.
+    #  @param num_layers The number of layers in the neural network.
+    #  @param width The width of the layers in the neural network.
+    #  @param batch_size The size of a batch of states which can be used as input.
+    #  @param learning_rate The learning rate of the model.
+    #  @param input_dim The dimensions of the input vector.
+    #  @param output_dim The dimensions of the output vector.
     def __init__(self, num_layers, width, batch_size, learning_rate, input_dim, output_dim):
         self._num_layers = num_layers
         self._width = width
@@ -21,6 +31,11 @@ class TrainModel:
         self._output_dim = output_dim
         self._model = self._build_model(num_layers, width)        
 
+    
+    # Documentation for the _build_model method.
+    #  @param self The object pointer.
+    #  @param num_layers The number of layers in the neural network.
+    #  @param width The width of the layers in the neural network.
     def _build_model(self, num_layers, width):
         inputs = keras.Input(shape=(self._input_dim,))
         x = layers.Dense(width, activation='relu')(inputs)
@@ -33,16 +48,29 @@ class TrainModel:
                       optimizer=Adam(lr=self._learning_rate))
         return model
 
+    # Documentation for the predict_one method.
+    #  @param self The object pointer.
+    #  @param state A state vector used for input.
     def predict_one(self, state):
         state = np.reshape(state, [1, self._input_dim])
         return self._model.predict(state)
 
+    # Documentation for the predict_batch method.
+    #  @param self The object pointer.
+    #  @param states A collection of state vectors used for input.
     def predict_batch(self, states):
         return self._model.predict(states)
 
+    # Documentation for the train_batch method.
+    #  @param self The object pointer.
+    #  @param states A collection of state vectors used for input.
+    #  @param q_sa The Q(seate) value.
     def train_batch(self, states, q_sa):
         self._model.fit(states, q_sa, epochs=1, verbose=0)
 
+    # Documentation for the save_model method.
+    #  @param self The object pointer.
+    #  @path self The path to save the model file.
     def save_model(self, path):
         self._model.save(os.path.join(path, 'trained_model.h5'))
 
