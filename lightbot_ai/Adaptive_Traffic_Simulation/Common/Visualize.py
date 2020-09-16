@@ -4,7 +4,7 @@ import json
 
 # Documentation for the Visualization class.
 #
-#  The main class used to process the simulation data.
+#  The main class used to process the simulation data into graphs.
 
 
 class Visualization:

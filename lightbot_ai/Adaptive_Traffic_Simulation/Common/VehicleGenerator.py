@@ -1,8 +1,11 @@
-# generation of all vehicles to be done in this file
+
 import numpy as np
 import math
 from datetime import datetime
 
+# Documentation for the Visualization class.
+#
+# The VehicleGenerator class generates vehicles for the simulation.
 
 class VehicleGenerator:
     def __init__(self):
@@ -11,11 +14,20 @@ class VehicleGenerator:
 
 class MockGenerator(VehicleGenerator):
 
+    # The constructor, which stores the parameters into their respective member variable.
+    #  @param self The object pointer.
+    #  @param max_steps The maximum number of time steps for the simulation.
+    #  @param n_cars_generated The number of cars to be generated.
+    #  @param episode_seed The seed for the RNG for the current epsiode.
     def __init__(self, max_steps, n_cars_generated, episode_seed):
         self._max_steps = max_steps
         self._number_cars_generated = n_cars_generated
         self.seed = episode_seed
 
+    # Documentation for the generate_routefile method.
+    #  @param self The object pointer.
+    # 
+    # The generate_routefile method uses random number generation to generate cars and complines a SUMO routefile for the simulation.
     def generate_routefile(self):
         np.random.seed(self.seed)
 
