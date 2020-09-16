@@ -8,6 +8,6 @@
     </input>
     <processing>
         <waiting-time-memory value="5000"/>
-        <time-to-teleport value="5000"/>
+        <!-- <time-to-teleport value="5000"/> -->
     </processing>
 </configuration>

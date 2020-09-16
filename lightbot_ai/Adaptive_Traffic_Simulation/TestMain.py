@@ -121,18 +121,28 @@ if __name__ == "__main__":
     averageWaitingTimeDuxbury = sum(Simulation.jan_duxbury_time_waiting) / len(Simulation.jan_duxbury_time_waiting)
     print("Jan_Duxbury Average waiting time (", simType, "): ", averageWaitingTimeDuxbury)
 
-    
-    with open("Display_Data/" + simType + "/Jan_South_Avg_Queue_Length.txt", "w") as queues:
-        print(averageQueueLengthSouth, file=queues)
+    totalAverageQueueLength = averageQueueLengthSouth + averageQueueLengthDuxbury
+    print("Total Average Queue Length (", simType, "): ", totalAverageQueueLength)
+    totalAverageWaitingTime = averageWaitingTimeSouth + averageWaitingTimeDuxbury
+    print("Total Average Waiting Time (", simType, "): ", totalAverageWaitingTime)
 
-    with open("Display_Data/" + simType + "/Jan_South_Avg_Waiting_Time.txt", "w") as times:
-        print(averageWaitingTimeSouth, file=times)
-    
-    with open("Display_Data/" + simType + "/Jan_Duxbury_Avg_Queue_Length.txt", "w") as queues:
-        print(averageQueueLengthDuxbury, file=queues)
+    # with open("Display_Data/" + simType + "/Jan_South_Avg_Queue_Length.txt", "w") as queues:
+    #     print(averageQueueLengthSouth, file=queues)
 
-    with open("Display_Data/" + simType + "/Jan_Duxbury_Avg_Waiting_Time.txt", "w") as times:
-        print(averageWaitingTimeDuxbury, file=times)
+    # with open("Display_Data/" + simType + "/Jan_South_Avg_Waiting_Time.txt", "w") as times:
+    #     print(averageWaitingTimeSouth, file=times)
+    
+    # with open("Display_Data/" + simType + "/Jan_Duxbury_Avg_Queue_Length.txt", "w") as queues:
+    #     print(averageQueueLengthDuxbury, file=queues)
+
+    # with open("Display_Data/" + simType + "/Jan_Duxbury_Avg_Waiting_Time.txt", "w") as times:
+    #     print(averageWaitingTimeDuxbury, file=times)
+
+    with open("Display_Data/" + simType + "/Total_Avarage_Queue_Length.txt", "w") as times:
+        print(totalAverageQueueLength, file=times)
+
+    with open("Display_Data/" + simType + "/Total_Avarage_Waiting_Time.txt", "w") as times:
+        print(totalAverageWaitingTime, file=times)
     
     
     # database.appendAvgLength(averageQueueLength)
