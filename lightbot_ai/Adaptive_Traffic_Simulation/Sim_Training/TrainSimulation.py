@@ -4,7 +4,7 @@ import random
 import timeit
 import os
 
-# The traffic light states in jan_south_peak.net.xml
+# The traffic light states in Jan_Shoba_Multi_Peak.net.xml
 PHASE_NS_GREEN = 0  # Green State, action 0 code 00
 PHASE_NS_YELLOW = 1  # Yellow State
 PHASE_NSR_GREEN = 2  # Green State, action 1 code 01
@@ -17,8 +17,6 @@ PHASE_EWR_YELLOW = 7  # Yellow State
 # Documentation for the Simulation class.
 #
 #  The main class used to interact with the simulation.
-
-
 class Simulation:
     # The constructor, which stores the parameters into their respective member variable.
     #  @param self The object pointer.
@@ -41,9 +39,6 @@ class Simulation:
         self._yellow_duration = yellow_duration
         self._num_states = num_states
         self._num_actions = num_actions
-        # self._reward_store = []   
-        # self._cumulative_wait_store = []
-        # self._avg_queue_length_store = []
         self._jan_south_reward_store = []
         self._jan_duxbury_reward_store = []
         self._jan_south_cumulative_wait_store = []
@@ -51,7 +46,6 @@ class Simulation:
         self._jan_south_avg_queue_length_store = []
         self._jan_duxbury_avg_queue_length_store = []
         self._training_epochs = training_epochs
-
         self.Jan_Duxbury_XML_GREEN_TIMES = [27,12,27,27]
         self.Jan_Duxbury_XML_ALL_TIMES = [27,6,12,6,27,12,27,6]
         self.Jan_South_XML_GREEN_TIMES = [27,12,27,12]
@@ -224,12 +218,6 @@ class Simulation:
     #
     #  The _set_yellow_phase function will choose the appropriate Yellow State based on old_action.
     #  The Yellow State is recorded in _actions_taken list and set in SUMO using traci.trafficlight.setPhase().
-    # def _set_yellow_phase(self, old_action):
-    #     yellow_phase_code = old_action * 2 + \
-    #         1  # obtain the yellow phase code, based on the old action (ref on environment.net.xml)
-    #     traci.trafficlight.setPhase(
-    #         "cluster_25290891_611769793", yellow_phase_code)
-
     def _set_jan_south_yellow_phase(self, old_action):
         yellow_phase_code = old_action * 2 + 1
         traci.trafficlight.setPhase(
@@ -245,20 +233,6 @@ class Simulation:
     #  @param action_number The new chosen Green State or action to be taken.
     #
     #  The new Green State or action is recorded in _actions_taken list and set in SUMO using traci.trafficlight.setPhase().
-    # def _set_green_phase(self, action_number):
-    #     if action_number == 0:
-    #         traci.trafficlight.setPhase(
-    #             "cluster_25290891_611769793", PHASE_NS_GREEN)
-    #     elif action_number == 1:
-    #         traci.trafficlight.setPhase(
-    #             "cluster_25290891_611769793", PHASE_NSR_GREEN)
-    #     elif action_number == 2:
-    #         traci.trafficlight.setPhase(
-    #             "cluster_25290891_611769793", PHASE_EW_GREEN)
-    #     elif action_number == 3:
-    #         traci.trafficlight.setPhase(
-    #             "cluster_25290891_611769793", PHASE_EWR_GREEN)
-
     def _set_jan_south_green_phase(self, action_number):
         if action_number == 0:
             traci.trafficlight.setPhase(
@@ -327,7 +301,7 @@ class Simulation:
         for car_id in cars:
             lane_pos = traci.vehicle.getLanePosition(car_id)
             lane_id = traci.vehicle.getLaneID(car_id)
-            lane_pos = 25 - lane_pos  # may need to change this
+            lane_pos = 25 - lane_pos
 
             if lane_pos < 2.5:
                 lane_cell = 0
@@ -390,7 +364,7 @@ class Simulation:
         for car_id in cars:
             lane_pos = traci.vehicle.getLanePosition(car_id)
             lane_id = traci.vehicle.getLaneID(car_id)
-            lane_pos = 25 - lane_pos  # may need to change this
+            lane_pos = 25 - lane_pos
 
             if lane_pos < 2.5:
                 lane_cell = 0

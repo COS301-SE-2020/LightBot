@@ -4,7 +4,7 @@ import random
 import timeit
 import os
 
-# The traffic light states in jan_south_peak.net.xml
+# The traffic light states in Jan_Shoba_Multi_Peak.net.xml
 PHASE_NS_GREEN = 0  # Green State, action 0 code 00
 PHASE_NS_YELLOW = 1  # Yellow State
 PHASE_NSR_GREEN = 2  # Green State, action 1 code 01
@@ -17,8 +17,6 @@ PHASE_EWR_YELLOW = 7  # Yellow State
 # Documentation for the Simulation class.
 #
 #  The main class used to interact with the simulation.
-
-
 class Simulation:
     # The constructor, which stores the parameters into their respective member variable.
     #  @param self The object pointer.
@@ -40,19 +38,14 @@ class Simulation:
         self._num_actions = num_actions
         self._actions_file_name = actions_file_name
         self._use_automatic_controller = use_automatic_controller
-        # self._reward_episode = []
-        # self._queue_length_episode = []
         self._jan_south_queue_length_episode = []
         self._jan_duxbury_queue_length_episode = []
-        # added these:
         self._jan_south_wait_time_episode = []
         self._jan_duxbury_wait_time_episode = []
         self._total_fuel_consumption_episode = []
         self._total_co2_emission_episode = []
-        # self._actions_taken = []
         self._jan_south_actions_taken = []
         self._jan_duxbury_actions_taken = []
-        # JanShoba_Duxbury_tl_=_cluster_2516980595_2516980597_25290876_611769785
         self.JanShoba_Duxbury_XML_TRAFFIC_LIGHT_GREEN_STATES = [
             '<phase duration="27" state="rrrrGGrrrrGGGr"/>',
             '<phase duration="12"  state="rrrrrrGrrrrrrG"/>',
@@ -69,7 +62,6 @@ class Simulation:
             '<phase duration="27"  state="rrGGrrrrrGrrrr"/>',
             '<phase duration="6"  state="rryyrrrrryrrrr"/>'
         ]
-        # JanShoba_South_tl_=_cluster_25290891_611769793
         self.JanShoba_South_XML_TRAFFIC_LIGHT_GREEN_STATES = [
             '<phase duration="27" state="GGGrrrrrrGGGrrrrrr"/>',
             '<phase duration="12"  state="rrrGGrrrrrrrGGrrrr"/>',
@@ -209,33 +201,6 @@ class Simulation:
         simulation_time = round(timeit.default_timer() - start_time, 1)
         return simulation_time
 
-    # Documentation for the _simulate method.
-    #  @param self The object pointer.
-    #  @param steps_todo The number of steps to simulate.
-    #
-    #  The _simulate function initially checks if the maximum number of steps won't be reached before executing.
-    #  If the maximum is not reached then traci will simulate a step with traci.simulationStep() and the queue lenght is recorded.
-    # def _simulate(self, steps_todo):
-    #     if (self._step + steps_todo) >= self._max_steps:
-    #         steps_todo = self._max_steps - self._step
-    #     while steps_todo > 0:
-    #         # traci.simulationStep()
-            # self._step += 1
-            # steps_todo -= 1
-            # jan_south_queue_length = self._get_jan_south_queue_length()
-            # self._jan_south_queue_length_episode.append(jan_south_queue_length)
-            # jan_duxbury_queue_length = self._get_jan_duxbury_queue_length()
-            # self._jan_duxbury_queue_length_episode.append(jan_duxbury_queue_length)
-            # self._collect_jan_south_waiting_times()
-            # self._collect_jan_duxbury_waiting_times()
-            # self._collect_fuel_consumption()
-            # self._collect_co2_emission()
-            # if (self._step+1) % 10 == 0:
-            #     self._collect_jan_south_waiting_times()
-            #     self._collect_jan_duxbury_waiting_times()
-
-        
-
     # Documentation for the _set_yellow_phase method.
     #  @param self The object pointer.
     #  @param old_action The last Green State or action taken.
@@ -284,26 +249,6 @@ class Simulation:
         elif action_number == 3:
             traci.trafficlight.setPhase(
                 "cluster_2516980595_2516980597_25290876_611769785", PHASE_EWR_GREEN)
-
-    # def _collect_jan_south_waiting_times(self):
-    #     incoming_roads = ["rd6_JanShoba_tl_n", "rd2_South_dl_e", "rd3_JanShoba_tl_s", "rd2_South_dl_w"]
-    #     total_waiting_time = 0
-    #     car_list = traci.vehicle.getIDList()
-    #     for car_id in car_list:
-    #         road_id = traci.vehicle.getRoadID(car_id)
-    #         if road_id in incoming_roads:
-    #             total_waiting_time += traci.vehicle.getAccumulatedWaitingTime(car_id)
-    #     self._jan_south_wait_time_episode.append(total_waiting_time)
-
-    # def _collect_jan_duxbury_waiting_times(self):
-    #     incoming_roads = ["rd4_JanShoba_ql_n", "rd2_Duxbury_dl_e", "rd6_JanShoba_tl_s", "rd1_Duxbury_ql_w"]
-    #     total_waiting_time = 0
-    #     car_list = traci.vehicle.getIDList()
-    #     for car_id in car_list:
-    #         road_id = traci.vehicle.getRoadID(car_id)
-    #         if road_id in incoming_roads:
-    #             total_waiting_time += traci.vehicle.getAccumulatedWaitingTime(car_id)
-    #     self._jan_duxbury_wait_time_episode.append(total_waiting_time)
 
     def _collect_jan_duxbury_waiting_times(self):
         incoming_roads = ["rd4_JanShoba_ql_n", "rd2_Duxbury_dl_e", "rd6_JanShoba_tl_s", "rd1_Duxbury_ql_w"]

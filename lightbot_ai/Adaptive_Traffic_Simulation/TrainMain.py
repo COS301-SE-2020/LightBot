@@ -94,16 +94,14 @@ if __name__ == "__main__":
         config['num_actions'],
         config['training_epochs']
     )
-
-    # database=MongoDBConnect()
-
+    
     episode = 0
     timestamp_start = datetime.datetime.now()
     
     while episode < config['total_episodes']:
         print('\n----- Episode', str(episode+1), 'of', str(config['total_episodes']))
         epsilon = 1.0 - (episode / config['total_episodes'])  # set the epsilon for this episode according to epsilon-greedy policy
-        simulation_time, training_time = Simulation.run(episode, epsilon)  # run the simulation
+        simulation_time, training_time = Simulation.run(episode, epsilon)
         print('Simulation time:', simulation_time, 's - Training time:', training_time, 's - Total:', round(simulation_time+training_time, 1), 's')
         episode += 1
 
@@ -116,7 +114,6 @@ if __name__ == "__main__":
 
     copyfile(src='Settings/TrainSettings.ini', dst=os.path.join(plot_path, 'TrainSettings.ini'))
 
-    # Data is saved and plotted.
     Visualization.save_data_and_plot(data=Simulation.jan_south_reward_store, filename='Jan_South_reward', xlabel='Episode', ylabel='Cumulative negative reward')
     Visualization.save_data_and_plot(data=Simulation.jan_south_cumulative_wait_store, filename='Jan_South_delay', xlabel='Episode', ylabel='Cumulative delay (s)')
     Visualization.save_data_and_plot(data=Simulation.jan_south_avg_queue_length_store, filename='Jan_South_queue', xlabel='Episode', ylabel='Average queue length (vehicles)')
