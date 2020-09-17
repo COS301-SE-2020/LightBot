@@ -83,35 +83,35 @@ describe('Test sidebar component and routing for regular user', () => {
     it('Test sidebar and routing to configuration', () => {
       cy.get('a').contains('Scenario Runner').should('not.be.visible')
     })
-    //Test routing to Logout and click no on logout popup
-    it('Test sidebar and routing to logout and cancel of logout', () => {
-      cy.get('a').contains('"Logout"').parent().should('have.class', 'active')
-      cy.get('a')
-        .contains('"Logout"')
-        .click()
-        .then(() => {
-          cy.get('div.modal-content').should('be.visible')
-          cy.get('button')
-            .contains('No')
-            .click()
-            .then(() => {
-              cy.get('div.modal-content').should('not.be.visible')
-            })
-        })
-    })
-    //Test Logout and Yes
-    it('Test logout', () => {
-      cy.get('a')
-        .contains('"Logout"')
-        .click()
-        .then(() => {
-          cy.get('button')
-            .contains('Yes')
-            .click()
-            .then(() => {
-              cy.url().should('contain', Cypress.config().baseUrl)
-            })
-        })
-    })
+    // //Test routing to Logout and click no on logout popup
+    // it('Test sidebar and routing to logout and cancel of logout', () => {
+    //   cy.get('a').contains('"Logout"').parent().should('have.class', 'active')
+    //   cy.get('a')
+    //     .contains('"Logout"')
+    //     .click()
+    //     .then(() => {
+    //       cy.get('div.modal-content').should('be.visible')
+    //       cy.get('button')
+    //         .contains('No')
+    //         .click()
+    //         .then(() => {
+    //           cy.get('div.modal-content').should('not.be.visible')
+    //         })
+    //     })
+    // })
+    // //Test Logout and Yes
+    // it('Test logout', () => {
+    //   cy.get('a')
+    //     .contains('"Logout"')
+    //     .click()
+    //     .then(() => {
+    //       cy.get('button')
+    //         .contains('Yes')
+    //         .click()
+    //         .then(() => {
+    //           cy.url().should('contain', Cypress.config().baseUrl)
+    //         })
+    //     })
+    // })
   })
 })

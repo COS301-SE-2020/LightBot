@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe('Test configuration page', () => {
+describe('Test vizualization page', () => {
   let userEmail = 'lightbot_cypress@testing.web'
   let userPass = 'Cypress301#'
 
@@ -29,8 +29,8 @@ describe('Test configuration page', () => {
     })
 
     //Check if page loads successfully
-    it('successfully load configuration page', () => {
-      cy.visit('/home/configuration')
+    it('successfully load vizualization page', () => {
+      cy.visit('/home/Visualizer')
       //Check if sidebar loads
       cy.get('.sidebar').should('be.visible')
       //Check if footer loads
@@ -38,7 +38,9 @@ describe('Test configuration page', () => {
       //Check if navbar loads
       cy.get('.navbar-collapse').should('be.visible')
       //Check if title has correct text
-      cy.get('h2.title').contains('Configuration').should('be.visible')
+      cy.get('h2.title')
+        .contains('Intersection Visualizer')
+        .should('be.visible')
     })
   })
 })

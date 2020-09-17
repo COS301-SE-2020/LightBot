@@ -82,7 +82,7 @@ describe('Test sidebar component and routing for Admin user', () => {
         .should('have.class', 'active')
     })
     //Test routing to simulation
-    it('Test sidebar and routing to simulation', () => {
+    it('Test sidebar and routing to Visulizer', () => {
       cy.get('a')
         .contains('Visualizer')
         .click()
@@ -92,7 +92,7 @@ describe('Test sidebar component and routing for Admin user', () => {
             Cypress.config().baseUrl + '/home/Visualizer'
           )
         })
-      cy.get('a').contains('Simulation').parent().should('have.class', 'active')
+      cy.get('a').contains('Visualizer').parent().should('have.class', 'active')
     })
     //Test routing to Configuration
     it('Test sidebar and routing to configuration', () => {
@@ -106,7 +106,7 @@ describe('Test sidebar component and routing for Admin user', () => {
           )
         })
       cy.get('a')
-        .contains('Configuration')
+        .contains('Scenario Runner')
         .parent()
         .should('have.class', 'active')
     })
