@@ -231,7 +231,7 @@ module.exports = {
         .digest('hex'),
     }
     reset_tok_list.push(build)
-    const resetURL = `${req.protocol}://localhost:3000/reset?passresetid=${build.hash}`
+    const resetURL = `${req.protocol}://lightbot.co.za/reset?passresetid=${build.hash}`
     const message = `You are receiving this email because you have requested a password reset for your lightbot account.
     If this was not you please ignore this email.
     Please click the link below to reset your password: \n\n --> ${resetURL} `
