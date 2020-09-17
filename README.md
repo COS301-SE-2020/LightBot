@@ -13,17 +13,17 @@ Purpose: LightBot's goal is to explore the possibility to minimize the delays th
 
 # Roadmap
 
-- [x] Initial development setup
-- [x] Research phase
-- [x] Mock development and planning
-- [x] Development of components and sub-systems
-- [x] Unit Testing of components and sub-systems
-- [x] Integration of components and sub-systems
-- [x] Integration testing of Lightbot
-- [x] Deployment environment and Continuous Integration setup
-- [x] Deployment of Lightbot
-- [x] Evaluation and deployment testing
-- [x] Final documentation
+- [X] Initial development setup
+- [X] Research phase
+- [X] Mock development and planning
+- [X] Development of components and sub-systems
+- [X] Unit Testing of components and sub-systems
+- [X] Integration of components and sub-systems
+- [X] Integration testing of Lightbot
+- [X] Deployment environment and Continuous Integration setup
+- [X] Deployment of Lightbot
+- [X] Evaluation and deployment testing
+- [X] Final documentation
 
 ## Collaborators
 
@@ -136,12 +136,13 @@ For this repository each component/sub-system has a designated folder. All docum
 - [Coding Standards Document](https://drive.google.com/file/d/1rR8M9J-OyWYQ6CT7Zd2g5-geuV0vCylL/view?usp=sharing)
 - [Testing Policies](https://drive.google.com/file/d/1rR8M9J-OyWYQ6CT7Zd2g5-geuV0vCylL/view?usp=sharing)
 
-\*Please note that PDF versions of these documents are also available in the "lightbot_doc" folder.
+*Please note that PDF versions of these documents are also available in the "lightbot_doc" folder.
 
 ## Demo Videos
 
 - [Demo 1 Video](https://drive.google.com/file/d/1Ym5qgCFRDrMjqgOWoS6-tWCDYrcS3Gj5/view?usp=sharing)
 - [Demo 2 Video](https://drive.google.com/file/d/1m177RYTdAeIWepgMWhlFx1zDX7eUU8AF/view?usp=sharing)
 - [Demo 3 Video](https://drive.google.com/file/d/1o3ybdfmhUFq5EQtwpksMpGdaz7kkfdgg/view?usp=sharing)
+- [Demo 4 Video](https://drive.google.com/file/d/1yObP5CbjBYp7_R7zt103UkSsxmCglPEc/view?usp=sharing)
 
 ## FAQ
