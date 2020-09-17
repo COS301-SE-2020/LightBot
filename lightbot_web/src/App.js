@@ -42,8 +42,8 @@ const App = () => {
           <Route path='/reset' component={Landing} />
           <PrivateRoute exact path='/home' component={Home} />
           <PrivateRoute exact path='/home/overview' component={Home} />
-          <PrivateRoute exact path='/home/simulation' component={Home} />
-          <PrivateRoute exact path='/home/configuration' component={Home} />
+          <PrivateRoute exact path='/home/scenario' component={Home} />
+          <PrivateRoute exact path='/home/visualizer' component={Home} />
           <PrivateRoute exact path='/home/forum' component={Home} />
           <PrivateRoute exact path='/home/notifications' component={Home} />
           <PrivateRoute exact path='/home/profile' component={Home} />

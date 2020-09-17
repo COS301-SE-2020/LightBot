@@ -13,7 +13,6 @@ const colors = require('colors')
 const userRoute = require('../api/routes/User.route')
 const dataRoute = require('../api/routes/Data.route')
 const errorRoute = require('../api/routes/Error.route')
-const liveRoute = require('../api/routes/Live.route')
 const configRoute = require('../api/routes/Config.route')
 
 // // Handler imports
@@ -94,7 +93,6 @@ module.exports = ({ app }) => {
 
   app.use('/user', userRoute)
   app.use('/data', dataRoute)
-  app.use('/live', liveRoute)
   app.use('/config', configRoute)
   app.use(errorRoute)
 

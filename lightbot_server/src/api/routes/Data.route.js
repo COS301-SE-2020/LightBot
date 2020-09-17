@@ -76,4 +76,22 @@ router.get(
   require('../controllers/Data.controller').elevateUser
 )
 
+// // @route     GET user/list-user
+// // @desc      List User Route
+// // @access    Private
+router.get(
+  '/push',
+  auth.Guard,
+  require('../controllers/Data.controller').pushData
+)
+
+// // @route     GET user/list-user
+// // @desc      List User Route
+// // @access    Private
+router.get(
+  '/pull',
+  auth.Guard,
+  require('../controllers/Data.controller').pullData
+)
+
 module.exports = router

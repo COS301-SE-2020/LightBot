@@ -10,7 +10,7 @@ const auth = require('../../services/Guard.service')
 router.get(
   '/run/:id',
   auth.Guard,
-  require('../controllers/AdaptiveTrafficControls/Config.controller').runSimulation
+  require('../controllers/Config.controller').runSimulation
 )
 
 module.exports = router

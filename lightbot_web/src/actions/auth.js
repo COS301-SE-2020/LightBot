@@ -30,6 +30,12 @@ import {
   DELETE_POST_FAIL,
   ELEVATE_SUCCESS,
   ELEVATE_FAIL,
+  SIMULATION_SUCCESS,
+  SIMULATION_FAIL,
+  PUSH_SUCCESS,
+  PUSH_FAIL,
+  PULL_SUCCESS,
+  PULL_FAIL,
 } from './types'
 
 const stderr = { status: 500, message: 'Internal Server Error' }
@@ -276,9 +282,9 @@ export const delForum = (token) => async (dispatch) => {
 // // @route     GET /user/list-users
 // // @desc      Acquires List Of Users
 // // @access    Private
-export const elevate = (key,type) => async (dispatch) => {
+export const elevate = (key, type) => async (dispatch) => {
   try {
-    const res = await api.get('/data/elevate/'+key+type)
+    const res = await api.get('/data/elevate/' + key + type)
 
     dispatch({
       type: ELEVATE_SUCCESS,
@@ -287,6 +293,64 @@ export const elevate = (key,type) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: ELEVATE_FAIL,
+      payload: err.response ? err.response.data.error : stderr,
+    })
+  }
+}
+
+// // @route     GET /user/list-users
+// // @desc      Acquires List Of Users
+// // @access    Private
+export const runSim = (v,d) => async (dispatch) => {
+  try {
+    const res = await api.get('/config/run/'+v+':'+d)
+
+    dispatch({
+      type: SIMULATION_SUCCESS,
+      payload: res.data.success,
+    })
+  } catch (err) {
+    dispatch({
+      type: SIMULATION_FAIL,
+      payload: err.response ? err.response.data.error : stderr,
+    })
+  }
+}
+
+
+// // @route     GET /user/list-users
+// // @desc      Acquires List Of Users
+// // @access    Private
+export const pushData = () => async (dispatch) => {
+  try {
+    const res = await api.get('/data/push')
+
+    dispatch({
+      type: PUSH_SUCCESS,
+      payload: res.data.success,
+    })
+  } catch (err) {
+    dispatch({
+      type: PUSH_FAIL,
+      payload: err.response ? err.response.data.error : stderr,
+    })
+  }
+}
+
+// // @route     GET /user/list-users
+// // @desc      Acquires List Of Users
+// // @access    Private
+export const pullData = () => async (dispatch) => {
+  try {
+    const res = await api.get('/data/pull')
+
+    dispatch({
+      type: PULL_SUCCESS,
+      payload: res.data.success,
+    })
+  } catch (err) {
+    dispatch({
+      type: PULL_FAIL,
       payload: err.response ? err.response.data.error : stderr,
     })
   }

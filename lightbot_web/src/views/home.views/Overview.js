@@ -1,87 +1,140 @@
 import React from 'react'
-import { Line } from 'react-chartjs-2'
+import logo from '../../assets/img/LightBot_Logo_White.png'
 
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  CardTitle,
-  Row,
-  Col,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Table,
-} from 'reactstrap'
+import { Row, Col } from 'reactstrap'
 
 // core components
 import PanelHeader from '../../components/PanelHeader/PanelHeader.js'
-
-import {
-  dashboardPanelChart,
-  dashboardAllProductsChart,
-} from '../../variables/charts.js'
-
-import Map from '../../components/Map/MapComponent'
-
+import Graph from '../../components/Graph/Graph.js'
+import State from '../../components/State/State.js'
 import Post from '../../components/Post/Post'
+import MapView from '../../components/MapView/MapView'
+import { pullData } from '../../actions/auth'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 class Overview extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      labelsx: [
-        'JAN',
-        'FEB',
-        'MAR',
-        'APR',
-        'MAY',
-        'JUN',
-        'JUL',
-        'AUG',
-        'SEP',
-        'OCT',
-        'NOV',
-        'DEC',
-      ],
-      datax: [50, 150, 100, 190, 130, 90, 150, 160, 120, 140, 500, 95],
-      data: (canvas) => {
-        const ctx = canvas.getContext('2d')
-        var chartColor = '#FFFFFF'
-        var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0)
-        gradientStroke.addColorStop(0, '#80b6f4')
-        gradientStroke.addColorStop(1, chartColor)
-        var gradientFill = ctx.createLinearGradient(0, 200, 0, 50)
-        gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)')
-        gradientFill.addColorStop(1, 'rgba(255, 255, 255, 0.14)')
-
-        return {
-          labels: this.state.labelsx,
-          datasets: [
-            {
-              label: 'Data',
-              borderColor: chartColor,
-              pointBorderColor: chartColor,
-              pointBackgroundColor: '#2c2c2c',
-              pointHoverBackgroundColor: '#2c2c2c',
-              pointHoverBorderColor: chartColor,
-              pointBorderWidth: 1,
-              pointHoverRadius: 7,
-              pointHoverBorderWidth: 2,
-              pointRadius: 5,
-              fill: true,
-              backgroundColor: gradientFill,
-              borderWidth: 2,
-              data: this.state.datax,
-            },
-          ],
-        }
-      },
+      view: null,
+      view2: null,
     }
   }
+  setView = () => {
+    let { view } = this.state
+    view = this.handleLoad()
+    this.setState({ view })
+  }
+  setView2 = () => {
+    let { view2 } = this.state
+    view2 = this.handleLoad2()
+    this.setState({ view2 })
+  }
+  handleLoad = () => {
+    let avCM = this.cumulate(this.props.data.fiveM.dataset)
+    let avFM = this.cumulate(this.props.data.sixM.dataset)
+    let avCA = this.cumulate(this.props.data.fiveA.dataset)
+    let avFA = this.cumulate(this.props.data.sixA.dataset)
 
+    return (
+      <Row>
+        <Col xs={12} md={6}>
+          <Graph
+            title={'Visualisation of Latest Run Waiting Times on Duxbury'}
+            titleY={'Cumulative Wait Time (min)'}
+            titleX={'Duration Step'}
+            name1={'Automatic'}
+            data1={this.props.data.threeA.dataset.map((element, key) => {
+              return { y: element / 60, x: key }
+            })}
+            name2={'Manual'}
+            data2={this.props.data.threeM.dataset.map((element, key) => {
+              return { y: element / 60, x: key }
+            })}
+          />
+        </Col>
+        <Col xs={12} md={6}>
+          <Graph
+            title={'Visualisation of Latest Run Waiting Times on South'}
+            titleY={'Cumulative Wait Time (min)'}
+              titleX={'Duration Step'}
+              name1={'Automatic'}
+              data1={this.props.data.fourA.dataset.map((element, key) => {
+                return { y: element / 60, x: key }
+              })}
+              name2={'Manual'}
+              data2={this.props.data.fourM.dataset.map((element, key) => {
+                return { y: element / 60, x: key }
+              })}
+            />
+        </Col>
+      </Row>
+    )
+  }
+   handleLoad2(){
+    let avCM = this.cumulate(this.props.data.fiveM.dataset)
+    let avFM = this.cumulate(this.props.data.sixM.dataset)
+    let avCA = this.cumulate(this.props.data.fiveA.dataset)
+    let avFA = this.cumulate(this.props.data.sixA.dataset)
+ return (<PanelHeader
+      size='lg'
+      content={
+        <Row>
+          <Col md='6'>
+            <State title={'State of Latest run'}
+              avC = {avCA}
+              amC = {avCM}
+              adC = {avCA - avCM}
+              avF = {avFA/1000}
+              amF = {avFM/1000}
+              adF = {(avFA - avFM)/1000}
+              acpl = {(avFA/1000)*14.83}
+              mcpl = {( avFM/1000)*14.83}
+              dcpl = {((avFA - avFM)/1000)*14.83}
+             />
+            
+          </Col>
+          <Col md='6'>
+            <div style={bannerStyles}>
+              <div className='ml-auto mr-auto text-center'>
+                <img
+                  src={logo}
+                  style={{ width: '350px', height: '180px' }}
+                  alt='react-logo'
+                />
+                <div style={{ color: 'white', fontSize: '25px' }}>
+                  <div>view the lightbot system state</div>
+                  <div>compare the latest results</div>
+                  <div>and measure the gains in time efficiency</div>
+                  <br></br>
+                </div>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      }
+    />)
+  }
+
+  cumulate = (p) => {
+    let tot = 0
+    p.map((element, key) => {
+      tot += element
+      return tot
+    })
+    return tot
+  }
+  async componentWillMount() {
+    try {
+      await this.props.pullData()
+      if (this.props.message.status > 299) {
+      } else {
+        this.setView2()
+        this.setView()
+      }
+    } catch (err) {}
+  }
   render() {
     return (
       <>
@@ -92,103 +145,13 @@ class Overview extends React.Component {
             </div>
           }
         />
-        <PanelHeader
-          size='lg'
-          content={
-            <Line
-              data={this.state.data}
-              options={dashboardPanelChart.options}
-            />
-          }
-        />
-        <div className='content'>
-          <Row>
-            <Col xs={12} md={6}>
-              <Card className='card-chart'>
-                <CardHeader>
-                  <CardTitle tag='h4'>Total Queue Length</CardTitle>
-                  <UncontrolledDropdown>
-                    <DropdownToggle
-                      className='btn-round btn-outline-default btn-icon'
-                      color='default'
-                    >
-                      <i className='now-ui-icons loader_gear' />
-                    </DropdownToggle>
-                    <DropdownMenu right>
-                      <DropdownItem>Latest Run</DropdownItem>
-                      <DropdownItem>Previous Run</DropdownItem>
-                      <DropdownItem className='text-success'>
-                        Best Run
-                      </DropdownItem>
-                      <DropdownItem className='text-danger'>
-                        Worst Run
-                      </DropdownItem>
-                    </DropdownMenu>
-                  </UncontrolledDropdown>
-                </CardHeader>
-                <CardBody>
-                  <div className='chart-area'>
-                    <Line
-                      data={dashboardAllProductsChart.data}
-                      options={dashboardAllProductsChart.options}
-                    />
-                  </div>
-                </CardBody>
-                <CardFooter>
-                  <div className='stats'>
-                    <i className='now-ui-icons arrows-1_refresh-69' /> Just
-                    Updated
-                  </div>
-                </CardFooter>
-              </Card>
-            </Col>
-            <Col xs={12} md={6}>
-              <Card>
-                <CardHeader>
-                  <CardTitle tag='h4'>System State</CardTitle>
-                </CardHeader>
-                <CardBody>
-                  <Table responsive>
-                    <thead className='text-primary'>
-                      <tr>
-                        <th>Type</th>
-                        <th>Intersection</th>
-                        <th>Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Adaptive</td>
-                        <td>Jan Shoba and South</td>
-                        <td className='text-success'>Online</td>
-                      </tr>
-                      <tr>
-                        <td>Time-based</td>
-                        <td>Jan Shoba and South</td>
-                        <td className='text-danger'>Offline</td>
-                      </tr>
-                      <tr>
-                        <td>Random</td>
-                        <td>Jan Shoba and South</td>
-                        <td className='text-danger'>Offline</td>
-                      </tr>
-                    </tbody>
-                  </Table>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
+        {this.state.view2}
+        <div className='content' style={{ marginTop: '30px' }}>
+          {this.state.view}
           <Post setClick={(click) => (this.clickChild = click)} />
           <Row>
-            <Col className='ml-auto mr-auto text-center'>
-              <Card>
-                <CardBody style={mapStyles}>
-                    <Col>
-                      <CardTitle className='ml-auto mr-auto text-center'><h3>Intersections Covered</h3></CardTitle>
-                    </Col>
-                  <Map/>
-                </CardBody>
-              </Card>
+            <Col md='12' className='ml-auto mr-auto text-center'>
+              <MapView title={'Intersections Covered'} />
             </Col>
           </Row>
         </div>
@@ -196,10 +159,25 @@ class Overview extends React.Component {
     )
   }
 }
-
-const mapStyles = {
-  width: '80vw',
-  height: '80vh',
+const bannerStyles = {
+  margin: 'auto',
+  width: '100%',
+  height: '100%',
+  backgroundImage: 'url(' + require('../../assets/img/profile.jpg') + ')',
+  backgroundSize: 'cover',
 }
 
-export default Overview
+Overview.propTypes = {
+  pullData: PropTypes.func.isRequired,
+  message: PropTypes.object,
+  data: PropTypes.object,
+}
+
+const mapStateToProps = (state) => ({
+  message: state.auth.message,
+  data: state.auth.scenario_data,
+})
+
+export default connect(mapStateToProps, {
+  pullData,
+})(Overview)

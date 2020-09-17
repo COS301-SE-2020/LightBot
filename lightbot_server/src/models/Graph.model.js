@@ -7,6 +7,14 @@ const GraphSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  type: {
+    type: String,
+    required: true,
+  },
+  metric: {
+    type: String,
+    required: true,
+  },
   dataset: {
     type: Array,
     required: true,
