@@ -151,46 +151,5 @@ describe('Test login page', () => {
         cy.url().should('contain', Cypress.config().baseUrl + '/home/overview')
       })
     })
-
-    //Test if cookie works
-    it('Test to see if valid login loads Cookie, and tests functionality of Cookie', () => {
-      cy.server()
-      cy.route({
-        method: 'POST',
-        url: '/user/login',
-      }).as('apiLogin')
-      cy.get('#idEmail')
-        .clear()
-        .type(userEmail)
-        .get('#idPassword')
-        .clear()
-        .type(userPass)
-        .get('.btn-round')
-        .contains('Login')
-        .click()
-      cy.wait('@apiLogin').then(() => {
-        //Check if cookie exits
-        cy.getCookie('token').should('exist')
-      })
-      //Check if cookie works
-      cy.server()
-      cy.route({
-        method: 'GET',
-        url: '/user/me',
-      }).as('apiMe')
-      cy.visit('/')
-      //If token exits and visit login page should be redirected to overview page
-      cy.wait('@apiMe')
-        .then((xhr) => {
-          //Check to see if correct profile loaded
-          assert.equal(xhr.response.body.success.data.User_email, userEmail)
-        })
-        .then(() => {
-          cy.url().should(
-            'contain',
-            Cypress.config().baseUrl + '/home/overview'
-          )
-        })
-    })
   })
 })

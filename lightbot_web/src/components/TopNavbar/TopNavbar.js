@@ -154,12 +154,9 @@ class TopNavbar extends React.Component {
                   </p>
                 </a>
               </NavItem>
+
               <NavItem>
-                <a
-                  className='nav-link'
-                  href='#'
-                  onClick={this.navProfile}
-                >
+                <a className='nav-link' href='#' onClick={this.navProfile}>
                   <i className='now-ui-icons users_single-02' />
                   <p>
                     <span className='d-lg-none d-md-block'>Profile</span>

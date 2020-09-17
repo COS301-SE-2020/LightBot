@@ -5,7 +5,7 @@ const cookies = new Cookies()
 
 const setCookie = (token) => {
   if (token) {
-    api.defaults.headers.common['Authorization'] = 'Beaer ' + token
+    api.defaults.headers.common['Authorization'] = 'Bearer ' + token
     cookies.set('token', token,{ path: '/' })
   } else {
     delete api.defaults.headers.common['Authorization']

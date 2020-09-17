@@ -1,7 +1,7 @@
 import Overview from "../views/home.views/Overview.js";
-import Configuration from "../views/home.views/Configuration.js";
+import Visualizer from "../views/home.views/Visualizer.js";
 import Forum from "../views/home.views/Forum.js";
-import Simulation from "../views/home.views/Simulation.js";
+import Scenario from "../views/home.views/Scenario Runner.js";
 import Profile from "../views/home.views/Profile.js";
 import Users from "../views/home.views/Users.js";
 
@@ -28,7 +28,7 @@ var homeRoutes = [
     icon: "now-ui-icons users_circle-08",
     component: Users,
     layout: "/home",
-    auth: false,
+    auth: true,
   },
   {
     path: "/forum",
@@ -39,20 +39,20 @@ var homeRoutes = [
     auth: true,
   },
   {
-    path: "/simulation",
-    name: "Simulation",
-    icon: "now-ui-icons media-1_button-play",
-    component: Simulation,
-    layout: "/home",
-    auth: false,
-  },
-  {
-    path: "/configuration",
-    name: "Configuration",
+    path: "/scenario",
+    name: "Scenario Runner",
     icon: "now-ui-icons loader_gear spin",
-    component: Configuration,
+    component: Scenario,
     layout: "/home",
     auth: true,
+  },
+  {
+    path: "/Visualizer",
+    name: "Visualizer",
+    icon: "now-ui-icons design_image",
+    component: Visualizer,
+    layout: "/home",
+    auth: false,
   },
 ];
 export default homeRoutes;

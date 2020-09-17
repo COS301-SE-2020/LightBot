@@ -1,39 +1,97 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
+import { getUsers, elevate } from '../../actions/auth'
 import PropTypes from 'prop-types'
-
-import {
-  Card,
-  CardBody,
-  Row,
-  Col,
-  CardHeader,
-} from 'reactstrap'
-
+import UserComponent from '../../components/UserComponent/UserComponent'
 import PanelHeader from '../../components/PanelHeader/PanelHeader.js'
+import NotificationAlert from 'react-notification-alert'
 
 class Users extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      image: this.props.user.avatar,
-      switch: true,
-      visible: true,
-      oldpassword: '',
-      User_password: '',
-      cnewpassword: '',
-      User_name: this.props.user.User_name,
-      User_surname: this.props.user.User_surname,
-      User_state: this.props.user.User_state,
-      User_role: this.props.user.User_role,
-      validate: {
-        oldpasswordS: '',
-        User_passwordS: '',
-        cnewpasswordS: '',
-        User_nameS: '',
-        User_surnameS: '',
-      },
+      views: null
     }
+    this.onDismiss = this.onDismiss.bind(this)
+    this.notify = this.notify.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  
+
+  setViews = (e) => {
+    let { views } = this.state
+    views = e
+    this.setState({views})
+  }
+
+  async renderTable() {
+    return this.props.user_list.map((prop, key) => {
+      return (
+        <UserComponent
+          name={prop.User_name}
+          surname={prop.User_surname}
+          avatar={prop.avatar}
+          role={prop.User_role}
+          ustate={prop.User_state}
+          key={key}
+          elevate={key}
+          handleC={this.handleChange}
+        ></UserComponent>
+      )
+    })
+  }
+
+  handleChange = async (key,type) => {
+
+    try {
+      await this.props.elevate(key, type)
+      if (this.props.message.status > 299) {
+        this.notify(this.props.message.msg, 'danger')
+        
+      } else {
+        this.notify(this.props.message.msg, 'success')
+        this.handleLoad()
+      }        
+    } catch (err) {}
+  
+  }
+
+  handleLoad = async (e) => {
+    try {
+      await this.props.getUsers()
+      if (this.props.message.status > 299) {
+        this.notify(this.props.message.msg, 'danger')
+        
+      } else {
+        this.notify(this.props.message.msg, 'success')
+        const x = await this.renderTable()
+        Promise.all(x).then(()=>{
+          this.setViews(x)
+        })
+      }
+    } catch (err) {}
+  }
+  componentDidMount() {
+    this.handleLoad()
+  }
+
+  onDismiss() {}
+  notify(Message, type) {
+    var options = {}
+    options = {
+      place: 'tc',
+      message: (
+        <div>
+          <div>{Message}</div>
+        </div>
+      ),
+      type: type,
+      icon: 'now-ui-icons ui-1_bell-53',
+      autoDismiss: 7,
+    }
+    this.refs.notificationAlert.notificationAlert(options)
   }
 
   render() {
@@ -48,72 +106,8 @@ class Users extends React.Component {
           }
         />
         <div className='content'>
-          <Row >
-            <Col >
-              <Row>
-                <Col className='ml-auto mr-auto text-center' md='6'>
-                  <Card className='card-user'>
-                    <CardHeader className='image'>
-                      <img src={require('../../assets/img/login.png')} alt={''} />
-                    </CardHeader>
-                    <CardBody>
-                      <div className='author'>
-                        <a href='/#' onClick={(e) => e.preventDefault()}>
-                          <img
-                            alt='...'
-                            className='avatar border-gray'
-                            src={this.state.image}
-                          />
-                          <h5 className='title'>{this.props.user.User_name}</h5>
-                        </a>
-                        <p className='description'>
-                          {this.props.user.User_role === 1
-                            ? 'Administrator'
-                            : 'Viewer'}
-                        </p>
-                      </div>
-                      <p className='description text-center'>
-                        Some fancy about me
-                        <br />
-                        description
-                      </p>
-                    </CardBody>
-                  </Card>
-                </Col>
-              </Row>
-              <Row>
-                <Col className='ml-auto mr-auto text-center' md='6'>
-                  <Card className='card-user'>
-                    <CardHeader className='image'>
-                      <img src={require('../../assets/img/login.png')}  alt={''}  />
-                    </CardHeader>
-                    <CardBody>
-                      <div className='author'>
-                        <a href='/#' onClick={(e) => e.preventDefault()}>
-                          <img
-                            alt='...'
-                            className='avatar border-gray'
-                            src={this.state.image}
-                          />
-                          <h5 className='title'>{this.props.user.User_name}</h5>
-                        </a>
-                        <p className='description'>
-                          {this.props.user.User_role === 1
-                            ? 'Administrator'
-                            : 'Viewer'}
-                        </p>
-                      </div>
-                      <p className='description text-center'>
-                        Some fancy about me
-                        <br />
-                        description
-                      </p>
-                    </CardBody>
-                  </Card>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
+          <NotificationAlert ref='notificationAlert' />
+          {this.state.views}
         </div>
       </>
     )
@@ -121,13 +115,15 @@ class Users extends React.Component {
 }
 
 Users.propTypes = {
-  user: PropTypes.object,
+  getUsers: PropTypes.func.isRequired,
+  elevate: PropTypes.func.isRequired,
+  user_list: PropTypes.array,
   message: PropTypes.object,
 }
 
 const mapStateToProps = (state) => ({
-  user: state.auth.user,
+  user_list: state.auth.user_list,
   message: state.auth.message,
 })
 
-export default connect(mapStateToProps)(Users)
+export default connect(mapStateToProps, { elevate, getUsers })(Users)

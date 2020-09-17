@@ -26,6 +26,14 @@ import {
   DELETE_ACCOUNT_FAIL,
   DELETE_POST_SUCCESS,
   DELETE_POST_FAIL,
+  ELEVATE_SUCCESS,
+  ELEVATE_FAIL,
+  SIMULATION_SUCCESS,
+  SIMULATION_FAIL,
+  PUSH_SUCCESS,
+  PUSH_FAIL,
+  PULL_SUCCESS,
+  PULL_FAIL,
 } from '../actions/types'
 
 import cookies from 'universal-cookie'
@@ -39,6 +47,8 @@ const initialState = {
   message: null,
   forum_data: null,
   user_list: null,
+  data: null,
+  scenario_data: null,
 }
 
 export default function (state = initialState, action) {
@@ -189,6 +199,47 @@ export default function (state = initialState, action) {
         message: { status: payload.status, msg: payload.message },
       }
     case DELETE_POST_FAIL:
+      return {
+        ...state,
+        message: { status: payload.status, msg: payload.message },
+      }
+    case ELEVATE_SUCCESS:
+      return {
+        ...state,
+        message: { status: payload.status, msg: payload.message },
+      }
+    case ELEVATE_FAIL:
+      return {
+        ...state,
+        message: { status: payload.status, msg: payload.message },
+      }
+    case SIMULATION_SUCCESS:
+      return {
+        ...state,
+        message: { status: payload.status, msg: payload.message },
+      }
+    case SIMULATION_FAIL:
+      return {
+        ...state,
+        message: { status: payload.status, msg: payload.message },
+      }
+      case PUSH_SUCCESS:
+      return {
+        ...state,
+        message: { status: payload.status, msg: payload.message },
+      }
+    case PUSH_FAIL:
+      return {
+        ...state,
+        message: { status: payload.status, msg: payload.message },
+      }
+      case PULL_SUCCESS:
+      return {
+        ...state,
+        message: { status: payload.status, msg: payload.message },
+        scenario_data: payload.data,
+      }
+    case PULL_FAIL:
       return {
         ...state,
         message: { status: payload.status, msg: payload.message },
