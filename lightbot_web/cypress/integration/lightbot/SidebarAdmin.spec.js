@@ -84,12 +84,12 @@ describe('Test sidebar component and routing for Admin user', () => {
     //Test routing to simulation
     it('Test sidebar and routing to simulation', () => {
       cy.get('a')
-        .contains('Simulation')
+        .contains('Visualizer')
         .click()
         .then(() => {
           cy.url().should(
             'contain',
-            Cypress.config().baseUrl + '/home/simulation'
+            Cypress.config().baseUrl + '/home/Visualizer'
           )
         })
       cy.get('a').contains('Simulation').parent().should('have.class', 'active')
@@ -97,12 +97,12 @@ describe('Test sidebar component and routing for Admin user', () => {
     //Test routing to Configuration
     it('Test sidebar and routing to configuration', () => {
       cy.get('a')
-        .contains('Configuration')
+        .contains('Scenario Runner')
         .click()
         .then(() => {
           cy.url().should(
             'contain',
-            Cypress.config().baseUrl + '/home/configuration'
+            Cypress.config().baseUrl + '/home/scenario'
           )
         })
       cy.get('a')

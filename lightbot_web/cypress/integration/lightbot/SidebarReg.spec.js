@@ -65,15 +65,15 @@ describe('Test sidebar component and routing for regular user', () => {
     //Test routing to simulation
     it('Test sidebar and routing to simulation', () => {
       cy.get('a')
-        .contains('Simulation')
+        .contains('Visualizer')
         .click()
         .then(() => {
           cy.url().should(
             'contain',
-            Cypress.config().baseUrl + '/home/simulation'
+            Cypress.config().baseUrl + '/home/Visualizer'
           )
         })
-      cy.get('a').contains('Simulation').parent().should('have.class', 'active')
+      cy.get('a').contains('Visualizer').parent().should('have.class', 'active')
     })
     //Test routing to users
     it('Test sidebar and routing to users', () => {
@@ -81,7 +81,7 @@ describe('Test sidebar component and routing for regular user', () => {
     })
     //Test routing to Configuration
     it('Test sidebar and routing to configuration', () => {
-      cy.get('a').contains('Configuration').should('not.be.visible')
+      cy.get('a').contains('Scenario Runner').should('not.be.visible')
     })
     //Test routing to Logout and click no on logout popup
     it('Test sidebar and routing to logout and cancel of logout', () => {
