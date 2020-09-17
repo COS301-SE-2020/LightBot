@@ -191,16 +191,16 @@ class Simulation extends React.Component {
             <Statistics
               title={'Manual Averages'}
               avC={avCM}
-              avF={avFM/1000}
-              cpl={avFM*(14.83)/1000}
+              avF={avFM / 1000}
+              cpl={(avFM * 14.83) / 1000}
             />
           </Col>
           <Col md='6'>
             <Statistics
               title={'Automatic Averages'}
               avC={avCA}
-              avF={avFA/1000}
-              cpl={avFA*(14.83)/1000}
+              avF={avFA / 1000}
+              cpl={(avFA * 14.83) / 1000}
             />
           </Col>
         </Row>
@@ -252,7 +252,7 @@ class Simulation extends React.Component {
           size='sm'
           content={
             <div className='header text-center'>
-              <h2 className='title'>Simulation</h2>
+              <h2 className='title'>Scenario Runner</h2>
             </div>
           }
         />

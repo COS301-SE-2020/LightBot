@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe('Test simulation page', () => {
+describe('Test scenario runner page', () => {
   let userEmail = 'lightbot_cypress@testing.web'
   let userPass = 'Cypress301#'
 
@@ -29,8 +29,8 @@ describe('Test simulation page', () => {
     })
 
     //Check if page loads successfully
-    it('successfully load simulation page', () => {
-      cy.visit('/home/simulation')
+    it('successfully load Scenario runner page', () => {
+      cy.visit('/home/scenario')
       //Check if sidebar loads
       cy.get('.sidebar').should('be.visible')
       //Check if footer loads
@@ -38,7 +38,7 @@ describe('Test simulation page', () => {
       //Check if navbar loads
       cy.get('.navbar-collapse').should('be.visible')
       //Check if title has correct text
-      cy.get('h2.title').contains('Simulation').should('be.visible')
+      cy.get('h2.title').contains('S').should('be.visible')
     })
   })
 })
