@@ -83,10 +83,10 @@ class Simulation:
         self.Jan_South_XML_GREEN_TIMES = [27,12,27,12]
         self.Jan_South_XML_ALL_TIMES = [27,6,12,6,27,6,12,6]
 
-    # Documentation for the run method.
+    # Documentation for the run_automatic method.
     #  @param self The object pointer.
     #
-    #  The run function starts TraCI which executes the SUMO for the simulation.
+    #  The run_automatic function starts TraCI which executes the SUMO for the simulation.
     #  This is where the actions or traffic light Green States are chosen to influence the simulation.
     def run_automatic(self):
         start_time = timeit.default_timer()
@@ -176,6 +176,11 @@ class Simulation:
                 file.write("%s\n" % value)
         return simulation_time
 
+    # Documentation for the run_manual method.
+    #  @param self The object pointer.
+    #
+    #  The run_manual function starts TraCI which executes the SUMO for the simulation.
+    #  This makes use of standard time-based traffic light control. No AI optimization.
     def run_manual(self):
         start_time = timeit.default_timer()
         self._TrafficGen.generate_routefile()
@@ -201,27 +206,33 @@ class Simulation:
         simulation_time = round(timeit.default_timer() - start_time, 1)
         return simulation_time
 
-    # Documentation for the _set_yellow_phase method.
+   ## Documentation for the _set_jan_south_yellow_phase method.
     #  @param self The object pointer.
     #  @param old_action The last Green State or action taken.
     #
-    #  The _set_yellow_phase function will choose the appropriate Yellow State based on old_action.
-    #  The Yellow State is recorded in _actions_taken list and set in SUMO using traci.trafficlight.setPhase().
+    #  The _set_jan_south_yellow_phase function will choose the appropriate Yellow State based on old_action for South intersection.
+    #  The Yellow State is set in SUMO using traci.trafficlight.setPhase().
     def _set_jan_south_yellow_phase(self, old_action):
         yellow_phase_code = old_action * 2 + 1        
         traci.trafficlight.setPhase(
             "cluster_25290891_611769793", yellow_phase_code)
 
+    ## Documentation for the _set_jan_duxbury_yellow_phase method.
+    #  @param self The object pointer.
+    #  @param old_action The last Green State or action taken.
+    #
+    #  The _set_jan_duxbury_yellow_phase function will choose the appropriate Yellow State based on old_action for Duxbury intersection.
+    #  The Yellow State is set in SUMO using traci.trafficlight.setPhase().
     def _set_jan_duxbury_yellow_phase(self, old_action):
         yellow_phase_code = old_action * 2 + 1
         traci.trafficlight.setPhase(
             "cluster_2516980595_2516980597_25290876_611769785", yellow_phase_code)
 
-    # Documentation for the _set_green_phase method.
+    ## Documentation for the _set_jan_south_green_phase method.
     #  @param self The object pointer.
     #  @param action_number The new chosen Green State or action to be taken.
     #
-    #  The new Green State or action is recorded in _actions_taken list and set in SUMO using traci.trafficlight.setPhase().
+    #  The new Green State or action is set in SUMO using traci.trafficlight.setPhase() for South intersection.
     def _set_jan_south_green_phase(self, action_number):
         if action_number == 0:
             traci.trafficlight.setPhase(
@@ -236,6 +247,11 @@ class Simulation:
             traci.trafficlight.setPhase(
                 "cluster_25290891_611769793", PHASE_EWR_GREEN)
 
+    ## Documentation for the _set_jan_duxbury_green_phase method.
+    #  @param self The object pointer.
+    #  @param action_number The new chosen Green State or action to be taken.
+    #
+    #  The new Green State or action is set in SUMO using traci.trafficlight.setPhase() for Duxbury intersection.
     def _set_jan_duxbury_green_phase(self, action_number):
         if action_number == 0:
             traci.trafficlight.setPhase(
@@ -250,6 +266,10 @@ class Simulation:
             traci.trafficlight.setPhase(
                 "cluster_2516980595_2516980597_25290876_611769785", PHASE_EWR_GREEN)
 
+    ## Documentation for the _collect_jan_duxbury_waiting_times method.
+    #  @param self The object pointer.
+    #
+    #  This method returns the collective waiting time of all the cars in the incoming lanes of the Duxbury intersection.
     def _collect_jan_duxbury_waiting_times(self):
         incoming_roads = ["rd4_JanShoba_ql_n", "rd2_Duxbury_dl_e", "rd6_JanShoba_tl_s", "rd1_Duxbury_ql_w"]
         total_waiting_time = 0
@@ -257,6 +277,10 @@ class Simulation:
             total_waiting_time += traci.edge.getWaitingTime(road_id)
         self._jan_duxbury_wait_time_episode.append(total_waiting_time)
 
+    ## Documentation for the _collect_jan_south_waiting_times method.
+    #  @param self The object pointer.
+    #
+    #  This method returns the collective waiting time of all the cars in the incoming lanes of the South intersection.
     def _collect_jan_south_waiting_times(self):
         incoming_roads = ["rd6_JanShoba_tl_n", "rd2_South_dl_e", "rd3_JanShoba_tl_s", "rd2_South_dl_w"]
         total_waiting_time = 0
@@ -264,6 +288,11 @@ class Simulation:
             total_waiting_time += traci.edge.getWaitingTime(road_id)
         self._jan_south_wait_time_episode.append(total_waiting_time)
 
+    
+    ## Documentation for the _collect_fuel_consumption method.
+    #  @param self The object pointer.
+    #
+    #  This method returns the fuel consumption of all the cars in the incoming lanes of the South and Duxbury intersection.
     def _collect_fuel_consumption(self):
         roads = ['rd2_South_dl_e', 'rd1_South_sl_e', 'rd1_JanShoba_dl_s', 'rd1_Prospect_sl_w', 'rd2_JanShoba_dl_s', 'rd3_JanShoba_tl_s', 'rd2_South_dl_w', 'rd1_South_sl_w', 'rd6_JanShoba_tl_n', 'rd5_JanShoba_dl_n', 'rd1_Duxbury_sl_e', 'rd2_Duxbury_dl_e', 'rd4_JanShoba_dl_s', 'rd5_JanShoba_tl_s', 'rd6_JanShoba_tl_s', 'rd0_Duxbury_dl_w', 'rd1_Duxbury_ql_w', 'rd4_JanShoba_ql_n', 'rd3_JanShoba_dl_N', 'rd2_JanShoba_tl_n', 'rd1_JanShoba_dl_n']
         running_total = 0
@@ -271,6 +300,10 @@ class Simulation:
             running_total += traci.edge.getFuelConsumption(road_id)
         self._total_fuel_consumption_episode.append(running_total)
 
+    ## Documentation for the _collect_co2_emission method.
+    #  @param self The object pointer.
+    #
+    #  This method returns the CO2 emissions of all the cars in the incoming lanes of the South and Duxbury intersection.
     def _collect_co2_emission(self):
         roads = ['rd2_South_dl_e', 'rd1_South_sl_e', 'rd1_JanShoba_dl_s', 'rd1_Prospect_sl_w', 'rd2_JanShoba_dl_s', 'rd3_JanShoba_tl_s', 'rd2_South_dl_w', 'rd1_South_sl_w', 'rd6_JanShoba_tl_n', 'rd5_JanShoba_dl_n', 'rd1_Duxbury_sl_e', 'rd2_Duxbury_dl_e', 'rd4_JanShoba_dl_s', 'rd5_JanShoba_tl_s', 'rd6_JanShoba_tl_s', 'rd0_Duxbury_dl_w', 'rd1_Duxbury_ql_w', 'rd4_JanShoba_ql_n', 'rd3_JanShoba_dl_N', 'rd2_JanShoba_tl_n', 'rd1_JanShoba_dl_n']
         running_total = 0
@@ -279,17 +312,26 @@ class Simulation:
         self._total_co2_emission_episode.append(running_total)
 
 
+    ## Documentation for the _choose_action_south method.
+    #  @param self The object pointer.
+    #  @param state The state array
+    #
+    #  This method returns a random action based on epsilon or the best action given the current state of South intersection.
     def _choose_action_south(self, state):
         return np.argmax(self._Model_South.predict_one(state))
 
+    ## Documentation for the _choose_action_duxbury method.
+    #  @param self The object pointer.
+    #  @param state The state array
+    #
+    #  This method returns a random action based on epsilon or the best action given the current state of Duxbury intersection.
     def _choose_action_duxbury(self, state):
         return np.argmax(self._Model_Duxbury.predict_one(state))
 
-    # Documentation for the _get_queue_length method.
+    ## Documentation for the _get_jan_south_queue_length method.
     #  @param self The object pointer.
     #
-    #  The _get_queue_length will retrieve the number of cars halted, specifically in the incoming lane, using traci.edge.getLastStepHaltingNumber.
-    #  The result is then appended to the appropriate list, along with keeping a running total with queue_length.
+    #  The total number of stopped cars in the incoming lanes are returned from SUMO using traci.trafficlight.setPhase() for South intersection.
     def _get_jan_south_queue_length(self):
         halt_N = traci.edge.getLastStepHaltingNumber(
             "rd6_JanShoba_tl_n") + traci.edge.getLastStepHaltingNumber(
@@ -306,6 +348,10 @@ class Simulation:
         queue_length = halt_N + halt_S + halt_E + halt_W
         return queue_length
 
+    ## Documentation for the _get_jan_duxbury_queue_length method.
+    #  @param self The object pointer.
+    #
+    #  The total number of stopped cars in the incoming lanes are returned from SUMO using traci.trafficlight.setPhase() for Duxbury intersection.
     def _get_jan_duxbury_queue_length(self):
         halt_N = traci.edge.getLastStepHaltingNumber(
             "rd4_JanShoba_ql_n") + traci.edge.getLastStepHaltingNumber(
@@ -323,6 +369,10 @@ class Simulation:
         queue_length = halt_N + halt_S + halt_E + halt_W
         return queue_length
 
+    ## Documentation for the _get_jan_south_sim_state method.
+    #  @param self The object pointer.
+    #
+    #  The cars positioned within 25 meters of the South intersection are identified in the state array based on their lane type.
     def _get_jan_south_sim_state(self):
         state = np.zeros(self._num_states)
         cars = traci.vehicle.getIDList()
@@ -386,6 +436,10 @@ class Simulation:
 
         return state
 
+    ## Documentation for the _get_jan_duxbury_sim_state method.
+    #  @param self The object pointer.
+    #
+    #  The cars positioned within 25 meters of the Duxbury intersection are identified in the state array based on their lane type.
     def _get_jan_duxbury_sim_state(self):
         state = np.zeros(self._num_states)
         cars = traci.vehicle.getIDList()
@@ -449,6 +503,10 @@ class Simulation:
 
         return state
 
+    ## Documentation for the _get_extended_jan_south_sim_state method.
+    #  @param self The object pointer.
+    #
+    #  The cars positioned within 136 meters of the South intersection are identified in the state array based on their lane type.
     def _get_extended_jan_south_sim_state(self):
         state = np.zeros(self._num_states)
         cars = traci.vehicle.getIDList()
@@ -534,6 +592,10 @@ class Simulation:
 
         return state
 
+    ## Documentation for the _get_extended_jan_duxbury_sim_state method.
+    #  @param self The object pointer.
+    #
+    #  The cars positioned within 136 meters of the Duxbury intersection are identified in the state array based on their lane type.
     def _get_extended_jan_duxbury_sim_state(self):
         state = np.zeros(self._num_states)
         cars = traci.vehicle.getIDList()
