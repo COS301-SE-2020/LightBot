@@ -77,13 +77,7 @@ describe('Test sidebar component and routing for regular user', () => {
     })
     //Test routing to users
     it('Test sidebar and routing to users', () => {
-      cy.get('a')
-        .contains('Users')
-        .click()
-        .then(() => {
-          cy.url().should('contain', Cypress.config().baseUrl + '/home/users')
-        })
-      cy.get('a').contains('Users').parent().should('have.class', 'active')
+      cy.get('a').contains('Users').should('not.be.visible')
     })
     //Test routing to Configuration
     it('Test sidebar and routing to configuration', () => {
