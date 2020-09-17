@@ -344,7 +344,7 @@ class Simulation:
     ## Documentation for the _get_jan_south_sim_state method.
     #  @param self The object pointer.
     #
-    #  The cars positioned within 25 meters of the South intersection are identified in the state array based on their lane type.
+    #  The cars positioned within 25 meters of the South intersection are identified into the state array based on their lane type.
     def _get_jan_south_sim_state(self):
         state = np.zeros(self._num_states)
         cars = traci.vehicle.getIDList()
@@ -411,7 +411,7 @@ class Simulation:
     ## Documentation for the _get_jan_duxbury_sim_state method.
     #  @param self The object pointer.
     #
-    #  The cars positioned within 25 meters of the Duxbury intersection are identified in the state array based on their lane type.
+    #  The cars positioned within 25 meters of the Duxbury intersection are identified into the state array based on their lane type.
     def _get_jan_duxbury_sim_state(self):
         state = np.zeros(self._num_states)
         cars = traci.vehicle.getIDList()

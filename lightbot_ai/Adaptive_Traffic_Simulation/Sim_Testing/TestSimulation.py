@@ -14,18 +14,23 @@ PHASE_EW_YELLOW = 5  # Yellow State
 PHASE_EWR_GREEN = 6  # Green State, action 3 code 11
 PHASE_EWR_YELLOW = 7  # Yellow State
 
-# Documentation for the Simulation class.
+## Documentation for the Simulation class.
 #
 #  The main class used to interact with the simulation.
 class Simulation:
-    # The constructor, which stores the parameters into their respective member variable.
+    ## The constructor, which stores the parameters into their respective member variable.
     #  @param self The object pointer.
+    #  @param Model_South The Tensorflow model used for the South intersection.
+    #  @param Model_Duxbury The Tensorflow model used for the Duxbury intersection.
+    #  @param TrafficGen The object used to randomize generated car in the simulation.
     #  @param sumo_cmd CMD configuration used to start SUMO from TraCI.
     #  @param max_steps The total number of steps to simulate.
-    #  @param green_duration The duration, in steps, for the Green States.
-    #  @param yellow_duration The duration, in steps, for the Yellow States.
-    #  @param num_states May be used later for the Tensorflow model.
+    #  @param green_duration The duration, in steps, for the Green States (not used).
+    #  @param yellow_duration The duration, in steps, for the Yellow States (not used).
+    #  @param num_states The length of the state array.
     #  @param num_actions The number of Green States or actions the Tensorflow model will be able to take.
+    #  @param actions_file_name The file used to store the actions taken by the models (not used).
+    #  @param use_automatic_controller Boolean to specify whether to run manual simulation or used the neural networks.
     def __init__(self, Model_South, Model_Duxbury, TrafficGen, sumo_cmd, max_steps, green_duration, yellow_duration, num_states, num_actions, actions_file_name, use_automatic_controller):
         self._Model_South = Model_South
         self._Model_Duxbury = Model_Duxbury
@@ -83,11 +88,11 @@ class Simulation:
         self.Jan_South_XML_GREEN_TIMES = [27,12,27,12]
         self.Jan_South_XML_ALL_TIMES = [27,6,12,6,27,6,12,6]
 
-    # Documentation for the run_automatic method.
+    ## Documentation for the run_automatic method.
     #  @param self The object pointer.
     #
     #  The run_automatic function starts TraCI which executes the SUMO for the simulation.
-    #  This is where the actions or traffic light Green States are chosen to influence the simulation.
+    #  This is where the simulation is progressed and the traffic lights are changed by the neural network.
     def run_automatic(self):
         start_time = timeit.default_timer()
 
@@ -176,11 +181,11 @@ class Simulation:
                 file.write("%s\n" % value)
         return simulation_time
 
-    # Documentation for the run_manual method.
+    ## Documentation for the run_manual method.
     #  @param self The object pointer.
     #
     #  The run_manual function starts TraCI which executes the SUMO for the simulation.
-    #  This makes use of standard time-based traffic light control. No AI optimization.
+    #  This makes use of standard time-based traffic light control. No optimization.
     def run_manual(self):
         start_time = timeit.default_timer()
         self._TrafficGen.generate_routefile()
@@ -206,7 +211,7 @@ class Simulation:
         simulation_time = round(timeit.default_timer() - start_time, 1)
         return simulation_time
 
-   ## Documentation for the _set_jan_south_yellow_phase method.
+    ## Documentation for the _set_jan_south_yellow_phase method.
     #  @param self The object pointer.
     #  @param old_action The last Green State or action taken.
     #
@@ -292,7 +297,7 @@ class Simulation:
     ## Documentation for the _collect_fuel_consumption method.
     #  @param self The object pointer.
     #
-    #  This method returns the fuel consumption of all the cars in the incoming lanes of the South and Duxbury intersection.
+    #  This method returns the fuel consumption of all the cars in the incoming lanes of the South and Duxbury intersections.
     def _collect_fuel_consumption(self):
         roads = ['rd2_South_dl_e', 'rd1_South_sl_e', 'rd1_JanShoba_dl_s', 'rd1_Prospect_sl_w', 'rd2_JanShoba_dl_s', 'rd3_JanShoba_tl_s', 'rd2_South_dl_w', 'rd1_South_sl_w', 'rd6_JanShoba_tl_n', 'rd5_JanShoba_dl_n', 'rd1_Duxbury_sl_e', 'rd2_Duxbury_dl_e', 'rd4_JanShoba_dl_s', 'rd5_JanShoba_tl_s', 'rd6_JanShoba_tl_s', 'rd0_Duxbury_dl_w', 'rd1_Duxbury_ql_w', 'rd4_JanShoba_ql_n', 'rd3_JanShoba_dl_N', 'rd2_JanShoba_tl_n', 'rd1_JanShoba_dl_n']
         running_total = 0
@@ -303,7 +308,7 @@ class Simulation:
     ## Documentation for the _collect_co2_emission method.
     #  @param self The object pointer.
     #
-    #  This method returns the CO2 emissions of all the cars in the incoming lanes of the South and Duxbury intersection.
+    #  This method returns the CO2 emissions of all the cars in the incoming lanes of the South and Duxbury intersections.
     def _collect_co2_emission(self):
         roads = ['rd2_South_dl_e', 'rd1_South_sl_e', 'rd1_JanShoba_dl_s', 'rd1_Prospect_sl_w', 'rd2_JanShoba_dl_s', 'rd3_JanShoba_tl_s', 'rd2_South_dl_w', 'rd1_South_sl_w', 'rd6_JanShoba_tl_n', 'rd5_JanShoba_dl_n', 'rd1_Duxbury_sl_e', 'rd2_Duxbury_dl_e', 'rd4_JanShoba_dl_s', 'rd5_JanShoba_tl_s', 'rd6_JanShoba_tl_s', 'rd0_Duxbury_dl_w', 'rd1_Duxbury_ql_w', 'rd4_JanShoba_ql_n', 'rd3_JanShoba_dl_N', 'rd2_JanShoba_tl_n', 'rd1_JanShoba_dl_n']
         running_total = 0
@@ -316,7 +321,7 @@ class Simulation:
     #  @param self The object pointer.
     #  @param state The state array
     #
-    #  This method returns a random action based on epsilon or the best action given the current state of South intersection.
+    #  This method returns the best action given the current state of South intersection.
     def _choose_action_south(self, state):
         return np.argmax(self._Model_South.predict_one(state))
 
@@ -324,7 +329,7 @@ class Simulation:
     #  @param self The object pointer.
     #  @param state The state array
     #
-    #  This method returns a random action based on epsilon or the best action given the current state of Duxbury intersection.
+    #  This method returns the best action given the current state of Duxbury intersection.
     def _choose_action_duxbury(self, state):
         return np.argmax(self._Model_Duxbury.predict_one(state))
 
@@ -372,7 +377,7 @@ class Simulation:
     ## Documentation for the _get_jan_south_sim_state method.
     #  @param self The object pointer.
     #
-    #  The cars positioned within 25 meters of the South intersection are identified in the state array based on their lane type.
+    #  The cars positioned within 25 meters of the South intersection are identified into the state array based on their lane type.
     def _get_jan_south_sim_state(self):
         state = np.zeros(self._num_states)
         cars = traci.vehicle.getIDList()
@@ -439,7 +444,7 @@ class Simulation:
     ## Documentation for the _get_jan_duxbury_sim_state method.
     #  @param self The object pointer.
     #
-    #  The cars positioned within 25 meters of the Duxbury intersection are identified in the state array based on their lane type.
+    #  The cars positioned within 25 meters of the Duxbury intersection are identified into the state array based on their lane type.
     def _get_jan_duxbury_sim_state(self):
         state = np.zeros(self._num_states)
         cars = traci.vehicle.getIDList()
@@ -503,185 +508,6 @@ class Simulation:
 
         return state
 
-    ## Documentation for the _get_extended_jan_south_sim_state method.
-    #  @param self The object pointer.
-    #
-    #  The cars positioned within 136 meters of the South intersection are identified in the state array based on their lane type.
-    def _get_extended_jan_south_sim_state(self):
-        state = np.zeros(self._num_states)
-        cars = traci.vehicle.getIDList()
-
-        for car_id in cars:
-            lane_pos = traci.vehicle.getLanePosition(car_id)
-            lane_id = traci.vehicle.getLaneID(car_id) 
-            road_id = traci.vehicle.getRoadID(car_id)
-            out_of_range = False
-            if road_id == 'rd1_South_sl_e':
-                lane_pos = 413.86 - lane_pos + 22.54
-            elif road_id == 'rd2_JanShoba_dl_s':
-                lane_pos = 100.06 - lane_pos + 36.38
-            elif road_id == 'rd1_South_sl_w':
-                lane_pos = 195.48 - lane_pos + 25.32
-            elif road_id == 'rd5_JanShoba_dl_n':
-                lane_pos = 232.01 - lane_pos + 42.32
-            else:
-                if road_id == 'rd2_South_dl_e':
-                    lane_pos = 22.54 - lane_pos
-                elif road_id == 'rd3_JanShoba_tl_s':
-                    lane_pos = 36.38 - lane_pos
-                elif road_id == 'rd2_South_dl_w':
-                    lane_pos = 25.32 - lane_pos
-                elif road_id == 'rd6_JanShoba_tl_n':
-                    lane_pos = 42.32 - lane_pos
-                else: 
-                    out_of_range = True
-
-            if lane_pos < 14:
-                lane_cell = 0
-            elif lane_pos < 27:
-                lane_cell = 1
-            elif lane_pos < 41:
-                lane_cell = 2
-            elif lane_pos < 54:
-                lane_cell = 3
-            elif lane_pos < 68:
-                lane_cell = 4
-            elif lane_pos < 82:
-                lane_cell = 5
-            elif lane_pos < 95:
-                lane_cell = 6
-            elif lane_pos < 109:
-                lane_cell = 7
-            elif lane_pos < 122:
-                lane_cell = 8
-            elif lane_pos <= 136:
-                lane_cell = 9
-            else:
-                out_of_range = True
-
-            if lane_id == "rd3_JanShoba_tl_s_0" or lane_id == "rd3_JanShoba_tl_s_1" or lane_id == 'rd2_JanShoba_dl_s_0' or lane_id == 'rd2_JanShoba_dl_s_1':
-                lane_group = 0
-            elif lane_id == "rd3_JanShoba_tl_s_2":
-                lane_group = 1
-            elif lane_id == "rd2_South_dl_e_0" or lane_id == 'rd1_South_sl_e_0':
-                lane_group = 2
-            elif lane_id == "rd2_South_dl_e_1":
-                lane_group = 3
-            elif lane_id == "rd2_South_dl_w_0" or lane_id == 'rd1_South_sl_w':
-                lane_group = 4
-            elif lane_id == "rd2_South_dl_w_1":
-                lane_group = 5
-            elif lane_id == "rd6_JanShoba_tl_n_0" or lane_id == "rd6_JanShoba_tl_n_1" or lane_id == "rd5_JanShoba_dl_n_0" or lane_id == "rd5_JanShoba_dl_n_1":
-                lane_group = 6
-            elif lane_id == "rd6_JanShoba_tl_n_2":
-                lane_group = 7
-            else:
-                lane_group = -1
-
-            if lane_group >= 1 and lane_group <= 7 and (not out_of_range):
-                car_position = int(str(lane_group) + str(lane_cell))
-                valid_car = True
-            elif lane_group == 0 and (not out_of_range):
-                car_position = lane_cell
-                valid_car = True
-            else:
-                valid_car = False
-
-            if valid_car:
-                state[car_position] = 1
-
-        return state
-
-    ## Documentation for the _get_extended_jan_duxbury_sim_state method.
-    #  @param self The object pointer.
-    #
-    #  The cars positioned within 136 meters of the Duxbury intersection are identified in the state array based on their lane type.
-    def _get_extended_jan_duxbury_sim_state(self):
-        state = np.zeros(self._num_states)
-        cars = traci.vehicle.getIDList()
-
-        for car_id in cars:
-            lane_pos = traci.vehicle.getLanePosition(car_id)
-            lane_id = traci.vehicle.getLaneID(car_id) 
-            road_id = traci.vehicle.getRoadID(car_id)
-            out_of_range = False
-            if road_id == 'rd1_Duxbury_sl_e':
-                lane_pos = 50.36 - lane_pos + 50.47
-            elif road_id == 'rd4_JanShoba_dl_s':
-                lane_pos = 227.31 - lane_pos + 33.88 + 7.37
-            elif road_id == 'rd0_Duxbury_dl_w':
-                lane_pos = 172.23 - lane_pos + 135.16
-            elif road_id == 'rd3_JanShoba_dl_N':
-                lane_pos = 56.92 - lane_pos + 61.81
-            else:
-                if road_id == 'rd2_Duxbury_dl_e':
-                    lane_pos = 50.47 - lane_pos
-                elif road_id == 'rd6_JanShoba_tl_s':
-                    lane_pos = 33.88 - lane_pos
-                elif road_id == 'rd1_Duxbury_ql_w':
-                    lane_pos = 135.16 - lane_pos
-                elif road_id == 'rd4_JanShoba_ql_n':
-                    lane_pos = 61.81 - lane_pos
-                else: 
-                    out_of_range = True
-
-            if lane_pos < 10:
-                lane_cell = 0
-            elif lane_pos < 20:
-                lane_cell = 1
-            elif lane_pos < 30:
-                lane_cell = 2
-            elif lane_pos < 40:
-                lane_cell = 3
-            elif lane_pos < 50:
-                lane_cell = 4
-            elif lane_pos < 60:
-                lane_cell = 5
-            elif lane_pos < 70:
-                lane_cell = 6
-            elif lane_pos < 80:
-                lane_cell = 7
-            elif lane_pos < 90:
-                lane_cell = 8
-            elif lane_pos <= 100:
-                lane_cell = 9
-            else:
-                out_of_range = True
-
-            if lane_id == "rd3_JanShoba_tl_s_0" or lane_id == "rd3_JanShoba_tl_s_1" or lane_id == 'rd2_JanShoba_dl_s_0' or lane_id == 'rd2_JanShoba_dl_s_1':
-                lane_group = 0
-            elif lane_id == "rd3_JanShoba_tl_s_2":
-                lane_group = 1
-            elif lane_id == "rd2_South_dl_e_0" or lane_id == 'rd1_South_sl_e_0':
-                lane_group = 2
-            elif lane_id == "rd2_South_dl_e_1":
-                lane_group = 3
-            elif lane_id == "rd2_South_dl_w_0" or lane_id == 'rd1_South_sl_w':
-                lane_group = 4
-            elif lane_id == "rd2_South_dl_w_1":
-                lane_group = 5
-            elif lane_id == "rd6_JanShoba_tl_n_0" or lane_id == "rd6_JanShoba_tl_n_1" or lane_id == "rd5_JanShoba_dl_n_0" or lane_id == "rd5_JanShoba_dl_n_1":
-                lane_group = 6
-            elif lane_id == "rd6_JanShoba_tl_n_2":
-                lane_group = 7
-            else:
-                lane_group = -1
-
-            if lane_group >= 1 and lane_group <= 7 and (not out_of_range):
-                car_position = int(str(lane_group) + str(lane_cell))
-                valid_car = True
-            elif lane_group == 0 and (not out_of_range):
-                car_position = lane_cell
-                valid_car = True
-            else:
-                valid_car = False
-
-            if valid_car:
-                state[car_position] = 1
-
-        return state
-    
-
     @property
     def jan_south_queue_length_episode(self):
         return self._jan_south_queue_length_episode
@@ -705,27 +531,3 @@ class Simulation:
     @property
     def total_co2_emission(self):
         return self._total_co2_emission_episode
-
-    # @var _queue_length_episode
-    #  a list with the combined queue length for all the incoming lanes
-
-    # @var _queue_length_north
-    #  a list of queue lenghts for the north incoming lane
-
-    # @var _queue_length_south
-    #  a list of queue lenghts for the south incoming lane
-
-    # @var _queue_length_east
-    #  a list of queue lenghts for the east incoming lane
-
-    # @var _queue_length_west
-    #  a list of queue lenghts for the west incoming lane
-
-    # @var _actions_taken
-    #  a list of all actions taken during the simulation
-
-    # @var XML_TRAFFIC_LIGHT_GREEN_STATES
-    #  a constant list of all possible Green States
-
-    # @var XML_TRAFFIC_LIGHT_ALL_STATES
-    #  a constant list of all possible States
