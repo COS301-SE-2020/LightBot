@@ -7,32 +7,32 @@
 
 ## Description
 
-This repository contains an implementation of ['Lightbot'](lightbot.co.za) Artificial Intelligence Adaptive Traffic Control Solution. Lightbot is a software engineering project proposed by ['Fifth Dimension Technologies (5DT)'](5dt.com) for the COS 301 final year module of ['Computer Science'](https://cs.up.ac.za/) at ['University of Pretoria'](https://www.up.ac.za/). All components and subsystems were created or compiled by the Gradient Team.
+This repository contains an implementation of ['LightBot'](lightbot.co.za) Artificial Intelligence Adaptive Traffic Control Solution. LightBot is a software engineering project proposed by ['Fifth Dimension Technologies (5DT)'](5dt.com) for the COS 301 final year module of the ['Computer Science'](https://cs.up.ac.za/) curriculum at the ['University of Pretoria'](https://www.up.ac.za/). All components and subsystems were created or compiled by the Gradient Team.
 
-Purpose: LightBot's goal is to explore the possibility to minimize the delays that are caused by traffic congestions at various intersections. The LightBot system will be used to prove a concept that the addition of a machine learning algorithm will develop a good policy for which to control the traffic lights at a given intersection and may benefit society through time-efficiency, monetarily and perhaps even reduce vehicular emissions.
+Purpose: LightBot's goal is to explore the possibility to minimize the delays that are caused by traffic congestions at various intersections. The LightBot system will be used to prove a concept that the addition of a machine learning algorithm may develop a good policy for which to control the traffic lights at a given intersection and may benefit society through time-efficiency, monetarily and perhaps even reduce vehicular emissions and costs.
 
 # Roadmap
 
-- [X] Initial development setup
-- [X] Research phase
-- [X] Mock development and planning
-- [X] Development of components and sub-systems
-- [X] Unit Testing of components and sub-systems
-- [X] Integration of components and sub-systems
-- [X] Integration testing of Lightbot
-- [X] Deployment environment and Continuous Integration setup
-- [X] Deployment of Lightbot
-- [X] Evaluation and deployment testing
-- [X] Final documentation
+- [x] Initial development setup
+- [x] Research phase
+- [x] Mock development and planning
+- [x] Development of components and sub-systems
+- [x] Unit Testing of components and sub-systems
+- [x] Integration of components and sub-systems
+- [x] Integration testing of Lightbot
+- [x] Deployment environment and Continuous Integration setup
+- [x] Deployment of Lightbot
+- [x] Evaluation and deployment testing
+- [x] Final documentation
 
 ## Collaborators
 
 Mohammed Gangat :</b><br>
 
-* <a href="https://github.com/Typhon-Divinity"> GitHub  Account </a><br>
-* <a href="https://www.linkedin.com/in/mohammed-gangat-0009141a7/"> Linkedin  Account </a>
-* Email : u17058849@tuks.co.za
-* <details>
+- <a href="https://github.com/Typhon-Divinity"> GitHub Account </a><br>
+- <a href="https://www.linkedin.com/in/mohammed-gangat-0009141a7/"> Linkedin Account </a>
+- Email : u17058849@tuks.co.za
+- <details>
     <summary><b>Contributions</b></summary>
     <br>
     - Demo 1: Set up the socket server, set up MongoDB database, set up Git repo, worked on the machine learning server, worked on the taffic flow simulation, worked on the web application (system interface) and worked on the demo video & recorded contribution video.
@@ -51,10 +51,10 @@ Mohammed Gangat :</b><br>
 
 <b>Thiveshan Pillay :</b><br>
 
-* <a href="https://github.com/u15007911"> GitHub  Account </a><br>
-* <a href="https://www.linkedin.com/in/thiveshan-pillay-4425231a9/"> Linkedin  Account </a>
-* Email : u15007911@tuks.co.za
-* <details>
+- <a href="https://github.com/u15007911"> GitHub Account </a><br>
+- <a href="https://www.linkedin.com/in/thiveshan-pillay-4425231a9/"> Linkedin Account </a>
+- Email : u15007911@tuks.co.za
+- <details>
     <summary><b>Contributions</b></summary>
     <br>
     - Demo 1: Set up traffic flow simulation & created algorithm for simulation, worked on the SRS document and recorded contribution video.
@@ -73,10 +73,10 @@ Mohammed Gangat :</b><br>
 
 Rahul Kapoor :</b><br>
 
-* <a href="https://github.com/rahulkap20"> GitHub  Account </a><br>
-* <a href="https://www.linkedin.com/in/rahulkapoor20/"> Linkedin  Account </a>
-* Email : u16034130@tuks.co.za
-* <details>
+- <a href="https://github.com/rahulkap20"> GitHub Account </a><br>
+- <a href="https://www.linkedin.com/in/rahulkapoor20/"> Linkedin Account </a>
+- Email : u16034130@tuks.co.za
+- <details>
     <summary><b>Contributions</b></summary>
     <br>
     - Demo 1: Set up machine learning server, worked on the SRS document and recorded contribution video.
@@ -87,15 +87,18 @@ Rahul Kapoor :</b><br>
     <br>
     - Demo 3: Worked on Traffic Simulation. Partially implemented Reinforcement Learning component. Worked with other team members on all Documentation.
     <br>
+  <br>
+    - Demo 4: Created vehicle generator program. Implemented Reinforcement Learning Agent for adaptive traffic light control.
+  <br>
 
 </details>
 
 <b>Jared Gratz :</b><br>
 
-* <a href="https://github.com/Jad-91802"> GitHub  Account </a><br>
-* <a href="https://www.linkedin.com/in/jared-gratz-b61147b9/"> Linkedin  Account </a>
-* Email : u16054972@tuks.co.za
-* <details>
+- <a href="https://github.com/Jad-91802"> GitHub Account </a><br>
+- <a href="https://www.linkedin.com/in/jared-gratz-b61147b9/"> Linkedin Account </a>
+- Email : u16054972@tuks.co.za
+- <details>
     <summary><b>Contributions</b></summary>
     <br>
     - Demo 1: Set up machine learning server, worked on the SRS document and recorded contribution video.
@@ -106,6 +109,9 @@ Rahul Kapoor :</b><br>
     <br>
     - Demo 3: Worked on Traffic Simulation. Partially implemented Reinforcement Learning component. Worked with other team members on all Documentation.
     <br>
+  <br>
+    - Demo 4: Created vehicle generator program. Implemented Reinforcement Learning Agent for traffic light control.
+  <br>
 
 </details>
 
@@ -113,35 +119,36 @@ Rahul Kapoor :</b><br>
 
 For this repository each component/sub-system has a designated folder. All documentation is kept within the lightbot_doc folder and imagery and other assets within the lightbot_misc folder.
 
-* [Server](https://github.com/COS301-SE-2020/LightBot/tree/master/lightbot_server)
-* [Simulation](https://github.com/COS301-SE-2020/LightBot/tree/master/lightbot_sim)
-* [Web Application](https://github.com/COS301-SE-2020/LightBot/tree/master/lightbot_web)
-* [Adaptive Traffic Controller](https://github.com/COS301-SE-2020/LightBot/tree/master/lightbot_ai)
-* [Documentation](https://github.com/COS301-SE-2020/LightBot/tree/master/lightbot_doc)
-* [Assets](https://github.com/COS301-SE-2020/LightBot/tree/master/lightbot_misc)
+- [Server](https://github.com/COS301-SE-2020/LightBot/tree/master/lightbot_server)
+- [Simulation](https://github.com/COS301-SE-2020/LightBot/tree/master/lightbot_sim)
+- [Web Application](https://github.com/COS301-SE-2020/LightBot/tree/master/lightbot_web)
+- [Adaptive Traffic Controller](https://github.com/COS301-SE-2020/LightBot/tree/master/lightbot_ai)
+- [Documentation](https://github.com/COS301-SE-2020/LightBot/tree/master/lightbot_doc)
+- [Assets](https://github.com/COS301-SE-2020/LightBot/tree/master/lightbot_misc)
 
 ## Project Management And Discourse
 
-* [Discord](https://discord.gg/vGRBnNb) - Team communication and sharing method
-* [Slack](https://gradientcrew.slack.com) - Client - Team communication
-* [ClickUp](https://share.clickup.com/l/h/6-25795638-1/3d205ccf6305580) - Project Management
-* Google Meet - Sprint meetings
-* GitKraken / GitHub Desktop - Git control
+- [Discord](https://discord.gg/vGRBnNb) - Team communication and sharing method
+- [Slack](https://gradientcrew.slack.com) - Client - Team communication
+- [ClickUp](https://share.clickup.com/l/h/6-25795638-1/3d205ccf6305580) - Project Management
+- Google Meet - Sprint meetings
+- GitKraken / GitHub Desktop - Git control
 
 ## Documentation
 
-* [SRS Document](https://drive.google.com/file/d/1UY9ypcGT2Nt4tOkT_LqWhmbG1ATrHneI/view?usp=sharing)
-* [User Manual](https://drive.google.com/file/d/1RuygQgWb-3Mti1KrbNINukM6i8YGw1UQ/view?usp=sharing)
-* [Technical Installation Manual](https://drive.google.com/file/d/1he-kpPX8rX-zY_YlKB8o62eF6jJKb5ef/view?usp=sharing)
-* [Coding Standards Document](https://drive.google.com/file/d/1rR8M9J-OyWYQ6CT7Zd2g5-geuV0vCylL/view?usp=sharing)
-* [Testing Policies](https://drive.google.com/file/d/1rR8M9J-OyWYQ6CT7Zd2g5-geuV0vCylL/view?usp=sharing)
+- [SRS Document](https://drive.google.com/file/d/16hAGDDQU_Qk8pqwphykPbKxOwq_284I-/view?usp=sharing)
+- [User Manual](https://drive.google.com/file/d/1P840xLKiEU1e4U_2KYdcGLJSM5jsc0ym/view?usp=sharing)
+- [Technical Installation Manual](https://drive.google.com/file/d/1sRUPr0qqRDAV8jcPJsQK0hTe0X-kzyUo/view?usp=sharing)
+- [Coding Standards Document](https://drive.google.com/file/d/1TDsNaTZNV2B8c5immJvmOX8ZL8ur2K54/view?usp=sharing)
+- [Testing Policies](https://drive.google.com/file/d/1Vt8ZK3yXWPX5_fUApiSWjCmUdUga80uT/view?usp=sharing)
 
-*Please note that PDF versions of these documents are also available in the "lightbot_doc" folder.
+\*Please note that PDF versions of these documents are also available in the "lightbot_doc" folder.
 
 ## Demo Videos
 
-* [Demo 1 Video](https://drive.google.com/file/d/1Ym5qgCFRDrMjqgOWoS6-tWCDYrcS3Gj5/view?usp=sharing)
-* [Demo 2 Video](https://drive.google.com/file/d/1m177RYTdAeIWepgMWhlFx1zDX7eUU8AF/view?usp=sharing)
-* [Demo 3 Video](https://drive.google.com/file/d/1o3ybdfmhUFq5EQtwpksMpGdaz7kkfdgg/view?usp=sharing)
+- [Demo 1 Video](https://drive.google.com/file/d/1Ym5qgCFRDrMjqgOWoS6-tWCDYrcS3Gj5/view?usp=sharing)
+- [Demo 2 Video](https://drive.google.com/file/d/1m177RYTdAeIWepgMWhlFx1zDX7eUU8AF/view?usp=sharing)
+- [Demo 3 Video](https://drive.google.com/file/d/1o3ybdfmhUFq5EQtwpksMpGdaz7kkfdgg/view?usp=sharing)
+- [Demo 4 Video](https://drive.google.com/file/d/1yObP5CbjBYp7_R7zt103UkSsxmCglPEc/view?usp=sharing)
 
 ## FAQ
