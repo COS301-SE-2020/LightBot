@@ -20,12 +20,19 @@ PHASE_EWR_YELLOW = 7  # Yellow State
 class Simulation:
     ## The constructor, which stores the parameters into their respective member variable.
     #  @param self The object pointer.
+    #  @param Model_South The Tensorflow model used for the South intersection.
+    #  @param Model_Duxbury The Tensorflow model used for the Duxbury intersection.
+    #  @param Memory_South The memory space for batches from the South intersection.
+    #  @param Memory_Duxbury The memory space for batches from the Duxbury intersection.
+    #  @param TrafficGen The object used to randomize generated car in the simulation.
     #  @param sumo_cmd CMD configuration used to start SUMO from TraCI.
+    #  @param gamma The specified gamma value for batch training.
     #  @param max_steps The total number of steps to simulate.
-    #  @param green_duration The duration, in steps, for the Green States.
-    #  @param yellow_duration The duration, in steps, for the Yellow States.
-    #  @param num_states May be used later for the Tensorflow model.
+    #  @param green_duration The duration, in steps, for the Green States (not used).
+    #  @param yellow_duration The duration, in steps, for the Yellow States (not used).
+    #  @param num_states The length of the state array.
     #  @param num_actions The number of Green States or actions the Tensorflow model will be able to take.
+    #  @param training_epochs The value used for the number of _replay calls.
     def __init__(self, Model_South, Model_Duxbury, Memory_South, Memory_Duxbury, TrafficGen, sumo_cmd, gamma, max_steps, green_duration, yellow_duration, num_states, num_actions, training_epochs):
         self._Model_South = Model_South
         self._Model_Duxbury = Model_Duxbury
