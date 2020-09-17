@@ -1,8 +1,6 @@
 /// <reference types="cypress" />
 
-context('Viewport', () => {
-  let userEmail = 'lightbot_cypress@testing.web'
-  let userPass = 'Cypress301#'
+context('Actions', () => {
   beforeEach(() => {
     cy.visit('/')
     cy.server()
@@ -10,6 +8,10 @@ context('Viewport', () => {
       method: 'POST',
       url: '/user/login',
     }).as('apiLogin')
+    cy.route({
+      method: 'GET',
+      url: '/user/me',
+    }).as('apiGet')
     cy.get('#idEmail')
       .clear()
       .type(userEmail)
@@ -19,7 +21,7 @@ context('Viewport', () => {
       .get('.btn-round')
       .contains('Login')
       .click()
-    cy.wait('@apiLogin')
+    cy.wait('@apiLogin').wait('@apiGet')
   })
 
   it('Check navigational elements for various viewport', () => {
