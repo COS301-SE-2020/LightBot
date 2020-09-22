@@ -1,0 +1,15 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-lightbotweb-dev-223108-authRole",
+            "UnauthRoleArn": "arn:aws:iam::811389638944:role/amplify-lightbotweb-dev-223108-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::811389638944:role/amplify-lightbotweb-dev-223108-authRole",
+            "Region": "eu-central-1",
+            "DeploymentBucketName": "amplify-lightbotweb-dev-223108-deployment",
+            "UnauthRoleName": "amplify-lightbotweb-dev-223108-unauthRole",
+            "StackName": "amplify-lightbotweb-dev-223108",
+            "StackId": "arn:aws:cloudformation:eu-central-1:811389638944:stack/amplify-lightbotweb-dev-223108/8f698f80-fd12-11ea-999d-025bd1eb3930",
+            "AmplifyAppId": "d258i5fq4ai0su"
+        }
+    }
+}
