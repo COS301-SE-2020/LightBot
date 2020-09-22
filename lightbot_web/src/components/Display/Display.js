@@ -11,7 +11,7 @@ export default (props) => {
         <CardBody>
           <MDBIframe
             src={
-              'http://ec2-18-156-193-24.eu-central-1.compute.amazonaws.com:' +
+              'http://ec2-18-192-23-11.eu-central-1.compute.amazonaws.com:' +
               props.port +
               '/'+props.link
             }
