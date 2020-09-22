@@ -3,8 +3,10 @@ const asyncHandler = require('express-async-handler')
 const { spawn } = require('child_process')
 
 // // Service imports
-var bat = require.resolve('../../services/OptimizerService/run.bat')
-var bat2 = require.resolve('../../services/OptimizerService/run2.bat')
+//var bat = require.resolve('../../services/OptimizerService/run.bat')
+//var bat2 = require.resolve('../../services/OptimizerService/run2.bat')
+var bat = require.resolve('../../services/OptimizerService/runx.sh')
+var bat2 = require.resolve('../../services/OptimizerService/runy.sh')
 const editfile = require('../../services/Edit.service')
 
 
