@@ -90,9 +90,10 @@ class Simulation extends React.Component {
     let avFA = this.cumulate(this.props.data.sixA.dataset)
     return (
       <>
-        <Row>
+        {/* <Row>
           <Col md='6'>
             <Graph
+              type={'line'}
               title={'Duxbury Queue Length'}
               titleY={'Cumulative Queue Length (Vehicles)'}
               titleX={'Duration Step'}
@@ -108,6 +109,7 @@ class Simulation extends React.Component {
           </Col>
           <Col md='6'>
             <Graph
+              type={'line'}
               title={'Duxbury Wait Time'}
               titleY={'Cumulative Wait Time (min)'}
               titleX={'Duration Step'}
@@ -125,6 +127,7 @@ class Simulation extends React.Component {
         <Row>
           <Col md='6'>
             <Graph
+              type={'line'}
               title={'South Queue Length'}
               titleY={'Cumulative Queue Length (Vehicles)'}
               titleX={'Duration Step'}
@@ -140,6 +143,7 @@ class Simulation extends React.Component {
           </Col>
           <Col md='6'>
             <Graph
+              type={'line'}
               title={'South Wait Time'}
               titleY={'Cumulative Wait Time (min)'}
               titleX={'Duration Step'}
@@ -153,10 +157,11 @@ class Simulation extends React.Component {
               })}
             />
           </Col>
-        </Row>
+        </Row> */}
         <Row>
-          <Col md='6'>
+          {/* <Col md='6'>
             <Graph
+              type={'line'}
               title={'Total CO2 Emissions'}
               titleY={'Cumulative Emissions (g/s)'}
               titleX={'Duration Step'}
@@ -169,19 +174,24 @@ class Simulation extends React.Component {
                 return { y: element / 1000, x: key }
               })}
             />
-          </Col>
+          </Col> */}
           <Col md='6'>
             <Graph
+              type={'line'}
               title={'Total Fuel Consumption'}
               titleY={'Cumulative Fuel Consumed (ml/s)'}
               titleX={'Duration Step'}
               name1={'Automatic'}
-              data1={this.props.data.sixA.dataset.map((element, key) => {
-                return { y: element, x: key }
-              })}
+              // data1={this.props.data.sixA.dataset.map((element, key) => {
+              //   return { y: element, x: key }
+              // })}
               name2={'Manual'}
-              data2={this.props.data.sixM.dataset.map((element, key) => {
-                return { y: element, x: key }
+              data={this.props.data.sixM.dataset.map((element, key) => {
+                return {
+                  y2: element,
+                  x: key,
+                  y1: this.props.data.sixA.dataset[key],
+                }
               })}
             />
           </Col>
