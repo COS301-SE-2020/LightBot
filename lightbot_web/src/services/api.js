@@ -3,7 +3,7 @@ import { LOGOUT } from '../actions/types'
 import store from '../store'
 
 const api = axios.create({
-  baseURL: 'https://api.lightbot.co.za/',
+  baseURL: 'https://api.lightbot.co.za:8000/',
   //baseURL: 'http://ec2-18-192-23-11.eu-central-1.compute.amazonaws.com:8000/',
   //baseURL: 'http://localhost:8000/',
   headers: {
