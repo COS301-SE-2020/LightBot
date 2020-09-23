@@ -3,33 +3,6 @@ import { Card, CardBody, CardHeader, CardTitle } from 'reactstrap'
 import { LineChart, Line, XAxis, YAxis, Label, Tooltip, Legend } from 'recharts'
 
 export default (props) => {
-  const options = {
-    animationEnabled: true,
-    theme: 'dark1',
-    axisY: {
-      title: props.titleY,
-    },
-    axisX: {
-      title: props.titleX,
-    },
-    toolTip: {
-      shared: true,
-    },
-    data: [
-      {
-        type: 'spline',
-        name: props.name1,
-        showInLegend: true,
-        dataPoints: props.data1,
-      },
-      {
-        type: 'spline',
-        name: props.name2,
-        showInLegend: true,
-        dataPoints: props.data2,
-      },
-    ],
-  }
   const CustomTooltip = ({ active, payload, label }) => {
     if (active) {
       let dif = (payload[0].value - payload[1].value).toFixed(2)

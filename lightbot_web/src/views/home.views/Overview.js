@@ -45,12 +45,13 @@ class Overview extends React.Component {
             titleY={'Cumulative Wait Time (min)'}
             titleX={'Duration Step'}
             name1={'Automatic'}
-            data1={this.props.data.threeA.dataset.map((element, key) => {
-              return { y: element / 60, x: key }
-            })}
             name2={'Manual'}
-            data2={this.props.data.threeM.dataset.map((element, key) => {
-              return { y: element / 60, x: key }
+            data={this.props.data.threeM.dataset.map((element, key) => {
+              return {
+                y2: element / 60,
+                x: key,
+                y1: this.props.data.threeA.dataset[key] / 60,
+              }
             })}
           />
         </Col>
@@ -58,63 +59,66 @@ class Overview extends React.Component {
           <Graph
             title={'Visualisation of Latest Run Waiting Times on South'}
             titleY={'Cumulative Wait Time (min)'}
-              titleX={'Duration Step'}
-              name1={'Automatic'}
-              data1={this.props.data.fourA.dataset.map((element, key) => {
-                return { y: element / 60, x: key }
-              })}
-              name2={'Manual'}
-              data2={this.props.data.fourM.dataset.map((element, key) => {
-                return { y: element / 60, x: key }
-              })}
-            />
+            titleX={'Duration Step'}
+            name1={'Automatic'}
+            name2={'Manual'}
+            data={this.props.data.fourM.dataset.map((element, key) => {
+              return {
+                y2: element / 60,
+                x: key,
+                y1: this.props.data.fourA.dataset[key] / 60,
+              }
+            })}
+          />
         </Col>
       </Row>
     )
   }
-   handleLoad2(){
+  handleLoad2() {
     let avCM = this.cumulate(this.props.data.fiveM.dataset)
     let avFM = this.cumulate(this.props.data.sixM.dataset)
     let avCA = this.cumulate(this.props.data.fiveA.dataset)
     let avFA = this.cumulate(this.props.data.sixA.dataset)
- return (<PanelHeader
-      size='lg'
-      content={
-        <Row>
-          <Col md='6'>
-            <State title={'State of Latest run'}
-              avC = {avCA}
-              amC = {avCM}
-              adC = {avCA - avCM}
-              avF = {avFA/1000}
-              amF = {avFM/1000}
-              adF = {(avFA - avFM)/1000}
-              acpl = {(avFA/1000)*14.83}
-              mcpl = {( avFM/1000)*14.83}
-              dcpl = {((avFA - avFM)/1000)*14.83}
-             />
-            
-          </Col>
-          <Col md='6'>
-            <div style={bannerStyles}>
-              <div className='ml-auto mr-auto text-center'>
-                <img
-                  src={logo}
-                  style={{ width: '350px', height: '180px' }}
-                  alt='react-logo'
-                />
-                <div style={{ color: 'white', fontSize: '25px' }}>
-                  <div>view the lightbot system state</div>
-                  <div>compare the latest results</div>
-                  <div>and measure the gains in time efficiency</div>
-                  <br></br>
+    return (
+      <PanelHeader
+        size='lg'
+        content={
+          <Row>
+            <Col md='6'>
+              <State
+                title={'State of Latest run'}
+                avC={avCA}
+                amC={avCM}
+                adC={avCA - avCM}
+                avF={avFA / 1000}
+                amF={avFM / 1000}
+                adF={(avFA - avFM) / 1000}
+                acpl={(avFA / 1000) * 14.83}
+                mcpl={(avFM / 1000) * 14.83}
+                dcpl={((avFA - avFM) / 1000) * 14.83}
+              />
+            </Col>
+            <Col md='6'>
+              <div style={bannerStyles}>
+                <div className='ml-auto mr-auto text-center'>
+                  <img
+                    src={logo}
+                    style={{ width: '350px', height: '180px' }}
+                    alt='react-logo'
+                  />
+                  <div style={{ color: 'white', fontSize: '25px' }}>
+                    <div>view the lightbot system state</div>
+                    <div>compare the latest results</div>
+                    <div>and measure the gains in time efficiency</div>
+                    <br></br>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Col>
-        </Row>
-      }
-    />)
+            </Col>
+          </Row>
+        }
+      />
+    )
   }
 
   cumulate = (p) => {

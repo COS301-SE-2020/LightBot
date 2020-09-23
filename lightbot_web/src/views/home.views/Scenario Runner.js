@@ -90,7 +90,7 @@ class Simulation extends React.Component {
     let avFA = this.cumulate(this.props.data.sixA.dataset)
     return (
       <>
-        {/* <Row>
+        <Row>
           <Col md='6'>
             <Graph
               type={'line'}
@@ -98,12 +98,13 @@ class Simulation extends React.Component {
               titleY={'Cumulative Queue Length (Vehicles)'}
               titleX={'Duration Step'}
               name1={'Automatic'}
-              data1={this.props.data.oneA.dataset.map((element, key) => {
-                return { y: element, x: key }
-              })}
               name2={'Manual'}
-              data2={this.props.data.oneM.dataset.map((element, key) => {
-                return { y: element, x: key }
+              data={this.props.data.oneM.dataset.map((element, key) => {
+                return {
+                  y2: element,
+                  x: key,
+                  y1: this.props.data.oneA.dataset[key],
+                }
               })}
             />
           </Col>
@@ -114,12 +115,13 @@ class Simulation extends React.Component {
               titleY={'Cumulative Wait Time (min)'}
               titleX={'Duration Step'}
               name1={'Automatic'}
-              data1={this.props.data.threeA.dataset.map((element, key) => {
-                return { y: element / 60, x: key }
-              })}
               name2={'Manual'}
-              data2={this.props.data.threeM.dataset.map((element, key) => {
-                return { y: element / 60, x: key }
+              data={this.props.data.threeM.dataset.map((element, key) => {
+                return {
+                  y2: element / 60,
+                  x: key,
+                  y1: this.props.data.threeA.dataset[key] / 60,
+                }
               })}
             />
           </Col>
@@ -132,12 +134,13 @@ class Simulation extends React.Component {
               titleY={'Cumulative Queue Length (Vehicles)'}
               titleX={'Duration Step'}
               name1={'Automatic'}
-              data1={this.props.data.twoA.dataset.map((element, key) => {
-                return { y: element, x: key }
-              })}
               name2={'Manual'}
-              data2={this.props.data.twoM.dataset.map((element, key) => {
-                return { y: element, x: key }
+              data={this.props.data.twoM.dataset.map((element, key) => {
+                return {
+                  y2: element,
+                  x: key,
+                  y1: this.props.data.twoA.dataset[key],
+                }
               })}
             />
           </Col>
@@ -148,33 +151,35 @@ class Simulation extends React.Component {
               titleY={'Cumulative Wait Time (min)'}
               titleX={'Duration Step'}
               name1={'Automatic'}
-              data1={this.props.data.fourA.dataset.map((element, key) => {
-                return { y: element / 60, x: key }
-              })}
               name2={'Manual'}
-              data2={this.props.data.fourM.dataset.map((element, key) => {
-                return { y: element / 60, x: key }
+              data={this.props.data.fourM.dataset.map((element, key) => {
+                return {
+                  y2: element / 60,
+                  x: key,
+                  y1: this.props.data.fourA.dataset[key],
+                }
               })}
             />
           </Col>
-        </Row> */}
+        </Row>
         <Row>
-          {/* <Col md='6'>
+          <Col md='6'>
             <Graph
               type={'line'}
               title={'Total CO2 Emissions'}
               titleY={'Cumulative Emissions (g/s)'}
               titleX={'Duration Step'}
               name1={'Automatic'}
-              data1={this.props.data.fiveA.dataset.map((element, key) => {
-                return { y: element / 1000, x: key }
-              })}
               name2={'Manual'}
-              data2={this.props.data.fiveM.dataset.map((element, key) => {
-                return { y: element / 1000, x: key }
+              data={this.props.data.fiveM.dataset.map((element, key) => {
+                return {
+                  y2: element / 1000,
+                  x: key,
+                  y1: this.props.data.fiveA.dataset[key] / 1000,
+                }
               })}
             />
-          </Col> */}
+          </Col>
           <Col md='6'>
             <Graph
               type={'line'}
@@ -182,9 +187,6 @@ class Simulation extends React.Component {
               titleY={'Cumulative Fuel Consumed (ml/s)'}
               titleX={'Duration Step'}
               name1={'Automatic'}
-              // data1={this.props.data.sixA.dataset.map((element, key) => {
-              //   return { y: element, x: key }
-              // })}
               name2={'Manual'}
               data={this.props.data.sixM.dataset.map((element, key) => {
                 return {
