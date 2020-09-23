@@ -156,7 +156,7 @@ class Simulation extends React.Component {
                 return {
                   y2: element / 60,
                   x: key,
-                  y1: this.props.data.fourA.dataset[key],
+                  y1: this.props.data.fourA.dataset[key] / 60,
                 }
               })}
             />
