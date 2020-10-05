@@ -93,9 +93,15 @@ class Simulation extends React.Component {
     let textCarbon = false
     let textFuel = false
     let textWait = false
-    if (avCA - avCM < 0) textCarbon = true
-    if (avFA - avFM < 0) textFuel = false
-    if (totWA - totWM < 0) textWait = false
+    if (avCA - avCM < 0) {
+      textCarbon = true
+    }
+    if (avFA - avFM < 0) {
+      textFuel = true
+    }
+    if (totWA - totWM < 0) {
+      textWait = true
+    }
     return (
       <>
         <Row>

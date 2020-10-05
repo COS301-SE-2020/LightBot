@@ -8,7 +8,7 @@ export default (props) => {
   let text3 = 'text-danger'
   if (props.tF) text1 = 'text-success'
   if (props.tC) text2 = 'text-success'
-  if (props.totW) text3 = 'text-success'
+  if (props.tW) text3 = 'text-success'
   return (
     <Card style={{ backgroundColor: '#2a2a2a' }} className='text-primary'>
       <CardHeader>
@@ -39,12 +39,11 @@ export default (props) => {
             </tr>
             <tr>
               <td>Total Waiting time </td>
-              <td className={text1}>{props.totW.toFixed(2)} minutes</td>
+              <td className={text3}>{props.totW.toFixed(2)} minutes</td>
             </tr>
-
             <tr>
               <td>Estimated monetary value of time lost due to traffic</td>
-              <td className={text1}>R{props.totWC.toFixed(2)}</td>
+              <td className={text3}>R{props.totWC.toFixed(2)}</td>
             </tr>
           </tbody>
         </Table>
