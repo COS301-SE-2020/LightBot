@@ -46,7 +46,7 @@ class Post extends React.Component {
     return sortedPosts.map((item, i) => {
       while (!max || (max && i < 5)) {
         return (
-          <tr key={item._id}>
+          <tr key={item._id} className='text-light'>
             <td>{item.title}</td>
             <td>{item.subject}</td>
             <td>{item.description}</td>

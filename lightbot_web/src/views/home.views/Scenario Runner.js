@@ -88,10 +88,18 @@ class Simulation extends React.Component {
     let avFM = this.cumulate(this.props.data.sixM.dataset)
     let avCA = this.cumulate(this.props.data.fiveA.dataset)
     let avFA = this.cumulate(this.props.data.sixA.dataset)
+    let totWA = this.cumulate(this.props.data.threeA.dataset)
+    let totWM = this.cumulate(this.props.data.threeM.dataset)
+    let textCarbon = false
+    let textFuel = false
+    let textWait = false
+    if (avCA - avCM < 0) textCarbon = true
+    if (avFA - avFM < 0) textFuel = false
+    if (totWA - totWM < 0) textWait = false
     return (
       <>
         <Row>
-          <Col md='6'>
+          <Col md='6' className='ml-auto mr-auto text-center'>
             <Graph
               type={'line'}
               title={'Duxbury Queue Length'}
@@ -108,7 +116,7 @@ class Simulation extends React.Component {
               })}
             />
           </Col>
-          <Col md='6'>
+          <Col md='6' className='ml-auto mr-auto text-center'>
             <Graph
               type={'line'}
               title={'Duxbury Wait Time'}
@@ -127,7 +135,7 @@ class Simulation extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col md='6'>
+          <Col md='6' className='ml-auto mr-auto text-center'>
             <Graph
               type={'line'}
               title={'South Queue Length'}
@@ -144,7 +152,7 @@ class Simulation extends React.Component {
               })}
             />
           </Col>
-          <Col md='6'>
+          <Col md='6' className='ml-auto mr-auto text-center'>
             <Graph
               type={'line'}
               title={'South Wait Time'}
@@ -163,7 +171,7 @@ class Simulation extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col md='6'>
+          <Col md='6' className='ml-auto mr-auto text-center'>
             <Graph
               type={'line'}
               title={'Total CO2 Emissions'}
@@ -180,7 +188,7 @@ class Simulation extends React.Component {
               })}
             />
           </Col>
-          <Col md='6'>
+          <Col md='6' className='ml-auto mr-auto text-center'>
             <Graph
               type={'line'}
               title={'Total Fuel Consumption'}
@@ -199,23 +207,80 @@ class Simulation extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col md='6'>
+          <Col md='6' className='ml-auto mr-auto text-center'>
             <Statistics
-              title={'Manual Averages'}
-              avC={avCM}
+              title={
+                'Manual Statistics (' +
+                this.props.data.fourM.dataset.length +
+                ' seconds)'
+              }
+              avC={avCM / 1000000}
               avF={avFM / 1000}
-              cpl={(avFM * 14.83) / 1000}
+              cpl={(avFM * 14.89) / 1000}
+              totW={totWM / 60}
+              totWC={(totWM / 60) * (22500 / 20 / 8 / 60)}
+              tF={!textFuel}
+              tC={!textCarbon}
+              tW={!textWait}
             />
           </Col>
-          <Col md='6'>
+          <Col md='6' className='ml-auto mr-auto text-center'>
             <Statistics
-              title={'Automatic Averages'}
-              avC={avCA}
+              title={
+                'Automatic Statistics (' +
+                this.props.data.fourM.dataset.length +
+                ' seconds)'
+              }
+              avC={avCA / 1000000}
               avF={avFA / 1000}
-              cpl={(avFA * 14.83) / 1000}
+              cpl={(avFA * 14.89) / 1000}
+              totW={totWA / 60}
+              totWC={(totWA / 60) * (22500 / 20 / 8 / 60)}
+              tF={textFuel}
+              tC={textCarbon}
+              tW={textWait}
             />
           </Col>
         </Row>
+        <Card style={{ backgroundColor: '#2a2a2a' }}>
+          <CardBody>
+            <Row>
+              <Col md='12' className='ml-auto mr-auto text-left'>
+                <div className='text-secondary'>
+                  1 second is equivalent to 1 timestep
+                  <br />
+                  Information in tables represent totals of respective data in
+                  the last simulation.
+                  <br />
+                  Graphs represent data of the last simualtion.
+                  <br />
+                  Estimated fuel cost of R14.89 p/l based on inland fuel prices
+                  for Petrol Unleaded 93 on the 02-09-2020. (
+                  <a
+                    href='https://www.aa.co.za/calculators-toolscol-1/fuel-pricing'
+                    target='_blank'
+                    rel='noreferrer noopener'
+                  >
+                    Source
+                  </a>
+                  ).
+                  <br />
+                  Monetary value lost to traffic calculated using average South
+                  African income of R22500 per month , 20 workdays per month, 8
+                  hours worked per day (
+                  <a
+                    href='https://businesstech.co.za/news/finance/386327/this-is-the-average-salary-in-south-africa-right-now-4/'
+                    target='_blank'
+                    rel='noreferrer noopener'
+                  >
+                    Source
+                  </a>
+                  ).
+                </div>
+              </Col>
+            </Row>
+          </CardBody>
+        </Card>
       </>
     )
   }

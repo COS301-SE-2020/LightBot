@@ -32,14 +32,9 @@ class Overview extends React.Component {
     this.setState({ view2 })
   }
   handleLoad = () => {
-    let avCM = this.cumulate(this.props.data.fiveM.dataset)
-    let avFM = this.cumulate(this.props.data.sixM.dataset)
-    let avCA = this.cumulate(this.props.data.fiveA.dataset)
-    let avFA = this.cumulate(this.props.data.sixA.dataset)
-
     return (
       <Row>
-        <Col xs={12} md={6}>
+        <Col xs={12} md={6} className='ml-auto mr-auto text-center'>
           <Graph
             title={'Visualisation of Latest Run Waiting Times on Duxbury'}
             titleY={'Cumulative Wait Time (min)'}
@@ -55,7 +50,7 @@ class Overview extends React.Component {
             })}
           />
         </Col>
-        <Col xs={12} md={6}>
+        <Col xs={12} md={6} className='ml-auto mr-auto text-center'>
           <Graph
             title={'Visualisation of Latest Run Waiting Times on South'}
             titleY={'Cumulative Wait Time (min)'}
@@ -79,45 +74,57 @@ class Overview extends React.Component {
     let avFM = this.cumulate(this.props.data.sixM.dataset)
     let avCA = this.cumulate(this.props.data.fiveA.dataset)
     let avFA = this.cumulate(this.props.data.sixA.dataset)
+    let totWA = this.cumulate(this.props.data.threeA.dataset)
+    let totWM = this.cumulate(this.props.data.threeM.dataset)
     return (
-      <PanelHeader
-        size='lg'
-        content={
-          <Row>
-            <Col md='6'>
-              <State
-                title={'State of Latest run'}
-                avC={avCA}
-                amC={avCM}
-                adC={avCA - avCM}
-                avF={avFA / 1000}
-                amF={avFM / 1000}
-                adF={(avFA - avFM) / 1000}
-                acpl={(avFA / 1000) * 14.83}
-                mcpl={(avFM / 1000) * 14.83}
-                dcpl={((avFA - avFM) / 1000) * 14.83}
-              />
-            </Col>
-            <Col md='6'>
-              <div style={bannerStyles}>
-                <div className='ml-auto mr-auto text-center'>
-                  <img
-                    src={logo}
-                    style={{ width: '350px', height: '180px' }}
-                    alt='react-logo'
-                  />
-                  <div style={{ color: 'white', fontSize: '25px' }}>
-                    <div>view the lightbot system state</div>
-                    <div>compare the latest results</div>
-                    <div>and measure the gains in time efficiency</div>
-                    <br></br>
-                  </div>
+      <>
+        <Row>
+          <Col xs={12} md={6} className='ml-auto mr-auto text-center'>
+            <State
+              title={
+                'State of Latest run (Duration: ' +
+                this.props.data.fourM.dataset.length +
+                ' seconds)'
+              }
+              avC={avCA / 1000000}
+              amC={avCM / 1000000}
+              adC={(avCA - avCM) / 1000000}
+              avF={avFA / 1000}
+              amF={avFM / 1000}
+              adF={(avFA - avFM) / 1000}
+              acpl={(avFA / 1000) * 14.83}
+              mcpl={(avFM / 1000) * 14.83}
+              dcpl={((avFA - avFM) / 1000) * 14.83}
+              totWM={totWM / 60}
+              totWCM={(totWM / 60) * (22500 / 20 / 8 / 60)}
+              totWA={totWA / 60}
+              totWCA={(totWA / 60) * (22500 / 20 / 8 / 60)}
+            />
+          </Col>
+          <Col xs={12} md={6} className='ml-auto mr-auto text-center'>
+            <div style={bannerStyles}>
+              <div className='ml-auto mr-auto text-center'>
+                <img
+                  src={logo}
+                  style={{
+                    width: '85%',
+                    height: '85%',
+                    marginTop: '-5%',
+                    paddingBottom: '-20%',
+                  }}
+                  alt='react-logo'
+                />
+                <div style={{ color: 'white', fontSize: '25px' }}>
+                  <div>View the lightbot system state</div>
+                  <div>Compare the latest results</div>
+                  <div>Measure the gains in time efficiency</div>
+                  <br></br>
                 </div>
               </div>
-            </Col>
-          </Row>
-        }
-      />
+            </div>
+          </Col>
+        </Row>
+      </>
     )
   }
 
@@ -149,8 +156,9 @@ class Overview extends React.Component {
             </div>
           }
         />
-        {this.state.view2}
+
         <div className='content' style={{ marginTop: '30px' }}>
+          {this.state.view2}
           {this.state.view}
           <Post setClick={(click) => (this.clickChild = click)} />
           <Row>
@@ -166,7 +174,7 @@ class Overview extends React.Component {
 const bannerStyles = {
   margin: 'auto',
   width: '100%',
-  height: '100%',
+  height: '93%',
   backgroundImage: 'url(' + require('../../assets/img/profile.jpg') + ')',
   backgroundSize: 'cover',
 }
