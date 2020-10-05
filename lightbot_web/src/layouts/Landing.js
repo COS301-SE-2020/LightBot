@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import routes from '../routes/landingRoutes.js'
 import Footer from '../components/Footer/Footer.js'
-import '../assets/buff/scss/now-ui-kit.scss?v=1.4.0'
+import '../assets/scss/landing/now-ui-kit.scss?v=1.4.0'
 import Login from '../views/landing.views/Login'
 
 import { connect } from 'react-redux'

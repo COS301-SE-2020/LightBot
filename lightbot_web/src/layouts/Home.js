@@ -9,6 +9,7 @@ import { logout } from '../actions/auth'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import PrivateRoute from '../routes/PrivateRoute'
+import '../assets/scss/home/now-ui-dashboard.scss?v1.4.0'
 
 import { Modal, ModalHeader, ModalBody, Button } from 'reactstrap'
 
