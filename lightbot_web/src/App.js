@@ -3,10 +3,8 @@ import { createBrowserHistory } from 'history'
 import { Router, Route, Switch, Redirect } from 'react-router-dom'
 import PrivateRoute from './routes/PrivateRoute'
 
-
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import './assets/scss/now-ui-dashboard.scss?v1.4.0'
-import './assets/css/now-ui-kit.css'
 
 import Home from './layouts/Home.js'
 import Landing from './layouts/Landing.js'

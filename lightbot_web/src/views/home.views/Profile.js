@@ -234,7 +234,10 @@ class User extends React.Component {
             <Col className='ml-auto mr-auto text-center' md='8'>
               <Row>
                 <Col md='12'>
-                  <Card className='card-user'>
+                  <Card
+                    className='card-user'
+                    style={{ backgroundColor: '#2a2a2a' }}
+                  >
                     <CardHeader className='image'>
                       <img
                         src={require('../../assets/img/profile.jpg')}
@@ -249,7 +252,10 @@ class User extends React.Component {
                             className='avatar border-gray'
                             src={this.state.image}
                           />
-                          <h5 className='title'>{this.props.user.User_name}{' '}{this.props.user.User_surname}</h5>
+                          <h5 className='title'>
+                            {this.props.user.User_name}{' '}
+                            {this.props.user.User_surname}
+                          </h5>
                         </a>
                         <p className='description'>
                           {this.props.user.User_role === 1
@@ -262,62 +268,68 @@ class User extends React.Component {
                 </Col>
               </Row>
               <Row>
-                <Col  md='12'>
-                    <Card>
-                      <CardBody>
-                        <Col>
-                          <Form>
-                            <Row>
-                              <Col md='3' className='ml-auto mr-auto text-center'>
-                                <FormGroup>
-                                  <InputGroup>
-                                    <div className='custom-file'>
-                                      <div className='file-field medium'>
-                                        <div
-                                          className='btn btn-outline-secondary btn-rounded waves-effect'
-                                          style={{ backgroundColor: 'grey' }}
-                                        >
-                                          <Input
-                                            className='ml-auto mr-auto text-center'
-                                            name='file'
-                                            type='file'
-                                            onChange={this.onImageChange}
-                                          />
-                                          <span>
-                                            Click here to select profile image
-                                          </span>
-                                        </div>
+                <Col md='12'>
+                  <Card
+                    style={{ backgroundColor: '#2a2a2a' }}
+                    className='text-primary'
+                  >
+                    <CardBody>
+                      <Col>
+                        <Form>
+                          <Row>
+                            <Col md='3' className='ml-auto mr-auto text-center'>
+                              <FormGroup>
+                                <InputGroup>
+                                  <div className='custom-file'>
+                                    <div className='file-field medium'>
+                                      <div
+                                        className='btn btn-outline-secondary btn-rounded waves-effect'
+                                        style={{ backgroundColor: 'grey' }}
+                                      >
+                                        <Input
+                                          className='ml-auto mr-auto text-center'
+                                          name='file'
+                                          type='file'
+                                          onChange={this.onImageChange}
+                                        />
+                                        <span>
+                                          Click here to select profile image
+                                        </span>
                                       </div>
                                     </div>
-                                  </InputGroup>
-                                </FormGroup>
-                              </Col>
-                            </Row>
-                            <Row>
-                              <Col
-                                className='ml-auto mr-auto text-center'
-                                md={4}
-                                xs={12}
+                                  </div>
+                                </InputGroup>
+                              </FormGroup>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col
+                              className='ml-auto mr-auto text-center'
+                              md={4}
+                              xs={12}
+                            >
+                              <Button
+                                className='btn-round'
+                                color='primary'
+                                block
+                                onClick={this.handleUpload}
                               >
-                                <Button
-                                  className='btn-round'
-                                  color='primary'
-                                  block
-                                  onClick={this.handleUpload}
-                                >
-                                  Submit
-                                </Button>
-                              </Col>
-                            </Row>
-                          </Form>
-                        </Col>
-                      </CardBody>
-                    </Card>
+                                Submit
+                              </Button>
+                            </Col>
+                          </Row>
+                        </Form>
+                      </Col>
+                    </CardBody>
+                  </Card>
                 </Col>
               </Row>
               <Row>
                 <Col md='12'>
-                  <Card>
+                  <Card
+                    style={{ backgroundColor: '#2a2a2a' }}
+                    className='text-primary'
+                  >
                     <CardBody>
                       <Form>
                         <Row>
@@ -439,7 +451,10 @@ class User extends React.Component {
               </Row>
               <Row>
                 <Col md='12'>
-                  <Card>
+                  <Card
+                    style={{ backgroundColor: '#2a2a2a' }}
+                    className='text-primary'
+                  >
                     <CardBody>
                       <Form>
                         <Row>
