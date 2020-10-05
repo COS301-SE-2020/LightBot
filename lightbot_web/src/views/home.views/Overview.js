@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../../assets/img/LightBot_Logo_White.png'
 
-import { Row, Col } from 'reactstrap'
+import { Card, CardBody, Row, Col } from 'reactstrap'
 
 // core components
 import PanelHeader from '../../components/PanelHeader/PanelHeader.js'
@@ -160,6 +160,40 @@ class Overview extends React.Component {
         <div className='content' style={{ marginTop: '30px' }}>
           {this.state.view2}
           {this.state.view}
+          <Row style={{ backgroundColor: '#2a2a2a' }}>
+            <Col md='12' className='ml-auto mr-auto text-left'>
+              <div className='text-secondary'>
+                Information in tables represent totals of respective data in the
+                last simulation.
+                <br />
+                Graphs represent data of the last simualtion.
+                <br />
+                Estimated fuel cost of R14.89 p/l based on inland fuel prices
+                for Petrol Unleaded 93 on the 02-09-2020. (
+                <a
+                  href='https://www.aa.co.za/calculators-toolscol-1/fuel-pricing'
+                  target='_blank'
+                  rel='noreferrer noopener'
+                >
+                  Source
+                </a>
+                ).
+                <br />
+                Monetary value lost to traffic calculated using average South
+                African income of R22500 per month , 20 workdays per month, 8
+                hours worked per day (
+                <a
+                  href='https://businesstech.co.za/news/finance/386327/this-is-the-average-salary-in-south-africa-right-now-4/'
+                  target='_blank'
+                  rel='noreferrer noopener'
+                >
+                  Source
+                </a>
+                ).
+              </div>
+            </Col>
+          </Row>
+          <br />
           <Post setClick={(click) => (this.clickChild = click)} />
           <Row>
             <Col md='12' className='ml-auto mr-auto text-center'>
