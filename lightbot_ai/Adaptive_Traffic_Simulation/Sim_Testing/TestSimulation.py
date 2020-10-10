@@ -52,37 +52,41 @@ class Simulation:
         self._jan_south_actions_taken = []
         self._jan_duxbury_actions_taken = []
         self.JanShoba_Duxbury_XML_TRAFFIC_LIGHT_GREEN_STATES = [
-            '<phase duration="27" state="rrrrGGrrrrGGGr"/>',
-            '<phase duration="12"  state="rrrrrrGrrrrrrG"/>',
-            '<phase duration="27" state="GGrrrrrGGgrrrr"/>',
-            '<phase duration="27"  state="rrGGrrrrrGrrrr"/>'
+            '<phase duration="10" state="rrrrGGrrrrGGGr"/>',
+            '<phase duration="10"  state="rrrrrrGrrrrrrG"/>',
+            '<phase duration="10" state="GGrrrrrGGgrrrr"/>',
+            '<phase duration="10"  state="rrGGrrrrrGrrrr"/>'
         ]
         self.JanShoba_Duxbury_XML_TRAFFIC_LIGHT_ALL_STATES = [
-            '<phase duration="27" state="rrrrGGrrrrGGGr"/>',
+            '<phase duration="10" state="rrrrGGrrrrGGGr"/>',
             '<phase duration="6"  state="rrrryyrrrryyyr"/>',
-            '<phase duration="12"  state="rrrrrrGrrrrrrG"/>',
+            '<phase duration="10"  state="rrrrrrGrrrrrrG"/>',
             '<phase duration="6"  state="rrrrrryrrrrrry"/>',
-            '<phase duration="27" state="GGrrrrrGGgrrrr"/>',
-            '<phase duration="12"  state="yyrrrrryyyrrrr"/>',
-            '<phase duration="27"  state="rrGGrrrrrGrrrr"/>',
+            '<phase duration="10" state="GGrrrrrGGgrrrr"/>',
+            '<phase duration="6"  state="yyrrrrryyyrrrr"/>',
+            '<phase duration="10"  state="rrGGrrrrrGrrrr"/>',
             '<phase duration="6"  state="rryyrrrrryrrrr"/>'
         ]
         self.JanShoba_South_XML_TRAFFIC_LIGHT_GREEN_STATES = [
-            '<phase duration="27" state="GGGrrrrrrGGGrrrrrr"/>',
-            '<phase duration="12"  state="rrrGGrrrrrrrGGrrrr"/>',
-            '<phase duration="27" state="rrrrrGGggrrrrrGGgg"/>',
-            '<phase duration="12"  state="rrrrrrrGGrrrrrrrGG"/>'
+            '<phase duration="10" state="GGGrrrrrrGGGrrrrrr"/>',
+            '<phase duration="10"  state="rrrGGrrrrrrrGGrrrr"/>',
+            '<phase duration="10" state="rrrrrGGggrrrrrGGgg"/>',
+            '<phase duration="10"  state="rrrrrrrGGrrrrrrrGG"/>'
         ]
         self.JanShoba_South_XML_TRAFFIC_LIGHT_ALL_STATES = [
-            '<phase duration="27" state="GGGrrrrrrGGGrrrrrr"/>',
+            '<phase duration="10" state="GGGrrrrrrGGGrrrrrr"/>',
             '<phase duration="6"  state="yyyrrrrrryyyrrrrrr"/>',
-            '<phase duration="12"  state="rrrGGrrrrrrrGGrrrr"/>',
+            '<phase duration="10"  state="rrrGGrrrrrrrGGrrrr"/>',
             '<phase duration="6"  state="rrryyrrrrrrryyrrrr"/>',
-            '<phase duration="27" state="rrrrrGGggrrrrrGGgg"/>',
+            '<phase duration="10" state="rrrrrGGggrrrrrGGgg"/>',
             '<phase duration="6"  state="rrrrryyyyrrrrryyyy"/>',
-            '<phase duration="12"  state="rrrrrrrGGrrrrrrrGG"/>',
+            '<phase duration="10"  state="rrrrrrrGGrrrrrrrGG"/>',
             '<phase duration="6"  state="rrrrrrryyrrrrrrryy"/>'
         ]
+        # self.Jan_Duxbury_XML_GREEN_TIMES = [1,1,1,1]
+        # self.Jan_Duxbury_XML_ALL_TIMES = [1,6,1,6,1,12,1,6]
+        # self.Jan_South_XML_GREEN_TIMES = [1,1,1,1]
+        # self.Jan_South_XML_ALL_TIMES = [1,6,1,6,1,6,1,6]
         self.Jan_Duxbury_XML_GREEN_TIMES = [27,12,27,27]
         self.Jan_Duxbury_XML_ALL_TIMES = [27,6,12,6,27,12,27,6]
         self.Jan_South_XML_GREEN_TIMES = [27,12,27,12]
