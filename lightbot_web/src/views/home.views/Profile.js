@@ -337,6 +337,8 @@ class User extends React.Component {
                             <FormGroup>
                               <label>NAME</label>
                               <Input
+                              style={{ backgroundColor: '#2a2a2a' }}
+                              className='text-primary'
                                 name='User_name'
                                 value={this.state.User_name}
                                 valid={
@@ -362,6 +364,8 @@ class User extends React.Component {
                             <FormGroup>
                               <label>SURNAME</label>
                               <Input
+                              style={{ backgroundColor: '#2a2a2a' }}
+                              className='text-primary'
                                 name='User_surname'
                                 value={this.state.User_surname}
                                 valid={
@@ -389,6 +393,8 @@ class User extends React.Component {
                             <FormGroup>
                               <label>EMAIL</label>
                               <Input
+                              style={{ backgroundColor: '#2a2a2a' }}
+                              className='text-primary'
                                 defaultValue={this.props.user.User_email}
                                 disabled={true}
                                 placeholder='Email'
@@ -402,6 +408,8 @@ class User extends React.Component {
                             <FormGroup>
                               <label>ROLE</label>
                               <Input
+                              style={{ backgroundColor: '#2a2a2a' }}
+                              className='text-primary'
                                 value={
                                   this.state.User_role === 1
                                     ? 'Administrator'
@@ -417,6 +425,8 @@ class User extends React.Component {
                             <FormGroup>
                               <label>State</label>
                               <Input
+                              style={{ backgroundColor: '#2a2a2a' }}
+                              className='text-primary'
                                 value={this.state.User_state}
                                 disabled={true}
                                 placeholder='State'
@@ -430,8 +440,9 @@ class User extends React.Component {
                           <Col className='pr-1'>
                             <div className='custom-control custom-switch'>
                               <input
+                              className='text-primary'
                                 type='checkbox'
-                                className='custom-control-input'
+                                className='custom-control-input text-primary'
                                 id='customSwitches'
                                 onClick={this.handleSwitch}
                               />
@@ -462,6 +473,7 @@ class User extends React.Component {
                             <FormGroup>
                               <label>Current Password</label>
                               <Input
+                                className='text-primary'
                                 name='oldpassword'
                                 type='password'
                                 id='idPassword'
@@ -493,6 +505,7 @@ class User extends React.Component {
                             <FormGroup>
                               <label>New Password</label>
                               <Input
+                                className='text-primary'
                                 name='User_password'
                                 placeholder='*******'
                                 type='password'
@@ -523,6 +536,7 @@ class User extends React.Component {
                             <FormGroup>
                               <label>Confirm Password</label>
                               <Input
+                                className='text-primary'
                                 name='cnewpassword'
                                 placeholder='*******'
                                 type='password'

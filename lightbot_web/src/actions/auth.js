@@ -189,6 +189,7 @@ export const getMe = () => async (dispatch) => {
   try {
     const res = await api.get('/user/me')
 
+    await dispatch(pullData())
     dispatch({
       type: GET_USER_SUCCESS,
       payload: res.data.success,

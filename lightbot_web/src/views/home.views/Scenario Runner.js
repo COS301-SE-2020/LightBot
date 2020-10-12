@@ -317,15 +317,7 @@ class Simulation extends React.Component {
   }
 
   async componentDidMount() {
-    try {
-      await this.props.pullData()
-      if (this.props.message.status > 299) {
-        this.notify(this.props.message.msg, 'danger')
-      } else {
-        this.notify(this.props.message.msg, 'success')
-        this.setView()
-      }
-    } catch (err) {}
+    this.setView()
   }
 
   render() {
