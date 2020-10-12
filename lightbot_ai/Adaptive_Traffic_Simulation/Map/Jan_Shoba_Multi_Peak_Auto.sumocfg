@@ -7,6 +7,7 @@
         <route-files value="Jan_Shoba_Multi_Peak.rou.xml,Jan_Shoba_Multi_Peak_autogen_vehicles.rou.alt.xml"/>
     </input>
     <processing>
-        <time-to-teleport value="-1"/>
+        <!-- <time-to-teleport value="-1"/> -->
+        <time-to-teleport value="90"/>
     </processing>
 </configuration>
