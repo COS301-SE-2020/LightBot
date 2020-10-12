@@ -53,6 +53,10 @@ class Simulation:
         self._jan_south_avg_queue_length_store = []
         self._jan_duxbury_avg_queue_length_store = []
         self._training_epochs = training_epochs
+        # self.Jan_Duxbury_XML_GREEN_TIMES = [1,1,1,1]
+        # self.Jan_Duxbury_XML_ALL_TIMES = [1,6,1,6,1,12,1,6]
+        # self.Jan_South_XML_GREEN_TIMES = [1,1,1,1]
+        # self.Jan_South_XML_ALL_TIMES = [1,6,1,6,1,6,1,6]
         self.Jan_Duxbury_XML_GREEN_TIMES = [27,12,27,27]
         self.Jan_Duxbury_XML_ALL_TIMES = [27,6,12,6,27,12,27,6]
         self.Jan_South_XML_GREEN_TIMES = [27,12,27,12]
@@ -101,6 +105,7 @@ class Simulation:
         jan_south_action = 0
         jan_duxbury_action = 0
 
+        # while traci.simulation.getMinExpectedNumber() > 0:
         while self._step < self._max_steps:
             if jan_south_yellow_state_steps_todo == 0 and jan_south_green_state_steps_todo == 0:
                 jan_south_current_sim_state = self._get_jan_south_sim_state()
@@ -134,6 +139,7 @@ class Simulation:
             if jan_duxbury_yellow_state_steps_todo == 0 and jan_duxbury_green_state_steps_todo == y:
                 self._set_jan_duxbury_green_phase(jan_duxbury_action)
 
+            # if (traci.simulation.getMinExpectedNumber() > 0) and (jan_south_yellow_state_steps_todo > 0 or jan_south_green_state_steps_todo > 0 or jan_duxbury_yellow_state_steps_todo > 0 or jan_duxbury_green_state_steps_todo > 0):
             if (self._step < self._max_steps) and (jan_south_yellow_state_steps_todo > 0 or jan_south_green_state_steps_todo > 0 or jan_duxbury_yellow_state_steps_todo > 0 or jan_duxbury_green_state_steps_todo > 0):
                 traci.simulationStep()
                 self._step += 1
@@ -176,7 +182,8 @@ class Simulation:
         print("Training...")
         start_time = timeit.default_timer()
         for _ in range(self._training_epochs):
-            self._replay()
+            self._replay_south()
+            self._replay_duxbury()
         training_time = round(timeit.default_timer() - start_time, 1)
         return simulation_time, training_time
 
@@ -479,9 +486,8 @@ class Simulation:
     #  @param self The object pointer.
     #
     #  Where batch training is done once the simulation is finished and sufficient data in Memory class.
-    def _replay(self):
-        
-        # SOUTH
+    def _replay_south(self):        
+
         batch_south = self._Memory_South.get_samples(self._Model_South.batch_size)
 
         if len(batch_south) > 0:  # if the memory is full enough
@@ -505,8 +511,8 @@ class Simulation:
 
             self._Model_South.train_batch(x, y)  # train the NN
 
-        # DUXBURY
-        
+    def _replay_duxbury(self):
+    
         batch_duxbury = self._Memory_Duxbury.get_samples(self._Model_Duxbury.batch_size)
 
         if len(batch_duxbury) > 0:  # if the memory is full enough

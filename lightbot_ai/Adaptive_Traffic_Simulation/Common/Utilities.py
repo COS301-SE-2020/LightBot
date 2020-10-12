@@ -77,7 +77,7 @@ def set_sumo(gui, sumocfg_file_name, max_steps):
         sumoBinary = checkBinary('sumo')
     else:
         sumoBinary = checkBinary('sumo-gui')
-    sumo_cmd = [sumoBinary, "-c", os.path.join('Map', sumocfg_file_name), "--no-step-log", "true"]
+    sumo_cmd = [sumoBinary, "-c", os.path.join('Map', sumocfg_file_name), "--no-step-log", "true", "--waiting-time-memory", str(max_steps)]
     return sumo_cmd
 
 # Documentation for the set_train_path function.
