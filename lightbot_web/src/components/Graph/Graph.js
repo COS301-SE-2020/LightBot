@@ -3,32 +3,28 @@ import { Card, CardBody, CardHeader, CardTitle } from 'reactstrap'
 import { LineChart, Line, XAxis, YAxis, Label, Tooltip, Legend } from 'recharts'
 
 export default (props) => {
-  const options = {
-    animationEnabled: true,
-    theme: 'dark1',
-    axisY: {
-      title: props.titleY,
-    },
-    axisX: {
-      title: props.titleX,
-    },
-    toolTip: {
-      shared: true,
-    },
-    data: [
-      {
-        type: 'spline',
-        name: props.name1,
-        showInLegend: true,
-        dataPoints: props.data1,
-      },
-      {
-        type: 'spline',
-        name: props.name2,
-        showInLegend: true,
-        dataPoints: props.data2,
-      },
-    ],
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active) {
+      let dif = (payload[0].value - payload[1].value).toFixed(2)
+      let text = ''
+      if (dif < 0) text = 'text-success'
+      else text = 'text-danger'
+      return (
+        <Card
+          style={{ backgroundColor: '#1a1a1a', fontSize: '12px' }}
+          className='text-primary'
+        >
+          <div className='text-secondary'>{`Time: ${label}`}</div>
+          <div>{`Automatic: ${payload[0].value.toFixed(2)}`}</div>
+          <div className='text-light'>{`Manual: ${payload[1].value.toFixed(
+            2
+          )}`}</div>
+          <div className={text}>Difference: {dif}</div>
+        </Card>
+      )
+    }
+
+    return null
   }
 
   return (
@@ -38,7 +34,7 @@ export default (props) => {
           {props.title}
         </CardTitle>
       </CardHeader>
-      <CardBody>
+      <CardBody className='text-secondary'>
         <div className='chart-area'>
           <LineChart
             data={props.data}
@@ -73,7 +69,7 @@ export default (props) => {
                 }}
               />
             </YAxis>
-            <Tooltip cursor={false} />
+            <Tooltip cursor={false} content={<CustomTooltip />} />
             <Legend />
             <Line
               name={props.name1}

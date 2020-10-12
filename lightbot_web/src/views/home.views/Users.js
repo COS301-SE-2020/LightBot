@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
 import { getUsers, elevate } from '../../actions/auth'
 import PropTypes from 'prop-types'
@@ -17,8 +16,6 @@ class Users extends React.Component {
     this.notify = this.notify.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
-
-  
 
   setViews = (e) => {
     let { views } = this.state

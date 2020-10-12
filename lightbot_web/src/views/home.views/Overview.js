@@ -1,122 +1,15 @@
 import React from 'react'
 import logo from '../../assets/img/LightBot_Logo_White.png'
-
-import { Row, Col } from 'reactstrap'
-
-// core components
+import { Card, CardBody, CardHeader, Row, Col } from 'reactstrap'
 import PanelHeader from '../../components/PanelHeader/PanelHeader.js'
 import Graph from '../../components/Graph/Graph.js'
 import State from '../../components/State/State.js'
 import Post from '../../components/Post/Post'
 import MapView from '../../components/MapView/MapView'
-import { pullData } from '../../actions/auth'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 class Overview extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      view: null,
-      view2: null,
-    }
-  }
-  setView = () => {
-    let { view } = this.state
-    view = this.handleLoad()
-    this.setState({ view })
-  }
-  setView2 = () => {
-    let { view2 } = this.state
-    view2 = this.handleLoad2()
-    this.setState({ view2 })
-  }
-  handleLoad = () => {
-    let avCM = this.cumulate(this.props.data.fiveM.dataset)
-    let avFM = this.cumulate(this.props.data.sixM.dataset)
-    let avCA = this.cumulate(this.props.data.fiveA.dataset)
-    let avFA = this.cumulate(this.props.data.sixA.dataset)
-
-    return (
-      <Row>
-        <Col xs={12} md={6}>
-          <Graph
-            title={'Visualisation of Latest Run Waiting Times on Duxbury'}
-            titleY={'Cumulative Wait Time (min)'}
-            titleX={'Duration Step'}
-            name1={'Automatic'}
-            data1={this.props.data.threeA.dataset.map((element, key) => {
-              return { y: element / 60, x: key }
-            })}
-            name2={'Manual'}
-            data2={this.props.data.threeM.dataset.map((element, key) => {
-              return { y: element / 60, x: key }
-            })}
-          />
-        </Col>
-        <Col xs={12} md={6}>
-          <Graph
-            title={'Visualisation of Latest Run Waiting Times on South'}
-            titleY={'Cumulative Wait Time (min)'}
-              titleX={'Duration Step'}
-              name1={'Automatic'}
-              data1={this.props.data.fourA.dataset.map((element, key) => {
-                return { y: element / 60, x: key }
-              })}
-              name2={'Manual'}
-              data2={this.props.data.fourM.dataset.map((element, key) => {
-                return { y: element / 60, x: key }
-              })}
-            />
-        </Col>
-      </Row>
-    )
-  }
-   handleLoad2(){
-    let avCM = this.cumulate(this.props.data.fiveM.dataset)
-    let avFM = this.cumulate(this.props.data.sixM.dataset)
-    let avCA = this.cumulate(this.props.data.fiveA.dataset)
-    let avFA = this.cumulate(this.props.data.sixA.dataset)
- return (<PanelHeader
-      size='lg'
-      content={
-        <Row>
-          <Col md='6'>
-            <State title={'State of Latest run'}
-              avC = {avCA}
-              amC = {avCM}
-              adC = {avCA - avCM}
-              avF = {avFA/1000}
-              amF = {avFM/1000}
-              adF = {(avFA - avFM)/1000}
-              acpl = {(avFA/1000)*14.83}
-              mcpl = {( avFM/1000)*14.83}
-              dcpl = {((avFA - avFM)/1000)*14.83}
-             />
-            
-          </Col>
-          <Col md='6'>
-            <div style={bannerStyles}>
-              <div className='ml-auto mr-auto text-center'>
-                <img
-                  src={logo}
-                  style={{ width: '350px', height: '180px' }}
-                  alt='react-logo'
-                />
-                <div style={{ color: 'white', fontSize: '25px' }}>
-                  <div>view the lightbot system state</div>
-                  <div>compare the latest results</div>
-                  <div>and measure the gains in time efficiency</div>
-                  <br></br>
-                </div>
-              </div>
-            </div>
-          </Col>
-        </Row>
-      }
-    />)
-  }
-
   cumulate = (p) => {
     let tot = 0
     p.map((element, key) => {
@@ -125,16 +18,7 @@ class Overview extends React.Component {
     })
     return tot
   }
-  async componentWillMount() {
-    try {
-      await this.props.pullData()
-      if (this.props.message.status > 299) {
-      } else {
-        this.setView2()
-        this.setView()
-      }
-    } catch (err) {}
-  }
+
   render() {
     return (
       <>
@@ -145,14 +29,164 @@ class Overview extends React.Component {
             </div>
           }
         />
-        {this.state.view2}
         <div className='content' style={{ marginTop: '30px' }}>
-          {this.state.view}
-          <Post setClick={(click) => (this.clickChild = click)} />
           <Row>
-            <Col md='12' className='ml-auto mr-auto text-center'>
-              <MapView title={'Intersections Covered'} />
+            <Col xs={12} md={6} className='ml-auto mr-auto text-center'>
+              <div style={bannerStyles}>
+                <div className='ml-auto mr-auto text-center'>
+                  <img
+                    src={logo}
+                    style={{
+                      width: '85%',
+                      height: '80%',
+                      marginTop: '-5%',
+                    }}
+                    alt='react-logo'
+                  />
+                  <div style={{ color: 'white', fontSize: '25px', paddingTop: '-10px' }}>
+                    <div>View the lightbot system state</div>
+                    <div>Compare the latest results</div>
+                  </div>
+                </div>
+              </div>
             </Col>
+            <Col xs={12} md={6} className='ml-auto mr-auto text-center'>
+              <State
+                title={
+                  'State of Latest run (Duration: ' +
+                  this.props.data.fourM.dataset.length +
+                  ' seconds)'
+                }
+                avC={this.cumulate(this.props.data.fiveA.dataset) / 1000000}
+                amC={this.cumulate(this.props.data.fiveM.dataset) / 1000000}
+                adC={
+                  (this.cumulate(this.props.data.fiveA.dataset) -
+                    this.cumulate(this.props.data.fiveM.dataset)) /
+                  1000000
+                }
+                avF={this.cumulate(this.props.data.sixA.dataset) / 1000}
+                amF={this.cumulate(this.props.data.sixM.dataset) / 1000}
+                adF={
+                  (this.cumulate(this.props.data.sixA.dataset) -
+                    this.cumulate(this.props.data.sixM.dataset)) /
+                  1000
+                }
+                acpl={
+                  (this.cumulate(this.props.data.sixA.dataset) / 1000) * 14.83
+                }
+                mcpl={
+                  (this.cumulate(this.props.data.sixM.dataset) / 1000) * 14.83
+                }
+                dcpl={
+                  ((this.cumulate(this.props.data.sixA.dataset) -
+                    this.cumulate(this.props.data.sixM.dataset)) /
+                    1000) *
+                  14.83
+                }
+                totWM={this.cumulate(this.props.data.threeM.dataset) / 60}
+                totWCM={
+                  (this.cumulate(this.props.data.threeM.dataset) / 60) *
+                  (22500 / 20 / 8 / 60)
+                }
+                totWA={this.cumulate(this.props.data.threeA.dataset) / 60}
+                totWCA={
+                  (this.cumulate(this.props.data.threeA.dataset) / 60) *
+                  (22500 / 20 / 8 / 60)
+                }
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12} md={6} className='ml-auto mr-auto text-center'>
+              <Graph
+                title={'Visualisation of Latest Run Waiting Times on Duxbury'}
+                titleY={'Cumulative Wait Time (min)'}
+                titleX={'Duration Step'}
+                name1={'Automatic'}
+                name2={'Manual'}
+                data={this.props.data.threeM.dataset.map((element, key) => {
+                  return {
+                    y2: element / 60,
+                    x: key,
+                    y1: this.props.data.threeA.dataset[key] / 60,
+                  }
+                })}
+              />
+            </Col>
+            <Col xs={12} md={6} className='ml-auto mr-auto text-center'>
+              <Graph
+                title={'Visualisation of Latest Run Waiting Times on South'}
+                titleY={'Cumulative Wait Time (min)'}
+                titleX={'Duration Step'}
+                name1={'Automatic'}
+                name2={'Manual'}
+                data={this.props.data.fourM.dataset.map((element, key) => {
+                  return {
+                    y2: element / 60,
+                    x: key,
+                    y1: this.props.data.fourA.dataset[key] / 60,
+                  }
+                })}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col
+              xs={12}
+              md={11}
+              className='ml-auto mr-auto'
+              style={{ backgroundColor: '#2a2a2a' }}
+            >
+              <div className='text-secondary'>
+                Information in tables represent totals of respective data in the
+                last simulation.
+                <br />
+                Graphs represent data of the last simualtion.
+                <br />
+                Estimated fuel cost of R14.89 p/l based on inland fuel prices
+                for Petrol Unleaded 93 on the 02-09-2020. (
+                <a
+                  href='https://www.aa.co.za/calculators-toolscol-1/fuel-pricing'
+                  target='_blank'
+                  rel='noreferrer noopener'
+                >
+                  Source
+                </a>
+                ).
+                <br />
+                Monetary value lost to traffic calculated using average South
+                African income of R22500 per month , 20 workdays per month, 8
+                hours worked per day (
+                <a
+                  href='https://businesstech.co.za/news/finance/386327/this-is-the-average-salary-in-south-africa-right-now-4/'
+                  target='_blank'
+                  rel='noreferrer noopener'
+                >
+                  Source
+                </a>
+                ).
+              </div>
+            </Col>
+          </Row>
+          <br />
+          <br />
+          <Row>
+            <Col md='12'>
+              <Card
+                className='card-user'
+                style={{ backgroundColor: '#2a2a2a' }}
+              >
+                <CardHeader className='ml-auto mr-auto text-center text-primary'>
+                  <h2>Notification Forum</h2>
+                </CardHeader>
+                <CardBody>
+                  <Post setClick={(click) => (this.clickChild = click)} />
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+          <Row>
+            <MapView title={'Intersections Covered'} />
           </Row>
         </div>
       </>
@@ -162,13 +196,12 @@ class Overview extends React.Component {
 const bannerStyles = {
   margin: 'auto',
   width: '100%',
-  height: '100%',
+  height: '93%',
   backgroundImage: 'url(' + require('../../assets/img/profile.jpg') + ')',
   backgroundSize: 'cover',
 }
 
 Overview.propTypes = {
-  pullData: PropTypes.func.isRequired,
   message: PropTypes.object,
   data: PropTypes.object,
 }
@@ -178,6 +211,4 @@ const mapStateToProps = (state) => ({
   data: state.auth.scenario_data,
 })
 
-export default connect(mapStateToProps, {
-  pullData,
-})(Overview)
+export default connect(mapStateToProps)(Overview)

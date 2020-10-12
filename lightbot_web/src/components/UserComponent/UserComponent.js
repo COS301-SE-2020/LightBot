@@ -3,12 +3,10 @@ import React from 'react'
 import { Card, CardBody, Row, Col, CardHeader, Button } from 'reactstrap'
 
 export default (props) => {
-
-  
   return (
     <Row>
       <Col className='ml-auto mr-auto text-center' md='6'>
-        <Card className='card-user'>
+        <Card className='card-user' style={{ backgroundColor: '#2a2a2a' }}>
           <CardHeader className='image'>
             <img src={require('../../assets/img/profile.jpg')} alt={''} />
           </CardHeader>
@@ -34,7 +32,9 @@ export default (props) => {
                   className='btn-round'
                   color='success'
                   block
-                  onClick={()=>{props.handleC(props.elevate,1)}}
+                  onClick={() => {
+                    props.handleC(props.elevate, 1)
+                  }}
                 >
                   Promote
                 </Button>
@@ -44,7 +44,9 @@ export default (props) => {
                   className='btn-round'
                   color='danger'
                   block
-                  onClick={()=>{props.handleC(props.elevate,2)}}
+                  onClick={() => {
+                    props.handleC(props.elevate, 2)
+                  }}
                 >
                   Demote
                 </Button>

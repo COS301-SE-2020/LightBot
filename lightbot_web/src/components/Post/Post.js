@@ -46,7 +46,7 @@ class Post extends React.Component {
     return sortedPosts.map((item, i) => {
       while (!max || (max && i < 5)) {
         return (
-          <tr key={item._id}>
+          <tr key={item._id} className='text-light'>
             <td>{item.title}</td>
             <td>{item.subject}</td>
             <td>{item.description}</td>
@@ -75,7 +75,7 @@ class Post extends React.Component {
   }
   componentDidMount() {
     this.handleLoad()
-    this.props.setClick(this.handleLoad);
+    this.props.setClick(this.handleLoad)
   }
 
   render() {
@@ -84,9 +84,12 @@ class Post extends React.Component {
         <NotificationAlert ref='notificationAlert' />
         <Row>
           <Col xs={12}>
-            <Card>
+            <Card
+              style={{ backgroundColor: '#2a2a2a' }}
+              className='text-primary'
+            >
               <CardBody>
-                <Table reactive='true'>
+                <Table reactive='true' className='text-primary'>
                   <thead>
                     <tr>
                       <th>Title</th>

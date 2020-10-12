@@ -92,7 +92,10 @@ class Forum extends React.Component {
           <Post setClick={(click) => (this.clickChild = click)} />
           <Row>
             <Col className='ml-auto mr-auto text-center' md={8} xs={12}>
-              <Card>
+              <Card
+                style={{ backgroundColor: '#2a2a2a' }}
+                className='text-primary'
+              >
                 <CardBody>
                   <Row>
                     <Col md={6} className='ml-auto mr-auto text-center'>

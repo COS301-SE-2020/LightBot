@@ -47,8 +47,10 @@ class MapContainer extends React.Component {
 }
 
 const mapStyles = {
-  width: '98%',
-  height: '86%',
+  width: '96%',
+  height: '33vw',
+  marginLeft: 'auto',
+  marginRight: 'auto',
 }
 
 export default GoogleApiWrapper({
