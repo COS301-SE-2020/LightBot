@@ -60,38 +60,37 @@ class Overview extends React.Component {
                 avC={this.cumulate(this.props.data.fiveA.dataset) / 1000000}
                 amC={this.cumulate(this.props.data.fiveM.dataset) / 1000000}
                 adC={
-                  (this.cumulate(this.props.data.fiveA.dataset) -
-                    this.cumulate(this.props.data.fiveM.dataset)) /
+                  (
+                    this.cumulate(this.props.data.fiveM.dataset)-this.cumulate(this.props.data.fiveA.dataset)) /
                   1000000
                 }
                 avF={this.cumulate(this.props.data.sixA.dataset) / 1000}
                 amF={this.cumulate(this.props.data.sixM.dataset) / 1000}
                 adF={
-                  (this.cumulate(this.props.data.sixA.dataset) -
-                    this.cumulate(this.props.data.sixM.dataset)) /
+                  (
+                    this.cumulate(this.props.data.sixM.dataset)-this.cumulate(this.props.data.sixA.dataset)) /
                   1000
                 }
                 acpl={
-                  (this.cumulate(this.props.data.sixA.dataset) / 1000) * 14.83
+                  (this.cumulate(this.props.data.sixA.dataset) / 1000) * 14.89
                 }
                 mcpl={
-                  (this.cumulate(this.props.data.sixM.dataset) / 1000) * 14.83
+                  (this.cumulate(this.props.data.sixM.dataset) / 1000) * 14.89
                 }
                 dcpl={
-                  ((this.cumulate(this.props.data.sixA.dataset) -
-                    this.cumulate(this.props.data.sixM.dataset)) /
+                  ((  this.cumulate(this.props.data.sixM.dataset)-this.cumulate(this.props.data.sixA.dataset) ) /
                     1000) *
-                  14.83
+                  14.89
                 }
                 totWM={this.cumulate(this.props.data.threeM.dataset) / 60}
                 totWCM={
                   (this.cumulate(this.props.data.threeM.dataset) / 60) *
-                  (22500 / 20 / 8 / 60)
+                  (22500 / 21 / 8 / 60)
                 }
                 totWA={this.cumulate(this.props.data.threeA.dataset) / 60}
                 totWCA={
                   (this.cumulate(this.props.data.threeA.dataset) / 60) *
-                  (22500 / 20 / 8 / 60)
+                  (22500 / 21 / 8 / 60)
                 }
               />
             </Col>
@@ -155,7 +154,7 @@ class Overview extends React.Component {
                 ).
                 <br />
                 Monetary value lost to traffic calculated using average South
-                African income of R22500 per month , 20 workdays per month, 8
+                African income of R22500 per month , 21 workdays per month, 8
                 hours worked per day (
                 <a
                   href='https://businesstech.co.za/news/finance/386327/this-is-the-average-salary-in-south-africa-right-now-4/'

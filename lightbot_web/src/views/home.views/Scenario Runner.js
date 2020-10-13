@@ -224,7 +224,7 @@ class Simulation extends React.Component {
               avF={avFM / 1000}
               cpl={(avFM * 14.89) / 1000}
               totW={totWM / 60}
-              totWC={(totWM / 60) * (22500 / 20 / 8 / 60)}
+              totWC={(totWM / 60) * (22500 / 21 / 8 / 60)}
               tF={!textFuel}
               tC={!textCarbon}
               tW={!textWait}
@@ -241,7 +241,7 @@ class Simulation extends React.Component {
               avF={avFA / 1000}
               cpl={(avFA * 14.89) / 1000}
               totW={totWA / 60}
-              totWC={(totWA / 60) * (22500 / 20 / 8 / 60)}
+              totWC={(totWA / 60) * (22500 / 21 / 8 / 60)}
               tF={textFuel}
               tC={textCarbon}
               tW={textWait}
@@ -272,7 +272,7 @@ class Simulation extends React.Component {
                   ).
                   <br />
                   Monetary value lost to traffic calculated using average South
-                  African income of R22500 per month , 20 workdays per month, 8
+                  African income of R22500 per month , 21 workdays per month, 8
                   hours worked per day (
                   <a
                     href='https://businesstech.co.za/news/finance/386327/this-is-the-average-salary-in-south-africa-right-now-4/'
