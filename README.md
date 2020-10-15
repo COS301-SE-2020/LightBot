@@ -7,7 +7,7 @@
 
 ## Description
 
-This repository contains an implementation of ['LightBot'](http://ec2-18-156-193-24.eu-central-1.compute.amazonaws.com:3000/) Artificial Intelligence Adaptive Traffic Control Solution. LightBot is a software engineering project proposed by ['Fifth Dimension Technologies (5DT)'](5dt.com) for the COS 301 final year module of the ['Computer Science'](https://cs.up.ac.za/) curriculum at the ['University of Pretoria'](https://www.up.ac.za/). All components and subsystems were created or compiled by the Gradient Team. The system is available at: http://ec2-18-156-193-24.eu-central-1.compute.amazonaws.com:3000/
+This repository contains an implementation of ['LightBot'](http://lightbot.co.za) Artificial Intelligence Adaptive Traffic Control Solution. LightBot is a software engineering project proposed by ['Fifth Dimension Technologies (5DT)'](https://5dt.com/) for the COS 301 final year module of the ['Computer Science'](https://cs.up.ac.za/) curriculum at the ['University of Pretoria'](https://www.up.ac.za/). All components and subsystems were created or compiled by the Gradient Team. The system is available at: http://lightbot.co.za
 
 Purpose: LightBot's goal is to explore the possibility to minimize the delays that are caused by traffic congestions at various intersections. The LightBot system will be used to prove a concept that the addition of a machine learning algorithm may develop a good policy for which to control the traffic lights at a given intersection and may benefit society through time-efficiency, monetarily and perhaps even reduce vehicular emissions and costs.
 
