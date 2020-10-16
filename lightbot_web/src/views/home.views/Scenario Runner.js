@@ -88,11 +88,19 @@ class Simulation extends React.Component {
     let avFM = this.cumulate(this.props.data.sixM.dataset)
     let avCA = this.cumulate(this.props.data.fiveA.dataset)
     let avFA = this.cumulate(this.props.data.sixA.dataset)
-    let totWA = this.cumulate(this.props.data.threeA.dataset)
-    let totWM = this.cumulate(this.props.data.threeM.dataset)
+    let dWA=this.cumulate(this.props.data.threeA.dataset)
+    let dWM=this.cumulate(this.props.data.threeM.dataset)
+    let sWA=this.cumulate(this.props.data.fourA.dataset)
+    let sWM=this.cumulate(this.props.data.fourM.dataset)
+    let totWA = this.cumulate(this.props.data.threeA.dataset)+this.cumulate(this.props.data.fourA.dataset)
+    let totWM = this.cumulate(this.props.data.threeM.dataset)+this.cumulate(this.props.data.fourM.dataset)
     let textCarbon = false
     let textFuel = false
     let textWait = false
+    let textSWait = false
+    let textDWait = false
+    
+    
     if (avCA - avCM < 0) {
       textCarbon = true
     }
@@ -102,6 +110,13 @@ class Simulation extends React.Component {
     if (totWA - totWM < 0) {
       textWait = true
     }
+    if (sWA - sWM < 0) {
+      textSWait = true
+    }
+    if (dWA - dWM < 0) {
+      textDWait = true
+    }
+
     return (
       <>
         <Row>
@@ -224,10 +239,18 @@ class Simulation extends React.Component {
               avF={avFM / 1000}
               cpl={(avFM * 14.89) / 1000}
               totW={totWM / 60}
-              totWC={(totWM / 60) * (22500 / 20 / 8 / 60)}
+              totWC={(totWM / 60) * (22500 / 21 / 8 / 60)}
+              sWC={(sWM / 60) * (22500 / 21 / 8 / 60)}
+              dWC={(dWM / 60) * (22500 / 21 / 8 / 60)}
+
+              dW={dWM/60}
+
+              sW={sWM/60}
               tF={!textFuel}
               tC={!textCarbon}
               tW={!textWait}
+              tDW={!textDWait}
+              tSW={!textSWait}
             />
           </Col>
           <Col md='6' className='ml-auto mr-auto text-center'>
@@ -238,13 +261,20 @@ class Simulation extends React.Component {
                 ' seconds)'
               }
               avC={avCA / 1000000}
+              dW={dWA/60}
+              sW={sWA/60}
               avF={avFA / 1000}
               cpl={(avFA * 14.89) / 1000}
               totW={totWA / 60}
-              totWC={(totWA / 60) * (22500 / 20 / 8 / 60)}
+              totWC={(totWA / 60) * (22500 / 21 / 8 / 60)}
+              sWC={(sWA / 60) * (22500 / 21 / 8 / 60)}
+              dWC={(dWA / 60) * (22500 / 21 / 8 / 60)}
               tF={textFuel}
               tC={textCarbon}
               tW={textWait}
+              tDW={textDWait}
+              tSW={textSWait}
+              
             />
           </Col>
         </Row>
@@ -260,6 +290,8 @@ class Simulation extends React.Component {
                   <br />
                   Graphs represent data of the last simualtion.
                   <br />
+                  Please note that the AI Model for the Duxbury Intersection was trained for a short period of time, while the AI Model for the South Intersection was trained for a long period of time. This shows the effectiveness in training for an AI Model.
+                  <br />
                   Estimated fuel cost of R14.89 p/l based on inland fuel prices
                   for Petrol Unleaded 93 on the 02-09-2020. (
                   <a
@@ -272,7 +304,7 @@ class Simulation extends React.Component {
                   ).
                   <br />
                   Monetary value lost to traffic calculated using average South
-                  African income of R22500 per month , 20 workdays per month, 8
+                  African income of R22500 per month , 21 workdays per month, 8
                   hours worked per day (
                   <a
                     href='https://businesstech.co.za/news/finance/386327/this-is-the-average-salary-in-south-africa-right-now-4/'

@@ -6,9 +6,13 @@ export default (props) => {
   let text1 = 'text-danger'
   let text2 = 'text-danger'
   let text3 = 'text-danger'
+  let text4 = 'text-danger'
+  let text5 = 'text-danger'
   if (props.tF) text1 = 'text-success'
   if (props.tC) text2 = 'text-success'
   if (props.tW) text3 = 'text-success'
+  if (props.tDW) text4 = 'text-success'
+  if (props.tSW) text5 = 'text-success'
   return (
     <Card style={{ backgroundColor: '#2a2a2a' }} className='text-primary'>
       <CardHeader>
@@ -25,6 +29,30 @@ export default (props) => {
             </tr>
           </thead>
           <tbody className='text-light'>
+          <tr>
+              <td>Total South Wait Time</td>
+              <td className={text5}>{props.sW.toFixed(2)} minutes</td>
+            </tr>
+            <tr>
+              <td>Estimated Monetary Cost at South Street</td>
+              <td className={text5}>R{props.sWC.toFixed(2)}</td>
+            </tr>
+            <tr>
+              <td>Total Duxbury Wait Time </td>
+              <td className={text4}>{props.dW.toFixed(2)} minutes</td>
+            </tr>
+            <tr>
+              <td>Estimated Monetary Cost at Duxbury Street</td>
+              <td className={text4}>R{props.dWC.toFixed(2)}</td>
+            </tr>
+            <tr>
+              <td>Total Waiting time </td>
+              <td className={text3}>{props.totW.toFixed(2)} minutes</td>
+            </tr>
+            <tr>
+              <td>Total Estimated Cost of Both Intersections</td>
+              <td className={text3}>R{props.totWC.toFixed(2)}</td>
+            </tr>
             <tr>
               <td>Total Carbon Emissions </td>
               <td className={text2}>{props.avC.toFixed(2)} kg</td>
@@ -36,14 +64,6 @@ export default (props) => {
             <tr>
               <td>Estimated Fuel Cost in Rands (at R14.89 p/l)</td>
               <td className={text1}>R{props.cpl.toFixed(2)}</td>
-            </tr>
-            <tr>
-              <td>Total Waiting time </td>
-              <td className={text3}>{props.totW.toFixed(2)} minutes</td>
-            </tr>
-            <tr>
-              <td>Estimated monetary value of time lost due to traffic</td>
-              <td className={text3}>R{props.totWC.toFixed(2)}</td>
             </tr>
           </tbody>
         </Table>

@@ -1,0 +1,34 @@
+
+> lightbotserver@1.0.0 start /home/ubuntu/server
+> node src/app.js
+
+events.js:292
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::8000
+    at Server.setupListenHandle [as _listen2] (net.js:1314:16)
+    at listenInCluster (net.js:1362:12)
+    at Server.listen (net.js:1448:7)
+    at Function.listen (/home/ubuntu/server/node_modules/express/lib/application.js:618:24)
+    at executeServer (/home/ubuntu/server/src/app.js:13:22)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (net.js:1341:8)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 8000
+}
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! lightbotserver@1.0.0 start: `node src/app.js`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the lightbotserver@1.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/ubuntu/.npm/_logs/2020-10-15T11_17_56_236Z-debug.log

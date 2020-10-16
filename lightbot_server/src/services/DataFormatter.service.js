@@ -4,14 +4,29 @@ const fs = require('fs')
 // // Model imports
 const { ErrorResponse } = require('../models/Error.model')
 const Graph = require('../models/Graph.model')
-
+let i = 0
 arrayify = (filename) => {
-  let line = fs
+let line
+
+if(i<1 || i >4)
+{
+line = fs
+    .readFileSync('src/services/OptimizerService/Display_Data/' + filename)
+    .toString()
+    .split('\n')
+    line.pop()
+    line = line.map(Number)
+}
+else
+{
+line = fs
     .readFileSync('src/services/OptimizerService/Display_Data/' + filename)
     .toString()
     .split('\r\n')
     line.pop()
     line = line.map(Number)
+}
+
   return line
 }
 pushDataX = async (title, type, metric, dataset) => {

@@ -8,6 +8,8 @@ import Post from '../../components/Post/Post'
 import MapView from '../../components/MapView/MapView'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { MDBIframe } from 'mdbreact'
+
 
 class Overview extends React.Component {
   cumulate = (p) => {
@@ -32,25 +34,17 @@ class Overview extends React.Component {
         <div className='content' style={{ marginTop: '30px' }}>
           <Row>
             <Col xs={12} md={6} className='ml-auto mr-auto text-center'>
-              <div style={bannerStyles}>
-                <div className='ml-auto mr-auto text-center'>
-                  <img
-                    src={logo}
-                    style={{
-                      width: '85%',
-                      height: '80%',
-                      marginTop: '-5%',
-                    }}
-                    alt='react-logo'
-                  />
-                  <div style={{ color: 'white', fontSize: '25px', paddingTop: '-10px' }}>
-                    <div>View the lightbot system state</div>
-                    <div>Compare the latest results</div>
-                  </div>
-                </div>
-              </div>
+            <Card style={{ backgroundColor: '#2a2a2a' }} className='text-primary'>
+        <CardBody>
+          <MDBIframe
+            src={
+              'https://www.youtube.com/embed/yR0YJexVDOk'
+            }
+          />
+        </CardBody>
+      </Card>
             </Col>
-            <Col xs={12} md={6} className='ml-auto mr-auto text-center'>
+<Col xs={12} md={6} className='ml-auto mr-auto text-center'>
               <State
                 title={
                   'State of Latest run (Duration: ' +
@@ -60,39 +54,58 @@ class Overview extends React.Component {
                 avC={this.cumulate(this.props.data.fiveA.dataset) / 1000000}
                 amC={this.cumulate(this.props.data.fiveM.dataset) / 1000000}
                 adC={
-                  (this.cumulate(this.props.data.fiveA.dataset) -
-                    this.cumulate(this.props.data.fiveM.dataset)) /
+                  (
+                    this.cumulate(this.props.data.fiveM.dataset)-this.cumulate(this.props.data.fiveA.dataset)) /
                   1000000
                 }
                 avF={this.cumulate(this.props.data.sixA.dataset) / 1000}
                 amF={this.cumulate(this.props.data.sixM.dataset) / 1000}
                 adF={
-                  (this.cumulate(this.props.data.sixA.dataset) -
-                    this.cumulate(this.props.data.sixM.dataset)) /
+                  (
+                    this.cumulate(this.props.data.sixM.dataset)-this.cumulate(this.props.data.sixA.dataset)) /
                   1000
                 }
                 acpl={
-                  (this.cumulate(this.props.data.sixA.dataset) / 1000) * 14.83
+                  (this.cumulate(this.props.data.sixA.dataset) / 1000) * 14.89
                 }
                 mcpl={
-                  (this.cumulate(this.props.data.sixM.dataset) / 1000) * 14.83
+                  (this.cumulate(this.props.data.sixM.dataset) / 1000) * 14.89
                 }
                 dcpl={
-                  ((this.cumulate(this.props.data.sixA.dataset) -
-                    this.cumulate(this.props.data.sixM.dataset)) /
+                  ((  this.cumulate(this.props.data.sixM.dataset)-this.cumulate(this.props.data.sixA.dataset) ) /
                     1000) *
-                  14.83
+                  14.89
                 }
-                totWM={this.cumulate(this.props.data.threeM.dataset) / 60}
+                totWM={(this.cumulate(this.props.data.threeM.dataset)+this.cumulate(this.props.data.fourM.dataset) ) / 60}
                 totWCM={
-                  (this.cumulate(this.props.data.threeM.dataset) / 60) *
-                  (22500 / 20 / 8 / 60)
+                  ((this.cumulate(this.props.data.threeM.dataset)+this.cumulate(this.props.data.fourM.dataset) ) / 60) *
+                  (22500 / 21 / 8 / 60)
                 }
-                totWA={this.cumulate(this.props.data.threeA.dataset) / 60}
+                totWA={(this.cumulate(this.props.data.threeA.dataset)+this.cumulate(this.props.data.fourA.dataset) )/ 60}
                 totWCA={
-                  (this.cumulate(this.props.data.threeA.dataset) / 60) *
-                  (22500 / 20 / 8 / 60)
+                  ((this.cumulate(this.props.data.threeA.dataset)+this.cumulate(this.props.data.fourA.dataset) )/ 60) *
+                  (22500 / 21 / 8 / 60)
                 }
+                dWA={this.cumulate(this.props.data.threeA.dataset)/60}
+                dWCA={
+                  ((this.cumulate(this.props.data.threeA.dataset))/ 60) *
+                  (22500 / 21 / 8 / 60)
+                }
+                sWCA={
+                  ((this.cumulate(this.props.data.fourA.dataset))/ 60) *
+                  (22500 / 21 / 8 / 60)
+                }
+                dWCM={
+                  ((this.cumulate(this.props.data.threeM.dataset))/ 60) *
+                  (22500 / 21 / 8 / 60)
+                }
+                sWCM={
+                  ((this.cumulate(this.props.data.fourM.dataset))/ 60) *
+                  (22500 / 21 / 8 / 60)
+                }
+                dWM={this.cumulate(this.props.data.threeM.dataset)/60}
+                sWA={this.cumulate(this.props.data.fourA.dataset)/60}
+                sWM={this.cumulate(this.props.data.fourM.dataset)/60}
               />
             </Col>
           </Row>
@@ -141,7 +154,9 @@ class Overview extends React.Component {
                 Information in tables represent totals of respective data in the
                 last simulation.
                 <br />
-                Graphs represent data of the last simualtion.
+                Graphs represent data of the last simulation.
+                <br />
+                Please note that the AI Model for the Duxbury Intersection was trained for a short period of time, while the AI Model for the South Intersection was trained for a long period of time. This shows the effectiveness in training for an AI Model.
                 <br />
                 Estimated fuel cost of R14.89 p/l based on inland fuel prices
                 for Petrol Unleaded 93 on the 02-09-2020. (
@@ -155,7 +170,7 @@ class Overview extends React.Component {
                 ).
                 <br />
                 Monetary value lost to traffic calculated using average South
-                African income of R22500 per month , 20 workdays per month, 8
+                African income of R22500 per month , 21 workdays per month, 8
                 hours worked per day (
                 <a
                   href='https://businesstech.co.za/news/finance/386327/this-is-the-average-salary-in-south-africa-right-now-4/'
