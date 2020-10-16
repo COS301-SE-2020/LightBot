@@ -8,6 +8,7 @@ const rateLimit = require('express-rate-limit')
 const helmet = require('helmet')
 const cors = require('cors')
 const colors = require('colors')
+const path = require('path');
 
 // // Route imports
 const userRoute = require('../api/routes/User.route')
@@ -81,19 +82,23 @@ module.exports = ({ app }) => {
   app.use(limit)
 
   /**
-   * Serve the root of the directory
-   *
-   */
-  app.use(express.static(__dirname + '../../'))
-
-  /**
    * Route handling
-   * User, Data, Live, Config, Error
+   * User, Data, Config, App, Error
    */
 
   app.use('/user', userRoute)
   app.use('/data', dataRoute)
   app.use('/config', configRoute)
+
+   /**
+   * Serve the root of the directory
+   *
+   */
+  app.use(express.static('../../build'))
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname,'../../build','index.html'));
+  });
+
   app.use(errorRoute)
 
   /**

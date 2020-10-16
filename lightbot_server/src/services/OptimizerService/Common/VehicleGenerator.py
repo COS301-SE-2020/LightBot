@@ -36,7 +36,7 @@ class MockGenerator(VehicleGenerator):
         timeGen = datetime.now()
         dateGen = timeGen.strftime("%A, %d %B %Y %H:%M:%S")
 
-        with open("Map\Jan_Shoba_Multi_Peak_autogen_vehicles.rou.alt.xml", "w") as routes:
+        with open("Map/Jan_Shoba_Multi_Peak_autogen_vehicles.rou.alt.xml", "w") as routes:
             print("""<?xml version="1.0" encoding="UTF-8"?>
 
                 <!-- generated on "%s" by Lightbot Vehicle Generator
